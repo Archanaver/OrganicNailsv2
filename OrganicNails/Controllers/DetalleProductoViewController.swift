@@ -186,7 +186,7 @@ class DetalleProductoViewController: UIViewController, UIPickerViewDelegate, UIP
                         //print("usuario dirección", direccionUsuario)
                         var nuevoProducto = ProductoP(cantidad_producto: self.counter, color: self.tempColor, descripcion_producto: self.descripcion.text!, descuento_producto: Int((self.descuento.text! as NSString).floatValue), id_producto: self.id.text!, nombre_producto: self.nombreProducto.text!, precio_producto: self.tempPrecio, presentacion: self.tempPresentacion, tipo_producto: self.tipo.text!, uso: self.uso.text!)
                         
-                        var nuevoPedido = Pedido(activo:true, estatus:"Pendiente",productos:[nuevoProducto], direccion: direccionUsuario)
+                        var nuevoPedido = Pedido(activo:true, estatus:"Pendiente",productos:[nuevoProducto], direccion: direccionUsuario, cursos:[])
                         
                         // checar si hay carrito activo
                         var pedidoId:String = ""
@@ -194,10 +194,10 @@ class DetalleProductoViewController: UIViewController, UIPickerViewDelegate, UIP
                         self.pedidoControlador.checarCarritoActivo(){
                             (resultado) in
                             switch resultado{
-                            case .success(let exito):pedidoId = self.displayExitoCarrito(exito: exito)
+                            case .success(let exito):pedidoId = self.getIdUsuario(id: exito)
                                 if pedidoId.count != 0 {
                                     //print("editar pedido")
-                                    self.pedidoControlador.agregarPedidoProducto(nuevoProducto: nuevoProducto,idPedido: pedidoId){
+                                    self.pedidoControlador.agregarProductoEnPedido(nuevoProducto: nuevoProducto,idPedido: pedidoId){
                                         (resultado) in
                                         switch resultado{
                                         case .success(let exito):self.displayExito(exito: exito)
@@ -217,7 +217,7 @@ class DetalleProductoViewController: UIViewController, UIPickerViewDelegate, UIP
                             case .failure(let error):self.displayError(e: error)
                             }
                         }
-                      case .failure(let error):print("No se pudo encontrar la dirección, error; ",error)
+                      case .failure(let error):print("No se pudo encontrar la dirección error; ",error)
                       }
                   }
            
@@ -262,10 +262,10 @@ class DetalleProductoViewController: UIViewController, UIPickerViewDelegate, UIP
         
     }
     
-    func displayExitoCarrito(exito:String)->String{
+    func getIdUsuario(id:String)->String{
         DispatchQueue.main.async {
         }
-        return exito
+        return id
     }
     
     func getDireccion(exito:String)->String{

@@ -8,13 +8,33 @@
 import Foundation
 import Firebase
 
-/*struct CursoP:Decodable{
+struct CursoP:Decodable{
     var id_curso: String
     var instructor: String
     var nombre_curso:String
     var precio_curso:String
+    var fecha_curso:String
+    var descripcion_curso:String
     
-}*/
+    func IdCurso()->String {
+        return id_curso
+    }
+    func Instructor()->String {
+        return instructor
+    }
+    func NombreCurso()->String {
+        return nombre_curso
+    }
+    func PrecioCurso()->String {
+        return precio_curso
+    }
+    func FechaCurso()->String {
+        return fecha_curso
+    }
+    func DescripcionCurso()->String {
+        return descripcion_curso
+    }
+}
 struct ProductoP:Decodable{
     var cantidad_producto: Int
     var color:String
@@ -69,7 +89,7 @@ struct Pedido: Decodable{
     var fecha: String
     var id:String
     var productos:[ProductoP]
-    //var cursos:[CursoP]
+    var cursos:[CursoP]
     
 
     
@@ -81,12 +101,12 @@ struct Pedido: Decodable{
         case fecha
         case id
         case productos
-        //case cursos
+        case cursos
         
     }
     
     
-    init(activo:Bool, estatus:String, productos:[ProductoP], direccion:String ){
+    init(activo:Bool, estatus:String, productos:[ProductoP], direccion:String, cursos: [CursoP] ){
         self.activo = activo
         self.cliente_id = "0"
         self.direccion = direccion
@@ -94,9 +114,11 @@ struct Pedido: Decodable{
         self.fecha = ""
         self.id = "0"
         self.productos = productos
-        //self.cursos = []
+        self.cursos = cursos
         
     }
+
+    
     init(d:DocumentSnapshot){
             self.id = d.documentID
             self.activo = d.get("activo") as? Bool ?? false
@@ -106,7 +128,7 @@ struct Pedido: Decodable{
             self.fecha = d.get("fecha") as? String ?? ""
             self.id = d.get("id") as? String ?? ""
             self.productos = d.get("productos") as? [ProductoP] ?? []
-            //self.cursos = d.get("cursos") as? [CursoP] ?? []
+            self.cursos = d.get("cursos") as? [CursoP] ?? []
         }
     
 

@@ -826,6 +826,9 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <color key="titleShadowColor" red="0.74923342469999998" green="0.86115735770000001" blue="0.96950751540000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="agregarCarritoWithSender:" destination="93x-lp-Ij5" eventType="touchUpInside" id="lBw-aZ-HnB"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="T0d-bs-QsH"/>

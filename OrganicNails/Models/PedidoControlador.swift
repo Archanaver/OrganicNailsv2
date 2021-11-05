@@ -54,6 +54,43 @@ class PedidoControlador{
         }
 }
     
+    func crearPedidoConCurso(nuevoPedido:Pedido, completion: @escaping (Result<String,Error>)->Void ){
+        var ref: DocumentReference? = nil
+        //let newDocumentID = UUID().uuidString
+        ref = db.collection("pedidos").addDocument(data:[
+            "activo": nuevoPedido.activo,
+            "direccion": nuevoPedido.direccion,
+            "estatus": nuevoPedido.estatus,
+            "fecha": FieldValue.serverTimestamp(),
+            "cliente_id": nuevoPedido.cliente_id,
+            "id": nuevoPedido.id
+        ]){ err in
+            if let err = err{
+                print("Error al añadir documento: \(err)")
+                completion(.failure(err))
+            }else{
+                for nuevoCurso in nuevoPedido.cursos{
+                    print("ref",ref!.documentID)
+                    self.db.collection("pedidos").document(ref!.documentID).collection("cursos").addDocument(data: [
+                        "id_curso": nuevoCurso.IdCurso(),
+                        "instructor":nuevoCurso.Instructor(),
+                        "nombre_curso": nuevoCurso.NombreCurso(),
+                        "precio_curso": nuevoCurso.PrecioCurso(),
+                        "fecha_curso": nuevoCurso.FechaCurso(),
+                        "descripcion_curso": nuevoCurso.DescripcionCurso()
+                    ]){ err in
+                        if let err = err{
+                            print("Error al añadir curso: \(err)")
+                            completion(.failure(err))
+                        }else{
+                            completion(.success("Pedido ID: \(ref!.documentID)"))
+                        }
+                    }
+                }
+            }
+        }
+}
+    
     func checarCarritoActivo(completion: @escaping (Result<String,Error>)->Void){
         db.collection("pedidos").whereField("activo", isEqualTo: true)
           .getDocuments() { (querySnapshot, err) in
@@ -76,7 +113,7 @@ class PedidoControlador{
     
 
     
-    func agregarPedidoProducto(nuevoProducto:ProductoP,idPedido:String, completion: @escaping (Result<String,Error>)->Void ){
+    func agregarProductoEnPedido(nuevoProducto:ProductoP,idPedido:String, completion: @escaping (Result<String,Error>)->Void ){
         db.collection("pedidos").document(idPedido).collection("productos").addDocument(data: [
            "cantidad_producto": nuevoProducto.CantidadProducto(),
            "color":nuevoProducto.Color(),
@@ -91,6 +128,25 @@ class PedidoControlador{
         ]){ err in
             if let err = err{
                 print("Error al añadir producto: \(err)")
+                completion(.failure(err))
+            }else{
+                completion(.success("Pedido ID: \(idPedido)"))
+            }
+        }
+        
+    }
+    
+    func agregarCursoEnPedido(nuevoCurso:CursoP,idPedido:String, completion: @escaping (Result<String,Error>)->Void ){
+        db.collection("pedidos").document(idPedido).collection("cursos").addDocument(data: [
+           "id_curso": nuevoCurso.IdCurso(),
+           "instructor":nuevoCurso.Instructor(),
+           "nombre_curso": nuevoCurso.NombreCurso(),
+           "precio_curso": nuevoCurso.PrecioCurso(),
+           "fecha_curso": nuevoCurso.FechaCurso(),
+           "descripcion_curso": nuevoCurso.DescripcionCurso()
+        ]){ err in
+            if let err = err{
+                print("Error al añadir curso: \(err)")
                 completion(.failure(err))
             }else{
                 completion(.success("Pedido ID: \(idPedido)"))
