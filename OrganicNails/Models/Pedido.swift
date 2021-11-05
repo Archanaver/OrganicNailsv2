@@ -86,10 +86,10 @@ struct Pedido: Decodable{
     }
     
     
-    init(activo:Bool, estatus:String, productos:[ProductoP] ){
+    init(activo:Bool, estatus:String, productos:[ProductoP], direccion:String ){
         self.activo = activo
         self.cliente_id = "0"
-        self.direccion = ""
+        self.direccion = direccion
         self.estatus = estatus
         self.fecha = ""
         self.id = "0"

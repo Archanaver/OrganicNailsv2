@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0D052565273344C300481B5D /* Pedido.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D052564273344C300481B5D /* Pedido.swift */; };
 		0D05258B27336A6B00481B5D /* PedidoControlador.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D05258A27336A6B00481B5D /* PedidoControlador.swift */; };
+		0D05267E273578F100481B5D /* UsuarioControlador.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D05267D273578F100481B5D /* UsuarioControlador.swift */; };
 		0DA134B426FD26FF00A8B809 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA134B326FD26FF00A8B809 /* AppDelegate.swift */; };
 		0DA134B626FD26FF00A8B809 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA134B526FD26FF00A8B809 /* SceneDelegate.swift */; };
 		0DA134B826FD26FF00A8B809 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA134B726FD26FF00A8B809 /* ViewController.swift */; };
@@ -103,6 +104,7 @@
 /* Begin PBXFileReference section */
 		0D052564273344C300481B5D /* Pedido.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pedido.swift; sourceTree = "<group>"; };
 		0D05258A27336A6B00481B5D /* PedidoControlador.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PedidoControlador.swift; sourceTree = "<group>"; };
+		0D05267D273578F100481B5D /* UsuarioControlador.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsuarioControlador.swift; sourceTree = "<group>"; };
 		0DA134B026FD26FF00A8B809 /* OrganicNails.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OrganicNails.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0DA134B326FD26FF00A8B809 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0DA134B526FD26FF00A8B809 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -280,6 +282,7 @@
 				0D052564273344C300481B5D /* Pedido.swift */,
 				0D05258A27336A6B00481B5D /* PedidoControlador.swift */,
 				6DEB82272735353D0037F0EA /* LogInControlador.swift */,
+				0D05267D273578F100481B5D /* UsuarioControlador.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -571,6 +574,7 @@
 				0DA134B426FD26FF00A8B809 /* AppDelegate.swift in Sources */,
 				A563F7CB270A09CD00DC23DD /* EntregaViewController.swift in Sources */,
 				6DDFD74627276C2B00D82EF3 /* DetalleClienteViewController.swift in Sources */,
+				0D05267E273578F100481B5D /* UsuarioControlador.swift in Sources */,
 				A563F7CE270A0E1300DC23DD /* ConfirmarPedidoViewController.swift in Sources */,
 				0D05258B27336A6B00481B5D /* PedidoControlador.swift in Sources */,
 				6DEB82282735353D0037F0EA /* LogInControlador.swift in Sources */,

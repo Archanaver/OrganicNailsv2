@@ -74,26 +74,7 @@ class PedidoControlador{
         
     }
     
-    
-    func getDireccionUsuario(uid:String, completion: @escaping (Result<String,Error>)->Void){
-        db.collection("pedidos").whereField("uid", isEqualTo: uid)
-          .getDocuments() { (querySnapshot, err) in
-            if let err = err {
-                print("Error obteniendo pedido activo: \(err)")
-                completion(.failure(err))
-            } else {
-                var documentoID:String = ""
-                for document in querySnapshot!.documents {
-                    print("\(document.documentID) => \(document.data())")
-                    documentoID = document.documentID
-                }
-                completion(.success(documentoID))
-                
-            }
-        }
-        
-        
-    }
+
     
     func agregarPedidoProducto(nuevoProducto:ProductoP,idPedido:String, completion: @escaping (Result<String,Error>)->Void ){
         db.collection("pedidos").document(idPedido).collection("productos").addDocument(data: [

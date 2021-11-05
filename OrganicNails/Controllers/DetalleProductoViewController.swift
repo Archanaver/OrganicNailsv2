@@ -22,6 +22,7 @@ class DetalleProductoViewController: UIViewController, UIPickerViewDelegate, UIP
     var tempColor:String = ""
     
     let pedidoControlador = PedidoControlador()
+    let usuarioControlador = UsuarioControlador()
     
     
     @IBOutlet weak var nombreProducto: UILabel!
@@ -168,48 +169,58 @@ class DetalleProductoViewController: UIViewController, UIPickerViewDelegate, UIP
     }
     
     @IBAction func insertarPedido( sender: UIButton){
-        let userID = Auth.auth().currentUser!.uid
-        print("usuario", userID)
+        
         if (presentacion.text == "" || colores.text == ""){
             let alerta =  UIAlertController(title: "Campos faltantes", message: "Favor de llenar los campos faltantes", preferredStyle: .alert)
             alerta.addAction(UIAlertAction(title: "Cerrar", style: .default, handler: nil))
             self.present(alerta, animated: true, completion: nil)
             
         }else{
-            var nuevoProducto = ProductoP(cantidad_producto: counter, color: tempColor, descripcion_producto: descripcion.text!, descuento_producto: (descuento.text! as NSString).floatValue, id_producto: id.text!, nombre_producto: nombreProducto.text!, precio_producto: tempPrecio, presentacion: tempPresentacion, tipo_producto: tipo.text!, uso: uso.text!)
-            
-
-            var nuevoPedido = Pedido(activo:true, estatus:"Pendiente",productos:[nuevoProducto])
-            
-            // checar si hay carrito activo
-            var pedidoId:String = ""
-            print("el id antes",pedidoId)
-            pedidoControlador.checarCarritoActivo(){
-                (resultado) in
-                switch resultado{
-                case .success(let exito):pedidoId = self.displayExitoCarrito(exito: exito)
-                    if pedidoId.count != 0 {
-                        print("editar pedido")
-                        self.pedidoControlador.agregarPedidoProducto(nuevoProducto: nuevoProducto,idPedido: pedidoId){
+            let userID = Auth.auth().currentUser!.uid
+            //print("usuario", userID)
+            var direccionUsuario:String = ""
+               usuarioControlador.getDireccionUsuario(uid: userID){
+                      (resultado) in
+                      switch resultado{
+                      case .success(let exito):direccionUsuario=self.getDireccion(exito: exito)
+                        //print("usuario dirección", direccionUsuario)
+                        var nuevoProducto = ProductoP(cantidad_producto: self.counter, color: self.tempColor, descripcion_producto: self.descripcion.text!, descuento_producto: (self.descuento.text! as NSString).floatValue, id_producto: self.id.text!, nombre_producto: self.nombreProducto.text!, precio_producto: self.tempPrecio, presentacion: self.tempPresentacion, tipo_producto: self.tipo.text!, uso: self.uso.text!)
+                        
+                        var nuevoPedido = Pedido(activo:true, estatus:"Pendiente",productos:[nuevoProducto], direccion: direccionUsuario)
+                        
+                        // checar si hay carrito activo
+                        var pedidoId:String = ""
+                        //print("el id antes",pedidoId)
+                        self.pedidoControlador.checarCarritoActivo(){
                             (resultado) in
                             switch resultado{
-                            case .success(let exito):self.displayExito(exito: exito)
+                            case .success(let exito):pedidoId = self.displayExitoCarrito(exito: exito)
+                                if pedidoId.count != 0 {
+                                    //print("editar pedido")
+                                    self.pedidoControlador.agregarPedidoProducto(nuevoProducto: nuevoProducto,idPedido: pedidoId){
+                                        (resultado) in
+                                        switch resultado{
+                                        case .success(let exito):self.displayExito(exito: exito)
+                                        case .failure(let error):self.displayError(e: error)
+                                        }
+                                    }
+                                }else{
+                                    //print("nuevo pedido")
+                                    self.pedidoControlador.crearPedidoConProducto(nuevoPedido: nuevoPedido){
+                                            (resultado) in
+                                            switch resultado{
+                                            case .success(let exito):self.displayExito(exito: exito)
+                                            case .failure(let error):self.displayError(e: error)
+                                            }
+                                        }
+                                }
                             case .failure(let error):self.displayError(e: error)
                             }
                         }
-                    }else{
-                        print("nuevo pedido")
-                        self.pedidoControlador.crearPedidoConProducto(nuevoPedido: nuevoPedido){
-                                (resultado) in
-                                switch resultado{
-                                case .success(let exito):self.displayExito(exito: exito)
-                                case .failure(let error):self.displayError(e: error)
-                                }
-                            }
-                    }
-                case .failure(let error):self.displayError(e: error)
-                }
-            }
+                      case .failure(let error):print("No se pudo encontrar la dirección, error; ",error)
+                      }
+                  }
+           
 
         }
 
@@ -234,7 +245,7 @@ class DetalleProductoViewController: UIViewController, UIPickerViewDelegate, UIP
     
     func displayError(e:Error){
         DispatchQueue.main.async {
-            let alerta =  UIAlertController(title: "Error al añadir producto", message: e.localizedDescription, preferredStyle: .alert)
+            let alerta =  UIAlertController(title: "Error al añadir producto.", message: e.localizedDescription, preferredStyle: .alert)
             alerta.addAction(UIAlertAction(title: "Cerrar", style: .default, handler: nil))
             self.present(alerta, animated: true, completion: nil)
         }
@@ -257,6 +268,11 @@ class DetalleProductoViewController: UIViewController, UIPickerViewDelegate, UIP
         return exito
     }
     
+    func getDireccion(exito:String)->String{
+        DispatchQueue.main.async {
+        }
+        return exito
+    }
 
 }
 
