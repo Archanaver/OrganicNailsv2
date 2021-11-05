@@ -39,14 +39,17 @@ class PromocionesInicioViewController: UIViewController {
         //Obtenemos tag
         productoPickerView.tag = 1
         
-        /*
-        productosControlador.fetchProductosTipo(tipo: producto.text ?? "Todos"){ (result) in switch result {
+        
+        productosControlador.fetchProductosTipo(tipo: producto.text!){ (result) in switch result {
         case .success(let productos):self.updateUI(with: productos)
         case .failure(let error):self.displayError(error, title: "No se pudo acceder a los productos")
           }
         }
- */
-        productosControlador.fetchProductosTipo(tipo: "Todos"){ (result) in switch result {
+
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        productosControlador.fetchProductosTipo(tipo: producto.text!){ (result) in switch result {
         case .success(let productos):self.updateUI(with: productos)
         case .failure(let error):self.displayError(error, title: "No se pudo acceder a los productos")
           }
@@ -80,11 +83,9 @@ class PromocionesInicioViewController: UIViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        /*
-         let siguiente = segue.destination as! ServiciosDetalleTableViewController
+         let siguiente = segue.destination as! PromocionesDetalleViewController
          let indice =  self.tableView.indexPathForSelectedRow?.row
-         siguiente.servicio = datos[indice!]
-         */
+         siguiente.producto = promos[indice!]
     }
     
 
@@ -142,6 +143,13 @@ extension PromocionesInicioViewController: UIPickerViewDataSource, UIPickerViewD
         case 1:
             producto.text = productosOp[row]
             producto.resignFirstResponder()
+            
+            productosControlador.fetchProductosTipo(tipo: producto.text!){ (result) in switch result {
+            case .success(let productos):self.updateUI(with: productos)
+            case .failure(let error):self.displayError(error, title: "No se pudo acceder a los productos")
+              }
+            }
+            
         default:
             return
         }
