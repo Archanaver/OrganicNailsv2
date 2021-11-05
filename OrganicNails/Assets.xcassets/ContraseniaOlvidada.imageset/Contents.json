@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "ContraseniaOlvidadaImg.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "ContraseniaOlvidadaImg-1.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "ContraseniaOlvidadaImg-2.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

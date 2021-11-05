@@ -1,0 +1,6 @@
+framework module Pods_OrganicNails {
+  umbrella header "Pods-OrganicNails-umbrella.h"
+
+  export *
+  module * { export * }
+}
