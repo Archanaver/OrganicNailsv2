@@ -91,6 +91,7 @@
 		6DDFD7492727797900D82EF3 /* Cliente.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDFD7482727797900D82EF3 /* Cliente.swift */; };
 		6DE2DAE127080C05000D0609 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DE2DAE027080C05000D0609 /* 1.png */; };
 		6DE2DAE427080C0B000D0609 /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DE2DAE327080C0B000D0609 /* 2.png */; };
+		6DEB82282735353D0037F0EA /* LogInControlador.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DEB82272735353D0037F0EA /* LogInControlador.swift */; };
 		6DF8E81B271E5C6900AAFCF1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6DF8E81A271E5C6900AAFCF1 /* GoogleService-Info.plist */; };
 		A563F7CB270A09CD00DC23DD /* EntregaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A563F7CA270A09CD00DC23DD /* EntregaViewController.swift */; };
 		A563F7CE270A0E1300DC23DD /* ConfirmarPedidoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A563F7CD270A0E1300DC23DD /* ConfirmarPedidoViewController.swift */; };
@@ -186,6 +187,7 @@
 		6DDFD7482727797900D82EF3 /* Cliente.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cliente.swift; sourceTree = "<group>"; };
 		6DE2DAE027080C05000D0609 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
 		6DE2DAE327080C0B000D0609 /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
+		6DEB82272735353D0037F0EA /* LogInControlador.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInControlador.swift; sourceTree = "<group>"; };
 		6DF8E81A271E5C6900AAFCF1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A563F7CA270A09CD00DC23DD /* EntregaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntregaViewController.swift; sourceTree = "<group>"; };
 		A563F7CD270A0E1300DC23DD /* ConfirmarPedidoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmarPedidoViewController.swift; sourceTree = "<group>"; };
@@ -274,6 +276,7 @@
 				0DB10C3C272FBA5700AD6C74 /* Catalogo.swift */,
 				0D052564273344C300481B5D /* Pedido.swift */,
 				0D05258A27336A6B00481B5D /* PedidoControlador.swift */,
+				6DEB82272735353D0037F0EA /* LogInControlador.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -566,6 +569,7 @@
 				6DDFD74627276C2B00D82EF3 /* DetalleClienteViewController.swift in Sources */,
 				A563F7CE270A0E1300DC23DD /* ConfirmarPedidoViewController.swift in Sources */,
 				0D05258B27336A6B00481B5D /* PedidoControlador.swift in Sources */,
+				6DEB82282735353D0037F0EA /* LogInControlador.swift in Sources */,
 				0DDFE6712709F74600EC3EA5 /* ProductoControlador.swift in Sources */,
 				A563F7D1270A10BF00DC23DD /* EvaluaServicioViewController.swift in Sources */,
 				0DB10C3D272FBA5700AD6C74 /* Catalogo.swift in Sources */,
