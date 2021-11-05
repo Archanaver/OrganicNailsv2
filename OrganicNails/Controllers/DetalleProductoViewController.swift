@@ -167,9 +167,7 @@ class DetalleProductoViewController: UIViewController, UIPickerViewDelegate, UIP
     }
     
     @IBAction func insertarPedido( sender: UIButton){
-        print(colores.text)
         if (presentacion.text == "" || colores.text == ""){
-            print("is empty")
             let alerta =  UIAlertController(title: "Campos faltantes", message: "Favor de llenar los campos faltantes", preferredStyle: .alert)
             alerta.addAction(UIAlertAction(title: "Cerrar", style: .default, handler: nil))
             self.present(alerta, animated: true, completion: nil)
@@ -179,28 +177,39 @@ class DetalleProductoViewController: UIViewController, UIPickerViewDelegate, UIP
             
 
             var nuevoPedido = Pedido(activo:true, estatus:"Pendiente",productos:[nuevoProducto])
+            
             // checar si hay carrito activo
-            var temp:String = ""
+            var pedidoId:String = ""
+            print("el id antes",pedidoId)
             pedidoControlador.checarCarritoActivo(){
-                
                 (resultado) in
                 switch resultado{
-                case .success(let exito):temp = self.displayExitoCarrito(exito: exito)
-                    self.pedidoControlador.updatePedidoProducto(nuevoProducto: nuevoProducto,idPedido: temp){
-                        
-                        (resultado) in
-                        switch resultado{
-                        case .success(let exito):temp = self.displayExitoCarrito(exito: exito)
-
-                        case .failure(let error):self.displayError(e: error)
+                case .success(let exito):pedidoId = self.displayExitoCarrito(exito: exito)
+                    if pedidoId.count != 0 {
+                        print("editar pedido")
+                        self.pedidoControlador.agregarPedidoProducto(nuevoProducto: nuevoProducto,idPedido: pedidoId){
+                            (resultado) in
+                            switch resultado{
+                            case .success(let exito):self.displayExito(exito: exito)
+                            case .failure(let error):self.displayError(e: error)
+                            }
                         }
+                    }else{
+                        print("nuevo pedido")
+                        self.pedidoControlador.crearPedidoConProducto(nuevoPedido: nuevoPedido){
+                                (resultado) in
+                                switch resultado{
+                                case .success(let exito):self.displayExito(exito: exito)
+                                case .failure(let error):self.displayError(e: error)
+                                }
+                            }
                     }
-
                 case .failure(let error):self.displayError(e: error)
                 }
             }
-            
+
         }
+
 
 
         //print(nuevoPedido)
@@ -241,13 +250,8 @@ class DetalleProductoViewController: UIViewController, UIPickerViewDelegate, UIP
     
     func displayExitoCarrito(exito:String)->String{
         DispatchQueue.main.async {
-            let alerta =  UIAlertController(title: "Producto añadido", message: exito, preferredStyle: .alert)
-            alerta.addAction(UIAlertAction(title: "Cerrar", style: .default, handler: nil))
-            self.present(alerta, animated: true, completion: nil)
-            
         }
         return exito
-        
     }
     
 

@@ -2414,6 +2414,9 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="363" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </tableViewCellContentView>
+                                                <connections>
+                                                    <segue destination="h18-FN-yp7" kind="show" id="OmL-ea-KBa"/>
+                                                </connections>
                                             </tableViewCell>
                                         </prototypes>
                                     </tableView>
@@ -2438,6 +2441,93 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lhp-Ac-Z2E" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2958" y="-1229"/>
+        </scene>
+        <!--Promociones Detalle View Controller-->
+        <scene sceneID="bXo-Dz-pnX">
+            <objects>
+                <viewController id="h18-FN-yp7" customClass="PromocionesDetalleViewController" customModule="OrganicNails" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0N6-dQ-DNs">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Gb6-6x-7uh">
+                                <rect key="frame" x="10" y="98" width="394" height="705"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Nombre" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lBh-m1-WYU">
+                                        <rect key="frame" x="0.0" y="0.0" width="394" height="491"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Presentación" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xU9-88-o0b">
+                                        <rect key="frame" x="0.0" y="496" width="394" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Selecciona una presentación" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5FQ-Yc-n0B">
+                                        <rect key="frame" x="0.0" y="521.5" width="394" height="34.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="34.5" id="az3-dQ-isU"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Precio" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FXx-JB-p0Q">
+                                        <rect key="frame" x="0.0" y="561" width="394" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fUC-Ar-Nmq">
+                                        <rect key="frame" x="0.0" y="586.5" width="394" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Ahorras" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2wm-Nb-amL">
+                                        <rect key="frame" x="0.0" y="612" width="394" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="REL-b4-DRG">
+                                        <rect key="frame" x="0.0" y="637.5" width="394" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i9U-tF-4PE">
+                                        <rect key="frame" x="0.0" y="663" width="394" height="42"/>
+                                        <color key="backgroundColor" red="1" green="0.48054975876751405" blue="0.887235438831393" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="42" id="Crd-TX-CGF"/>
+                                            <constraint firstAttribute="width" constant="264" id="K64-tX-SLO"/>
+                                        </constraints>
+                                        <state key="normal" title="Comprar"/>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="sjN-l6-Mzi"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Gb6-6x-7uh" firstAttribute="top" secondItem="sjN-l6-Mzi" secondAttribute="top" constant="10" id="GX0-I1-oFZ"/>
+                            <constraint firstItem="sjN-l6-Mzi" firstAttribute="bottom" secondItem="Gb6-6x-7uh" secondAttribute="bottom" constant="10" id="UN0-vZ-vG6"/>
+                            <constraint firstItem="Gb6-6x-7uh" firstAttribute="leading" secondItem="sjN-l6-Mzi" secondAttribute="leading" constant="10" id="ZH2-Sd-P3b"/>
+                            <constraint firstItem="sjN-l6-Mzi" firstAttribute="trailing" secondItem="Gb6-6x-7uh" secondAttribute="trailing" constant="10" id="bCe-wb-Max"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="CPB-tL-ISb"/>
+                    <connections>
+                        <outlet property="ahorras" destination="REL-b4-DRG" id="sfh-Bl-duf"/>
+                        <outlet property="nombre" destination="lBh-m1-WYU" id="sNd-SZ-pOE"/>
+                        <outlet property="precio" destination="fUC-Ar-Nmq" id="LXT-5e-Tv1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ca4-fH-h0f" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2301" y="-1229"/>
         </scene>
         <!--Home-->
         <scene sceneID="KV6-aH-9vd">
