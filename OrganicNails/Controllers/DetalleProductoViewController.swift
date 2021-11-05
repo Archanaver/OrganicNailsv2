@@ -24,10 +24,13 @@ class DetalleProductoViewController: UIViewController, UIPickerViewDelegate, UIP
     let pedidoControlador = PedidoControlador()
     let usuarioControlador = UsuarioControlador()
     
+    @IBOutlet weak var descuentoLabel: UILabel!
     
+    @IBOutlet weak var ofertaLabel: UILabel!
     @IBOutlet weak var nombreProducto: UILabel!
     @IBOutlet weak var id: UILabel!
     
+    @IBOutlet weak var oferta: UILabel!
     @IBOutlet weak var contadorCantidad: UILabel!
     
     @IBAction func incrementaCantidad(_ sender: Any) {
@@ -94,10 +97,19 @@ class DetalleProductoViewController: UIViewController, UIPickerViewDelegate, UIP
         
         nombreProducto.text = producto?.nombre
         id.text = producto?.id
-        descuento.text = String(Int(producto?.descuento ?? 0))+" %"
+        
         tipo.text = producto?.tipo
         descripcion.text = producto?.descripcion
         uso.text = producto?.uso
+        if producto?.descuento == 0{
+            descuento.isHidden = true
+            descuentoLabel.isHidden = true
+            ofertaLabel.isHidden = true
+            oferta.isHidden = true
+        }else{
+            descuento.text = String(Int(producto?.descuento ?? 0))+" %"
+            
+        }
         
 
 
@@ -156,6 +168,9 @@ class DetalleProductoViewController: UIViewController, UIPickerViewDelegate, UIP
             tempPrecio = datosPrecio[row]
             precio.text = String(format: "%.2f", tempPrecio * Float(counter))
             contadorCantidad.text = String(counter)
+            var temp_oferta = tempPrecio - ((tempPrecio * (producto?.descuento ?? 0)/100))*Float(counter)
+            print("oferton",temp_oferta)
+            oferta.text = String(temp_oferta)
             presentacion.resignFirstResponder()
         case 2:
             colores.text = datosColores[row]
