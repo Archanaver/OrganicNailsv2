@@ -426,7 +426,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Detalle pedido" id="Epo-3w-K7W"/>
                     <connections>
-                        <outlet property="carritoTableView" destination="F6N-cv-O0M" id="eBH-n9-Z5H"/>
+                        <outlet property="carritoTableView" destination="F6N-cv-O0M" id="hRH-2j-R0q"/>
                         <outlet property="labelOpcion" destination="EN0-7H-yBa" id="a47-GF-vpq"/>
                     </connections>
                 </viewController>
@@ -2928,7 +2928,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="zlx-5y-85c"/>
         <segue reference="EfF-OB-h45"/>
         <segue reference="sRj-Du-yLw"/>
         <segue reference="rIT-xC-oTU"/>
