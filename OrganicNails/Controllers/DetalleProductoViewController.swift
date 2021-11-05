@@ -94,7 +94,7 @@ class DetalleProductoViewController: UIViewController, UIPickerViewDelegate, UIP
         
         nombreProducto.text = producto?.nombre
         id.text = producto?.id
-        descuento.text = String(format: "%.2f",producto?.descuento ?? 0)
+        descuento.text = String(Int(producto?.descuento ?? 0))+" %"
         tipo.text = producto?.tipo
         descripcion.text = producto?.descripcion
         uso.text = producto?.uso
@@ -184,7 +184,7 @@ class DetalleProductoViewController: UIViewController, UIPickerViewDelegate, UIP
                       switch resultado{
                       case .success(let exito):direccionUsuario=self.getDireccion(exito: exito)
                         //print("usuario dirección", direccionUsuario)
-                        var nuevoProducto = ProductoP(cantidad_producto: self.counter, color: self.tempColor, descripcion_producto: self.descripcion.text!, descuento_producto: (self.descuento.text! as NSString).floatValue, id_producto: self.id.text!, nombre_producto: self.nombreProducto.text!, precio_producto: self.tempPrecio, presentacion: self.tempPresentacion, tipo_producto: self.tipo.text!, uso: self.uso.text!)
+                        var nuevoProducto = ProductoP(cantidad_producto: self.counter, color: self.tempColor, descripcion_producto: self.descripcion.text!, descuento_producto: Int((self.descuento.text! as NSString).floatValue), id_producto: self.id.text!, nombre_producto: self.nombreProducto.text!, precio_producto: self.tempPrecio, presentacion: self.tempPresentacion, tipo_producto: self.tipo.text!, uso: self.uso.text!)
                         
                         var nuevoPedido = Pedido(activo:true, estatus:"Pendiente",productos:[nuevoProducto], direccion: direccionUsuario)
                         

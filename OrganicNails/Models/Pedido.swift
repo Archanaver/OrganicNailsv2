@@ -19,7 +19,7 @@ struct ProductoP:Decodable{
     var cantidad_producto: Int
     var color:String
     var descripcion_producto:String
-    var descuento_producto:Float
+    var descuento_producto:Int
     var id_producto:String
     var nombre_producto:String
     var precio_producto:Float
@@ -36,7 +36,7 @@ struct ProductoP:Decodable{
     func DescripcionProducto()->String {
         return descripcion_producto
     }
-    func DescuentoProducto()->Float {
+    func DescuentoProducto()->Int {
         return descuento_producto
     }
     func IdProducto()->String {

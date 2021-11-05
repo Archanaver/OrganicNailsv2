@@ -21,7 +21,7 @@ class UsuarioControlador{
             } else {
                 var documentoID:String = ""
                 for document in querySnapshot!.documents {
-                    print("\(document.documentID) => \(document.data())")
+                    //print("\(document.documentID) => \(document.data())")
                     documentoID = document.documentID
                     
                 }
