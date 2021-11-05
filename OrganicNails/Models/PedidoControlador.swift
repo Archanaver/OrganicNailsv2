@@ -13,14 +13,16 @@ class PedidoControlador{
     let db = Firestore.firestore()
     
     
-    func insertPedido(nuevoPedido:Pedido, completion: @escaping (Result<String,Error>)->Void ){
+    func crearPedidoConProducto(nuevoPedido:Pedido, completion: @escaping (Result<String,Error>)->Void ){
         var ref: DocumentReference? = nil
         //let newDocumentID = UUID().uuidString
         ref = db.collection("pedidos").addDocument(data:[
             "activo": nuevoPedido.activo,
             "direccion": nuevoPedido.direccion,
             "estatus": nuevoPedido.estatus,
-            "fecha": FieldValue.serverTimestamp()
+            "fecha": FieldValue.serverTimestamp(),
+            "cliente_id": nuevoPedido.cliente_id,
+            "id": nuevoPedido.id
         ]){ err in
             if let err = err{
                 print("Error al añadir documento: \(err)")
@@ -72,7 +74,7 @@ class PedidoControlador{
         
     }
     
-    func updatePedidoProducto(nuevoProducto:ProductoP,idPedido:String, completion: @escaping (Result<String,Error>)->Void ){
+    func agregarPedidoProducto(nuevoProducto:ProductoP,idPedido:String, completion: @escaping (Result<String,Error>)->Void ){
         db.collection("pedidos").document(idPedido).collection("productos").addDocument(data: [
            "cantidad_producto": nuevoProducto.CantidadProducto(),
            "color":nuevoProducto.Color(),
