@@ -100,12 +100,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CrearCuenta" translatesAutoresizingMaskIntoConstraints="NO" id="zJM-9H-kXO" userLabel="Crear Cuenta">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iNO-dE-CU6" userLabel="Factura">
                                 <rect key="frame" x="75" y="638" width="271" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.8980392157" green="0.3803921569" blue="0.56078431370000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="necesito factura"/>
                                 <connections>
                                     <segue destination="phn-se-uq2" kind="show" id="m41-jF-Bwp"/>
@@ -114,6 +113,8 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b6i-wh-pwV" userLabel="CrearCuenta">
                                 <rect key="frame" x="76" y="707" width="277" height="43"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.8980392157" green="0.3803921569" blue="0.56078431370000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="crear cuenta"/>
                                 <connections>
                                     <segue destination="qLE-70-dKn" kind="show" id="aEJ-2j-Tcb"/>
@@ -126,15 +127,40 @@
                                     <segue destination="w0z-E8-Q8J" kind="show" id="ocE-HA-SQp"/>
                                 </connections>
                             </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" spacing="26" translatesAutoresizingMaskIntoConstraints="NO" id="Gd7-Cn-kmh">
+                                <rect key="frame" x="137" y="224" width="146" height="270"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nombre completo" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9Lg-fT-XJ2">
+                                        <rect key="frame" x="0.0" y="0.0" width="146" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="correo electrónico" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="f9b-y4-11C">
+                                        <rect key="frame" x="0.0" y="60" width="146" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Telefono" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="INg-bk-zA7">
+                                        <rect key="frame" x="0.0" y="120" width="146" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Contraseña" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="B3w-sP-nEz">
+                                        <rect key="frame" x="0.0" y="180" width="146" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vWr-h2-6Xq">
+                                        <rect key="frame" x="0.0" y="240" width="146" height="30"/>
+                                        <color key="backgroundColor" red="0.8980392157" green="0.3803921569" blue="0.56078431370000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Dirección"/>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Ckx-DI-zpl"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="Ckx-DI-zpl" firstAttribute="bottom" secondItem="zJM-9H-kXO" secondAttribute="bottom" id="Ahb-Jm-dCq"/>
-                            <constraint firstItem="zJM-9H-kXO" firstAttribute="top" secondItem="Ckx-DI-zpl" secondAttribute="top" id="Psr-Py-vO3"/>
-                            <constraint firstItem="Ckx-DI-zpl" firstAttribute="trailing" secondItem="zJM-9H-kXO" secondAttribute="trailing" id="iZ0-AX-2lJ"/>
-                            <constraint firstItem="zJM-9H-kXO" firstAttribute="leading" secondItem="Ckx-DI-zpl" secondAttribute="leading" id="mTh-gz-S1L"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Crear cuenta" id="iw0-E4-nRr"/>
                 </viewController>
@@ -236,11 +262,11 @@
             <objects>
                 <viewController id="LdT-bX-l0A" userLabel="View Carrito" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CBD-qs-P7z">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Carrito" translatesAutoresizingMaskIntoConstraints="NO" id="BsC-8W-zLn">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="759"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aDL-xK-y1c">
                                 <rect key="frame" x="106" y="696" width="202" height="38"/>
@@ -272,11 +298,11 @@
             <objects>
                 <viewController id="JgR-au-bkR" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oJV-35-N6L">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DetalleDireccion" translatesAutoresizingMaskIntoConstraints="NO" id="w2h-Jx-aNI">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qVJ-0H-yf2">
                                 <rect key="frame" x="100" y="727" width="221" height="64"/>
@@ -306,7 +332,7 @@
             <objects>
                 <viewController id="uwn-2z-33P" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Rcj-m8-qQA">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yUc-sc-G3Y">
@@ -393,11 +419,11 @@
             <objects>
                 <viewController id="9PR-z4-sK6" userLabel="Catálogo General" customClass="ProductosViewController" customModule="OrganicNails" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mwL-nK-sVQ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="sst-46-dJc">
-                                <rect key="frame" x="20" y="428" width="374" height="385"/>
+                                <rect key="frame" x="20" y="340" width="374" height="468"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="zelda" textLabel="qIt-qf-jgK" style="IBUITableViewCellStyleDefault" id="ujM-A6-opt">
@@ -459,7 +485,7 @@
             <objects>
                 <viewController id="Ee0-tJ-k81" userLabel="Detalle Producto" customClass="DetalleProductoViewController" customModule="OrganicNails" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="T1H-H8-yTN">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="id" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VE4-lR-v4a">
@@ -780,7 +806,7 @@
             <objects>
                 <tableViewController id="pCn-Gc-Brw" customClass="CatalogoTableViewController" customModule="OrganicNails" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="2GS-sC-KQB">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
@@ -1294,9 +1320,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MenuPerfil" translatesAutoresizingMaskIntoConstraints="NO" id="UG9-hz-iZq">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dhT-nW-2dr">
                                 <rect key="frame" x="176" y="755" width="58" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1305,30 +1328,33 @@
                                     <segue destination="kS7-Uq-J5A" kind="show" id="TPu-Nv-TYq"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0ve-pR-rMz">
-                                <rect key="frame" x="75" y="640" width="264" height="42"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xGN-Wf-Nh9">
+                                <rect key="frame" x="79" y="539" width="257" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.8980392157" green="0.3803921569" blue="0.56078431370000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Iniciar sesión"/>
+                                <connections>
+                                    <segue destination="SZV-FO-NG8" kind="show" id="zlx-5y-85c"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="180x180.png" translatesAutoresizingMaskIntoConstraints="NO" id="Itd-Zk-MEk">
+                                <rect key="frame" x="28" y="217" width="331" height="242"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0ve-pR-rMz">
+                                <rect key="frame" x="79" y="614" width="264" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.8980392157" green="0.3803921569" blue="0.56078431370000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="crear cuenta"/>
                                 <connections>
                                     <segue destination="P4Q-Fz-efi" kind="show" id="j5V-Av-PZw"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xGN-Wf-Nh9">
-                                <rect key="frame" x="75" y="564" width="257" height="45"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <segue destination="SZV-FO-NG8" kind="show" id="zlx-5y-85c"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="aYi-jN-p4Z"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="aYi-jN-p4Z" firstAttribute="trailing" secondItem="UG9-hz-iZq" secondAttribute="trailing" id="E4w-qR-MTI"/>
-                            <constraint firstItem="UG9-hz-iZq" firstAttribute="top" secondItem="aYi-jN-p4Z" secondAttribute="top" id="K9C-m1-9zq"/>
-                            <constraint firstItem="aYi-jN-p4Z" firstAttribute="bottom" secondItem="UG9-hz-iZq" secondAttribute="bottom" id="foZ-eW-U8r"/>
-                            <constraint firstItem="UG9-hz-iZq" firstAttribute="leading" secondItem="aYi-jN-p4Z" secondAttribute="leading" id="llh-Kb-GFL"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Inicio" id="Ydg-4J-jZJ"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
@@ -1552,7 +1578,6 @@
         <!--Datos Facturacion Crear Cuenta-->
         <scene sceneID="U1z-Nf-yHq">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gfI-mS-fPe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController id="phn-se-uq2" userLabel="Datos Facturacion Crear Cuenta" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fwY-hE-PLv">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -1580,6 +1605,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Datos facturación" id="36V-GH-p0v"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gfI-mS-fPe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="368" y="-2954"/>
         </scene>
@@ -2555,13 +2581,14 @@
         <segue reference="aEJ-2j-Tcb"/>
         <segue reference="YRf-Qf-Hvt"/>
         <segue reference="yP4-VP-1Vr"/>
-        <segue reference="QG1-5D-06r"/>
+        <segue reference="GWZ-CS-NRG"/>
         <segue reference="V5e-tv-ta4"/>
-        <segue reference="H9o-Of-XCR"/>
+        <segue reference="sWy-T8-JRu"/>
         <segue reference="3rr-iM-Pvk"/>
         <segue reference="j5V-Av-PZw"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="180x180.png" width="135" height="135"/>
         <image name="87x87.png" width="65.25" height="65.25"/>
         <image name="About" width="270" height="597"/>
         <image name="AgregarCurso" width="129.5" height="283.5"/>
@@ -2572,7 +2599,6 @@
         <image name="CatalogoAdmin" width="102.5" height="220"/>
         <image name="ChatVivo" width="191" height="413"/>
         <image name="ContraseniaOlvidada" width="198" height="429"/>
-        <image name="CrearCuenta" width="204" height="440"/>
         <image name="CursosAdmin" width="94.5" height="201.5"/>
         <image name="DatosFacturacion" width="222" height="483"/>
         <image name="DetalleDireccion" width="212" height="457"/>
@@ -2586,7 +2612,6 @@
         <image name="EliminarProducto" width="103.5" height="220"/>
         <image name="IniciarSesion" width="184" height="400"/>
         <image name="InicioPromociones" width="209" height="453"/>
-        <image name="MenuPerfil" width="212" height="461"/>
         <image name="NuevaContrasenia" width="223" height="484"/>
         <image name="PedidosDesplegado" width="218" height="479"/>
         <image name="Perfil" width="196" height="425"/>
