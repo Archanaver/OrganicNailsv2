@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class DetalleProductoViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
@@ -167,6 +168,8 @@ class DetalleProductoViewController: UIViewController, UIPickerViewDelegate, UIP
     }
     
     @IBAction func insertarPedido( sender: UIButton){
+        let userID = Auth.auth().currentUser!.uid
+        print("usuario", userID)
         if (presentacion.text == "" || colores.text == ""){
             let alerta =  UIAlertController(title: "Campos faltantes", message: "Favor de llenar los campos faltantes", preferredStyle: .alert)
             alerta.addAction(UIAlertAction(title: "Cerrar", style: .default, handler: nil))
