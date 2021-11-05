@@ -30,7 +30,7 @@ class UsuarioControlador{
                 docRef.getDocument(source: .cache) { (document, error) in
                     if let document = document {
                         let property = document.get("direccion")
-                        completion(.success(property as! String))
+                        completion(.success((property as! String)+"|"+documentoID))
                     }
                 }
                 

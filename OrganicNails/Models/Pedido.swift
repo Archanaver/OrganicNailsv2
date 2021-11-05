@@ -99,23 +99,22 @@ struct Pedido: Decodable{
         case direccion
         case estatus
         case fecha
-        case id
         case productos
         case cursos
+        case id
         
     }
     
     
-    init(activo:Bool, estatus:String, productos:[ProductoP], direccion:String, cursos: [CursoP] ){
+    init(activo:Bool, estatus:String, productos:[ProductoP], direccion:String, cursos: [CursoP], cliente_id:String ){
         self.activo = activo
-        self.cliente_id = "0"
+        self.cliente_id = cliente_id
         self.direccion = direccion
         self.estatus = estatus
         self.fecha = ""
-        self.id = "0"
         self.productos = productos
         self.cursos = cursos
-        
+        self.id = ""
     }
 
     
@@ -126,7 +125,6 @@ struct Pedido: Decodable{
             self.direccion = d.get("direccion") as? String ?? ""
             self.estatus = d.get("estatus") as? String ?? ""
             self.fecha = d.get("fecha") as? String ?? ""
-            self.id = d.get("id") as? String ?? ""
             self.productos = d.get("productos") as? [ProductoP] ?? []
             self.cursos = d.get("cursos") as? [CursoP] ?? []
         }

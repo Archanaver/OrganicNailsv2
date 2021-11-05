@@ -42,8 +42,9 @@ class DetalleCursoViewController: UIViewController {
                   (resultado) in
                   switch resultado{
                   case .success(let exito):direccionUsuario=self.getDireccion(exito: exito)
+                    var datosUsuario =  direccionUsuario.split(separator: "|")
                     var nuevoCurso = CursoP(id_curso: self.codigo.text!, instructor: self.instructor.text!, nombre_curso: self.nombre.text!, precio_curso: self.precio.text!, fecha_curso: self.fecha.text!, descripcion_curso: self.descripcion.text!)
-                    var nuevoPedido = Pedido(activo:true, estatus:"Pendiente",productos:[], direccion: direccionUsuario, cursos:[nuevoCurso])
+                    var nuevoPedido = Pedido(activo:true, estatus:"Pendiente",productos:[], direccion: String(datosUsuario[0]), cursos:[nuevoCurso],cliente_id: String(datosUsuario[1]))
                     // checar si hay carrito activo
                     var pedidoId:String = ""
                     print("el id antes",pedidoId)
@@ -70,6 +71,7 @@ class DetalleCursoViewController: UIViewController {
                                     case .failure(let error):self.displayError(e: error)
                                     }
                                 }
+                                
                                 
                             }
                         case .failure(let error):self.displayError(e: error)

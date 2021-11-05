@@ -183,14 +183,16 @@ class DetalleProductoViewController: UIViewController, UIPickerViewDelegate, UIP
                       (resultado) in
                       switch resultado{
                       case .success(let exito):direccionUsuario=self.getDireccion(exito: exito)
-                        //print("usuario dirección", direccionUsuario)
+                        
+                        var datosUsuario =  direccionUsuario.split(separator: "|")
+                    
                         var nuevoProducto = ProductoP(cantidad_producto: self.counter, color: self.tempColor, descripcion_producto: self.descripcion.text!, descuento_producto: Int((self.descuento.text! as NSString).floatValue), id_producto: self.id.text!, nombre_producto: self.nombreProducto.text!, precio_producto: self.tempPrecio, presentacion: self.tempPresentacion, tipo_producto: self.tipo.text!, uso: self.uso.text!)
                         
-                        var nuevoPedido = Pedido(activo:true, estatus:"Pendiente",productos:[nuevoProducto], direccion: direccionUsuario, cursos:[])
+                        var nuevoPedido = Pedido(activo:true, estatus:"Pendiente",productos:[nuevoProducto], direccion: String(datosUsuario[0]), cursos:[], cliente_id:String(datosUsuario[1]))
                         
                         // checar si hay carrito activo
                         var pedidoId:String = ""
-                        //print("el id antes",pedidoId)
+                        print("el id antes",pedidoId)
                         self.pedidoControlador.checarCarritoActivo(){
                             (resultado) in
                             switch resultado{
