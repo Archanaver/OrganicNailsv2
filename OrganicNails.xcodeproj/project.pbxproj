@@ -89,6 +89,8 @@
 		6D937D9A273504A500D47302 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D937D99273504A500D47302 /* LogInViewController.swift */; };
 		6DD8A33E2735BA5700D388C4 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD8A33D2735BA5700D388C4 /* TabBarViewController.swift */; };
 		6DD8A3412735D74100D388C4 /* ContraOlvidadaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD8A3402735D74100D388C4 /* ContraOlvidadaViewController.swift */; };
+		6DD8A3442735DD5E00D388C4 /* DatosFacturaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD8A3432735DD5E00D388C4 /* DatosFacturaViewController.swift */; };
+		6DD8A3472735E11100D388C4 /* ClienteControlador.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD8A3462735E11100D388C4 /* ClienteControlador.swift */; };
 		6DDFD743272754A600D82EF3 /* ClientesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDFD742272754A600D82EF3 /* ClientesTableViewController.swift */; };
 		6DDFD74627276C2B00D82EF3 /* DetalleClienteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDFD74527276C2B00D82EF3 /* DetalleClienteViewController.swift */; };
 		6DDFD7492727797900D82EF3 /* Cliente.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDFD7482727797900D82EF3 /* Cliente.swift */; };
@@ -189,6 +191,8 @@
 		6D937D99273504A500D47302 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		6DD8A33D2735BA5700D388C4 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		6DD8A3402735D74100D388C4 /* ContraOlvidadaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContraOlvidadaViewController.swift; sourceTree = "<group>"; };
+		6DD8A3432735DD5E00D388C4 /* DatosFacturaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatosFacturaViewController.swift; sourceTree = "<group>"; };
+		6DD8A3462735E11100D388C4 /* ClienteControlador.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClienteControlador.swift; sourceTree = "<group>"; };
 		6DDFD742272754A600D82EF3 /* ClientesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientesTableViewController.swift; sourceTree = "<group>"; };
 		6DDFD74527276C2B00D82EF3 /* DetalleClienteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetalleClienteViewController.swift; sourceTree = "<group>"; };
 		6DDFD7482727797900D82EF3 /* Cliente.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cliente.swift; sourceTree = "<group>"; };
@@ -272,6 +276,7 @@
 				6DEB8234273553EE0037F0EA /* SignUpViewController.swift */,
 				6DD8A33D2735BA5700D388C4 /* TabBarViewController.swift */,
 				6DD8A3402735D74100D388C4 /* ContraOlvidadaViewController.swift */,
+				6DD8A3432735DD5E00D388C4 /* DatosFacturaViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -289,6 +294,7 @@
 				0D05258A27336A6B00481B5D /* PedidoControlador.swift */,
 				6DEB82272735353D0037F0EA /* LogInControlador.swift */,
 				0D05267D273578F100481B5D /* UsuarioControlador.swift */,
+				6DD8A3462735E11100D388C4 /* ClienteControlador.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -580,6 +586,7 @@
 				0DA134B426FD26FF00A8B809 /* AppDelegate.swift in Sources */,
 				A563F7CB270A09CD00DC23DD /* EntregaViewController.swift in Sources */,
 				6DDFD74627276C2B00D82EF3 /* DetalleClienteViewController.swift in Sources */,
+				6DD8A3442735DD5E00D388C4 /* DatosFacturaViewController.swift in Sources */,
 				0D05267E273578F100481B5D /* UsuarioControlador.swift in Sources */,
 				A563F7CE270A0E1300DC23DD /* ConfirmarPedidoViewController.swift in Sources */,
 				0D05258B27336A6B00481B5D /* PedidoControlador.swift in Sources */,
@@ -595,6 +602,7 @@
 				6D937D9A273504A500D47302 /* LogInViewController.swift in Sources */,
 				0D052565273344C300481B5D /* Pedido.swift in Sources */,
 				6DDFD743272754A600D82EF3 /* ClientesTableViewController.swift in Sources */,
+				6DD8A3472735E11100D388C4 /* ClienteControlador.swift in Sources */,
 				0DDFE66D27098DE700EC3EA5 /* DetalleProductoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

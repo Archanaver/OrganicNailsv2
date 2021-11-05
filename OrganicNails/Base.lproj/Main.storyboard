@@ -1718,14 +1718,11 @@
         <!--Datos facturación-->
         <scene sceneID="u5f-jF-04M">
             <objects>
-                <viewController id="vyV-4l-rcu" sceneMemberID="viewController">
+                <viewController id="vyV-4l-rcu" customClass="DatosFacturaViewController" customModule="OrganicNails" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GUE-XY-JLG">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DatosFacturacion" translatesAutoresizingMaskIntoConstraints="NO" id="6D5-qq-I9o">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VNJ-aJ-tOS" userLabel="Guardar">
                                 <rect key="frame" x="131" y="740" width="167" height="57"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1733,21 +1730,41 @@
                                     <segue destination="ecf-kV-rVI" kind="show" id="7En-wN-zer"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="RFC" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zuq-E3-bbx">
+                                <rect key="frame" x="82" y="196" width="265" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Código postal" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b4y-nR-8kz">
+                                <rect key="frame" x="82" y="270" width="265" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="85n-LB-Bgt">
+                                <rect key="frame" x="116" y="398" width="197" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.8980392157" green="0.3803921569" blue="0.56078431370000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Confirmar"/>
+                                <connections>
+                                    <action selector="guardarButton:" destination="vyV-4l-rcu" eventType="touchUpInside" id="tjQ-qe-56Y"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="sxr-4E-OMR"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="6D5-qq-I9o" firstAttribute="leading" secondItem="sxr-4E-OMR" secondAttribute="leading" id="6ax-YP-Eoc"/>
-                            <constraint firstItem="sxr-4E-OMR" firstAttribute="trailing" secondItem="6D5-qq-I9o" secondAttribute="trailing" id="zFg-kJ-g5E"/>
-                            <constraint firstItem="sxr-4E-OMR" firstAttribute="bottom" secondItem="6D5-qq-I9o" secondAttribute="bottom" id="zpZ-Fi-6Ao"/>
-                            <constraint firstItem="6D5-qq-I9o" firstAttribute="top" secondItem="sxr-4E-OMR" secondAttribute="top" id="zwU-4f-C8V"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Datos facturación" id="wpQ-M9-0Ff"/>
+                    <connections>
+                        <outlet property="cpTextField" destination="b4y-nR-8kz" id="tLu-jJ-cn6"/>
+                        <outlet property="rfcTextField" destination="zuq-E3-bbx" id="kw7-79-kVG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tzc-hZ-oqd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-393" y="971"/>
+            <point key="canvasLocation" x="-186.95652173913044" y="769.41964285714278"/>
         </scene>
         <!--Detalle Direccion Crear Cuenta-->
         <scene sceneID="d9m-CX-E0s">
@@ -3011,7 +3028,7 @@
         <segue reference="QG1-5D-06r"/>
         <segue reference="V5e-tv-ta4"/>
         <segue reference="gne-zN-njA"/>
-        <segue reference="3rr-iM-Pvk"/>
+        <segue reference="7En-wN-zer"/>
         <segue reference="j5V-Av-PZw"/>
     </inferredMetricsTieBreakers>
     <resources>
@@ -3026,7 +3043,6 @@
         <image name="CatalogoAdmin" width="102.5" height="220"/>
         <image name="ChatVivo" width="191" height="413"/>
         <image name="CursosAdmin" width="94.5" height="201.5"/>
-        <image name="DatosFacturacion" width="222" height="483"/>
         <image name="DetalleDireccion" width="212" height="457"/>
         <image name="DetallePromociones" width="209" height="451"/>
         <image name="EditarCursoEsp.png" width="193.5" height="423.75"/>
