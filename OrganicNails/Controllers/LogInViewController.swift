@@ -18,6 +18,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate    {
     
     @IBOutlet weak var contraOlvidadaButton: UIButton!
     
+    @IBOutlet weak var errorLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.correoTextField.delegate = self
@@ -71,8 +72,9 @@ class LogInViewController: UIViewController, UITextFieldDelegate    {
             let contra = contraTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             Auth.auth().signIn(withEmail: email, password: contra) { (result, error) in
                 if error != nil {
-                    print(error!.localizedDescription)
-                    
+                    print("hay un error en la cuenta")
+                    self.errorLabel.text = error!.localizedDescription
+                    return
                 }
                 else{
                     print("successful")
