@@ -69,7 +69,7 @@ class ProductoControlador{
         var productosConPromo = [Producto]()
         
         for i in listaProductos {
-            if i.descuento == 1 {
+            if i.descuento > 0 {
                 productosConPromo.append(i)
             }
         }

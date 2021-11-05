@@ -9,12 +9,8 @@ import UIKit
 
 class PromocionesDetalleViewController: UIViewController {
     
-    //Creamos el producto
-    var prod = Producto(nombre: "", id: "", colores: [""], precio: [0], descripcion: "", tipo: "", descuento: 1, uso: "", producto: "", presentacion: [""])
-    
-    
     //Variables para los selects
-    let presentacion = ["N/a"]
+    var presentacion = ["N/a"]
     
     //Variable que va a traer del otro lugar
     var producto:Producto?
@@ -25,7 +21,12 @@ class PromocionesDetalleViewController: UIViewController {
     //Variable a actualizar
     @IBOutlet weak var nombre: UILabel!
     @IBOutlet weak var precio: UILabel!
+    @IBOutlet weak var presentacionProd: UITextField!
     @IBOutlet weak var ahorras: UILabel!
+    
+    
+    //Creamos el pickerview
+    var presentacionPickerView = UIPickerView()
     
     
     override func viewDidLoad() {
@@ -33,46 +34,20 @@ class PromocionesDetalleViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         nombre.text? = producto?.nombre ?? ""
-        /*
-        productosControlador.presentaciones(p: producto ?? prod)´(result) in switch result {
-        case .success(let productos):self.updateUI(with: productos)
-        case .failure(let error):self.displayError(error, title: "No se pudo acceder a los productos")
-          }
-        }
-        */
+        presentacion = productosControlador.presentaciones(p: producto!)
+        
+        presentacionPickerView.delegate = self
+        presentacionPickerView.dataSource = self
+        
+        //Damos las vistas a cada field
+        presentacionProd.inputView = presentacionPickerView
+        
+        //Obtenemos tag
+        presentacionPickerView.tag = 1
         
     }
-    /*
-    override func viewWillAppear(_ animated: Bool) {
-        productosControlador.fetchProductosTipo(tipo: producto.text!){ (result) in switch result {
-        case .success(let productos):self.updateUI(with: productos)
-        case .failure(let error):self.displayError(error, title: "No se pudo acceder a los productos")
-          }
-        }
-    }
     
-    //Función de update
-    func updateUI(with productos:Productos) {
-        DispatchQueue.main.async {
-            self.datos = productos
-            
-            //Obtenemos las promociones de todos los productos de un tipo
-            self.promos = self.productosControlador.productosPromo(listaProductos: self.datos)
-            
-            self.tableView.reloadData()
-        }
-    }
-        
-    //Función display error
-    func displayError(_ error: Error, title:String){
-        DispatchQueue.main.async {
-            let alert = UIAlertController(title: title, message: error.localizedDescription, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Dismiss", style:.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
-        }
-    }
-    
-*/
+
     /*
     // MARK: - Navigation
 
@@ -84,3 +59,46 @@ class PromocionesDetalleViewController: UIViewController {
     */
 
 }
+
+extension PromocionesDetalleViewController: UIPickerViewDataSource, UIPickerViewDelegate {
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        switch pickerView.tag {
+        case 1:
+            return presentacion.count
+        default:
+            return 1
+        }
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        switch pickerView.tag {
+        case 1:
+            return presentacion[row]
+        default:
+            return "Data not found"
+        }
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        
+        switch pickerView.tag {
+        case 1:
+            presentacionProd.text = presentacion[row]
+            presentacionProd.resignFirstResponder()
+        
+        //Cambiamos las demàs variables
+            var precioActual = String((producto?.precio[row])!)
+            precio.text? = precioActual
+            ahorras.text? = String((producto?.descuento)!)
+            
+        default:
+            return
+        }
+    }
+}
+
