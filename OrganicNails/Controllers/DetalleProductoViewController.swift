@@ -167,38 +167,44 @@ class DetalleProductoViewController: UIViewController, UIPickerViewDelegate, UIP
     }
     
     @IBAction func insertarPedido( sender: UIButton){
-        if presentacion.text == "Selecciona presentación"{
+        print(colores.text)
+        if (presentacion.text == "" || colores.text == ""){
             print("is empty")
             let alerta =  UIAlertController(title: "Campos faltantes", message: "Favor de llenar los campos faltantes", preferredStyle: .alert)
             alerta.addAction(UIAlertAction(title: "Cerrar", style: .default, handler: nil))
             self.present(alerta, animated: true, completion: nil)
             
-        }
-        var nuevoProducto = ProductoP(cantidad_producto: counter, color: tempColor, descripcion_producto: descripcion.text!, descuento_producto: (descuento.text! as NSString).floatValue, id_producto: id.text!, nombre_producto: nombreProducto.text!, precio_producto: tempPrecio, presentacion: tempPresentacion, tipo_producto: tipo.text!, uso: uso.text!)
-        
+        }else{
+            var nuevoProducto = ProductoP(cantidad_producto: counter, color: tempColor, descripcion_producto: descripcion.text!, descuento_producto: (descuento.text! as NSString).floatValue, id_producto: id.text!, nombre_producto: nombreProducto.text!, precio_producto: tempPrecio, presentacion: tempPresentacion, tipo_producto: tipo.text!, uso: uso.text!)
+            
 
-        var nuevoPedido = Pedido(activo:true, estatus:"Pendiente",productos:[nuevoProducto])
+            var nuevoPedido = Pedido(activo:true, estatus:"Pendiente",productos:[nuevoProducto])
+            // checar si hay carrito activo
+            var temp:String = ""
+            pedidoControlador.checarCarritoActivo(){
+                
+                (resultado) in
+                switch resultado{
+                case .success(let exito):temp = self.displayExitoCarrito(exito: exito)
+                    self.pedidoControlador.updatePedidoProducto(nuevoProducto: nuevoProducto,idPedido: temp){
+                        
+                        (resultado) in
+                        switch resultado{
+                        case .success(let exito):temp = self.displayExitoCarrito(exito: exito)
+
+                        case .failure(let error):self.displayError(e: error)
+                        }
+                    }
+
+                case .failure(let error):self.displayError(e: error)
+                }
+            }
+            
+        }
+
 
         //print(nuevoPedido)
-        var temp:String = ""
-        pedidoControlador.checarCarritoActivo(){
-            
-            (resultado) in
-            switch resultado{
-            case .success(let exito):temp = self.displayExitoCarrito(exito: exito)
-                self.pedidoControlador.updatePedidoProducto(nuevoProducto: nuevoProducto,idPedido: temp){
-                    
-                    (resultado) in
-                    switch resultado{
-                    case .success(let exito):temp = self.displayExitoCarrito(exito: exito)
 
-                    case .failure(let error):self.displayError(e: error)
-                    }
-                }
-
-            case .failure(let error):self.displayError(e: error)
-            }
-        }
         
 
         
