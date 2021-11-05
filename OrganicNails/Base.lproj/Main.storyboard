@@ -71,9 +71,9 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="Z7A-7U-obZ">
-                                <rect key="frame" x="148" y="392" width="178" height="132"/>
+                                <rect key="frame" x="118" y="192" width="178" height="132"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="correo" borderStyle="roundedRect" placeholder="Correo electrónico" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="61f-np-LoL">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Correo electrónico" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="61f-np-LoL">
                                         <rect key="frame" x="0.0" y="0.0" width="178" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -92,12 +92,20 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qMH-Vs-lFJ">
+                                <rect key="frame" x="186" y="458" width="0.0" height="0.0"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" red="0.8980392157" green="0.3803921569" blue="0.56078431370000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ra6-2G-D8c"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Z7A-7U-obZ" firstAttribute="centerY" secondItem="3ob-Yg-CO8" secondAttribute="centerY" constant="10" id="Lwz-5c-ZyD"/>
-                            <constraint firstItem="Z7A-7U-obZ" firstAttribute="centerX" secondItem="3ob-Yg-CO8" secondAttribute="centerX" constant="30" id="PfQ-VT-OhY"/>
+                            <constraint firstItem="Z7A-7U-obZ" firstAttribute="centerY" secondItem="3ob-Yg-CO8" secondAttribute="centerY" constant="-190" id="a5I-0d-QQn"/>
+                            <constraint firstItem="Z7A-7U-obZ" firstAttribute="centerX" secondItem="3ob-Yg-CO8" secondAttribute="centerX" id="j2g-di-Vmt"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Iniciar sesión" id="4hQ-wI-683"/>
@@ -105,6 +113,7 @@
                         <outlet property="contraOlvidadaButton" destination="Yi0-Oa-mEi" id="mMo-kY-d2d"/>
                         <outlet property="contraTextField" destination="IJI-wH-0sT" id="4hI-MY-UbI"/>
                         <outlet property="correoTextField" destination="61f-np-LoL" id="bbs-aa-xVR"/>
+                        <outlet property="errorLabel" destination="qMH-Vs-lFJ" id="lfM-Ru-ovt"/>
                         <outlet property="logInButton" destination="MNk-sg-Qck" id="Bf3-3E-NTk"/>
                     </connections>
                 </viewController>
