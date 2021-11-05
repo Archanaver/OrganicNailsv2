@@ -59,19 +59,35 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IniciarSesion" translatesAutoresizingMaskIntoConstraints="NO" id="DNR-IT-QIh">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MNk-sg-Qck" userLabel="Iniciar Sesion">
-                                <rect key="frame" x="83" y="573" width="273" height="51"/>
+                                <rect key="frame" x="71" y="388" width="273" height="51"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.8980392157" green="0.3803921569" blue="0.56078431370000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Iniciar sesión"/>
                                 <connections>
                                     <segue destination="qLE-70-dKn" kind="show" id="X4o-yc-Y2X"/>
                                 </connections>
                             </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="Z7A-7U-obZ">
+                                <rect key="frame" x="133" y="198" width="148.5" height="85"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Correo electrónico" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="61f-np-LoL">
+                                        <rect key="frame" x="0.0" y="0.0" width="148.5" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Contraseña" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IJI-wH-0sT">
+                                        <rect key="frame" x="0.0" y="51" width="148.5" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                            </stackView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yi0-Oa-mEi" userLabel="ContraseniaOlvidada">
-                                <rect key="frame" x="100" y="647" width="239" height="37"/>
+                                <rect key="frame" x="88" y="503" width="239" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="¿Olvidaste tu contraseña?"/>
                                 <connections>
                                     <segue destination="wh1-hO-buj" kind="show" id="5ep-jN-V5Q"/>
                                 </connections>
@@ -79,12 +95,6 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ra6-2G-D8c"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="DNR-IT-QIh" firstAttribute="top" secondItem="ra6-2G-D8c" secondAttribute="top" id="Hqx-DY-GhJ"/>
-                            <constraint firstItem="ra6-2G-D8c" firstAttribute="bottom" secondItem="DNR-IT-QIh" secondAttribute="bottom" id="PG4-y0-cbz"/>
-                            <constraint firstItem="ra6-2G-D8c" firstAttribute="trailing" secondItem="DNR-IT-QIh" secondAttribute="trailing" id="uk4-Uz-EpC"/>
-                            <constraint firstItem="DNR-IT-QIh" firstAttribute="leading" secondItem="ra6-2G-D8c" secondAttribute="leading" id="y9h-c9-gCt"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Iniciar sesión" id="4hQ-wI-683"/>
                 </viewController>
@@ -2578,7 +2588,7 @@
         <segue reference="Deq-xw-cVL"/>
         <segue reference="vye-c0-AHW"/>
         <segue reference="xoD-hJ-Q8z"/>
-        <segue reference="aEJ-2j-Tcb"/>
+        <segue reference="X4o-yc-Y2X"/>
         <segue reference="YRf-Qf-Hvt"/>
         <segue reference="yP4-VP-1Vr"/>
         <segue reference="GWZ-CS-NRG"/>
@@ -2610,7 +2620,6 @@
         <image name="EliminarCuenta" width="219" height="478"/>
         <image name="EliminarCurso" width="132.5" height="286"/>
         <image name="EliminarProducto" width="103.5" height="220"/>
-        <image name="IniciarSesion" width="184" height="400"/>
         <image name="InicioPromociones" width="209" height="453"/>
         <image name="NuevaContrasenia" width="223" height="484"/>
         <image name="PedidosDesplegado" width="218" height="479"/>
