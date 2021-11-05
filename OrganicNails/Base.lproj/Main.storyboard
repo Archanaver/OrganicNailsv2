@@ -23,7 +23,7 @@
                                 <rect key="frame" x="110" y="384" width="208" height="230"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
-                                    <segue destination="0Kh-Ng-QBK" kind="show" id="rPB-dd-wDW"/>
+                                    <segue destination="a7B-bv-0cK" kind="show" id="nAq-5R-Z0l"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1TR-QC-n8O" userLabel="Comprar">
@@ -2341,7 +2341,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DetallePromociones" translatesAutoresizingMaskIntoConstraints="NO" id="zRW-MR-pxz">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="I1T-hP-kja"/>
@@ -2358,6 +2358,67 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gGC-ql-AiT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-5368" y="-476"/>
+        </scene>
+        <!--Promociones Inicio View Controller-->
+        <scene sceneID="sJL-mX-Z4e">
+            <objects>
+                <viewController id="a7B-bv-0cK" customClass="PromocionesInicioViewController" customModule="OrganicNails" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qct-sv-j7w">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="ZUA-fy-DMo">
+                                <rect key="frame" x="10" y="98" width="394" height="705"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icono" translatesAutoresizingMaskIntoConstraints="NO" id="tqa-OP-deG">
+                                        <rect key="frame" x="0.0" y="0.0" width="394" height="250"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="250" id="MHq-c2-70e"/>
+                                        </constraints>
+                                    </imageView>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Selecciona un tipo de producto" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tdh-tG-WJQ">
+                                        <rect key="frame" x="0.0" y="255" width="394" height="34.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="34.5" id="FtK-eC-ghK"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="j30-Bt-ao6">
+                                        <rect key="frame" x="0.0" y="294.5" width="394" height="410.5"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="productoCell" id="OaQ-S7-kXF">
+                                                <rect key="frame" x="0.0" y="55.5" width="394" height="43.5"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="OaQ-S7-kXF" id="UFA-zw-paG">
+                                                    <rect key="frame" x="0.0" y="0.0" width="363" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </tableViewCellContentView>
+                                            </tableViewCell>
+                                        </prototypes>
+                                    </tableView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Iuu-T6-2QK"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ZUA-fy-DMo" firstAttribute="leading" secondItem="Iuu-T6-2QK" secondAttribute="leading" constant="10" id="22S-jD-XYC"/>
+                            <constraint firstItem="ZUA-fy-DMo" firstAttribute="top" secondItem="Iuu-T6-2QK" secondAttribute="top" constant="10" id="GVQ-7s-eGN"/>
+                            <constraint firstItem="Iuu-T6-2QK" firstAttribute="bottom" secondItem="ZUA-fy-DMo" secondAttribute="bottom" constant="10" id="TKU-JO-JZn"/>
+                            <constraint firstItem="Iuu-T6-2QK" firstAttribute="trailing" secondItem="ZUA-fy-DMo" secondAttribute="trailing" constant="10" id="fK6-7Y-NjG"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="P4N-iP-JAf"/>
+                    <connections>
+                        <outlet property="producto" destination="tdh-tG-WJQ" id="Stq-7z-lBp"/>
+                        <outlet property="tableView" destination="j30-Bt-ao6" id="6IG-9T-sTX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Lhp-Ac-Z2E" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2958" y="-1229"/>
         </scene>
         <!--Home-->
         <scene sceneID="KV6-aH-9vd">
@@ -2642,6 +2703,7 @@
         <image name="expservicio" width="233" height="502"/>
         <image name="graduationcap" catalog="system" width="128" height="106"/>
         <image name="house" catalog="system" width="128" height="106"/>
+        <image name="icono" width="512" height="512"/>
         <image name="inicio" width="231" height="503"/>
         <image name="mensaje" width="231" height="504"/>
         <image name="menuUsuarios" width="161" height="347.5"/>

@@ -29,5 +29,55 @@ class ProductoControlador{
             
         }
     }
+    
+    //Función para regresar un arreglo de productos de un tipo
+    func fetchProductosTipo(tipo: String, completion: @escaping (Result <Productos, Error>) -> Void){
+        var productos = [Producto]()
+        
+        if(tipo == "Todos") {
+            db.collection("productos").getDocuments() { (querySnapshot, err) in if let err = err {
+                print("Error getting documents: \(err)")
+                completion(.failure(err))
+            } else {
+                for document in querySnapshot!.documents {
+                    var p = Producto(d: document)
+                    productos.append(p)
+                }
+                completion(.success(productos))
+                }
+            }
+        }
+        else {
+            db.collection("productos").whereField("tipo", isEqualTo:tipo).getDocuments() { (querySnapshot, err) in if let err = err {
+                print("Error getting documents: \(err)")
+                completion(.failure(err))
+            } else {
+                for document in querySnapshot!.documents {
+                    var p = Producto(d: document)
+                    productos.append(p)
+                }
+                completion(.success(productos))
+                }
+            }
+        }
+    }
+    
+    //Hacemos una lista con los productos que tienen promoción
+    func productosPromo(listaProductos: Productos) -> Productos{
+        
+        //La variable que se va a regesar
+        var productosConPromo = [Producto]()
+        
+        for i in listaProductos {
+            if i.descuento == 1 {
+                productosConPromo.append(i)
+            }
+        }
+        
+        //Ordena la lista de forma alfabética por el nombre
+        var sortedProductos = productosConPromo.sorted(by: { $0.nombre < $1.nombre })
+            
+        return sortedProductos
+    }
 }
 
