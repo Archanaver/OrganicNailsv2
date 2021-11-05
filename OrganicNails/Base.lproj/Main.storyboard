@@ -124,7 +124,7 @@
         <!--Crear cuenta-->
         <scene sceneID="np4-cT-u1a">
             <objects>
-                <viewController id="P4Q-Fz-efi" sceneMemberID="viewController">
+                <viewController id="P4Q-Fz-efi" customClass="SignUpViewController" customModule="OrganicNails" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3uK-Hc-z3i">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -136,6 +136,7 @@
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="necesito factura"/>
                                 <connections>
+                                    <action selector="facturaAction:" destination="P4Q-Fz-efi" eventType="touchUpInside" id="lEE-SF-TC9"/>
                                     <segue destination="phn-se-uq2" kind="show" id="m41-jF-Bwp"/>
                                 </connections>
                             </button>
@@ -146,17 +147,15 @@
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="crear cuenta"/>
                                 <connections>
+                                    <action selector="signUpButton:" destination="P4Q-Fz-efi" eventType="touchUpInside" id="Mu0-en-Cud"/>
                                     <segue destination="qLE-70-dKn" kind="show" id="aEJ-2j-Tcb"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q6x-9l-m4w" userLabel="Direccion">
                                 <rect key="frame" x="103" y="400" width="209" height="68"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <segue destination="w0z-E8-Q8J" kind="show" id="ocE-HA-SQp"/>
-                                </connections>
                             </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" spacing="26" translatesAutoresizingMaskIntoConstraints="NO" id="Gd7-Cn-kmh">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="26" translatesAutoresizingMaskIntoConstraints="NO" id="Gd7-Cn-kmh">
                                 <rect key="frame" x="137" y="224" width="146" height="270"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nombre completo" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9Lg-fT-XJ2">
@@ -184,14 +183,28 @@
                                         <color key="backgroundColor" red="0.8980392157" green="0.3803921569" blue="0.56078431370000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Dirección"/>
+                                        <connections>
+                                            <action selector="direccionAction:" destination="P4Q-Fz-efi" eventType="touchUpInside" id="s77-6y-y1A"/>
+                                            <segue destination="w0z-E8-Q8J" kind="show" id="HYv-Pq-oap"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Ckx-DI-zpl"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Gd7-Cn-kmh" firstAttribute="centerY" secondItem="3uK-Hc-z3i" secondAttribute="centerY" constant="-89" id="eec-zW-hlA"/>
+                            <constraint firstItem="Gd7-Cn-kmh" firstAttribute="centerX" secondItem="3uK-Hc-z3i" secondAttribute="centerX" constant="3" id="t87-WP-2ej"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Crear cuenta" id="iw0-E4-nRr"/>
+                    <connections>
+                        <outlet property="contraTextField" destination="B3w-sP-nEz" id="XXh-oZ-vF9"/>
+                        <outlet property="correoTextField" destination="f9b-y4-11C" id="O8m-XC-x6M"/>
+                        <outlet property="nombreTextField" destination="9Lg-fT-XJ2" id="Jpl-FP-gnp"/>
+                        <outlet property="telefonoTextField" destination="INg-bk-zA7" id="4PQ-41-db8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ubo-2P-aKX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2758,7 +2771,7 @@
         <segue reference="Deq-xw-cVL"/>
         <segue reference="vye-c0-AHW"/>
         <segue reference="xoD-hJ-Q8z"/>
-        <segue reference="X4o-yc-Y2X"/>
+        <segue reference="aEJ-2j-Tcb"/>
         <segue reference="YRf-Qf-Hvt"/>
         <segue reference="yP4-VP-1Vr"/>
         <segue reference="GWZ-CS-NRG"/>
