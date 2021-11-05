@@ -12,7 +12,8 @@ class DetalleCursoViewController: UIViewController {
     
     @IBOutlet weak var nombre: UILabel!
     
-   
+    @IBOutlet weak var codigo: UILabel!
+    
     @IBOutlet weak var fecha: UILabel!
     @IBOutlet weak var instructor: UILabel!
     @IBOutlet weak var precio: UILabel!
@@ -27,6 +28,7 @@ class DetalleCursoViewController: UIViewController {
         instructor.text = curso?.instructor
         precio.text = String(format: "%.2f",curso?.precio ?? 0)
         descripcion.text = curso?.descripcion
+        codigo.text = curso?.id
     }
     
 

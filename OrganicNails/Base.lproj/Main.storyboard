@@ -833,6 +833,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Detalle curso" id="buG-Hm-Luh"/>
                     <connections>
+                        <outlet property="codigo" destination="K0g-Qe-Hy1" id="JMu-dV-Llh"/>
                         <outlet property="descripcion" destination="IPJ-0p-WUT" id="C6k-Jr-Avy"/>
                         <outlet property="fecha" destination="ZhL-dC-vTR" id="5mN-j8-Pif"/>
                         <outlet property="instructor" destination="fL4-na-dB8" id="rvL-29-BKR"/>
