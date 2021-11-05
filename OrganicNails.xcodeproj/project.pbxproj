@@ -87,6 +87,7 @@
 		6D184B71270BC56500169BD3 /* EditarCursoEsp.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D184B70270BC56500169BD3 /* EditarCursoEsp.png */; };
 		6D184B74270BC5EF00169BD3 /* EliminarCurso.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D184B73270BC5EF00169BD3 /* EliminarCurso.png */; };
 		6D937D9A273504A500D47302 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D937D99273504A500D47302 /* LogInViewController.swift */; };
+		6DD8A33E2735BA5700D388C4 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD8A33D2735BA5700D388C4 /* TabBarViewController.swift */; };
 		6DDFD743272754A600D82EF3 /* ClientesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDFD742272754A600D82EF3 /* ClientesTableViewController.swift */; };
 		6DDFD74627276C2B00D82EF3 /* DetalleClienteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDFD74527276C2B00D82EF3 /* DetalleClienteViewController.swift */; };
 		6DDFD7492727797900D82EF3 /* Cliente.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDFD7482727797900D82EF3 /* Cliente.swift */; };
@@ -185,6 +186,7 @@
 		6D184B70270BC56500169BD3 /* EditarCursoEsp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EditarCursoEsp.png; sourceTree = "<group>"; };
 		6D184B73270BC5EF00169BD3 /* EliminarCurso.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EliminarCurso.png; sourceTree = "<group>"; };
 		6D937D99273504A500D47302 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		6DD8A33D2735BA5700D388C4 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		6DDFD742272754A600D82EF3 /* ClientesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientesTableViewController.swift; sourceTree = "<group>"; };
 		6DDFD74527276C2B00D82EF3 /* DetalleClienteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetalleClienteViewController.swift; sourceTree = "<group>"; };
 		6DDFD7482727797900D82EF3 /* Cliente.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cliente.swift; sourceTree = "<group>"; };
@@ -266,6 +268,7 @@
 				6D937D99273504A500D47302 /* LogInViewController.swift */,
 				4AC6D4F827350FFA0033B5BA /* PromocionesDetalleViewController.swift */,
 				6DEB8234273553EE0037F0EA /* SignUpViewController.swift */,
+				6DD8A33D2735BA5700D388C4 /* TabBarViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -578,6 +581,7 @@
 				A563F7CE270A0E1300DC23DD /* ConfirmarPedidoViewController.swift in Sources */,
 				0D05258B27336A6B00481B5D /* PedidoControlador.swift in Sources */,
 				6DEB82282735353D0037F0EA /* LogInControlador.swift in Sources */,
+				6DD8A33E2735BA5700D388C4 /* TabBarViewController.swift in Sources */,
 				0DDFE6712709F74600EC3EA5 /* ProductoControlador.swift in Sources */,
 				A563F7D1270A10BF00DC23DD /* EvaluaServicioViewController.swift in Sources */,
 				0DB10C3D272FBA5700AD6C74 /* Catalogo.swift in Sources */,

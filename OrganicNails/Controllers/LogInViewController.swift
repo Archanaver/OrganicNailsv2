@@ -64,37 +64,31 @@ class LogInViewController: UIViewController, UITextFieldDelegate    {
     }
     */
     
-    func logging(completed : finishedLogging){
-        let correo = correoTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-        let password = contraTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-
-        
-        Auth.auth().signIn(withEmail: correo, password: password) { (result, error) in
-            if error != nil {
-                let alerta =  UIAlertController(title: "Error de conexion", message:"No existen usuarios con esas credenciales", preferredStyle: .alert)
-               alerta.addAction(UIAlertAction(title: "Cerrar", style: .default, handler: nil))
-               self.present(alerta, animated: true, completion: nil)
-            }
-            else{
-                
-            }
-        
-    }
-        completed()
-    }
+    
         
     @IBAction func iniciandoSesion(_ sender: Any) {
         let error = validateFields()
         if error != nil {
-            let alerta =  UIAlertController(title: "Error de conexion", message: "Llena todos espacios", preferredStyle: .alert)
-           alerta.addAction(UIAlertAction(title: "Cerrar", style: .default, handler: nil))
-           self.present(alerta, animated: true, completion: nil)
-            print("hay un error al crear una cuenta")
+             let alerta =  UIAlertController(title: "Error de conexion", message: "Llena todos los espacios", preferredStyle: .alert)
+            alerta.addAction(UIAlertAction(title: "Cerrar", style: .default, handler: nil))
+            self.present(alerta, animated: true, completion: nil)
             
-           
         }else {
-            logging {() -> () in
-                print("aaaaaaaaaaaaaaaaaa")
+            let email = correoTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            
+            let contra = contraTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            Auth.auth().signIn(withEmail: email, password: contra) { (result, error) in
+                if error != nil {
+                    let alerta =  UIAlertController(title: "Error ", message: "Credenciales incorrectar", preferredStyle: .alert)
+                   alerta.addAction(UIAlertAction(title: "Cerrar", style: .default, handler: nil))
+                   self.present(alerta, animated: true, completion: nil)
+                    
+                }
+                else{
+                    let siguienteVista = self.storyboard!.instantiateViewController(withIdentifier: "tabBar") as! UITabBarController
+                    siguienteVista.modalPresentationStyle = .fullScreen
+                    self.present(siguienteVista, animated: true, completion: nil)
+                }
             }
         }
     }
