@@ -79,5 +79,16 @@ class ProductoControlador{
             
         return sortedProductos
     }
+    
+    //Para guardar todas las presentaciones en un arreglo
+    func presentaciones(p: Producto) -> Array<String>{
+        var pres:Array<String> = []
+        //Por cada elemento de presentaciones del produco
+        for i in p.presentacion {
+            //Obtener cada valor y guardarlo
+            pres.append(i)
+        }
+        return pres
+    }
 }
 
