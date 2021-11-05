@@ -54,6 +54,8 @@ class LogInViewController: UIViewController, UITextFieldDelegate    {
     }
       
 
+    @IBAction func contraOlvidada(_ sender: Any) {
+    }
     /*
     // MARK: - Navigation
 
@@ -86,46 +88,14 @@ class LogInViewController: UIViewController, UITextFieldDelegate    {
                 }
                 else{
                     let siguienteVista = self.storyboard!.instantiateViewController(withIdentifier: "tabBar") as! UITabBarController
-                    siguienteVista.modalPresentationStyle = .fullScreen
+                    siguienteVista.modalPresentationStyle = .overFullScreen
                     self.present(siguienteVista, animated: true, completion: nil)
                 }
             }
         }
     }
     
-    
-    func displayError(e:Error){
-        DispatchQueue.main.async {
-             let alerta =  UIAlertController(title: "Error de conexion", message: e.localizedDescription, preferredStyle: .alert)
-            alerta.addAction(UIAlertAction(title: "Cerrar", style: .default, handler: nil))
-            self.present(alerta, animated: true, completion: nil)
-        }
-    }
-    
-    func displayExito(exito:String){
-        DispatchQueue.main.async {
-            self.errorLabel.text = "Todo bien"
-        }
-        
-    }
 
-    
-    /*func checarCarritoActivo(completion: @escaping (Result<String,Error>)->Void){
-     db.collection("pedidos").whereField("activo", isEqualTo: true)
-       .getDocuments() { (querySnapshot, err) in
-         if let err = err {
-             print("Error obteniendo pedido activo: \(err)")
-             completion(.failure(err))
-         } else {
-             var documentoID:String = ""
-             for document in querySnapshot!.documents {
-                 print("\(document.documentID) => \(document.data())")
-                 documentoID = document.documentID
-             }
-             completion(.success(documentoID))
-             
-         }
-     }*/
 }
 
 

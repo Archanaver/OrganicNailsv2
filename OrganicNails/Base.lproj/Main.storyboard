@@ -52,10 +52,10 @@
             </objects>
             <point key="canvasLocation" x="-3710.144927536232" y="-1229.4642857142856"/>
         </scene>
-        <!--Iniciar sesión-->
+        <!--inicioSesion-->
         <scene sceneID="9Wu-iz-h3U">
             <objects>
-                <viewController id="SZV-FO-NG8" customClass="LogInViewController" customModule="OrganicNails" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="inicioSesion" id="SZV-FO-NG8" customClass="LogInViewController" customModule="OrganicNails" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3ob-Yg-CO8" userLabel="Iniciar Sesion">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -81,7 +81,7 @@
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Contraseña" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IJI-wH-0sT">
                                         <rect key="frame" x="0.0" y="51" width="178" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yi0-Oa-mEi" userLabel="ContraseniaOlvidada">
                                         <rect key="frame" x="0.0" y="102" width="178" height="30"/>
@@ -175,7 +175,7 @@
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Contraseña" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="B3w-sP-nEz">
                                         <rect key="frame" x="0.0" y="180" width="146" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vWr-h2-6Xq">
                                         <rect key="frame" x="0.0" y="240" width="146" height="30"/>
@@ -1640,14 +1640,11 @@
         <!--Contraseña olvidada-->
         <scene sceneID="Jrj-XU-6cp">
             <objects>
-                <viewController id="wh1-hO-buj" sceneMemberID="viewController">
+                <viewController id="wh1-hO-buj" customClass="ContraOlvidadaViewController" customModule="OrganicNails" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="F8L-0F-uz6">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ContraseniaOlvidada" translatesAutoresizingMaskIntoConstraints="NO" id="yxj-0y-Aua">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WiS-MQ-ygu" userLabel="Codigo">
                                 <rect key="frame" x="86" y="667" width="279" height="46"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1655,21 +1652,34 @@
                                     <segue destination="G3h-dd-pGJ" kind="show" id="nxW-Cl-L3U"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="correo electrónico" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="maK-zU-342">
+                                <rect key="frame" x="26" y="276" width="363" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NWd-Bb-FRM">
+                                <rect key="frame" x="135" y="396" width="144" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.8980392157" green="0.3803921569" blue="0.56078431370000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Confirmar"/>
+                                <connections>
+                                    <action selector="confirmarButton:" destination="wh1-hO-buj" eventType="touchUpInside" id="Txm-9J-HIV"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="zNJ-8M-oMN"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="zNJ-8M-oMN" firstAttribute="trailing" secondItem="yxj-0y-Aua" secondAttribute="trailing" id="9EO-fV-kp4"/>
-                            <constraint firstItem="yxj-0y-Aua" firstAttribute="top" secondItem="zNJ-8M-oMN" secondAttribute="top" id="EaA-xF-hmg"/>
-                            <constraint firstItem="zNJ-8M-oMN" firstAttribute="bottom" secondItem="yxj-0y-Aua" secondAttribute="bottom" id="UOp-fZ-T7U"/>
-                            <constraint firstItem="yxj-0y-Aua" firstAttribute="leading" secondItem="zNJ-8M-oMN" secondAttribute="leading" id="rlJ-BO-9vM"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Contraseña olvidada" id="eJR-UJ-cnn"/>
+                    <connections>
+                        <outlet property="correoTextField" destination="maK-zU-342" id="OZS-jI-gAQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eCg-to-tuN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3006" y="-2189"/>
+            <point key="canvasLocation" x="-3007.2463768115945" y="-2189.0625"/>
         </scene>
         <!--Nueva Contrasenia-->
         <scene sceneID="1Cn-EP-xeP">
@@ -3015,7 +3025,6 @@
         <image name="Carrito" width="189" height="412"/>
         <image name="CatalogoAdmin" width="102.5" height="220"/>
         <image name="ChatVivo" width="191" height="413"/>
-        <image name="ContraseniaOlvidada" width="198" height="429"/>
         <image name="CursosAdmin" width="94.5" height="201.5"/>
         <image name="DatosFacturacion" width="222" height="483"/>
         <image name="DetalleDireccion" width="212" height="457"/>
