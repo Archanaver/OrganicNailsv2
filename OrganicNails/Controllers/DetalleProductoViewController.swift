@@ -20,6 +20,7 @@ class DetalleProductoViewController: UIViewController, UIPickerViewDelegate, UIP
     var datosColores:[String] = []
     var tempPresentacion:String = ""
     var tempColor:String = ""
+    var tempDescuento:Int = 0
     
     let pedidoControlador = PedidoControlador()
     let usuarioControlador = UsuarioControlador()
@@ -39,6 +40,8 @@ class DetalleProductoViewController: UIViewController, UIPickerViewDelegate, UIP
         }
         contadorCantidad.text = String(counter)
         precio.text = String(format: "%.2f", tempPrecio * Float(counter))
+        let temp_oferta = (tempPrecio - ((Float((producto?.descuento ?? 0))/100) * tempPrecio)) * Float(counter)
+        oferta.text = String(temp_oferta)
     }
     
     
@@ -48,6 +51,8 @@ class DetalleProductoViewController: UIViewController, UIPickerViewDelegate, UIP
         }
         contadorCantidad.text = String(counter)
         precio.text = String(format: "%.2f", tempPrecio * Float(counter))
+        let temp_oferta = (tempPrecio - ((Float((producto?.descuento ?? 0))/100) * tempPrecio)) * Float(counter)
+        oferta.text = String(temp_oferta)
     }
     
     @IBOutlet weak var presentacion: UITextField!
@@ -101,13 +106,14 @@ class DetalleProductoViewController: UIViewController, UIPickerViewDelegate, UIP
         tipo.text = producto?.tipo
         descripcion.text = producto?.descripcion
         uso.text = producto?.uso
+        tempDescuento = producto?.descuento ?? 0
         if producto?.descuento == 0{
             descuento.isHidden = true
             descuentoLabel.isHidden = true
             ofertaLabel.isHidden = true
             oferta.isHidden = true
         }else{
-            descuento.text = String(Int(producto?.descuento ?? 0))+" %"
+            descuento.text = String(tempDescuento)+" %"
             
         }
         
@@ -168,8 +174,8 @@ class DetalleProductoViewController: UIViewController, UIPickerViewDelegate, UIP
             tempPrecio = datosPrecio[row]
             precio.text = String(format: "%.2f", tempPrecio * Float(counter))
             contadorCantidad.text = String(counter)
-            var temp_oferta = tempPrecio - ((tempPrecio * (producto?.descuento ?? 0)/100))*Float(counter)
-            print("oferton",temp_oferta)
+            let temp_oferta = (tempPrecio - ((Float((producto?.descuento ?? 0))/100) * tempPrecio)) * Float(counter)
+            
             oferta.text = String(temp_oferta)
             presentacion.resignFirstResponder()
         case 2:
@@ -199,11 +205,11 @@ class DetalleProductoViewController: UIViewController, UIPickerViewDelegate, UIP
                       switch resultado{
                       case .success(let exito):direccionUsuario=self.getDireccion(exito: exito)
                         
-                        var datosUsuario =  direccionUsuario.split(separator: "|")
-                    
-                        var nuevoProducto = ProductoP(cantidad_producto: self.counter, color: self.tempColor, descripcion_producto: self.descripcion.text!, descuento_producto: Int((self.descuento.text! as NSString).floatValue), id_producto: self.id.text!, nombre_producto: self.nombreProducto.text!, precio_producto: self.tempPrecio, presentacion: self.tempPresentacion, tipo_producto: self.tipo.text!, uso: self.uso.text!)
+                       
+                    print("direccion usuario"+direccionUsuario)
+                        var nuevoProducto = ProductoP(cantidad_producto: self.counter, color: self.tempColor, descripcion_producto: self.descripcion.text!, descuento_producto:self.tempDescuento, id_producto: self.id.text!, nombre_producto: self.nombreProducto.text!, precio_producto: self.tempPrecio, presentacion: self.tempPresentacion, tipo_producto: self.tipo.text!, uso: self.uso.text!)
                         
-                        var nuevoPedido = Pedido(activo:true, estatus:"Pendiente",productos:[nuevoProducto], direccion: String(datosUsuario[0]), cursos:[], cliente_id:String(datosUsuario[1]))
+                        var nuevoPedido = Pedido(activo:true, estatus:"Pendiente",productos:[nuevoProducto], direccion: direccionUsuario, cursos:[], cliente_id:userID)
                         
                         // checar si hay carrito activo
                         var pedidoId:String = ""

@@ -18,7 +18,7 @@ struct Producto: Decodable{
     var presentacion: [String]
     var producto: String
     var uso: String
-    var descuento:Float
+    var descuento:Int
     
     enum CodingKeys: String, CodingKey {
             case nombre
@@ -33,7 +33,7 @@ struct Producto: Decodable{
             case presentacion
         
         }
-    init(nombre:String, id:String, colores:[String], precio:[Float], descripcion:String, tipo:String, descuento:Float, uso:String, producto:String, presentacion:[String]){
+    init(nombre:String, id:String, colores:[String], precio:[Float], descripcion:String, tipo:String, descuento:Int, uso:String, producto:String, presentacion:[String]){
         self.nombre = nombre
         self.id = id
         self.colores = colores
@@ -53,7 +53,7 @@ struct Producto: Decodable{
         self.colores = d.get("colores") as? [String] ?? []
         self.tipo = d.get("tipo") as? String ?? ""
         self.precio = d.get("precio") as? [Float] ?? []
-        self.descuento = d.get("descuento") as? Float ?? 0
+        self.descuento = d.get("descuento") as? Int ?? 0
         self.uso = d.get("uso") as? String ?? ""
         self.producto = d.get("producto") as? String ?? ""
         self.presentacion = d.get("presentacion") as? [String] ?? []
