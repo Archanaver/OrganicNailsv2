@@ -25,13 +25,12 @@ class CarritoViewController: UIViewController, UISearchResultsUpdating {
     let searchController = UISearchController(searchResultsController: nil)
     
     
-   
-   
     @IBOutlet weak var carritoTableView: UITableView!
     
+   
     
     
-    @IBOutlet weak var labelOpcion: UILabel!
+    
     func updateSearchResults(for searchController: UISearchController){
         if searchController.searchBar.text! == "" {
             datosFiltrados = carritos
@@ -48,7 +47,7 @@ class CarritoViewController: UIViewController, UISearchResultsUpdating {
         super.viewDidLoad()
         carritoTableView.delegate = self
         carritoTableView.dataSource = self
-        labelOpcion.text = self.opcion
+       
         // Do any additional setup after loading the view.
         carritoControlador.fetchPedidos{ (resultado) in
             switch resultado{

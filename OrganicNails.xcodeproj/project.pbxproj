@@ -96,6 +96,7 @@
 		6DF8E81B271E5C6900AAFCF1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6DF8E81A271E5C6900AAFCF1 /* GoogleService-Info.plist */; };
 		A5394BFF2735861800592226 /* CarritoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5394BFE2735861800592226 /* CarritoViewController.swift */; };
 		A5394C022735927A00592226 /* DetalleCarritoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5394C012735927A00592226 /* DetalleCarritoViewController.swift */; };
+		A5394C9B2735FCD700592226 /* CarritoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5394C9A2735FCD700592226 /* CarritoTableViewController.swift */; };
 		A563F7CB270A09CD00DC23DD /* EntregaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A563F7CA270A09CD00DC23DD /* EntregaViewController.swift */; };
 		A563F7CE270A0E1300DC23DD /* ConfirmarPedidoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A563F7CD270A0E1300DC23DD /* ConfirmarPedidoViewController.swift */; };
 		A563F7D1270A10BF00DC23DD /* EvaluaServicioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A563F7D0270A10BF00DC23DD /* EvaluaServicioViewController.swift */; };
@@ -195,6 +196,7 @@
 		6DF8E81A271E5C6900AAFCF1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A5394BFE2735861800592226 /* CarritoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarritoViewController.swift; sourceTree = "<group>"; };
 		A5394C012735927A00592226 /* DetalleCarritoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetalleCarritoViewController.swift; sourceTree = "<group>"; };
+		A5394C9A2735FCD700592226 /* CarritoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarritoTableViewController.swift; sourceTree = "<group>"; };
 		A563F7CA270A09CD00DC23DD /* EntregaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntregaViewController.swift; sourceTree = "<group>"; };
 		A563F7CD270A0E1300DC23DD /* ConfirmarPedidoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmarPedidoViewController.swift; sourceTree = "<group>"; };
 		A563F7D0270A10BF00DC23DD /* EvaluaServicioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluaServicioViewController.swift; sourceTree = "<group>"; };
@@ -270,6 +272,7 @@
 				6DEB8234273553EE0037F0EA /* SignUpViewController.swift */,
 				A5394BFE2735861800592226 /* CarritoViewController.swift */,
 				A5394C012735927A00592226 /* DetalleCarritoViewController.swift */,
+				A5394C9A2735FCD700592226 /* CarritoTableViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -577,6 +580,7 @@
 				A563F7D4270A215400DC23DD /* ChatViewController.swift in Sources */,
 				0DA134B426FD26FF00A8B809 /* AppDelegate.swift in Sources */,
 				A563F7CB270A09CD00DC23DD /* EntregaViewController.swift in Sources */,
+				A5394C9B2735FCD700592226 /* CarritoTableViewController.swift in Sources */,
 				6DDFD74627276C2B00D82EF3 /* DetalleClienteViewController.swift in Sources */,
 				A563F7CE270A0E1300DC23DD /* ConfirmarPedidoViewController.swift in Sources */,
 				0D05258B27336A6B00481B5D /* PedidoControlador.swift in Sources */,
