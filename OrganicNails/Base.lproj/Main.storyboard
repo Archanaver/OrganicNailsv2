@@ -305,11 +305,11 @@
             <objects>
                 <viewController id="LdT-bX-l0A" userLabel="View Carrito" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CBD-qs-P7z">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Carrito" translatesAutoresizingMaskIntoConstraints="NO" id="BsC-8W-zLn">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="759"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aDL-xK-y1c">
                                 <rect key="frame" x="106" y="696" width="202" height="38"/>
@@ -341,11 +341,11 @@
             <objects>
                 <viewController id="JgR-au-bkR" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oJV-35-N6L">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DetalleDireccion" translatesAutoresizingMaskIntoConstraints="NO" id="w2h-Jx-aNI">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qVJ-0H-yf2">
                                 <rect key="frame" x="100" y="727" width="221" height="64"/>
@@ -375,7 +375,7 @@
             <objects>
                 <viewController id="uwn-2z-33P" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Rcj-m8-qQA">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yUc-sc-G3Y">
@@ -730,8 +730,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="oferta" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vwt-8G-A33" userLabel="descuento">
-                                <rect key="frame" x="218" y="303" width="46" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vwt-8G-A33" userLabel="descuento">
+                                <rect key="frame" x="218" y="303" width="45" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -767,7 +767,7 @@
             <objects>
                 <viewController storyboardIdentifier="insertarDetalleCurso" id="93x-lp-Ij5" userLabel="Detalle Curso Scene" customClass="DetalleCursoViewController" customModule="OrganicNails" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hWq-Lp-2bL">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="nombre" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kiq-Ds-jS3">
@@ -2762,7 +2762,7 @@
             <objects>
                 <viewController storyboardIdentifier="insertarCursos" id="FRa-7D-LGS" userLabel="Catálogo General" customClass="CursosViewController" customModule="OrganicNails" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Z2J-eD-mhR">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lRL-dP-O1d">
@@ -2839,7 +2839,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="0NA-cS-9Im"/>
+        <segue reference="gG5-Jb-Lz5"/>
         <segue reference="EfF-OB-h45"/>
         <segue reference="jfH-px-Uya"/>
         <segue reference="rIT-xC-oTU"/>
@@ -2857,7 +2857,7 @@
         <segue reference="yP4-VP-1Vr"/>
         <segue reference="QG1-5D-06r"/>
         <segue reference="V5e-tv-ta4"/>
-        <segue reference="pNY-NS-Dvi"/>
+        <segue reference="gne-zN-njA"/>
         <segue reference="3rr-iM-Pvk"/>
         <segue reference="j5V-Av-PZw"/>
     </inferredMetricsTieBreakers>
