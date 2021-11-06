@@ -7,10 +7,13 @@
 
 import UIKit
 import Firebase
+import FirebaseAuth
 
 class DatosFacturaViewController: UIViewController{
     
     var cliente:Cliente?
+    var controladorCliente = ClienteControlador()
+    let auth = Auth.auth()
     
     @IBOutlet weak var rfcTextField: UITextField!
     
@@ -24,8 +27,36 @@ class DatosFacturaViewController: UIViewController{
     
     @IBAction func guardarButton(_ sender: Any) {
         
+        let clienteActualizado = Cliente(id: auth.currentUser?.uid ?? "", nombre: cliente!.nombre, direccion: cliente!.direccion, cp: cpTextField.text!, telefono: cliente!.telefono, rfc: rfcTextField.text!)
+        controladorCliente.updateClienteFactura(clienteActualizar: clienteActualizado){ (resultado) in
+            switch resultado{
+            case .failure(let err): self.displayError(e: err)
+                
+            case .success(let exito): self.displayExito(exito: exito)
+            }
+        }
+        
     }
     
+    func displayError(e:Error){
+        DispatchQueue.main.async {
+            let alerta =  UIAlertController(title: "Error al actualizar", message: e.localizedDescription, preferredStyle: .alert)
+            alerta.addAction(UIAlertAction(title: "Cerrar", style: .default, handler: nil))
+            self.present(alerta, animated: true, completion: nil)
+        }
+        
+    }
+    
+    func displayExito(exito:String){
+        DispatchQueue.main.async {
+            let alerta =  UIAlertController(title: "Datos de factura guardados", message: exito, preferredStyle: .alert)
+            alerta.addAction(UIAlertAction(title: "Cerrar", style: .default, handler: nil))
+            self.present(alerta, animated: true, completion: nil)
+            
+        }
+        
+    }
+
     /*
     // MARK: - Navigation
 

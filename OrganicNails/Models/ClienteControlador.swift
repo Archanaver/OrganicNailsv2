@@ -7,12 +7,11 @@
 
 import Foundation
 import Firebase
-
 class ClienteControlador{
     
     let db = Firestore.firestore()
     
-    func fetchRazas(completion: @escaping (Result <Clientes, Error>)->Void){
+    func getClientes(completion: @escaping (Result <Clientes, Error>)->Void){
         var lista_clientes = [Cliente]()
         
         db.collection("clientes").getDocuments { (querySnapchot, err) in
@@ -27,6 +26,18 @@ class ClienteControlador{
                 completion(.success(lista_clientes))
             }
         }
+    }
+    
+    func updateClienteFactura(clienteActualizar : Cliente, completion: @escaping (Result <String, Error>)->Void){
+        db.collection("clientes").document(clienteActualizar.id).updateData(["rfc":clienteActualizar.rfc, "codigoPostal":clienteActualizar.cp]) {
+            err in
+            if let err = err {
+                completion(.failure(err))
+            }else {
+                completion(.success("Informacion de facturacion modificada "))
+            }
+        }
+        
     }
 }
 

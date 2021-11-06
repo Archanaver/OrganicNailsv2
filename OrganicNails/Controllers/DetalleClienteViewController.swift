@@ -6,18 +6,28 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class DetalleClienteViewController: UIViewController {
-    var cliente:String = ""
-    @IBOutlet weak var clienteTextField: UITextField!
     
+    let clienteControlador = ClienteControlador()
+    
+    
+    var cliente:Cliente?
+    
+    @IBOutlet weak var nombreLabel: UILabel!
+   
     override func viewDidLoad() {
         super.viewDidLoad()
-        clienteTextField.text = cliente
+        nombreLabel.text = cliente?.nombre
+        
         // Do any additional setup after loading the view.
     }
     
-
+    @IBAction func updateCliente(_ sender: Any) {
+        
+    }
+    
     /*
     // MARK: - Navigation
 

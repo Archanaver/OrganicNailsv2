@@ -79,7 +79,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                 }else{
                     //Storing
                     let db = Firestore.firestore()
-                    db.collection("clientes").addDocument(data: ["nombre":nombre, "telefono":telefono,"direccion":direccion, "codigoPostal":"","rfc":"", "uid": result!.user.uid]) { (error) in
+                    db.collection("clientes").addDocument(data: ["nombre":nombre, "telefono":telefono,"direccion":"Cuernavaca 333", "codigoPostal":"","rfc":"", "uid": result!.user.uid]) { (error) in
                         if error != nil{
                             let alerta =  UIAlertController(title: "Error de conexion", message:"Error al crear cuenta", preferredStyle: .alert)
                            alerta.addAction(UIAlertAction(title: "Cerrar", style: .default, handler: nil))
