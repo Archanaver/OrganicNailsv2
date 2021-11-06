@@ -54,6 +54,38 @@ class PedidoControlador{
         }
 }
     
+    //Función para regresar un arreglo de pedidos de un estado
+    func fetchPedidosEstado(estado: String, completion: @escaping (Result <Pedidos, Error>) -> Void){
+        var pedidos = [Pedido]()
+        
+        if(estado == "Todos") {
+            db.collection("pedidos").getDocuments() { (querySnapshot, err) in if let err = err {
+                print("Error getting documents: \(err)")
+                completion(.failure(err))
+            } else {
+                for document in querySnapshot!.documents {
+                    var p = Pedido(d: document)
+                    pedidos.append(p)
+                }
+                completion(.success(pedidos))
+                }
+            }
+        }
+        else {
+            db.collection("pedidos").whereField("estatus", isEqualTo:estado).getDocuments() { (querySnapshot, err) in if let err = err {
+                print("Error getting documents: \(err)")
+                completion(.failure(err))
+            } else {
+                for document in querySnapshot!.documents {
+                    var p = Pedido(d: document)
+                    pedidos.append(p)
+                }
+                completion(.success(pedidos))
+                }
+            }
+        }
+    }
+    
     func crearPedidoConCurso(nuevoPedido:Pedido, completion: @escaping (Result<String,Error>)->Void ){
         var ref: DocumentReference? = nil
         //let newDocumentID = UUID().uuidString
