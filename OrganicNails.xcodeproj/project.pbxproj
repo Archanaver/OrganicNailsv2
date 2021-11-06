@@ -10,6 +10,7 @@
 		0D052565273344C300481B5D /* Pedido.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D052564273344C300481B5D /* Pedido.swift */; };
 		0D05258B27336A6B00481B5D /* PedidoControlador.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D05258A27336A6B00481B5D /* PedidoControlador.swift */; };
 		0D05267E273578F100481B5D /* UsuarioControlador.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D05267D273578F100481B5D /* UsuarioControlador.swift */; };
+		0D82AC97273712AB00B24942 /* CarritoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D82AC96273712AB00B24942 /* CarritoViewController.swift */; };
 		0DA134B426FD26FF00A8B809 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA134B326FD26FF00A8B809 /* AppDelegate.swift */; };
 		0DA134B626FD26FF00A8B809 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA134B526FD26FF00A8B809 /* SceneDelegate.swift */; };
 		0DA134B826FD26FF00A8B809 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA134B726FD26FF00A8B809 /* ViewController.swift */; };
@@ -108,6 +109,7 @@
 		0D052564273344C300481B5D /* Pedido.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pedido.swift; sourceTree = "<group>"; };
 		0D05258A27336A6B00481B5D /* PedidoControlador.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PedidoControlador.swift; sourceTree = "<group>"; };
 		0D05267D273578F100481B5D /* UsuarioControlador.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsuarioControlador.swift; sourceTree = "<group>"; };
+		0D82AC96273712AB00B24942 /* CarritoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarritoViewController.swift; sourceTree = "<group>"; };
 		0DA134B026FD26FF00A8B809 /* OrganicNails.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OrganicNails.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0DA134B326FD26FF00A8B809 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0DA134B526FD26FF00A8B809 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -274,6 +276,7 @@
 				6DD8A33D2735BA5700D388C4 /* TabBarViewController.swift */,
 				6DD8A3402735D74100D388C4 /* ContraOlvidadaViewController.swift */,
 				6DD8A3432735DD5E00D388C4 /* DatosFacturaViewController.swift */,
+				0D82AC96273712AB00B24942 /* CarritoViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -578,6 +581,7 @@
 				6DEB8235273553EE0037F0EA /* SignUpViewController.swift in Sources */,
 				0DDFE669270977F100EC3EA5 /* ProductosViewController.swift in Sources */,
 				0DA97DBE270C8F550021EC4C /* Curso.swift in Sources */,
+				0D82AC97273712AB00B24942 /* CarritoViewController.swift in Sources */,
 				0DA134B826FD26FF00A8B809 /* ViewController.swift in Sources */,
 				A563F7D4270A215400DC23DD /* ChatViewController.swift in Sources */,
 				0DA134B426FD26FF00A8B809 /* AppDelegate.swift in Sources */,

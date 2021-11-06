@@ -330,14 +330,11 @@
         <!--View Carrito-->
         <scene sceneID="4h4-FB-fn2">
             <objects>
-                <viewController id="LdT-bX-l0A" userLabel="View Carrito" sceneMemberID="viewController">
+                <viewController id="LdT-bX-l0A" userLabel="View Carrito" customClass="CarritoViewController" customModule="OrganicNails" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CBD-qs-P7z">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Carrito" translatesAutoresizingMaskIntoConstraints="NO" id="BsC-8W-zLn">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aDL-xK-y1c">
                                 <rect key="frame" x="106" y="696" width="202" height="38"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -345,23 +342,48 @@
                                     <segue destination="JgR-au-bkR" kind="show" id="4P1-yb-9E8"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="87x87.png" translatesAutoresizingMaskIntoConstraints="NO" id="hIP-P9-fKa">
+                                <rect key="frame" x="135" y="122" width="120" height="94"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PFH-hN-cBS">
+                                <rect key="frame" x="20" y="249" width="374" height="485"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="zelda" textLabel="LII-0a-kB5" style="IBUITableViewCellStyleDefault" id="qaO-NL-8rG">
+                                        <rect key="frame" x="0.0" y="28" width="374" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qaO-NL-8rG" id="81g-02-KqZ">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="LII-0a-kB5">
+                                                    <rect key="frame" x="20" y="0.0" width="334" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="qGq-Oo-Feu"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="qGq-Oo-Feu" firstAttribute="bottom" secondItem="BsC-8W-zLn" secondAttribute="bottom" id="39P-Eh-Ote"/>
-                            <constraint firstItem="qGq-Oo-Feu" firstAttribute="trailing" secondItem="BsC-8W-zLn" secondAttribute="trailing" id="4TW-H2-MXr"/>
-                            <constraint firstItem="BsC-8W-zLn" firstAttribute="leading" secondItem="qGq-Oo-Feu" secondAttribute="leading" id="pbt-3t-qaP"/>
-                            <constraint firstItem="BsC-8W-zLn" firstAttribute="top" secondItem="qGq-Oo-Feu" secondAttribute="top" id="xsw-Lh-W1Q"/>
-                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="cart" catalog="system" id="Wx1-Ls-5ZC"/>
                     <navigationItem key="navigationItem" title="Carrito" id="eVt-ng-KyR"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="carritoTableView" destination="PFH-hN-cBS" id="DNY-vY-wsg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Za-yr-zru" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-697.10144927536237" y="-1229.4642857142856"/>
+            <point key="canvasLocation" x="-788.40579710144937" y="-1038.6160714285713"/>
         </scene>
         <!--Dirección envío-->
         <scene sceneID="uHD-1U-JeZ">
@@ -2947,7 +2969,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ea4-jn-ghr"/>
         <segue reference="hOV-1Z-Z3S"/>
         <segue reference="gG5-Jb-Lz5"/>
         <segue reference="QG1-5D-06r"/>
@@ -2979,7 +3000,6 @@
         <image name="AgregarProd1" width="91.5" height="212"/>
         <image name="AgregarProd2" width="94.5" height="214"/>
         <image name="AgregarPromo" width="100" height="217.5"/>
-        <image name="Carrito" width="189" height="412"/>
         <image name="CatalogoAdmin" width="102.5" height="220"/>
         <image name="ChatVivo" width="191" height="413"/>
         <image name="CursosAdmin" width="94.5" height="201.5"/>

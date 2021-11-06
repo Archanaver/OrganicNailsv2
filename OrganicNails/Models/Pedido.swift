@@ -116,7 +116,13 @@ struct Pedido: Decodable{
         self.cursos = cursos
         self.id = ""
     }
-
+    
+    func getDateOnly(fromTimeStamp timestamp: TimeInterval) -> String {
+      let dayTimePeriodFormatter = DateFormatter()
+      dayTimePeriodFormatter.timeZone = TimeZone.current
+      dayTimePeriodFormatter.dateFormat = "MMMM dd, yyyy - h:mm:ss a z"
+      return dayTimePeriodFormatter.string(from: Date(timeIntervalSince1970: timestamp))
+    }
     
     init(d:DocumentSnapshot){
             self.id = d.documentID
@@ -131,5 +137,7 @@ struct Pedido: Decodable{
     
 
 }
+
+
 
 typealias Pedidos = [Pedido]
