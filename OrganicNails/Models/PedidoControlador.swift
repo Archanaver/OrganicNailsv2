@@ -157,6 +157,7 @@ class PedidoControlador{
     
     
     
+    
     func fetchPedidos(completion: @escaping (Result<Pedidos, Error>)->Void){
             var lista_pedidos = [Pedido]()
             db.collection("pedidos").getDocuments(){ (querySnapshot, err) in
@@ -165,7 +166,8 @@ class PedidoControlador{
                     completion(.failure(err))
                 }else{
                     for document in querySnapshot!.documents{
-                        let i = Pedido(d: document)
+                        var i = Pedido(d: document)
+                        
                         lista_pedidos.append(i)
                     }
                     completion(.success(lista_pedidos))

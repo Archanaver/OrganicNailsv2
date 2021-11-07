@@ -5,16 +5,8 @@
 //  Created by Archana Verma on 10/3/21.
 //
 import UIKit
-import Firebase
 
 class CursosViewController: UIViewController, UISearchResultsUpdating {
-    
-    var opcion: String = ""
-    var filtradoTipo:Int = 0
-    var categoria:String = ""
-    
-    let db = Firestore.firestore()
-    
     //let productos = ["a", "b", "c"]
     var cursos = [Curso]()
     var cursoControlador = CursoControlador()
@@ -23,8 +15,7 @@ class CursosViewController: UIViewController, UISearchResultsUpdating {
     let searchController = UISearchController(searchResultsController: nil)
     
     @IBOutlet var cursosTableView: UITableView!
-    
-    
+   
     func updateSearchResults(for searchController: UISearchController){
         if searchController.searchBar.text! == "" {
             datosFiltrados = cursos
@@ -41,7 +32,6 @@ class CursosViewController: UIViewController, UISearchResultsUpdating {
         super.viewDidLoad()
         cursosTableView.delegate = self
         cursosTableView.dataSource = self
-        
 
         // Do any additional setup after loading the view.
         cursoControlador.fetchCursos{ (resultado) in
@@ -59,10 +49,7 @@ class CursosViewController: UIViewController, UISearchResultsUpdating {
    
     func updateGUI(listaCursos: Cursos){
         DispatchQueue.main.async {
-            //self.cursos = listaCursos
-            if self.filtradoTipo == 0{
-                self.filtrarPorCategoria(listaCursos: listaCursos)
-            }
+            self.cursos = listaCursos
             self.datosFiltrados = listaCursos
             self.cursosTableView.reloadData()
         }
@@ -76,19 +63,9 @@ class CursosViewController: UIViewController, UISearchResultsUpdating {
         }
        
     }
-    
-    func filtrarPorCategoria(listaCursos: Cursos){
-        for c in listaCursos{
-            if c.servicio == self.opcion{
-                self.cursos.append(c)
-            }
-        }
-        
-    }
 
    
     // MARK: - Navigation
-
     func numberOfSections(in cursosTableView: UITableView) -> Int{
         return 1
     }
