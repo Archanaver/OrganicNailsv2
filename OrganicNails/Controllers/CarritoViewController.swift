@@ -9,6 +9,10 @@ import UIKit
 import Firebase
 
 class CarritoViewController: UIViewController, UISearchResultsUpdating {
+
+    var opcion: String = ""
+    var filtradoTipo:Int = 0
+    var categoria:String = ""
     
     let db = Firestore.firestore()
     
@@ -32,7 +36,7 @@ class CarritoViewController: UIViewController, UISearchResultsUpdating {
             datosFiltrados = carritos
         }else{
             datosFiltrados = carritos.filter{
-                let s:String = "\($0.fecha)"
+                let s:String = $0.fecha
                 return(s.lowercased().contains(searchController.searchBar.text!.lowercased()))}
 
         }
@@ -60,7 +64,10 @@ class CarritoViewController: UIViewController, UISearchResultsUpdating {
     
     func updateGUI(listaPedidos: Pedidos){
         DispatchQueue.main.async {
-            self.carritos = listaPedidos
+            //self.cursos = listaCursos
+            if self.filtradoTipo == 0{
+                self.filtrarPorFecha(listaPedidos: listaPedidos)
+            }
             self.datosFiltrados = listaPedidos
             self.carritoTableView.reloadData()
         }
@@ -74,7 +81,15 @@ class CarritoViewController: UIViewController, UISearchResultsUpdating {
         }
        
     }
-
+    func filtrarPorFecha(listaPedidos: Pedidos){
+        for c in listaPedidos{
+            if c.fecha == self.opcion{
+                self.carritos.append(c)
+            }
+        }
+        
+    }
+    
     func numberOfSections(in carritoTableView: UITableView) -> Int{
         return 1
     }
@@ -107,7 +122,7 @@ extension CarritoViewController: UITableViewDataSource{
         // Configure the cell...
         print(datosFiltrados[indexPath.row])
         cell.textLabel?.text =
-            "\(datosFiltrados[indexPath.row].fecha)"
+            datosFiltrados[indexPath.row].fecha
 
         return cell
     }

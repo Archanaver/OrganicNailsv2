@@ -86,7 +86,7 @@ struct Pedido: Decodable{
     var cliente_id: String
     var direccion:String
     var estatus: String
-    var fecha: Date
+    var fecha: String
     var id:String
     var productos:[ProductoP]
     var cursos:[CursoP]
@@ -111,7 +111,7 @@ struct Pedido: Decodable{
         self.cliente_id = cliente_id
         self.direccion = direccion
         self.estatus = estatus
-        self.fecha = Date()
+        self.fecha = ""
         self.productos = productos
         self.cursos = cursos
         self.id = ""
@@ -130,7 +130,7 @@ struct Pedido: Decodable{
             self.cliente_id = d.get("cliente_id") as? String ?? ""
             self.direccion = d.get("direccion") as? String ?? ""
             self.estatus = d.get("estatus") as? String ?? ""
-            self.fecha = d.get("fecha") as? Date ?? Date()
+            self.fecha = d.get("fecha") as? String ?? ""
             self.productos = d.get("productos") as? [ProductoP] ?? []
             self.cursos = d.get("cursos") as? [CursoP] ?? []
         }
