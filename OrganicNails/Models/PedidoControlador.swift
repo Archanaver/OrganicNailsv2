@@ -20,7 +20,7 @@ class PedidoControlador{
             "activo": nuevoPedido.activo,
             "direccion": nuevoPedido.direccion,
             "estatus": nuevoPedido.estatus,
-            "fecha": FieldValue.serverTimestamp(),
+            "fecha": nuevoPedido.fecha,
             "cliente_id": nuevoPedido.cliente_id,
             "id": nuevoPedido.id
         ]){ err in
@@ -61,7 +61,7 @@ class PedidoControlador{
             "activo": nuevoPedido.activo,
             "direccion": nuevoPedido.direccion,
             "estatus": nuevoPedido.estatus,
-            "fecha": FieldValue.serverTimestamp(),
+            "fecha": nuevoPedido.fecha,
             "cliente_id": nuevoPedido.cliente_id,
             "id": nuevoPedido.id
         ]){ err in

@@ -38,6 +38,17 @@ class CarritoViewController: UIViewController, UISearchResultsUpdating {
         }
         self.carritoTableView.reloadData()
     }
+  override func viewDidAppear(_ animated: Bool) {
+    
+        carritoControlador.fetchPedidos{ (resultado) in
+            switch resultado{
+            case .success(let listaPedidos):self.updateGUI(listaPedidos: listaPedidos)
+            case .failure(let error):self.displayError(e: error)
+            }
+            
+        }
+
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
