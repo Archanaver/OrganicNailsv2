@@ -204,7 +204,7 @@ class DetalleProductoViewController: UIViewController, UIPickerViewDelegate, UIP
                       (resultado) in
                       switch resultado{
                       case .success(let exito):direccionUsuario=self.getDireccion(exito: exito)
-                        
+            var datosUsuario =  direccionUsuario.split(separator: "|")
                        
                     print("direccion usuario"+direccionUsuario)
                         var nuevoProducto = ProductoP(cantidad_producto: self.counter, color: self.tempColor, descripcion_producto: self.descripcion.text!, descuento_producto:self.tempDescuento, id_producto: self.id.text!, nombre_producto: self.nombreProducto.text!, precio_producto: self.tempPrecio, presentacion: self.tempPresentacion, tipo_producto: self.tipo.text!, uso: self.uso.text!)
@@ -216,7 +216,7 @@ class DetalleProductoViewController: UIViewController, UIPickerViewDelegate, UIP
 
                         let datetime = formatter.string(from: now)
                         
-                        var nuevoPedido = Pedido(activo:true, estatus:"Pendiente",productos:[nuevoProducto], direccion: direccionUsuario, cursos:[], cliente_id:userID, fecha:datetime)
+                        var nuevoPedido = Pedido(activo:true, estatus:"Pendiente",productos:[nuevoProducto], direccion: String(datosUsuario[0]), cursos:[], cliente_id:String(datosUsuario[1]), fecha:datetime)
                         
                         // checar si hay carrito activo
                         var pedidoId:String = ""
