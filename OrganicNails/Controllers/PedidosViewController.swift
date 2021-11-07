@@ -67,7 +67,7 @@ class PedidosViewController: UIViewController {
         case .failure(let error):self.displayError(error, title: "No se pudo acceder a los productos")
           }
         }
- */
+ */ 
         pedidosControlador.fetchPredidosUsuario(usuario: "2UwwTsUpR6ZRLMfgkopJlZoj3NQ2"){ (result) in switch result {
         case .success(let pedidos):self.updateUI(with: pedidos)
         case .failure(let error):self.displayError(error, title: "No se pudo acceder a los productos")
