@@ -71,13 +71,17 @@ class ClienteControlador{
     }
     
     
-    func getClienteObj(uid:String, completion: @escaping (Result<Cliente, Error>)->Void){
+   /* func getClienteObj(uid:String, completion: @escaping (Result<Cliente, Error>)->Void){
+        var cliente = Cliente.self
             let docRef = db.collection("clientes").document(uid)
         docRef.getDocument{ (document, error) in
+            let result = Result{
+                try document?.data(as: cliente)
+            }
             
         }
             
-        }
+        }*/
     
     
     func fetchPedidos(completion: @escaping (Result<Pedidos, Error>)->Void){

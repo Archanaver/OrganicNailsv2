@@ -40,3 +40,5 @@ struct Cliente: Decodable{
 }
 
 typealias Clientes = [Cliente]
+
+typealias Client = Cliente
