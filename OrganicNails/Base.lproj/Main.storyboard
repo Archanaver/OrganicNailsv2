@@ -232,7 +232,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DetalleDireccion" translatesAutoresizingMaskIntoConstraints="NO" id="Gdv-sV-3VJ">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i6T-Z3-EoU" userLabel="Confirmar">
                                 <rect key="frame" x="91" y="711" width="240" height="67"/>
@@ -304,8 +304,9 @@
                                     <segue destination="vyV-4l-rcu" kind="show" id="kj6-q1-bto"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nombre completo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zLa-sO-GY2">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Nombre completo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zLa-sO-GY2">
                                 <rect key="frame" x="131" y="160" width="137" height="20.5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -313,10 +314,6 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Nyh-74-sJm"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="zLa-sO-GY2" firstAttribute="centerX" secondItem="Yi6-LX-tvf" secondAttribute="centerX" constant="-7.5" id="hIa-b1-lJH"/>
-                            <constraint firstItem="zLa-sO-GY2" firstAttribute="centerY" secondItem="Yi6-LX-tvf" secondAttribute="centerY" constant="-277.75" id="x2w-kZ-8N0"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Editar perfil" id="Rha-tB-Pi8"/>
                     <connections>
@@ -1866,11 +1863,11 @@
             <objects>
                 <viewController id="mES-C7-1cf" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jD5-tD-OnX">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="EliminarCuenta" translatesAutoresizingMaskIntoConstraints="NO" id="MY6-dh-X5U">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VPb-R1-sKP" userLabel="Eliminar">
                                 <rect key="frame" x="250" y="483" width="98" height="32"/>
@@ -3058,7 +3055,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="vye-c0-AHW"/>
+        <segue reference="hOV-1Z-Z3S"/>
         <segue reference="dDz-ri-hay"/>
         <segue reference="EfF-OB-h45"/>
         <segue reference="jfH-px-Uya"/>
@@ -3077,8 +3074,8 @@
         <segue reference="ZF7-Mw-yz9"/>
         <segue reference="pNY-NS-Dvi"/>
         <segue reference="3rr-iM-Pvk"/>
-        <segue reference="bsv-5n-iM6"/>
-        <segue reference="Woh-c1-EwK"/>
+        <segue reference="j5V-Av-PZw"/>
+        <segue reference="zlx-5y-85c"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="180x180.png" width="135" height="135"/>

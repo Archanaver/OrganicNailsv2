@@ -55,15 +55,8 @@ class LogInViewController: UIViewController, UITextFieldDelegate    {
       
       return nil
     }
-      
-
-    @IBAction func contraOlvidada(_ sender: Any) {
-    }
     
     
-    
-    
-
         
     @IBAction func iniciandoSesion(_ sender: Any) {
         let error = validateFields()
