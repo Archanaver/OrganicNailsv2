@@ -681,7 +681,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Fg-BP-Cbc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="9242.0289855072479" y="-1402.2321428571429"/>
+            <point key="canvasLocation" x="5446" y="-1617"/>
         </scene>
         <!--Detalle Producto-->
         <scene sceneID="0bR-4j-4Yj">
@@ -787,7 +787,7 @@
                                 </state>
                                 <connections>
                                     <action selector="insertarPedidoWithSender:" destination="Ee0-tJ-k81" eventType="touchUpInside" id="w8I-sm-xj8"/>
-                                    <segue destination="QkZ-tZ-dsh" kind="show" id="GWZ-CS-NRG"/>
+                                    <segue destination="pCn-Gc-Brw" kind="show" id="YaQ-uL-8fX"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rxF-Td-zba">
@@ -898,7 +898,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3FS-2r-aYb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="10294.202898550726" y="-1402.2321428571429"/>
+            <point key="canvasLocation" x="6499" y="-1617"/>
         </scene>
         <!--Detalle Curso Scene-->
         <scene sceneID="Ojm-zC-FGr">
@@ -1008,7 +1008,7 @@
                                 </state>
                                 <connections>
                                     <action selector="agregarCarritoWithSender:" destination="93x-lp-Ij5" eventType="touchUpInside" id="lBw-aZ-HnB"/>
-                                    <segue destination="yC9-Gx-TrJ" kind="show" id="0NA-cS-9Im"/>
+                                    <segue destination="FRa-7D-LGS" kind="show" id="94e-CW-Fcp"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1027,7 +1027,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g8g-Ib-go3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="9173.9130434782619" y="-627.45535714285711"/>
+            <point key="canvasLocation" x="5378" y="-842"/>
         </scene>
         <!--Menú-->
         <scene sceneID="hGX-oc-yQc">
@@ -1069,7 +1069,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RE8-54-dHy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8165.2173913043489" y="-1402.2321428571429"/>
+            <point key="canvasLocation" x="4370" y="-1617"/>
         </scene>
         <!--Usuarios-->
         <scene sceneID="J9N-Vh-Qam">
@@ -2975,7 +2975,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b4A-Fe-TE0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8165.2173913043489" y="-627.45535714285711"/>
+            <point key="canvasLocation" x="4370" y="-842"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="gEe-Uf-qFu">
@@ -2995,7 +2995,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Al-d5-sv7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7255.0724637681169" y="-1402.2321428571429"/>
+            <point key="canvasLocation" x="3459" y="-1617"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="vG9-DU-zgJ">
@@ -3015,7 +3015,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4P1-nZ-xB1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7255.0724637681169" y="-627.45535714285711"/>
+            <point key="canvasLocation" x="3459" y="-842"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Zst-sY-nbf">
@@ -3059,8 +3059,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="vye-c0-AHW"/>
-        <segue reference="gG5-Jb-Lz5"/>
-        <segue reference="QG1-5D-06r"/>
+        <segue reference="dDz-ri-hay"/>
         <segue reference="EfF-OB-h45"/>
         <segue reference="jfH-px-Uya"/>
         <segue reference="rIT-xC-oTU"/>
@@ -3075,7 +3074,8 @@
         <segue reference="vuT-2p-Ib1"/>
         <segue reference="YRf-Qf-Hvt"/>
         <segue reference="yP4-VP-1Vr"/>
-        <segue reference="JTq-88-3sj"/>
+        <segue reference="ZF7-Mw-yz9"/>
+        <segue reference="pNY-NS-Dvi"/>
         <segue reference="3rr-iM-Pvk"/>
         <segue reference="bsv-5n-iM6"/>
         <segue reference="Woh-c1-EwK"/>
