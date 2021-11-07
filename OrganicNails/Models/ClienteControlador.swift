@@ -69,6 +69,34 @@ class ClienteControlador{
         }
         
     }
+    
+    
+    func getClienteObj(uid:String, completion: @escaping (Result<Cliente, Error>)->Void){
+            let docRef = db.collection("clientes").document(uid)
+        docRef.getDocument{ (document, error) in
+            
+        }
+            
+        }
+    
+    
+    func fetchPedidos(completion: @escaping (Result<Pedidos, Error>)->Void){
+            var lista_pedidos = [Pedido]()
+            db.collection("pedidos").getDocuments(){ (querySnapshot, err) in
+                if let err = err{
+                    print("error getting docuements: \(err)")
+                    completion(.failure(err))
+                }else{
+                    for document in querySnapshot!.documents{
+                        let i = Pedido(d: document)
+                        lista_pedidos.append(i)
+                    }
+                    completion(.success(lista_pedidos))
+                }
+                
+            }
+            
+        }
 }
 
 

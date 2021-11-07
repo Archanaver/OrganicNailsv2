@@ -161,7 +161,7 @@ class PedidoControlador{
             var lista_pedidos = [Pedido]()
             db.collection("pedidos").getDocuments(){ (querySnapshot, err) in
                 if let err = err{
-                    print("error getting docuemnts: \(err)")
+                    print("error getting docuements: \(err)")
                     completion(.failure(err))
                 }else{
                     for document in querySnapshot!.documents{
