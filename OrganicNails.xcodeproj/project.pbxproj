@@ -58,6 +58,8 @@
 		0DDFE6A2270A5DA200EC3EA5 /* EliminarCuentaImg.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DDFE6A1270A5DA200EC3EA5 /* EliminarCuentaImg.png */; };
 		0DDFE6AD270A866700EC3EA5 /* AcrilicoImg.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DDFE6AC270A866600EC3EA5 /* AcrilicoImg.png */; };
 		4A8067BD407700B51A83B87D /* Pods_OrganicNails.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFA8A4082A86E18A9A0952EA /* Pods_OrganicNails.framework */; };
+		4A87AB59273769F800A55EDF /* PedidosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A87AB58273769F800A55EDF /* PedidosViewController.swift */; };
+		4A87AB5C27379CF900A55EDF /* PedidosDetalleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A87AB5B27379CF900A55EDF /* PedidosDetalleViewController.swift */; };
 		4AAE68B3270D229500991D44 /* usuarios.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AAE68B2270D229500991D44 /* usuarios.png */; };
 		4AAE68B6270D22E100991D44 /* agregarEmpleado.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AAE68B5270D22E100991D44 /* agregarEmpleado.png */; };
 		4AAE68B9270D22F800991D44 /* cursosCliente.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AAE68B8270D22F800991D44 /* cursosCliente.png */; };
@@ -158,6 +160,8 @@
 		0DDFE69B270A58D100EC3EA5 /* ContraseniaOlvidadaImg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ContraseniaOlvidadaImg.png; sourceTree = "<group>"; };
 		0DDFE6A1270A5DA200EC3EA5 /* EliminarCuentaImg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EliminarCuentaImg.png; sourceTree = "<group>"; };
 		0DDFE6AC270A866600EC3EA5 /* AcrilicoImg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AcrilicoImg.png; sourceTree = "<group>"; };
+		4A87AB58273769F800A55EDF /* PedidosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PedidosViewController.swift; sourceTree = "<group>"; };
+		4A87AB5B27379CF900A55EDF /* PedidosDetalleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PedidosDetalleViewController.swift; sourceTree = "<group>"; };
 		4AAE68B2270D229500991D44 /* usuarios.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = usuarios.png; sourceTree = "<group>"; };
 		4AAE68B5270D22E100991D44 /* agregarEmpleado.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = agregarEmpleado.png; sourceTree = "<group>"; };
 		4AAE68B8270D22F800991D44 /* cursosCliente.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cursosCliente.png; sourceTree = "<group>"; };
@@ -277,6 +281,8 @@
 				6DD8A3402735D74100D388C4 /* ContraOlvidadaViewController.swift */,
 				6DD8A3432735DD5E00D388C4 /* DatosFacturaViewController.swift */,
 				0D82AC96273712AB00B24942 /* CarritoViewController.swift */,
+				4A87AB58273769F800A55EDF /* PedidosViewController.swift */,
+				4A87AB5B27379CF900A55EDF /* PedidosDetalleViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -591,7 +597,9 @@
 				0D05267E273578F100481B5D /* UsuarioControlador.swift in Sources */,
 				A563F7CE270A0E1300DC23DD /* ConfirmarPedidoViewController.swift in Sources */,
 				0D05258B27336A6B00481B5D /* PedidoControlador.swift in Sources */,
+				4A87AB5C27379CF900A55EDF /* PedidosDetalleViewController.swift in Sources */,
 				6DEB82282735353D0037F0EA /* LogInControlador.swift in Sources */,
+				4A87AB59273769F800A55EDF /* PedidosViewController.swift in Sources */,
 				6DD8A33E2735BA5700D388C4 /* TabBarViewController.swift in Sources */,
 				0DDFE6712709F74600EC3EA5 /* ProductoControlador.swift in Sources */,
 				A563F7D1270A10BF00DC23DD /* EvaluaServicioViewController.swift in Sources */,

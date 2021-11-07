@@ -175,5 +175,40 @@ class PedidoControlador{
             
         }
     
+    //Función para regresar un arreglo de pedidos de un usuario
+    func fetchPredidosUsuario(usuario: String, completion: @escaping (Result <Pedidos, Error>) -> Void){
+        var pedidos = [Pedido]()
+        
+        db.collection("pedidos").whereField("cliente_id", isEqualTo:usuario).getDocuments() { (querySnapshot, err) in if let err = err {
+            print("Error getting documents: \(err)")
+            completion(.failure(err))
+        } else {
+            for document in querySnapshot!.documents {
+                var p = Pedido(d: document)
+                pedidos.append(p)
+            }
+            completion(.success(pedidos))
+            }
+        }
+    }
+    
+    //Hacemos una lista de pedidos con el estado que solicita
+    func pedidosEstadoSelect(listaPedidos: Pedidos, estado: String) -> Pedidos{
+        
+        //La variable que se va a regesar
+        var pedidosEstado = [Pedido]()
+        
+        for i in listaPedidos {
+            if(i.estatus == estado) {
+                pedidosEstado.append(i)
+            }
+        }
+        
+        //Ordena la lista por fecha
+        var sortedPedidos = pedidosEstado.sorted(by: { $0.fecha > $1.fecha })
+            
+        return sortedPedidos
+    }
+    
 
 }
