@@ -216,7 +216,7 @@ class DetalleProductoViewController: UIViewController, UIPickerViewDelegate, UIP
 
                         let datetime = formatter.string(from: now)
                         
-                        var nuevoPedido = Pedido(activo:true, estatus:"Pendiente",productos:[nuevoProducto], direccion: String(datosUsuario[0]), cursos:[], cliente_id:String(datosUsuario[1]), fecha:datetime)
+                        var nuevoPedido = Pedido(activo:true, estatus:"Pendiente",productos:[nuevoProducto], direccion: String(datosUsuario[0]), cursos:[], cliente_id:String(datosUsuario[1]), fecha:datetime, uid: userID)
                         
                         // checar si hay carrito activo
                         var pedidoId:String = ""

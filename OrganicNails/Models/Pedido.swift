@@ -87,7 +87,7 @@ struct Pedido: Decodable{
     var direccion:String
     var estatus: String
     var fecha: String
-    var id:String
+    var uid:String
     var productos:[ProductoP]
     var cursos:[CursoP]
     
@@ -101,12 +101,12 @@ struct Pedido: Decodable{
         case fecha
         case productos
         case cursos
-        case id
+        case uid
         
     }
     
     
-    init(activo:Bool, estatus:String, productos:[ProductoP], direccion:String, cursos: [CursoP], cliente_id:String, fecha:String ){
+    init(activo:Bool, estatus:String, productos:[ProductoP], direccion:String, cursos: [CursoP], cliente_id:String, fecha:String, uid:String ){
         self.activo = activo
         self.cliente_id = cliente_id
         self.direccion = direccion
@@ -114,18 +114,11 @@ struct Pedido: Decodable{
         self.fecha = fecha
         self.productos = productos
         self.cursos = cursos
-        self.id = ""
-    }
-    
-    func getDateOnly(fromTimeStamp timestamp: TimeInterval) -> String {
-      let dayTimePeriodFormatter = DateFormatter()
-      dayTimePeriodFormatter.timeZone = TimeZone.current
-      dayTimePeriodFormatter.dateFormat = "MMMM dd, yyyy - h:mm:ss a z"
-      return dayTimePeriodFormatter.string(from: Date(timeIntervalSince1970: timestamp))
+        self.uid = uid
     }
     
     init(d:DocumentSnapshot){
-            self.id = d.documentID
+            self.uid = d.documentID
             self.activo = d.get("activo") as? Bool ?? false
             self.cliente_id = d.get("cliente_id") as? String ?? ""
             self.direccion = d.get("direccion") as? String ?? ""
@@ -133,6 +126,7 @@ struct Pedido: Decodable{
             self.fecha = d.get("fecha") as? String ?? ""
             self.productos = d.get("productos") as? [ProductoP] ?? []
             self.cursos = d.get("cursos") as? [CursoP] ?? []
+            self.uid = d.get("uid") as? String ?? ""
         }
     
 

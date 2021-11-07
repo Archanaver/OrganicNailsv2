@@ -51,7 +51,7 @@ class DetalleCursoViewController: UIViewController {
                     formatter.timeStyle = .full
 
                     let datetime = formatter.string(from: now)
-                    var nuevoPedido = Pedido(activo:true, estatus:"Pendiente",productos:[], direccion: String(datosUsuario[0]), cursos:[nuevoCurso],cliente_id: String(datosUsuario[1]), fecha: datetime)
+                    var nuevoPedido = Pedido(activo:true, estatus:"Pendiente",productos:[], direccion: String(datosUsuario[0]), cursos:[nuevoCurso],cliente_id: String(datosUsuario[1]), fecha: datetime, uid: userID)
                     // checar si hay carrito activo
                     var pedidoId:String = ""
                     print("el id antes",pedidoId)

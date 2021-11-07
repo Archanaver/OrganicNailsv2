@@ -22,7 +22,7 @@ class PedidoControlador{
             "estatus": nuevoPedido.estatus,
             "fecha": nuevoPedido.fecha,
             "cliente_id": nuevoPedido.cliente_id,
-            "id": nuevoPedido.id
+            "uid": nuevoPedido.uid
         ]){ err in
             if let err = err{
                 print("Error al añadir documento: \(err)")
@@ -63,7 +63,7 @@ class PedidoControlador{
             "estatus": nuevoPedido.estatus,
             "fecha": nuevoPedido.fecha,
             "cliente_id": nuevoPedido.cliente_id,
-            "id": nuevoPedido.id
+            "uid": nuevoPedido.uid
         ]){ err in
             if let err = err{
                 print("Error al añadir documento: \(err)")

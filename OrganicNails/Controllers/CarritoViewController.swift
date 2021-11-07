@@ -120,6 +120,8 @@ extension CarritoViewController: UITableViewDataSource{
         print(datosFiltrados[indexPath.row])
         cell.textLabel?.text =
             datosFiltrados[indexPath.row].fecha
+    
+        
 
         return cell
     }
