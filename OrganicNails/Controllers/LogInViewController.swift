@@ -9,6 +9,9 @@ import UIKit
 import Firebase
 
 class LogInViewController: UIViewController, UITextFieldDelegate    {
+    
+    //Variable para el usuario en curso
+    var usuarioCurso:String = ""
 
     @IBOutlet weak var correoTextField: UITextField!
     
@@ -56,17 +59,11 @@ class LogInViewController: UIViewController, UITextFieldDelegate    {
 
     @IBAction func contraOlvidada(_ sender: Any) {
     }
-    /*
-    // MARK: - Navigation
+    
+    
+    
+    
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
-    
         
     @IBAction func iniciandoSesion(_ sender: Any) {
         let error = validateFields()
@@ -87,6 +84,14 @@ class LogInViewController: UIViewController, UITextFieldDelegate    {
                     
                 }
                 else{
+                    let user = Auth.auth().currentUser
+                    self.usuarioCurso = user?.uid ?? ""
+                    func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+                        let siguiente = segue.destination as? PedidosViewController
+                        print("USUARIOINICIOSESION", self.usuarioCurso)
+                        siguiente?.usuario = self.usuarioCurso
+                        
+                    }
                     let siguienteVista = self.storyboard!.instantiateViewController(withIdentifier: "tabBar") as! UITabBarController
                     siguienteVista.modalPresentationStyle = .overFullScreen
                     self.present(siguienteVista, animated: true, completion: nil)
@@ -95,6 +100,17 @@ class LogInViewController: UIViewController, UITextFieldDelegate    {
         }
     }
     
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let siguiente = segue.destination as? ViewController
+        print("USUARIOINICIOSESION", usuarioCurso)
+        siguiente?.usuario = usuarioCurso
+        
+    }
+    */
 
 }
 

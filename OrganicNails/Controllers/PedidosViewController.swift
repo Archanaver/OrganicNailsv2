@@ -1,28 +1,31 @@
 //
-//  PromocionesInicioViewController.swift
+//  PedidosViewController.swift
 //  OrganicNails
 //
-//  Created by user189966 on 11/5/21.
+//  Created by user189966 on 11/6/21.
 //
 
 import UIKit
 
-class PromocionesInicioViewController: UIViewController {
+class PedidosViewController: UIViewController {
+    
+    //Variable del usuario
+    var usuario = ""
 
     //Instanciamos la clase
-    var productosControlador = ProductoControlador()
+    var pedidosControlador = PedidoControlador()
     
     //Creamos las variables
-    var datos = [Producto]()
-    var promos = [Producto]()
-    @IBOutlet weak var producto: UITextField!
+    var datos = [Pedido]()
+    var pedidosEstado = [Pedido]()
+    @IBOutlet weak var estado: UITextField!
     @IBOutlet weak var tableView: UITableView!
     
     //Variables para los selects
-    let productosOp = ["Acrílicos", "Kits", "Glitters", "Líquidos", "Consumibles", "Herramientas", "Tratamientos", "Accesorios", "Arte", "Todos"]
+    let estados = ["Entregado", "Pendiente"]
     
     //Creamos el pickerview
-    var productoPickerView = UIPickerView()
+    var estadoPickerView = UIPickerView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,39 +33,55 @@ class PromocionesInicioViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
-        productoPickerView.delegate = self
-        productoPickerView.dataSource = self
+        estadoPickerView.delegate = self
+        estadoPickerView.dataSource = self
         
         //Damos las vistas a cada field
-        producto.inputView = productoPickerView
+        estado.inputView = estadoPickerView
         
         //Obtenemos tag
-        productoPickerView.tag = 1
+        estadoPickerView.tag = 1
         
+        print("USUARIO",usuario)
         
-        productosControlador.fetchProductosTipo(tipo: producto.text!){ (result) in switch result {
-        case .success(let productos):self.updateUI(with: productos)
+        pedidosControlador.fetchPredidosUsuario(usuario: "2UwwTsUpR6ZRLMfgkopJlZoj3NQ2"){ (result) in switch result {
+        case .success(let pedidos):self.updateUI(with: pedidos)
         case .failure(let error):self.displayError(error, title: "No se pudo acceder a los productos")
           }
         }
+        
+        /*
+        pedidosControlador.fetchPredidosUsuario(usuario: usuario){ (result) in switch result {
+        case .success(let pedidos):self.updateUI(with: pedidos)
+        case .failure(let error):self.displayError(error, title: "No se pudo acceder a los productos")
+          }
+        }
+ */
 
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        productosControlador.fetchProductosTipo(tipo: producto.text!){ (result) in switch result {
-        case .success(let productos):self.updateUI(with: productos)
+        /*
+        pedidosControlador.fetchPredidosUsuario(usuario: usuario){ (result) in switch result {
+        case .success(let pedidos):self.updateUI(with: pedidos)
+        case .failure(let error):self.displayError(error, title: "No se pudo acceder a los productos")
+          }
+        }
+ */
+        pedidosControlador.fetchPredidosUsuario(usuario: "2UwwTsUpR6ZRLMfgkopJlZoj3NQ2"){ (result) in switch result {
+        case .success(let pedidos):self.updateUI(with: pedidos)
         case .failure(let error):self.displayError(error, title: "No se pudo acceder a los productos")
           }
         }
     }
     
     //Función de update
-    func updateUI(with productos:Productos) {
+    func updateUI(with productos:Pedidos) {
         DispatchQueue.main.async {
             self.datos = productos
             
             //Obtenemos las promociones de todos los productos de un tipo
-            self.promos = self.productosControlador.productosPromo(listaProductos: self.datos)
+            self.pedidosEstado = self.pedidosControlador.pedidosEstadoSelect(listaPedidos: self.datos, estado: self.estado.text!)
             
             self.tableView.reloadData()
         }
@@ -83,38 +102,40 @@ class PromocionesInicioViewController: UIViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-         let siguiente = segue.destination as! PromocionesDetalleViewController
+        
+         let siguiente = segue.destination as! PedidosDetalleViewController
          let indice =  self.tableView.indexPathForSelectedRow?.row
-         siguiente.producto = promos[indice!]
+         siguiente.pedido = pedidosEstado[indice!]
+ 
     }
     
 
 }
 
-extension PromocionesInicioViewController: UITableViewDelegate, UITableViewDataSource {
+extension PedidosViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return promos.count
+        return pedidosEstado.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "productoCell", for: indexPath)
-        cell.textLabel?.text = promos[indexPath.row].nombre
+        let cell = tableView.dequeueReusableCell(withIdentifier: "pedidoCell", for: indexPath)
+        cell.textLabel?.text = String(pedidosEstado[indexPath.row].fecha)
         return cell
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "PROMOCIONES"
+        return "PEDIDOS"
     }
     
     
 }
 
-extension PromocionesInicioViewController: UIPickerViewDataSource, UIPickerViewDelegate {
+extension PedidosViewController: UIPickerViewDataSource, UIPickerViewDelegate {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -122,7 +143,7 @@ extension PromocionesInicioViewController: UIPickerViewDataSource, UIPickerViewD
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         switch pickerView.tag {
         case 1:
-            return productosOp.count
+            return estados.count
         default:
             return 1
         }
@@ -131,7 +152,7 @@ extension PromocionesInicioViewController: UIPickerViewDataSource, UIPickerViewD
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         switch pickerView.tag {
         case 1:
-            return productosOp[row]
+            return estados[row]
         default:
             return "Data not found"
         }
@@ -141,14 +162,26 @@ extension PromocionesInicioViewController: UIPickerViewDataSource, UIPickerViewD
         
         switch pickerView.tag {
         case 1:
-            producto.text = productosOp[row]
-            producto.resignFirstResponder()
+            estado.text = estados[row]
+            estado.resignFirstResponder()
             
-            productosControlador.fetchProductosTipo(tipo: producto.text!){ (result) in switch result {
-            case .success(let productos):self.updateUI(with: productos)
+            //Obtenemos las promociones de todos los productos de un tipo
+            pedidosControlador.fetchPredidosUsuario(usuario: "2UwwTsUpR6ZRLMfgkopJlZoj3NQ2"){ (result) in switch result {
+            case .success(let pedidos):self.updateUI(with: pedidos)
             case .failure(let error):self.displayError(error, title: "No se pudo acceder a los productos")
               }
             }
+            
+        /*
+        pedidosControlador.fetchPredidosUsuario(usuario: usuario){ (result) in switch result {
+        case .success(let pedidos):self.updateUI(with: pedidos)
+        case .failure(let error):self.displayError(error, title: "No se pudo acceder a los productos")
+          }
+        }
+ */
+            
+            //print("PEDIDOS CON FECHA")
+            //print(pedidosEstado[0].fecha)
             
         default:
             return
