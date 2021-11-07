@@ -103,24 +103,7 @@ class CatalogoTableViewController: UITableViewController {
         let row = self.tableView.indexPathForSelectedRow!.row
         print(section, row)
       
-        if section == 1{
-            let siguienteVista = storyboard!.instantiateViewController(identifier: "insertarCursos") as! CursosViewController
-            if row == 0{
-                siguienteVista.filtradoTipo = 0;
-                siguienteVista.opcion = (catalogo[section].producto)!
-            }else{
-                siguienteVista.filtradoTipo = 1;
-                siguienteVista.opcion = (catalogo[section].categoria?[row])!
-            }
-            
-            siguienteVista.categoria = (catalogo[section].producto)!
-            
-            
-            //siguienteVista.modalPresentationStyle = . fullScreen
-            self.present(siguienteVista, animated: true, completion: nil)
 
-            
-        }else{
             let siguiente = segue.destination as! ProductosViewController
             if row == 0 {
                 siguiente.filtradoTipo = 0;
@@ -131,7 +114,7 @@ class CatalogoTableViewController: UITableViewController {
             }
             siguiente.categoria = (catalogo[section].producto)!
             
-        }
+        
         
 
         

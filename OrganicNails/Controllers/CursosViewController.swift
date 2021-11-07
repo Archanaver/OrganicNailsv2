@@ -8,11 +8,7 @@ import UIKit
 import Firebase
 
 class CursosViewController: UIViewController, UISearchResultsUpdating {
-    
-    var opcion: String = ""
-    var filtradoTipo:Int = 0
-    var categoria:String = ""
-    
+
     let db = Firestore.firestore()
     
     //let productos = ["a", "b", "c"]
@@ -59,10 +55,7 @@ class CursosViewController: UIViewController, UISearchResultsUpdating {
    
     func updateGUI(listaCursos: Cursos){
         DispatchQueue.main.async {
-            //self.cursos = listaCursos
-            if self.filtradoTipo == 0{
-                self.filtrarPorCategoria(listaCursos: listaCursos)
-            }
+            self.cursos = listaCursos
             self.datosFiltrados = listaCursos
             self.cursosTableView.reloadData()
         }
@@ -77,14 +70,7 @@ class CursosViewController: UIViewController, UISearchResultsUpdating {
        
     }
     
-    func filtrarPorCategoria(listaCursos: Cursos){
-        for c in listaCursos{
-            if c.servicio == self.opcion{
-                self.cursos.append(c)
-            }
-        }
-        
-    }
+
 
    
     // MARK: - Navigation
