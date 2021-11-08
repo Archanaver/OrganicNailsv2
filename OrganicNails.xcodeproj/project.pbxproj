@@ -276,8 +276,8 @@
 			isa = PBXGroup;
 			children = (
 				0DA97DC5270C98130021EC4C /* CursosViewController.swift */,
-				0DA97DBF270C90B40021EC4C /* DetalleCursoViewController.swift */,
 				0DDFE668270977F100EC3EA5 /* ProductosViewController.swift */,
+				0DA97DBF270C90B40021EC4C /* DetalleCursoViewController.swift */,
 				0DDFE66C27098DE700EC3EA5 /* DetalleProductoViewController.swift */,
 				A563F7CA270A09CD00DC23DD /* EntregaViewController.swift */,
 				A563F7CD270A0E1300DC23DD /* ConfirmarPedidoViewController.swift */,

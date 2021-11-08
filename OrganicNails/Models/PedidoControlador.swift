@@ -231,7 +231,7 @@ class PedidoControlador{
     }
   
     func deleteCarrito(id:String,completion: @escaping (Result<String,Error>)->Void){
-          db.collection("facturas").document(id).delete(){err in
+          db.collection("pedidos").document(id).delete(){err in
                             if let err = err {
                                 print("Error al remover carrito\(err)")
                                 completion(.failure(err))
