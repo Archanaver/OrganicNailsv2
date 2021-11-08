@@ -40,7 +40,7 @@ class DespliegueCarritoViewController: UIViewController, UISearchResultsUpdating
     }
   override func viewDidAppear(_ animated: Bool) {
     
-    carritoControlador.fetchCarritoUsuario(idPedido: "O5F8GcXVdHhGNExb3ceY"){ (resultado) in
+    carritoControlador.fetchCarritoUsuario(idPedido: "rS2JEskBc2ru5HjdSo9D"){ (resultado) in
             switch resultado{
             case .success(let listaProductos):self.updateGUI(listaProductos: listaProductos)
             case .failure(let error):self.displayError(e: error)
@@ -57,7 +57,7 @@ class DespliegueCarritoViewController: UIViewController, UISearchResultsUpdating
         carritoTableView.dataSource = self
         //let userID = Auth.auth().currentUser!.uid
         // Aquí esta hardcodeada con un id de un usuario,, usar uid para sacar el bueno
-        carritoControlador.fetchCarritoUsuario(idPedido: "O5F8GcXVdHhGNExb3ceY"){ (resultado) in
+        carritoControlador.fetchCarritoUsuario(idPedido: "rS2JEskBc2ru5HjdSo9D"){ (resultado) in
             switch resultado{
             case .success(let listaProductos):self.updateGUI(listaProductos: listaProductos)
             case .failure(let error):self.displayError(e: error)
