@@ -16,6 +16,7 @@ struct CursoP:Decodable{
     var fecha_curso:String
     var descripcion_curso:String
     
+    
     func IdCurso()->String {
         return id_curso
     }
@@ -46,6 +47,48 @@ struct ProductoP:Decodable{
     var presentacion: String
     var tipo_producto: String
     var uso: String
+    
+    enum CodingKeys: String, CodingKey {
+            case cantidad_producto
+            case color
+            case descripcion_producto
+            case descuento_producto
+            case id_producto
+            case nombre_producto
+            case precio_producto
+            case presentacion
+            case tipo_producto
+            case uso
+        
+        }
+    init(cantidad_producto:Int, color:String, descripcion_producto:String, descuento_producto:Int, id_producto:String, nombre_producto:String, precio_producto:Float, presentacion:String, tipo_producto:String, uso:String){
+        self.cantidad_producto = cantidad_producto
+        self.color = color
+        self.descripcion_producto = descripcion_producto
+        self.descuento_producto = descuento_producto
+        self.id_producto = id_producto
+        self.nombre_producto = nombre_producto
+        self.precio_producto = precio_producto
+        self.presentacion = presentacion
+        self.tipo_producto = tipo_producto
+        self.uso = uso
+        
+    }
+    init(d:DocumentSnapshot){
+        self.cantidad_producto = d.get("cantidad_producto") as? Int ?? 0
+        self.color = d.get("color") as? String ?? ""
+        self.descripcion_producto = d.get("descripcion_producto") as? String ?? ""
+        self.descuento_producto = d.get("descuento_producto") as? Int ?? 0
+        self.id_producto = d.get("id_producto") as? String ?? ""
+        self.nombre_producto = d.get("nombre_producto") as? String ?? ""
+        self.precio_producto = d.get("precio_producto") as? Float ?? 0.0
+        self.presentacion = d.get("presentacion") as? String ?? ""
+        self.tipo_producto = d.get("tipo_producto") as? String ?? ""
+        self.uso = d.get("uso") as? String ?? ""
+        
+        
+    }
+    
     
     func CantidadProducto()->Int {
         return cantidad_producto
@@ -133,5 +176,5 @@ struct Pedido: Decodable{
 }
 
 
-
+typealias ProductosP = [ProductoP]
 typealias Pedidos = [Pedido]

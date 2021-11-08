@@ -15,9 +15,9 @@ class DespliegueCarritoViewController: UIViewController, UISearchResultsUpdating
     
     //let productos = ["a", "b", "c"]
     
-    var carritos = [Producto]()
+    var carritos = [ProductoP]()
     var carritoControlador = PedidoControlador()
-    var datosFiltrados = [Producto]()
+    var datosFiltrados = [ProductoP]()
     
     let searchController = UISearchController(searchResultsController: nil)
     
@@ -32,17 +32,23 @@ class DespliegueCarritoViewController: UIViewController, UISearchResultsUpdating
             datosFiltrados = carritos
         }else{
             datosFiltrados = carritos.filter{
-                let s:String = $0.nombre
+                let s:String = $0.nombre_producto
                 return(s.lowercased().contains(searchController.searchBar.text!.lowercased()))}
 
         }
         self.carritoTableView.reloadData()
     }
+    func getIdPedido(id:String)->String{
+            DispatchQueue.main.async {
+            }
+            return id
+        }
   override func viewDidAppear(_ animated: Bool) {
     
     carritoControlador.fetchCarritoUsuario(idPedido: "rS2JEskBc2ru5HjdSo9D"){ (resultado) in
             switch resultado{
-            case .success(let listaProductos):self.updateGUI(listaProductos: listaProductos)
+            
+            case .success(let listaProductosP):self.updateGUI(listaProductosP: listaProductosP)
             case .failure(let error):self.displayError(e: error)
             }
             
@@ -56,10 +62,10 @@ class DespliegueCarritoViewController: UIViewController, UISearchResultsUpdating
         carritoTableView.delegate = self
         carritoTableView.dataSource = self
         //let userID = Auth.auth().currentUser!.uid
-        // Aquí esta hardcodeada con un id de un usuario,, usar uid para sacar el bueno
+        var idPedidoActivo = ""
         carritoControlador.fetchCarritoUsuario(idPedido: "rS2JEskBc2ru5HjdSo9D"){ (resultado) in
             switch resultado{
-            case .success(let listaProductos):self.updateGUI(listaProductos: listaProductos)
+            case .success(let listaProductosP):self.updateGUI(listaProductosP: listaProductosP)
             case .failure(let error):self.displayError(e: error)
             }
             
@@ -70,10 +76,10 @@ class DespliegueCarritoViewController: UIViewController, UISearchResultsUpdating
         carritoTableView.tableHeaderView = searchController.searchBar
     }
     
-    func updateGUI(listaProductos: Productos){
+    func updateGUI(listaProductosP: ProductosP){
         DispatchQueue.main.async {
-            self.carritos = listaProductos
-            self.datosFiltrados = listaProductos
+            self.carritos = listaProductosP
+            self.datosFiltrados = listaProductosP
             self.carritoTableView.reloadData()
         }
        
@@ -120,7 +126,7 @@ extension DespliegueCarritoViewController: UITableViewDataSource{
         // Configure the cell...
         print(datosFiltrados[indexPath.row])
         cell.textLabel?.text =
-            datosFiltrados[indexPath.row].nombre
+            datosFiltrados[indexPath.row].nombre_producto
     
         
 

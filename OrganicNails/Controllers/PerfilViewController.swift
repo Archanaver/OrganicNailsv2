@@ -26,7 +26,7 @@ class PerfilViewController: UIViewController {
     @IBAction func salir(_ sender: Any) {
         let auth = Auth.auth()
         var pedidoId:String = ""
-        self.pedidoControlador.checarCarritoActivo(){
+        self.pedidoControlador.checarCarrito(){
             (resultado) in
             switch resultado{
             case .success(let exito):pedidoId = self.getIdPedido(id: exito)

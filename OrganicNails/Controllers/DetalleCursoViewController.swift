@@ -55,7 +55,7 @@ class DetalleCursoViewController: UIViewController {
                     // checar si hay carrito activo
                     var pedidoId:String = ""
                     print("el id antes",pedidoId)
-                    self.pedidoControlador.checarCarritoActivo(){
+                    self.pedidoControlador.checarCarrito(){
                         (resultado) in
                         switch resultado{
                         case .success(let exito):pedidoId = self.getIdUsuario(id: exito)

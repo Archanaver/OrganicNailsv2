@@ -92,25 +92,21 @@ class PedidoControlador{
         }
 }
     
-    func checarCarritoActivo(completion: @escaping (Result<String,Error>)->Void){
-        db.collection("pedidos").whereField("activo", isEqualTo: true)
-          .getDocuments() { (querySnapshot, err) in
-            if let err = err {
-                print("Error obteniendo pedido activo: \(err)")
+    func fetchCarritoActivo(idDocument: String, completion: @escaping (Result <Productos, Error>) -> Void){
+            var productos = [Producto]()
+            
+            db.collection("pedidos").document(idDocument).collection("productos").getDocuments() { (querySnapshot, err) in if let err = err {
+                print("Error getting documents: \(err)")
                 completion(.failure(err))
             } else {
-                var documentoID:String = ""
                 for document in querySnapshot!.documents {
-                    //print("\(document.documentID) => \(document.data())")
-                    documentoID = document.documentID
+                    var p = Producto(d: document)
+                    productos.append(p)
                 }
-                completion(.success(documentoID))
-                
+                completion(.success(productos))
+                }
             }
         }
-        
-        
-    }
     
 
     
@@ -176,6 +172,23 @@ class PedidoControlador{
             
         }
     
+    func checarCarrito(completion: @escaping (Result<String,Error>)->Void){
+        db.collection("pedidos").whereField("activo", isEqualTo: true)
+          .getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error obteniendo pedido activo: \(err)")
+                completion(.failure(err))
+            } else {
+                var documentoID:String = ""
+                for document in querySnapshot!.documents {
+                    //print("\(document.documentID) => \(document.data())")
+                    documentoID = document.documentID
+                }
+                completion(.success(documentoID))
+            }
+        }
+    }
+    
     //Función para regresar un arreglo de pedidos de un usuario
     func fetchPredidosUsuario(usuario: String, completion: @escaping (Result <Pedidos, Error>) -> Void){
         var pedidos = [Pedido]()
@@ -185,45 +198,33 @@ class PedidoControlador{
             completion(.failure(err))
         } else {
             for document in querySnapshot!.documents {
-                var p = Pedido(d: document)
+            var p = Pedido(d: document)
                 pedidos.append(p)
             }
             completion(.success(pedidos))
             }
         }
     }
-    //Funcion para encontrar el id del cliente
+    
     
    
     //Funcion para regresar los productos de un pedido identificando al usuario
-    func fetchCarritoUsuario(idPedido: String, completion: @escaping (Result <Productos, Error>) -> Void){
-        var productos = [Producto]()
-        //var cursos = [Curso]()
-       // let userID = Auth.auth().currentUser!.uid
+    func fetchCarritoUsuario(idPedido: String, completion: @escaping (Result <ProductosP, Error>) -> Void){
+        var productos = [ProductoP]()
+        
         db.collection("pedidos").document(idPedido).collection("productos").getDocuments() { (querySnapshot, err) in if let err = err {
             print("Error getting documents: \(err)")
             completion(.failure(err))
         } else {
             for document in querySnapshot!.documents {
-                var p = Producto(d: document)
-                //var c = Curso(d: document)
-                /*Metodo segun apra sacar el id del pedido
-                 const racesCollection: AngularFirestoreCollection<Race>;
-                 return racesCollection.snapshotChanges().map(actions => {
-                   return actions.map(a => {
-                     const data = a.payload.doc.data() as Race;
-                     data.id = a.payload.doc.id;
-                     return data;
-                   });
-                 });
-                 */
-                var productosObjecto = Producto(nombre: p.nombre, id: p.id, colores: p.colores, precio: p.precio, descripcion: p.descripcion, tipo: p.tipo, descuento: p.descuento, uso: p.uso, producto: p.producto, presentacion: p.presentacion)
-                //Igual aqui el append podria ser algo como " pedidos.append(p.productos)",
-                //pero swift no deja imprimir el arreglo productos :(
+                var p = ProductoP(d: document)
+                p = ProductoP(cantidad_producto: p.cantidad_producto, color: p.color, descripcion_producto: p.descripcion_producto, descuento_producto: p.descuento_producto, id_producto: p.id_producto, nombre_producto: p.nombre_producto, precio_producto: p.precio_producto, presentacion: p.presentacion, tipo_producto: p.tipo_producto, uso: p.uso)
+                print("Productos--- ",p)
                 //cursos.append(c.nombre)
-                productos.append(productosObjecto)
+                productos.append(p)
                
             }
+            
             completion(.success(productos))
             //completion(.success(cursos))
             }
