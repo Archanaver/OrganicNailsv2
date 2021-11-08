@@ -30,11 +30,24 @@ class PerfilViewController: UIViewController {
             (resultado) in
             switch resultado{
             case .success(let exito):pedidoId = self.getIdPedido(id: exito)
+                print("pedido id", pedidoId)
                 if pedidoId.count != 0{
-                    print("hola")
-                }
+                    print("si hay carrito activo")
+                    self.pedidoControlador.deleteCarrito(id: pedidoId){
+                        (resultado) in
+                        switch resultado{
+                        case .success(let exito):print( exito)
+                        case .failure(let error):print(error)
+                        }
+                    }
+                        
+                    }
+                
+ 
             case .failure(let error):print( error)
             }}
+    
+    print("no hay carrito activo")
         do{
             try auth.signOut()
             let defaults = UserDefaults.standard
