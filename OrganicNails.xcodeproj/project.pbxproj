@@ -12,6 +12,8 @@
 		0D05267E273578F100481B5D /* UsuarioControlador.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D05267D273578F100481B5D /* UsuarioControlador.swift */; };
 		0D0F564327387EEB00487021 /* ImagenPerfil in Resources */ = {isa = PBXBuildFile; fileRef = 0D0F564227387EEA00487021 /* ImagenPerfil */; };
 		0D0F56472738814900487021 /* PerfilViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0F56462738814900487021 /* PerfilViewController.swift */; };
+		0D16A1412739653200EB895B /* Factura.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D16A1402739653200EB895B /* Factura.swift */; };
+		0D16A1442739677400EB895B /* FacturaControlador.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D16A1432739677400EB895B /* FacturaControlador.swift */; };
 		0D82AC97273712AB00B24942 /* CarritoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D82AC96273712AB00B24942 /* CarritoViewController.swift */; };
 		0DA134B426FD26FF00A8B809 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA134B326FD26FF00A8B809 /* AppDelegate.swift */; };
 		0DA134B626FD26FF00A8B809 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA134B526FD26FF00A8B809 /* SceneDelegate.swift */; };
@@ -116,6 +118,8 @@
 		0D05267D273578F100481B5D /* UsuarioControlador.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsuarioControlador.swift; sourceTree = "<group>"; };
 		0D0F564227387EEA00487021 /* ImagenPerfil */ = {isa = PBXFileReference; lastKnownFileType = file; path = ImagenPerfil; sourceTree = "<group>"; };
 		0D0F56462738814900487021 /* PerfilViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfilViewController.swift; sourceTree = "<group>"; };
+		0D16A1402739653200EB895B /* Factura.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Factura.swift; sourceTree = "<group>"; };
+		0D16A1432739677400EB895B /* FacturaControlador.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacturaControlador.swift; sourceTree = "<group>"; };
 		0D82AC96273712AB00B24942 /* CarritoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarritoViewController.swift; sourceTree = "<group>"; };
 		0DA134B026FD26FF00A8B809 /* OrganicNails.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OrganicNails.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0DA134B326FD26FF00A8B809 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -309,6 +313,8 @@
 				6DEB82272735353D0037F0EA /* LogInControlador.swift */,
 				0D05267D273578F100481B5D /* UsuarioControlador.swift */,
 				6DD8A3462735E11100D388C4 /* ClienteControlador.swift */,
+				0D16A1402739653200EB895B /* Factura.swift */,
+				0D16A1432739677400EB895B /* FacturaControlador.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -588,6 +594,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D16A1442739677400EB895B /* FacturaControlador.swift in Sources */,
 				0DA97DC6270C98130021EC4C /* CursosViewController.swift in Sources */,
 				4AC6D4F927350FFA0033B5BA /* PromocionesDetalleViewController.swift in Sources */,
 				0DA97DBC270C8F4A0021EC4C /* CursoControlador.swift in Sources */,
@@ -601,6 +608,7 @@
 				0DA134B826FD26FF00A8B809 /* ViewController.swift in Sources */,
 				A563F7D4270A215400DC23DD /* ChatViewController.swift in Sources */,
 				0DA134B426FD26FF00A8B809 /* AppDelegate.swift in Sources */,
+				0D16A1412739653200EB895B /* Factura.swift in Sources */,
 				A563F7CB270A09CD00DC23DD /* EntregaViewController.swift in Sources */,
 				A5018B062738C4E40075AE94 /* DespliegueCarritoViewController.swift in Sources */,
 				6DDFD74627276C2B00D82EF3 /* DetalleClienteViewController.swift in Sources */,
