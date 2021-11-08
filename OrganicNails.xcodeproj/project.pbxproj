@@ -110,6 +110,7 @@
 		A563F7CE270A0E1300DC23DD /* ConfirmarPedidoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A563F7CD270A0E1300DC23DD /* ConfirmarPedidoViewController.swift */; };
 		A563F7D1270A10BF00DC23DD /* EvaluaServicioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A563F7D0270A10BF00DC23DD /* EvaluaServicioViewController.swift */; };
 		A563F7D4270A215400DC23DD /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A563F7D3270A215400DC23DD /* ChatViewController.swift */; };
+		A5CA2D0D27397ACA006D4BF7 /* DespliegueCarroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CA2D0C27397ACA006D4BF7 /* DespliegueCarroViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -219,6 +220,7 @@
 		A563F7CD270A0E1300DC23DD /* ConfirmarPedidoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmarPedidoViewController.swift; sourceTree = "<group>"; };
 		A563F7D0270A10BF00DC23DD /* EvaluaServicioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluaServicioViewController.swift; sourceTree = "<group>"; };
 		A563F7D3270A215400DC23DD /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		A5CA2D0C27397ACA006D4BF7 /* DespliegueCarroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DespliegueCarroViewController.swift; sourceTree = "<group>"; };
 		EFA8A4082A86E18A9A0952EA /* Pods_OrganicNails.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OrganicNails.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -295,6 +297,7 @@
 				4A87AB5B27379CF900A55EDF /* PedidosDetalleViewController.swift */,
 				0D0F56462738814900487021 /* PerfilViewController.swift */,
 				A5018B052738C4E40075AE94 /* DespliegueCarritoViewController.swift */,
+				A5CA2D0C27397ACA006D4BF7 /* DespliegueCarroViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -622,6 +625,7 @@
 				4A87AB59273769F800A55EDF /* PedidosViewController.swift in Sources */,
 				6DD8A33E2735BA5700D388C4 /* TabBarViewController.swift in Sources */,
 				0DDFE6712709F74600EC3EA5 /* ProductoControlador.swift in Sources */,
+				A5CA2D0D27397ACA006D4BF7 /* DespliegueCarroViewController.swift in Sources */,
 				A563F7D1270A10BF00DC23DD /* EvaluaServicioViewController.swift in Sources */,
 				6DD8A3412735D74100D388C4 /* ContraOlvidadaViewController.swift in Sources */,
 				0DB10C3D272FBA5700AD6C74 /* Catalogo.swift in Sources */,
