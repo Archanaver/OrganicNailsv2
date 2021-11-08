@@ -1917,13 +1917,24 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="85n-LB-Bgt">
-                                <rect key="frame" x="113" y="673" width="197" height="30"/>
+                                <rect key="frame" x="56" y="673" width="126" height="51"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.8980392157" green="0.3803921569" blue="0.56078431370000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Confirmar"/>
+                                <state key="normal" title="Guardar datos"/>
                                 <connections>
                                     <action selector="guardarButton:" destination="vyV-4l-rcu" eventType="touchUpInside" id="tjQ-qe-56Y"/>
+                                    <segue destination="ecf-kV-rVI" kind="show" id="3tQ-6r-6hQ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kp6-Ud-B6F">
+                                <rect key="frame" x="235" y="673" width="126" height="51"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.8980392157" green="0.3803921569" blue="0.56078431370000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Cancelar"/>
+                                <connections>
+                                    <segue destination="ecf-kV-rVI" kind="show" id="DrG-7p-mbf"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Delegación" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="igf-mU-UAO">
@@ -2030,6 +2041,15 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Krh-RG-j07">
+                                <rect key="frame" x="115" y="750" width="200" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Eliminar datos de facturación"/>
+                                <connections>
+                                    <action selector="eliminarFactura:" destination="vyV-4l-rcu" eventType="touchUpInside" id="esx-Xk-bVH"/>
+                                    <segue destination="ecf-kV-rVI" kind="show" id="uFP-YQ-gz4"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="sxr-4E-OMR"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -3296,7 +3316,7 @@
         <segue reference="yP4-VP-1Vr"/>
         <segue reference="YaQ-uL-8fX"/>
         <segue reference="F6T-2H-ivG"/>
-        <segue reference="VfM-fH-RAs"/>
+        <segue reference="3tQ-6r-6hQ"/>
         <segue reference="j5V-Av-PZw"/>
         <segue reference="zlx-5y-85c"/>
     </inferredMetricsTieBreakers>

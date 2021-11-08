@@ -56,7 +56,7 @@ class FacturaControlador{
     
     
     func updateFactura(uid:String,factura:Factura, completion: @escaping (Result<String,Error>)->Void){
-        db.collection("facturas").whereField("uid", isEqualTo: uid)
+        db.collection("facturas").whereField("id_cliente", isEqualTo: uid)
           .getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("Error obteniendo factura: \(err)")
@@ -94,7 +94,7 @@ class FacturaControlador{
         
     }
     func deleteFactura(uid:String,completion: @escaping (Result<String,Error>)->Void){
-        db.collection("facturas").whereField("uid", isEqualTo: uid)
+        db.collection("facturas").whereField("id_cliente", isEqualTo: uid)
           .getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("Error obteniendo factura: \(err)")
@@ -109,18 +109,12 @@ class FacturaControlador{
                             print("Error al remover factura:\(err)")
                             completion(.failure(err))
                         }else{
-                            let user = Auth.auth().currentUser
-                            user?.delete{ error in
-                                if let error = error {
-                                    print("Error al remover factura:\(error)")
-                                    completion(.failure(error))
-                                } else {
-                                    print("Datos de facturación eliminados")
+                      
                                     completion(.success("Su datos de facturación han sido eliminados"))
-                                }
+                                
                               }
                             
-                        }
+                        
                     }
                 }
                 

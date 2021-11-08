@@ -25,6 +25,20 @@ class DatosFacturaViewController: UIViewController{
     @IBOutlet weak var calleTextField: UITextField!
     @IBOutlet weak var frcTextField: UITextField!
     
+    @IBAction func eliminarFactura(_ sender: Any) {
+        let userID = Auth.auth().currentUser!.uid
+        facturaControlador.deleteFactura(uid: userID){
+            (resultado) in
+            switch resultado{
+            case .success(let exito):self.displayExito(mensaje:"Datos de facturación eliminados",exito:exito)
+
+            case .failure(let error):print(error)
+            
+            }
+        }
+        
+        
+    }
     let facturaControlador = FacturaControlador()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,49 +98,73 @@ class DatosFacturaViewController: UIViewController{
         }
         return id
     }
+    
+    func validateFields() -> Bool{
+      //Todas estan llenas
+      if nombreTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" || paisTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" || estadoTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" || delegacionTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" || cpTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" || coloniaTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" || calleTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" || frcTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
+        let alerta =  UIAlertController(title: "Error ", message:"Favor de llenar todos los espacios", preferredStyle: .alert)
+       alerta.addAction(UIAlertAction(title: "Cerrar", style: .default, handler: nil))
+       self.present(alerta, animated: true, completion: nil)
+          return false
+      }
+        return true
+      }
+    
+    func displayExito(mensaje:String, exito:String)->String{
+         DispatchQueue.main.async {
+             let alerta =  UIAlertController(title: mensaje, message: exito, preferredStyle: .alert)
+             alerta.addAction(UIAlertAction(title: "Cerrar", style: .default, handler: nil))
+             self.present(alerta, animated: true, completion: nil)
+             
+         }
+         return exito
+         
+     }
         
         
     @IBAction func guardarButton(_ sender: Any) {
-        print("hola")
-        
-    /*    let clienteActualizado = Cliente(id: auth.currentUser?.uid ?? "", nombre: cliente!.nombre, direccion: cliente!.direccion, cp: cpTextField.text!, telefono: cliente!.telefono, rfc: rfcTextField.text!)
-        controladorCliente.updateClienteFactura(clienteActualizar: clienteActualizado){ (resultado) in
-            switch resultado{
-            case .failure(let err): self.displayError(e: err)
-                
-            case .success(let exito): self.displayExito(exito: exito)
-            }
-        }*/
-        
-    }
-    
-    func displayError(e:Error){
-        DispatchQueue.main.async {
-            let alerta =  UIAlertController(title: "Error al actualizar", message: e.localizedDescription, preferredStyle: .alert)
-            alerta.addAction(UIAlertAction(title: "Cerrar", style: .default, handler: nil))
-            self.present(alerta, animated: true, completion: nil)
-        }
-        
-    }
-    
-    func displayExito(exito:String){
-        DispatchQueue.main.async {
-            let alerta =  UIAlertController(title: "Datos de factura guardados", message: exito, preferredStyle: .alert)
-            alerta.addAction(UIAlertAction(title: "Cerrar", style: .default, handler: nil))
-            self.present(alerta, animated: true, completion: nil)
-            
-        }
-        
-    }
+               if validateFields(){
+                   let userID = Auth.auth().currentUser!.uid
+                   var cambiosFactura = Factura(id_cliente: userID, nombre: nombreTextField?.text ?? "", rfc: frcTextField?.text ?? "", calle: calleTextField?.text ?? "", colonia: coloniaTextField?.text ?? "", cp: cpTextField?.text ?? "", delegacion: delegacionTextField?.text ?? "", estado: estadoTextField?.text ?? "", pais: paisTextField?.text ?? "")
+                   print("holaaaa", cambiosFactura)
+                   facturaControlador.updateFactura(uid:userID, factura:cambiosFactura){
+                       (resultado) in
+                       switch resultado{
+                       case .success(let exito):self.displayExito(mensaje: "Datos de facturación modificados", exito:exito)
 
-    /*
-    // MARK: - Navigation
+                       case .failure(let error):print(error)
+                       
+                   }
+                       
+                       
+                       
+               }
+               
+           /*    let clienteActualizado = Cliente(id: auth.currentUser?.uid ?? "", nombre: cliente!.nombre, direccion: cliente!.direccion, cp: cpTextField.text!, telefono: cliente!.telefono, rfc: rfcTextField.text!)
+               controladorCliente.updateClienteFactura(clienteActualizar: clienteActualizado){ (resultado) in
+                   switch resultado{
+                   case .failure(let err): self.displayError(e: err)
+                       
+                   case .success(let exito): self.displayExito(exito: exito)
+                   }
+               }*/
+               
+           }
+           
+           
+           
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+        
 
-}
+           /*
+           // MARK: - Navigation
+
+           // In a storyboard-based application, you will often want to do a little preparation before navigation
+           override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+               // Get the new view controller using segue.destination.
+               // Pass the selected object to the new view controller.
+           }
+           */
+
+       }
+       }
