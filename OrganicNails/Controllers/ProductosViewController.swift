@@ -51,7 +51,11 @@ class ProductosViewController: UIViewController, UISearchResultsUpdating {
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
         searchController.hidesNavigationBarDuringPresentation = false
-        productosTableView.tableHeaderView = searchController.searchBar
+        navigationItem.hidesSearchBarWhenScrolling = false
+        
+        navigationItem.searchController = searchController
+        
+        //productosTableView.tableHeaderView = searchController.searchBar
     }
     
     func updateGUI(listaProductos: Productos){
