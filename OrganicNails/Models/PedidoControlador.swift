@@ -196,16 +196,17 @@ class PedidoControlador{
     
    
     //Funcion para regresar los productos de un pedido identificando al usuario
-    func fetchCarritoUsuario(usuario: String, completion: @escaping (Result <Pedidos, Error>) -> Void){
-        var pedidos = [Pedido]()
+    func fetchCarritoUsuario(idPedido: String, completion: @escaping (Result <Productos, Error>) -> Void){
         var productos = [Producto]()
+        //var cursos = [Curso]()
        // let userID = Auth.auth().currentUser!.uid
-        db.collection("pedidos").whereField("cliente_id",  isEqualTo: usuario).getDocuments() { (querySnapshot, err) in if let err = err {
+        db.collection("pedidos").document(idPedido).collection("productos").getDocuments() { (querySnapshot, err) in if let err = err {
             print("Error getting documents: \(err)")
             completion(.failure(err))
         } else {
             for document in querySnapshot!.documents {
-                var p = Pedido(d: document)
+                var p = Producto(d: document)
+                //var c = Curso(d: document)
                 /*Metodo segun apra sacar el id del pedido
                  const racesCollection: AngularFirestoreCollection<Race>;
                  return racesCollection.snapshotChanges().map(actions => {
@@ -216,18 +217,32 @@ class PedidoControlador{
                    });
                  });
                  */
-                //self.db.collection("pedidos").document(ref!.documentID).collection("cursos").addDocument(
+                var productosObjecto = Producto(nombre: p.nombre, id: p.id, colores: p.colores, precio: p.precio, descripcion: p.descripcion, tipo: p.tipo, descuento: p.descuento, uso: p.uso, producto: p.producto, presentacion: p.presentacion)
                 //Igual aqui el append podria ser algo como " pedidos.append(p.productos)",
                 //pero swift no deja imprimir el arreglo productos :(
-                pedidos.append(p)
+                //cursos.append(c.nombre)
+                productos.append(productosObjecto)
                
             }
-            completion(.success(pedidos))
+            completion(.success(productos))
+            //completion(.success(cursos))
             }
         }
     }
-  //  self.db.collection("pedidos").document(ref!.documentID).collection("productos")
-    
+  
+    func deleteCarrito(id:String,completion: @escaping (Result<String,Error>)->Void){
+          db.collection("facturas").document(id).delete(){err in
+                            if let err = err {
+                                print("Error al remover carrito\(err)")
+                                completion(.failure(err))
+                            }else{
+                                        completion(.success("Se ha eliminado carrito activo"))
+                                    
+                                  }
+        
+                        }
+     }
+
     
     //Hacemos una lista de pedidos con el estado que solicita
     func pedidosEstadoSelect(listaPedidos: Pedidos, estado: String) -> Pedidos{
