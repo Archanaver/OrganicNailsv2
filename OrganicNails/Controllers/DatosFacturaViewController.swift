@@ -25,6 +25,8 @@ class DatosFacturaViewController: UIViewController{
     @IBOutlet weak var calleTextField: UITextField!
     @IBOutlet weak var frcTextField: UITextField!
     
+    let facturaControlador = FacturaControlador()
+    
     @IBAction func eliminarFactura(_ sender: Any) {
         let userID = Auth.auth().currentUser!.uid
         facturaControlador.deleteFactura(uid: userID){
@@ -39,7 +41,55 @@ class DatosFacturaViewController: UIViewController{
         
         
     }
-    let facturaControlador = FacturaControlador()
+ 
+    
+    
+    
+    override func viewDidAppear(_ animated: Bool) {
+        let userID = Auth.auth().currentUser!.uid
+        
+        //checar si existe factura
+        var facturaID:String = ""
+        facturaControlador.checarFacturaExistente(uid: userID){
+            (resultado) in
+            switch resultado{
+            case .success(let exito):facturaID = self.getIdFactura(id: exito)
+                if facturaID.count != 0 {
+                    print("leer factura")
+                    //leer factura
+                    self.facturaControlador.fetchFactura(uid: userID){
+                        (resultado) in
+                            switch resultado{
+                        case .success(let exito):self.getFactura(facturas:exito)
+                            self.nombreTextField.text = exito[0].nombre ?? ""
+                            self.paisTextField.text = exito[0].pais
+                            self.estadoTextField.text = exito[0].estado
+                            self.delegacionTextField.text = exito[0].delegacion
+                            self.cpTextField.text = exito[0].cp
+                            self.coloniaTextField.text = exito[0].colonia
+                            self.calleTextField.text = exito[0].calle
+                            self.frcTextField.text = exito[0].rfc
+                        case .failure(let error):print(error)
+                            }}
+                }else{
+                    //crear factura
+                    print("nueva factura")
+                    var nuevaFactura = Factura(id_cliente: userID)
+                    self.facturaControlador.crearFactura(nuevaFactura: nuevaFactura ){
+                        (resultado) in
+                        switch resultado{
+                        case .success(let exito):print(exito)
+                        case .failure(let error):print( error)
+                        }
+                        
+                    }
+                }
+            case .failure(let error):print("No se pudo encontrar la factura ",error)
+            }
+
+        }
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         let userID = Auth.auth().currentUser!.uid
