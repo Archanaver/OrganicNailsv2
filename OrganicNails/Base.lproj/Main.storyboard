@@ -1744,6 +1744,10 @@
                                 <state key="normal" title="Salir">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="salir:" destination="eRn-Bv-Yi4" eventType="touchUpInside" id="UlA-35-r2f"/>
+                                    <segue destination="scH-j2-WGV" kind="show" id="7Be-zk-apd"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Dirección" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="53g-GY-LEC">
                                 <rect key="frame" x="91" y="373" width="233" height="18"/>
@@ -3172,7 +3176,7 @@
                                 </prototypes>
                             </tableView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="180x180.png" translatesAutoresizingMaskIntoConstraints="NO" id="Aqm-iH-xns">
-                                <rect key="frame" x="117" y="152" width="180" height="180"/>
+                                <rect key="frame" x="139.5" y="174.5" width="135" height="135"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="27U-aN-cVN"/>
@@ -3311,12 +3315,12 @@
         <segue reference="Deq-xw-cVL"/>
         <segue reference="5ep-jN-V5Q"/>
         <segue reference="cj4-ya-a3c"/>
-        <segue reference="kj8-yi-v0S"/>
+        <segue reference="7Be-zk-apd"/>
         <segue reference="v4e-DG-8if"/>
         <segue reference="yP4-VP-1Vr"/>
         <segue reference="YaQ-uL-8fX"/>
         <segue reference="F6T-2H-ivG"/>
-        <segue reference="3tQ-6r-6hQ"/>
+        <segue reference="3rr-iM-Pvk"/>
         <segue reference="j5V-Av-PZw"/>
         <segue reference="zlx-5y-85c"/>
     </inferredMetricsTieBreakers>

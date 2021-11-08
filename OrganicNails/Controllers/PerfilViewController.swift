@@ -10,12 +10,41 @@ import Firebase
 
 class PerfilViewController: UIViewController {
     let clienteControlador = ClienteControlador()
+    let pedidoControlador = PedidoControlador()
     
     @IBOutlet weak var nombreLabel: UILabel!
     
     
     @IBOutlet weak var direccionLabel: UILabel!
     
+    func getIdPedido(id:String)->String{
+        DispatchQueue.main.async {
+        }
+        return id
+    }
+    
+    @IBAction func salir(_ sender: Any) {
+        let auth = Auth.auth()
+        var pedidoId:String = ""
+        self.pedidoControlador.checarCarritoActivo(){
+            (resultado) in
+            switch resultado{
+            case .success(let exito):pedidoId = self.getIdPedido(id: exito)
+                if pedidoId.count != 0{
+                    print("hola")
+                }
+            case .failure(let error):print( error)
+            }}
+        do{
+            try auth.signOut()
+            let defaults = UserDefaults.standard
+        } catch let signOutError{
+            let alerta =  UIAlertController(title: "Error", message: signOutError.localizedDescription, preferredStyle: .alert)
+            alerta.addAction(UIAlertAction(title: "Cerrar", style: .default, handler: nil))
+            self.present(alerta, animated: true, completion: nil)
+        
+        }
+    }
     override func viewDidAppear(_ animated: Bool) {
         let userID = Auth.auth().currentUser!.uid
         clienteControlador.fetchCliente(uid: userID){

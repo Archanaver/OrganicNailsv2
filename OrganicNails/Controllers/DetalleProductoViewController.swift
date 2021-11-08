@@ -220,7 +220,7 @@ class DetalleProductoViewController: UIViewController, UIPickerViewDelegate, UIP
                         
                         // checar si hay carrito activo
                         var pedidoId:String = ""
-                        print("el id antes",pedidoId)
+                        //print("el id ",pedidoId)
                         self.pedidoControlador.checarCarritoActivo(){
                             (resultado) in
                             switch resultado{
