@@ -136,7 +136,7 @@ class DetalleClienteViewController: UIViewController {
     
     func validateFields() -> Bool{
       //Todas estan llenas
-      if nombreLabel.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" || telefonoLabel.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" || cpLabel.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" || rfcLabel.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
+      if nombreLabel.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" || telefonoLabel.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
         let alerta =  UIAlertController(title: "Error ", message:"Favor de llenar todos los espacios", preferredStyle: .alert)
        alerta.addAction(UIAlertAction(title: "Cerrar", style: .default, handler: nil))
        self.present(alerta, animated: true, completion: nil)
