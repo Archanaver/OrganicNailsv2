@@ -21,7 +21,7 @@ struct Catalogo{
 extension Catalogo{
     static func listaCatalogo()->[Catalogo]{
         return[
-        Catalogo(producto: "Catálogo general", categoria: ["Ver todo","Acrílicos", "Kits", "Glitters", "Líquidos", "Consumibles", "Herramientas", "Tratamientos", "Accesorios", "Arte","TechGel", "Color Gel"])
+        Catalogo(producto: "Catálogo general", categoria: ["Ver todo","Acrílicos", "Kits", "Glitters", "Líquidos", "Consumibles", "Herramientas", "Tratamientos", "Accesorios", "Arte","TechGel", "Color Gel","Gel"])
         ]
     }
     
