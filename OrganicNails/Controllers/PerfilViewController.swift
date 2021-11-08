@@ -34,6 +34,7 @@ class PerfilViewController: UIViewController {
     
 
     override func viewDidLoad() {
+   
        /* super.viewDidLoad()
         let userID = Auth.auth().currentUser!.uid
         clienteControlador.fetchCliente(uid: userID){

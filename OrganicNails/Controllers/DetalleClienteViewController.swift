@@ -15,6 +15,10 @@ class DetalleClienteViewController: UIViewController {
     
    
     var cliente:Cliente?
+    var buttonCancelar = false
+    @IBAction func cancelar(_ sender: Any) {
+        buttonCancelar = true
+    }
     
     @IBOutlet weak var nombreLabel: UITextField!
     
@@ -24,15 +28,13 @@ class DetalleClienteViewController: UIViewController {
     
     @IBOutlet weak var rfcLabel: UITextField!
     
-    override func viewDidLoad() {
-
-        super.viewDidLoad()
+    override func viewDidAppear(_ animated: Bool) {
         let userID = Auth.auth().currentUser!.uid
         
         clienteControlador.fetchCliente(uid: userID){
             (resultado) in
             switch resultado{
-            case .success(let exito):print(self.getIdUsuario(clientes:exito))
+            case .success(let exito):self.getUsuario(clientes:exito)
                 self.nombreLabel.text = exito[0].nombre
                 self.telefonoLabel.text = exito[0].telefono
                 self.cpLabel.text = exito[0].cp
@@ -41,9 +43,31 @@ class DetalleClienteViewController: UIViewController {
             
             }
         }
+    }
+    
+    override func viewDidLoad() {
+
+        super.viewDidLoad()
+        let userID = Auth.auth().currentUser!.uid
         
+        clienteControlador.fetchCliente(uid: userID){
+            (resultado) in
+            switch resultado{
+            case .success(let exito):self.getUsuario(clientes:exito)
+                self.nombreLabel.text = exito[0].nombre
+                self.telefonoLabel.text = exito[0].telefono
+                self.cpLabel.text = exito[0].cp
+                self.rfcLabel.text = exito[0].rfc
+            case .failure(let error):print(error)
+            
+            }
+
+        }
 
 
+        
+        
+        
         
       /*  clienteControlador.getClienteData(uid : userID){
             (resultado) in
@@ -59,53 +83,88 @@ class DetalleClienteViewController: UIViewController {
         
         
         // Do any additional setup after loading the view.
+    
+
+    
+
+    
+
     }
     
-    func validateFields() -> String?{
+    @IBAction func modificarCliente(_ sender: Any) {
+       
+        if validateFields(){
+            let userID = Auth.auth().currentUser!.uid
+            
+            var cambiosCliente = Cliente(id: "", nombre: nombreLabel?.text ?? "", direccion:"" , cp: cpLabel?.text ?? "", telefono: telefonoLabel.text ?? "", rfc: rfcLabel?.text ?? "")
+            clienteControlador.updateCliente(uid: userID,cliente: cambiosCliente){
+                (resultado) in
+                switch resultado{
+                case .success(let exito):self.displayExito(exito:exito)
+
+                case .failure(let error):print(error)
+                
+                }
+
+            }
+
+            
+        }
+    }
+    
+    func displayExito(exito:String)->String{
+        DispatchQueue.main.async {
+            let alerta =  UIAlertController(title: "Cliente modificado", message: exito, preferredStyle: .alert)
+            alerta.addAction(UIAlertAction(title: "Cerrar", style: .default, handler: nil))
+            self.present(alerta, animated: true, completion: nil)
+            
+        }
+        return exito
+        
+    }
+
+    
+    func validateFields() -> Bool{
       //Todas estan llenas
       if nombreLabel.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" || telefonoLabel.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" || cpLabel.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" || rfcLabel.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
-        let alerta =  UIAlertController(title: "Error de conexion", message:"Llena todos los espacios", preferredStyle: .alert)
+        let alerta =  UIAlertController(title: "Error ", message:"Llena todos los espacios", preferredStyle: .alert)
        alerta.addAction(UIAlertAction(title: "Cerrar", style: .default, handler: nil))
        self.present(alerta, animated: true, completion: nil)
-          return "Llena todas los espacios"
+          return false
       }
-        return nil
+        return true
       }
 
     
-    func getIdUsuario(clientes:Clientes)->Clientes{
-        DispatchQueue.main.async {
-        }
-        return clientes
-    }
     
-   /* @IBAction func updateCliente(_ sender: Any) {
-        
-    }*/
+    
+    
+    
     func displayError(e:Error){
         DispatchQueue.main.async {
-            let alerta =  UIAlertController(title: "Error al obtener el usuario", message: e.localizedDescription, preferredStyle: .alert)
+            let alerta =  UIAlertController(title: "Error al modificar", message: e.localizedDescription, preferredStyle: .alert)
             alerta.addAction(UIAlertAction(title: "Cerrar", style: .default, handler: nil))
             self.present(alerta, animated: true, completion: nil)
         }
         
     }
     
-    func getNombre(exito:String) -> String{
+    func getUsuario(clientes:Clientes)->Clientes{
         DispatchQueue.main.async {
-           
         }
-        return exito
-        
+        return clientes
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    func getIdUsuario(cliente:String)->String{
+        DispatchQueue.main.async {
+        }
+        return cliente
     }
-    */
 
+
+    
+    
 }
+    
+
+

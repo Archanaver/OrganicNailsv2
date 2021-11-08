@@ -92,7 +92,7 @@ class ClienteControlador{
         }
     
     
-    func updateCliente(cliente:Cliente, completion:@escaping (Result<String, Error>)->Void){
+   /* func updateCliente(cliente:Cliente, completion:@escaping (Result<String, Error>)->Void){
         db.collection("clientes").whereField("uid", isEqualTo: cliente.id)
             .getDocuments(){ (querySnapshot, err) in
                 if let err = err {
@@ -118,9 +118,43 @@ class ClienteControlador{
                 }
             }
         
+    }*/
+    
+    func updateCliente(uid:String,cliente:Cliente, completion: @escaping (Result<String,Error>)->Void){
+        db.collection("clientes").whereField("uid", isEqualTo: uid)
+          .getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error obteniendo pedido activo: \(err)")
+                completion(.failure(err))
+            } else {
+                var documentoID:String = ""
+                for document in querySnapshot!.documents {
+                    //print("\(document.documentID) => \(document.data())")
+                    documentoID = document.documentID
+                    self.db.collection("clientes").document(documentoID).updateData([
+                        "cp": cliente.cp,
+                        //"direccion": cliente.direccion,
+                        "nombre": cliente.nombre,
+                        "rfc": cliente.rfc,
+                        "telefono": cliente.telefono,
+                        //"uid": cliente.id
+                        
+                        
+                    ]){ err in
+                        if let err = err{
+                            completion(.failure(err))
+                        }else{
+                            completion(.success("Se han modificado y guardado sus datos"))
+                        }
+                    }
+                }
+            
+                
+            }
+        }
+        
+        
     }
-    
-    
     
     
    /* func getDireccionUsuario(uid:String, completion: @escaping (Result<String,Error>)->Void){
