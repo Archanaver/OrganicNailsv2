@@ -15,10 +15,7 @@ class DetalleClienteViewController: UIViewController {
     
    
     var cliente:Cliente?
-    var buttonCancelar = false
-    @IBAction func cancelar(_ sender: Any) {
-        buttonCancelar = true
-    }
+  
     
     @IBOutlet weak var nombreLabel: UITextField!
     
@@ -28,6 +25,19 @@ class DetalleClienteViewController: UIViewController {
     
     @IBOutlet weak var rfcLabel: UITextField!
     
+    @IBAction func eliminarCuenta(_ sender: Any) {
+        let userID = Auth.auth().currentUser!.uid
+        clienteControlador.deleteCliente(uid:userID){
+            (resultado) in
+            switch resultado{
+            case .success(let exito):self.displayExito(mensaje:"Cuenta eliminada",exito:exito)
+
+            case .failure(let error):print(error)
+            
+            }
+        }
+        
+    }
     override func viewDidAppear(_ animated: Bool) {
         let userID = Auth.auth().currentUser!.uid
         
@@ -100,7 +110,7 @@ class DetalleClienteViewController: UIViewController {
             clienteControlador.updateCliente(uid: userID,cliente: cambiosCliente){
                 (resultado) in
                 switch resultado{
-                case .success(let exito):self.displayExito(exito:exito)
+                case .success(let exito):self.displayExito(mensaje: "Datos modificados", exito:exito)
 
                 case .failure(let error):print(error)
                 
@@ -112,9 +122,9 @@ class DetalleClienteViewController: UIViewController {
         }
     }
     
-    func displayExito(exito:String)->String{
+    func displayExito(mensaje:String, exito:String)->String{
         DispatchQueue.main.async {
-            let alerta =  UIAlertController(title: "Cliente modificado", message: exito, preferredStyle: .alert)
+            let alerta =  UIAlertController(title: mensaje, message: exito, preferredStyle: .alert)
             alerta.addAction(UIAlertAction(title: "Cerrar", style: .default, handler: nil))
             self.present(alerta, animated: true, completion: nil)
             
@@ -127,7 +137,7 @@ class DetalleClienteViewController: UIViewController {
     func validateFields() -> Bool{
       //Todas estan llenas
       if nombreLabel.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" || telefonoLabel.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" || cpLabel.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" || rfcLabel.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
-        let alerta =  UIAlertController(title: "Error ", message:"Llena todos los espacios", preferredStyle: .alert)
+        let alerta =  UIAlertController(title: "Error ", message:"Favor de llenar todos los espacios", preferredStyle: .alert)
        alerta.addAction(UIAlertAction(title: "Cerrar", style: .default, handler: nil))
        self.present(alerta, animated: true, completion: nil)
           return false

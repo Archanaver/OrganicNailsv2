@@ -21,7 +21,7 @@ class PerfilViewController: UIViewController {
         clienteControlador.fetchCliente(uid: userID){
             (resultado) in
             switch resultado{
-            case .success(let exito):print(self.getIdUsuario(clientes:exito))
+            case .success(let exito):self.getIdUsuario(clientes:exito)
                 self.nombreLabel.text = exito[0].nombre
                 self.direccionLabel.text = exito[0].direccion
             case .failure(let error):print(error)

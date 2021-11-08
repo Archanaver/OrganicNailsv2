@@ -124,7 +124,7 @@ class ClienteControlador{
         db.collection("clientes").whereField("uid", isEqualTo: uid)
           .getDocuments() { (querySnapshot, err) in
             if let err = err {
-                print("Error obteniendo pedido activo: \(err)")
+                print("Error obteniendo cliente: \(err)")
                 completion(.failure(err))
             } else {
                 var documentoID:String = ""
@@ -155,8 +155,41 @@ class ClienteControlador{
         
         
     }
-    
-    
+    func deleteCliente(uid:String,completion: @escaping (Result<String,Error>)->Void){
+        db.collection("clientes").whereField("uid", isEqualTo: uid)
+          .getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error obteniendo cliente: \(err)")
+                completion(.failure(err))
+            }else {
+                var documentoID:String = ""
+                for document in querySnapshot!.documents {
+                    //print("\(document.documentID) => \(document.data())")
+                    documentoID = document.documentID
+                    self.db.collection("clientes").document(documentoID).delete(){err in
+                        if let err = err {
+                            print("Error al remover cliente:\(err)")
+                            completion(.failure(err))
+                        }else{
+                            let user = Auth.auth().currentUser
+                            user?.delete{ error in
+                                if let error = error {
+                                    print("Error al remover cliente:\(error)")
+                                    completion(.failure(error))
+                                } else {
+                                    print("Cuenta eliminada")
+                                    completion(.success("Su cuenta ha sido eliminada"))
+                                }
+                              }
+                            
+                        }
+                    }
+                }
+                
+            }
+          }
+    }
+
    /* func getDireccionUsuario(uid:String, completion: @escaping (Result<String,Error>)->Void){
         db.collection("clientes").whereField("uid", isEqualTo: uid)
           .getDocuments() { (querySnapshot, err) in
