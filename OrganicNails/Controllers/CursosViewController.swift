@@ -50,7 +50,9 @@ class CursosViewController: UIViewController, UISearchResultsUpdating {
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
         searchController.hidesNavigationBarDuringPresentation = false
-        cursosTableView.tableHeaderView = searchController.searchBar
+        navigationItem.hidesSearchBarWhenScrolling = false
+        
+        navigationItem.searchController = searchController
     }
    
     func updateGUI(listaCursos: Cursos){
