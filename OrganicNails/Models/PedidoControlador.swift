@@ -7,6 +7,7 @@
 
 import Foundation
 import Firebase
+import FirebaseFirestore
 
 class PedidoControlador{
     
@@ -191,6 +192,42 @@ class PedidoControlador{
             }
         }
     }
+    //Funcion para encontrar el id del cliente
+    
+   
+    //Funcion para regresar los productos de un pedido identificando al usuario
+    func fetchCarritoUsuario(usuario: String, completion: @escaping (Result <Pedidos, Error>) -> Void){
+        var pedidos = [Pedido]()
+        var productos = [Producto]()
+       // let userID = Auth.auth().currentUser!.uid
+        db.collection("pedidos").whereField("cliente_id",  isEqualTo: usuario).getDocuments() { (querySnapshot, err) in if let err = err {
+            print("Error getting documents: \(err)")
+            completion(.failure(err))
+        } else {
+            for document in querySnapshot!.documents {
+                var p = Pedido(d: document)
+                /*Metodo segun apra sacar el id del pedido
+                 const racesCollection: AngularFirestoreCollection<Race>;
+                 return racesCollection.snapshotChanges().map(actions => {
+                   return actions.map(a => {
+                     const data = a.payload.doc.data() as Race;
+                     data.id = a.payload.doc.id;
+                     return data;
+                   });
+                 });
+                 */
+                //self.db.collection("pedidos").document(ref!.documentID).collection("cursos").addDocument(
+                //Igual aqui el append podria ser algo como " pedidos.append(p.productos)",
+                //pero swift no deja imprimir el arreglo productos :(
+                pedidos.append(p)
+               
+            }
+            completion(.success(pedidos))
+            }
+        }
+    }
+  //  self.db.collection("pedidos").document(ref!.documentID).collection("productos")
+    
     
     //Hacemos una lista de pedidos con el estado que solicita
     func pedidosEstadoSelect(listaPedidos: Pedidos, estado: String) -> Pedidos{
