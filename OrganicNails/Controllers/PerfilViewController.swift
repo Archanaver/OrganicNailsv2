@@ -10,9 +10,31 @@ import Firebase
 
 class PerfilViewController: UIViewController {
     let clienteControlador = ClienteControlador()
+    
+    @IBOutlet weak var nombreLabel: UILabel!
+    
+    
+    @IBOutlet weak var direccionLabel: UILabel!
+    
+    override func viewDidAppear(_ animated: Bool) {
+        let userID = Auth.auth().currentUser!.uid
+        clienteControlador.fetchCliente(uid: userID){
+            (resultado) in
+            switch resultado{
+            case .success(let exito):print(self.getIdUsuario(clientes:exito))
+                self.nombreLabel.text = exito[0].nombre
+                self.direccionLabel.text = exito[0].direccion
+            case .failure(let error):print(error)
+            
+            }
+        }
+
+      }
+      
+    
 
     override func viewDidLoad() {
-        super.viewDidLoad()
+       /* super.viewDidLoad()
         let userID = Auth.auth().currentUser!.uid
         clienteControlador.fetchCliente(uid: userID){
             (resultado) in
@@ -21,7 +43,7 @@ class PerfilViewController: UIViewController {
             case .failure(let error):print(error)
             
             }
-        }
+        }*/
 
         // Do any additional setup after loading the view.
     }
