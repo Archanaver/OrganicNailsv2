@@ -60,6 +60,21 @@ struct Producto: Decodable{
         
         
     }
+    init(document:DocumentSnapshot){
+        self.id = document.documentID
+        self.nombre = document.get("nombre_producto") as? String ?? ""
+        self.descripcion = document.get("descripcion_producto") as? String ?? ""
+        self.id = document.get("id_producto") as? String ?? ""
+        self.colores = document.get("color") as? [String] ?? []
+        self.tipo = document.get("tipo_producto") as? String ?? ""
+        self.precio = document.get("precio_producto") as? [Float] ?? []
+        self.descuento = document.get("descuento_producto") as? Int ?? 0
+        self.uso = document.get("uso") as? String ?? ""
+        self.producto = document.get("cantidad_producto") as? String ?? ""
+        self.presentacion = document.get("presentacion") as? [String] ?? []
+        
+        
+    }
 
 }
 

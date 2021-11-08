@@ -179,7 +179,7 @@ class PedidoControlador{
     func fetchPredidosUsuario(usuario: String, completion: @escaping (Result <Pedidos, Error>) -> Void){
         var pedidos = [Pedido]()
         
-        db.collection("pedidos").whereField("cliente_id", isEqualTo:usuario).getDocuments() { (querySnapshot, err) in if let err = err {
+        db.collection("pedidos").whereField("uid", isEqualTo:usuario).getDocuments() { (querySnapshot, err) in if let err = err {
             print("Error getting documents: \(err)")
             completion(.failure(err))
         } else {

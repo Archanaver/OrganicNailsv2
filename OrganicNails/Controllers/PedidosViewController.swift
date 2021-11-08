@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class PedidosViewController: UIViewController {
     
@@ -42,37 +43,26 @@ class PedidosViewController: UIViewController {
         //Obtenemos tag
         estadoPickerView.tag = 1
         
-        print("USUARIO",usuario)
+        usuario = Auth.auth().currentUser!.uid
+        //print("USUARIO",usuario)
         
-        pedidosControlador.fetchPredidosUsuario(usuario: "2UwwTsUpR6ZRLMfgkopJlZoj3NQ2"){ (result) in switch result {
-        case .success(let pedidos):self.updateUI(with: pedidos)
-        case .failure(let error):self.displayError(error, title: "No se pudo acceder a los productos")
-          }
-        }
-        
-        /*
         pedidosControlador.fetchPredidosUsuario(usuario: usuario){ (result) in switch result {
         case .success(let pedidos):self.updateUI(with: pedidos)
         case .failure(let error):self.displayError(error, title: "No se pudo acceder a los productos")
           }
         }
- */
+ 
 
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        /*
+        
         pedidosControlador.fetchPredidosUsuario(usuario: usuario){ (result) in switch result {
         case .success(let pedidos):self.updateUI(with: pedidos)
         case .failure(let error):self.displayError(error, title: "No se pudo acceder a los productos")
           }
         }
- */
-        pedidosControlador.fetchPredidosUsuario(usuario: "2UwwTsUpR6ZRLMfgkopJlZoj3NQ2"){ (result) in switch result {
-        case .success(let pedidos):self.updateUI(with: pedidos)
-        case .failure(let error):self.displayError(error, title: "No se pudo acceder a los productos")
-          }
-        }
+
     }
     
     //Función de update
@@ -166,22 +156,12 @@ extension PedidosViewController: UIPickerViewDataSource, UIPickerViewDelegate {
             estado.resignFirstResponder()
             
             //Obtenemos las promociones de todos los productos de un tipo
-            pedidosControlador.fetchPredidosUsuario(usuario: "2UwwTsUpR6ZRLMfgkopJlZoj3NQ2"){ (result) in switch result {
+            
+            pedidosControlador.fetchPredidosUsuario(usuario: usuario){ (result) in switch result {
             case .success(let pedidos):self.updateUI(with: pedidos)
             case .failure(let error):self.displayError(error, title: "No se pudo acceder a los productos")
-              }
+                }
             }
-            
-        /*
-        pedidosControlador.fetchPredidosUsuario(usuario: usuario){ (result) in switch result {
-        case .success(let pedidos):self.updateUI(with: pedidos)
-        case .failure(let error):self.displayError(error, title: "No se pudo acceder a los productos")
-          }
-        }
- */
-            
-            //print("PEDIDOS CON FECHA")
-            //print(pedidosEstado[0].fecha)
             
         default:
             return
