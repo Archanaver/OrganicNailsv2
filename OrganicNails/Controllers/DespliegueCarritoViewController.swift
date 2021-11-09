@@ -58,21 +58,28 @@ class DespliegueCarritoViewController: UIViewController, UISearchResultsUpdating
             return id
         }
   override func viewDidAppear(_ animated: Bool) {
-    
-    carritoControlador.fetchCarritoUsuario(idPedido: "rS2JEskBc2ru5HjdSo9D"){ (resultado) in
-            switch resultado{
-            case .success(let listaProductosP):self.updateGUI(listaProductosP: listaProductosP)
-            case .failure(let error):self.displayError(e: error)
+    var idPedidoActivo = ""
+    carritoControlador.checarCarrito(){
+        (resultado) in
+        switch resultado{
+        case .success(let exito):idPedidoActivo = exito
+            print("pedido id",idPedidoActivo)
+            self.carritoControlador.fetchCarritoUsuario(idPedido: idPedidoActivo){ (resultado) in
+                switch resultado{
+                case .success(let listaProductosP):self.updateGUI(listaProductosP: listaProductosP)
+                case .failure(let error):self.displayError(e: error)
+                }
             }
-            
-        }
-    carritoControlador.fetchCarritoCursosUsuario(idPedido: "rS2JEskBc2ru5HjdSo9D"){ (resultadoCurso) in
-            switch resultadoCurso{
-            case .success(let listaCursosP):self.updateGUICurso(listaCursosP: listaCursosP)
-            case .failure(let error):self.displayError(e: error)
+            self.carritoControladorCurso.fetchCarritoCursosUsuario(idPedido: idPedidoActivo){ (resultado) in
+                switch resultado{
+                case .success(let listaCursosP):self.updateGUICurso(listaCursosP: listaCursosP)
+                case .failure(let error):self.displayError(e: error)
+                }
             }
-            
+        case .failure(let error):print("No se pudo encontrar la dirección error; ",error)
         }
+        
+    }
 
     }
   
@@ -84,24 +91,35 @@ class DespliegueCarritoViewController: UIViewController, UISearchResultsUpdating
         carritoCursoTableView.delegate = self
         carritoCursoTableView.dataSource = self
                //let userID = Auth.auth().currentUser!.uid
-        //var idPedidoActivo = ""
-        carritoControlador.fetchCarritoUsuario(idPedido: "rS2JEskBc2ru5HjdSo9D"){ (resultado) in
+        var idPedidoActivo = ""
+        carritoControlador.checarCarrito(){
+            (resultado) in
             switch resultado{
-            case .success(let listaProductosP):self.updateGUI(listaProductosP: listaProductosP)
-            case .failure(let error):self.displayError(e: error)
+            case .success(let exito):idPedidoActivo = exito
+                print("pedido id",idPedidoActivo)
+                self.carritoControlador.fetchCarritoUsuario(idPedido: idPedidoActivo){ (resultado) in
+                    switch resultado{
+                    case .success(let listaProductosP):self.updateGUI(listaProductosP: listaProductosP)
+                    case .failure(let error):self.displayError(e: error)
+                    }
+                }
+                self.carritoControladorCurso.fetchCarritoCursosUsuario(idPedido: idPedidoActivo){ (resultado) in
+                    switch resultado{
+                    case .success(let listaCursosP):self.updateGUICurso(listaCursosP: listaCursosP)
+                    case .failure(let error):self.displayError(e: error)
+                    }
+                }
+            case .failure(let error):print("No se pudo encontrar la dirección error; ",error)
             }
+            
         }
+            
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
         searchController.hidesNavigationBarDuringPresentation = false
         carritoTableView.tableHeaderView = searchController.searchBar
         
-        carritoControladorCurso.fetchCarritoCursosUsuario(idPedido: "rS2JEskBc2ru5HjdSo9D"){ (resultado) in
-            switch resultado{
-            case .success(let listaCursosP):self.updateGUICurso(listaCursosP: listaCursosP)
-            case .failure(let error):self.displayError(e: error)
-            }
-        }
+
         
         searchControllerCurso.searchResultsUpdater = self
         searchControllerCurso.dimsBackgroundDuringPresentation = false
