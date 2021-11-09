@@ -16,6 +16,25 @@ struct CursoP:Decodable{
     var fecha_curso:String
     var descripcion_curso:String
     
+    init(id_curso:String, instructor:String,nombre_curso:String, precio_curso:String, fecha_curso:String, descripcion_curso:String){
+            self.id_curso = id_curso
+            self.instructor = instructor
+            self.nombre_curso = nombre_curso
+            self.precio_curso = precio_curso
+            self.fecha_curso = fecha_curso
+            self.descripcion_curso = descripcion_curso
+      
+            
+        }
+        
+        init(d:DocumentSnapshot){
+            self.id_curso = d.get("id_curso") as? String ?? ""
+            self.instructor = d.get("instructor") as? String ?? ""
+            self.nombre_curso = d.get("nombre_curso") as? String ?? ""
+            self.precio_curso = d.get("precio_curso") as? String ?? ""
+            self.fecha_curso = d.get("fecha_curso") as? String ?? ""
+            self.descripcion_curso = d.get("descripcion_curso") as? String ?? ""
+        }
     
     func IdCurso()->String {
         return id_curso
@@ -177,4 +196,5 @@ struct Pedido: Decodable{
 
 
 typealias ProductosP = [ProductoP]
+typealias CursosP = [CursoP]
 typealias Pedidos = [Pedido]

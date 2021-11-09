@@ -219,17 +219,34 @@ class PedidoControlador{
             for document in querySnapshot!.documents {
                 var p = ProductoP(d: document)
                 p = ProductoP(cantidad_producto: p.cantidad_producto, color: p.color, descripcion_producto: p.descripcion_producto, descuento_producto: p.descuento_producto, id_producto: p.id_producto, nombre_producto: p.nombre_producto, precio_producto: p.precio_producto, presentacion: p.presentacion, tipo_producto: p.tipo_producto, uso: p.uso)
-                print("Productos--- ",p)
-                //cursos.append(c.nombre)
+              
                 productos.append(p)
                
             }
             
             completion(.success(productos))
-            //completion(.success(cursos))
             }
         }
     }
+    
+    func fetchCarritoCursosUsuario(idPedido: String, completion: @escaping (Result <CursosP, Error>) -> Void){
+        var cursos = [CursoP]()
+        db.collection("pedidos").document(idPedido).collection("cursos").getDocuments() { (querySnapshot, err) in if let err = err {
+            print("Error getting documents: \(err)")
+            completion(.failure(err))
+        } else {
+            for document in querySnapshot!.documents {
+                var p = CursoP(d: document)
+                p = CursoP(id_curso: p.id_curso, instructor: p.instructor, nombre_curso: p.nombre_curso, precio_curso: p.precio_curso, fecha_curso: p.fecha_curso, descripcion_curso: p.descripcion_curso)
+                //print("Cursos--- ",p)
+                cursos.append(p)
+            }
+            completion(.success(cursos))
+            
+            }
+        }
+    }
+    
   
     func deleteCarrito(id:String,completion: @escaping (Result<String,Error>)->Void){
           db.collection("pedidos").document(id).delete(){err in
