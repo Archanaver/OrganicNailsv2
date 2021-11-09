@@ -188,7 +188,7 @@ struct Pedido: Decodable{
             self.fecha = d.get("fecha") as? String ?? ""
             self.productos = d.get("productos") as? [ProductoP] ?? []
             self.cursos = d.get("cursos") as? [CursoP] ?? []
-            self.uid = d.get("uid") as? String ?? ""
+            //self.uid = d.get("uid") as? String ?? ""
         }
     
 
