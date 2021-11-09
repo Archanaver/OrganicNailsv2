@@ -46,7 +46,7 @@ class CursoControlador{
             completion(.failure(err))
         } else {
             for document in querySnapshot!.documents {
-                var c = Curso(d: document)
+                var c = Curso(document: document)
                 cursos.append(c)
             }
             completion(.success(cursos))

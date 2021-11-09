@@ -28,13 +28,15 @@ class PedidosDetalleViewController: UIViewController {
         productosTableVierw.delegate = self
         productosTableVierw.dataSource = self
         
-        productosControlador.fetchProductosPedido(pedido: pedido!.id){ (result) in switch result {
+        print(pedido!.uid)
+        
+        productosControlador.fetchProductosPedido(pedido: pedido!.uid){ (result) in switch result {
         case .success(let productosP):self.updateUIP(with: productosP)
         case .failure(let error):self.displayError(error, title: "No se pudo acceder a los productos")
           }
         }
         
-        cursosControlador.fetchCursosPedido(pedido: pedido!.id){ (result) in switch result {
+        cursosControlador.fetchCursosPedido(pedido: pedido!.uid){ (result) in switch result {
         case .success(let cursosP):self.updateUIC(with: cursosP)
         case .failure(let error):self.displayError(error, title: "No se pudo acceder a los productos")
           }
@@ -46,13 +48,13 @@ class PedidosDetalleViewController: UIViewController {
     
  
     override func viewWillAppear(_ animated: Bool) {
-        productosControlador.fetchProductosPedido(pedido: pedido!.id){ (result) in switch result {
+        productosControlador.fetchProductosPedido(pedido: pedido!.uid){ (result) in switch result {
         case .success(let productos):self.updateUIP(with: productos)
         case .failure(let error):self.displayError(error, title: "No se pudo acceder a los productos")
           }
         }
         
-        cursosControlador.fetchCursosPedido(pedido: pedido!.id){ (result) in switch result {
+        cursosControlador.fetchCursosPedido(pedido: pedido!.uid){ (result) in switch result {
         case .success(let cursosP):self.updateUIC(with: cursosP)
         case .failure(let error):self.displayError(error, title: "No se pudo acceder a los productos")
           }
