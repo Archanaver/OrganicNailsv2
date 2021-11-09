@@ -1757,7 +1757,7 @@
         <!--Menu Perfil-->
         <scene sceneID="cln-SK-Tbs">
             <objects>
-                <viewController wantsFullScreenLayout="YES" modalTransitionStyle="crossDissolve" modalPresentationStyle="fullScreen" id="scH-j2-WGV" userLabel="Menu Perfil" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="inicio" wantsFullScreenLayout="YES" modalTransitionStyle="crossDissolve" modalPresentationStyle="fullScreen" id="scH-j2-WGV" userLabel="Menu Perfil" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OOI-8z-MTb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1855,7 +1855,6 @@
                                 </state>
                                 <connections>
                                     <action selector="salir:" destination="eRn-Bv-Yi4" eventType="touchUpInside" id="UlA-35-r2f"/>
-                                    <segue destination="scH-j2-WGV" kind="show" id="7Be-zk-apd"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Dirección" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="53g-GY-LEC">
@@ -3424,7 +3423,7 @@
         <segue reference="Deq-xw-cVL"/>
         <segue reference="5ep-jN-V5Q"/>
         <segue reference="cj4-ya-a3c"/>
-        <segue reference="7Be-zk-apd"/>
+        <segue reference="kj8-yi-v0S"/>
         <segue reference="v4e-DG-8if"/>
         <segue reference="yP4-VP-1Vr"/>
         <segue reference="YaQ-uL-8fX"/>
