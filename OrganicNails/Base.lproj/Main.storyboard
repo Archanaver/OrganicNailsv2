@@ -364,7 +364,6 @@
                                 <state key="normal" title="Eliminar cuenta"/>
                                 <connections>
                                     <action selector="eliminarCuenta:" destination="ecf-kV-rVI" eventType="touchUpInside" id="ova-wN-wgu"/>
-                                    <segue destination="scH-j2-WGV" kind="show" id="kj8-yi-v0S"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -3306,7 +3305,7 @@
         <segue reference="Deq-xw-cVL"/>
         <segue reference="5ep-jN-V5Q"/>
         <segue reference="cj4-ya-a3c"/>
-        <segue reference="kj8-yi-v0S"/>
+        <segue reference="yXo-mL-0JD"/>
         <segue reference="v4e-DG-8if"/>
         <segue reference="yP4-VP-1Vr"/>
         <segue reference="YaQ-uL-8fX"/>
