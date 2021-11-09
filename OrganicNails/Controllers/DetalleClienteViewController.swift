@@ -36,6 +36,9 @@ class DetalleClienteViewController: UIViewController {
             
             }
         }
+        let siguienteVista = self.storyboard!.instantiateViewController(withIdentifier: "inicio") as! UIViewController
+        siguienteVista.modalPresentationStyle = .fullScreen
+        self.present(siguienteVista, animated: true, completion: nil)
         
     }
     override func viewDidAppear(_ animated: Bool) {

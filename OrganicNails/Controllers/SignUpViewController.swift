@@ -86,7 +86,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                            self.present(alerta, animated: true, completion: nil)
                         }else {
                             let siguienteVista = self.storyboard!.instantiateViewController(withIdentifier: "tabBar") as! UITabBarController
-                            siguienteVista.modalPresentationStyle = .pageSheet
+                            siguienteVista.modalPresentationStyle = .fullScreen
                             self.present(siguienteVista, animated: true, completion: nil)
                         }
                     }

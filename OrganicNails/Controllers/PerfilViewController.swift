@@ -45,7 +45,8 @@ class PerfilViewController: UIViewController {
                 
  
             case .failure(let error):print( error)
-            }}
+            }
+        }
     
     print("no hay carrito activo")
         do{
@@ -57,6 +58,9 @@ class PerfilViewController: UIViewController {
             self.present(alerta, animated: true, completion: nil)
         
         }
+        let siguienteVista = self.storyboard!.instantiateViewController(withIdentifier: "inicio") as! UIViewController
+        siguienteVista.modalPresentationStyle = .fullScreen
+        self.present(siguienteVista, animated: true, completion: nil)
     }
     override func viewDidAppear(_ animated: Bool) {
         let userID = Auth.auth().currentUser!.uid
