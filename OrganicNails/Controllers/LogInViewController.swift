@@ -10,9 +10,6 @@ import Firebase
 
 class LogInViewController: UIViewController, UITextFieldDelegate    {
     
-    //Variable para el usuario en curso
-    var usuarioCurso:String = ""
-
     @IBOutlet weak var correoTextField: UITextField!
     
     @IBOutlet weak var contraTextField: UITextField!
@@ -77,14 +74,6 @@ class LogInViewController: UIViewController, UITextFieldDelegate    {
                     
                 }
                 else{
-                    let user = Auth.auth().currentUser
-                    self.usuarioCurso = user?.uid ?? ""
-                    func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-                        let siguiente = segue.destination as? PedidosViewController
-                        print("USUARIOINICIOSESION", self.usuarioCurso)
-                        siguiente?.usuario = self.usuarioCurso
-                        
-                    }
                     let siguienteVista = self.storyboard!.instantiateViewController(withIdentifier: "tabBar") as! UITabBarController
                     siguienteVista.modalPresentationStyle = .overFullScreen
                     self.present(siguienteVista, animated: true, completion: nil)

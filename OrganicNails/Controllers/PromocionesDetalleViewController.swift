@@ -91,8 +91,26 @@ extension PromocionesDetalleViewController: UIPickerViewDataSource, UIPickerView
             presentacionProd.text = presentacion[row]
             presentacionProd.resignFirstResponder()
         
-        //Cambiamos las demàs variables
+            //Cambiamos las demàs variables
+            //Precio sin descuento
             var precioActual = String((producto?.precio[row])!)
+            
+            //Ahorras
+            var precioActualInt = (producto?.precio[row])!
+            var descuentoMult = Float(producto!.descuento / 100)
+            var ahorrasDato = precioActualInt * descuentoMult
+            
+            //Precio con descuento
+            var precioDescuento = precioActualInt - ahorrasDato
+            
+            //Para utilizarlas hacer lo siguiente:
+            /*
+             precioOriginal.text? = String(precioActual)
+             descuendo.text? = String((producto?.descuento)!)
+             precio.text? = String(precioDescuento)
+             ahorras.text? = String(ahorrasDato)
+             */
+            
             precio.text? = precioActual
             ahorras.text? = String((producto?.descuento)!)
             

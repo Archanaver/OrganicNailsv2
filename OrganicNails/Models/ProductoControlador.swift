@@ -90,5 +90,23 @@ class ProductoControlador{
         }
         return pres
     }
+    
+    
+    //Función para regresar un arreglo de productos de un pedido
+    func fetchProductosPedido(pedido: String, completion: @escaping (Result <Productos, Error>) -> Void){
+        var productos = [Producto]()
+        
+        db.collection("pedidos").document(pedido).collection("productos").getDocuments() { (querySnapshot, err) in if let err = err {
+            print("Error getting documents: \(err)")
+            completion(.failure(err))
+        } else {
+            for document in querySnapshot!.documents {
+                var p = Producto(document: document)
+                productos.append(p)
+            }
+            completion(.success(productos))
+            }
+        }
+    }
 }
 

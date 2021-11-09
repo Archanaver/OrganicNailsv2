@@ -37,6 +37,23 @@ class CursoControlador{
         
     }*/
     
+    //Función para regresar un arreglo de cursos de un pedido
+    func fetchCursosPedido(pedido: String, completion: @escaping (Result <Cursos, Error>) -> Void){
+        var cursos = [Curso]()
+        
+        db.collection("pedidos").document(pedido).collection("cursos").getDocuments() { (querySnapshot, err) in if let err = err {
+            print("Error getting documents: \(err)")
+            completion(.failure(err))
+        } else {
+            for document in querySnapshot!.documents {
+                var c = Curso(d: document)
+                cursos.append(c)
+            }
+            completion(.success(cursos))
+            }
+        }
+    }
+    
     func fetchCursos(completion: @escaping (Result<Cursos, Error>)->Void){
         var lista_cursos = [Curso]()
         db.collection("cursos").getDocuments(){ (querySnapshot, err) in

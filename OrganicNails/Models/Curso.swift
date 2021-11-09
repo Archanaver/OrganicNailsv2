@@ -47,6 +47,16 @@ struct Curso: Decodable{
         self.servicio = d.get("servicio") as? String ?? ""
         
     }
+    init(document:DocumentSnapshot){
+        self.id = document.documentID
+        self.nombre = document.get("nombre_curso") as? String ?? ""
+        self.descripcion = document.get("descripcion_curso") as? String ?? ""
+        self.id = document.get("id_curso") as? String ?? ""
+        self.precio = document.get("precio_curso") as? Float ?? 0
+        self.fecha = document.get("fecha_curso") as? String ?? ""
+        self.instructor = document.get("instructor") as? String ?? ""
+        self.servicio = document.get("servicio") as? String ?? ""
+    }
 
 }
 
