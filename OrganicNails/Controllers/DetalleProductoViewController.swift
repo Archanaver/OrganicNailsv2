@@ -207,11 +207,9 @@ class DetalleProductoViewController: UIViewController, UIPickerViewDelegate, UIP
                     print(exito)
                     var nuevoProducto = ProductoP(cantidad_producto: self.counter, color: self.tempColor, descripcion_producto: self.descripcion.text!, descuento_producto:self.tempDescuento, id_producto: self.id.text!, nombre_producto: self.nombreProducto.text!, precio_producto: self.tempPrecio, presentacion: self.tempPresentacion, tipo_producto: self.tipo.text!, uso: self.uso.text!)
                     let now = Date()
-
                     let formatter = DateFormatter()
                     formatter.dateStyle = .full
                     formatter.timeStyle = .full
-
                     let datetime = formatter.string(from: now)
                     
                     var nuevoPedido = Pedido(activo:true, estatus:"Pendiente",productos:[nuevoProducto], direccion: dataUsuario["direccion"]!, cursos:[], cliente_id:dataUsuario["id_doc"]!, fecha:datetime, uid: userUID)

@@ -11,7 +11,7 @@ import FirebaseAuth
 class DetalleCursoViewController: UIViewController {
     var curso:Curso?
     let pedidoControlador = PedidoControlador()
-    let usuarioControlador = UsuarioControlador()
+    let usuarioControlador = ClienteControlador()
     
     @IBOutlet weak var nombre: UILabel!
     
@@ -35,30 +35,28 @@ class DetalleCursoViewController: UIViewController {
     }
     
     @IBAction func agregarCarrito( sender: UIButton){
-        let userID = Auth.auth().currentUser!.uid
+        let userUID = Auth.auth().currentUser!.uid
         //print("usuario", userID)
-        var direccionUsuario:String = ""
-           usuarioControlador.getDireccionUsuario(uid: userID){
-                  (resultado) in
+        var dataUsuario:[String:String] = [:]
+        usuarioControlador.getUserDataForCreatingPedido(uid: userUID){
+            (resultado) in
                   switch resultado{
-                  case .success(let exito):direccionUsuario=self.getDireccion(exito: exito)
-                    var datosUsuario =  direccionUsuario.split(separator: "|")
+                  case .success(let exito):dataUsuario = exito
+                      print(exito)
                     var nuevoCurso = CursoP(id_curso: self.codigo.text!, instructor: self.instructor.text!, nombre_curso: self.nombre.text!, precio_curso: self.precio.text!, fecha_curso: self.fecha.text!, descripcion_curso: self.descripcion.text!)
                     let now = Date()
-
                     let formatter = DateFormatter()
                     formatter.dateStyle = .full
                     formatter.timeStyle = .full
-
                     let datetime = formatter.string(from: now)
-                    var nuevoPedido = Pedido(activo:true, estatus:"Pendiente",productos:[], direccion: String(datosUsuario[0]), cursos:[nuevoCurso],cliente_id: String(datosUsuario[1]), fecha: datetime, uid: userID)
+                    
+                    var nuevoPedido = Pedido(activo:true, estatus:"Pendiente",productos:[], direccion: dataUsuario["direccion"]!, cursos:[nuevoCurso],cliente_id: dataUsuario["id_doc"]!, fecha: datetime, uid: userUID)
                     // checar si hay carrito activo
                     var pedidoId:String = ""
-                    print("el id antes",pedidoId)
                     self.pedidoControlador.checarCarrito(){
                         (resultado) in
                         switch resultado{
-                        case .success(let exito):pedidoId = self.getIdUsuario(id: exito)
+                        case .success(let exito):pedidoId = exito
                             if pedidoId.count != 0 {
                                 print("editar curso")
                                 self.pedidoControlador.agregarCursoEnPedido(nuevoCurso: nuevoCurso, idPedido: pedidoId){
@@ -107,18 +105,7 @@ class DetalleCursoViewController: UIViewController {
         }
         
     }
-    
-    func getIdUsuario(id:String)->String{
-        DispatchQueue.main.async {
-        }
-        return id
-    }
-    
-    func getDireccion(exito:String)->String{
-        DispatchQueue.main.async {
-        }
-        return exito
-    }
+
     
 
     /*
