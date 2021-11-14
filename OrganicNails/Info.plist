@@ -74,5 +74,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSFaceIDUsageDescription</key>
+	<string>Por favor permite continuar con Face ID</string>
 </dict>
 </plist>
