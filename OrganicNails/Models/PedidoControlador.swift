@@ -29,7 +29,7 @@ class PedidoControlador{
                 print("Error al añadir documento: \(err)")
                 completion(.failure(err))
             }else{
-                for nuevoProducto in nuevoPedido.productos{
+                for nuevoProducto in nuevoPedido.productos!{
                     print("ref",ref!.documentID)
                     self.db.collection("pedidos").document(ref!.documentID).collection("productos").addDocument(data: [
                        "cantidad_producto": nuevoProducto.CantidadProducto(),
@@ -70,7 +70,7 @@ class PedidoControlador{
                 print("Error al añadir documento: \(err)")
                 completion(.failure(err))
             }else{
-                for nuevoCurso in nuevoPedido.cursos{
+                for nuevoCurso in nuevoPedido.cursos!{
                     print("ref",ref!.documentID)
                     self.db.collection("pedidos").document(ref!.documentID).collection("cursos").addDocument(data: [
                         "id_curso": nuevoCurso.IdCurso(),

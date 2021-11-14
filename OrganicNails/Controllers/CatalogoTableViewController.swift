@@ -101,15 +101,12 @@ class CatalogoTableViewController: UITableViewController {
 
         let section = self.tableView.indexPathForSelectedRow!.section
         let row = self.tableView.indexPathForSelectedRow!.row
-        print(section, row)
-      
-
             let siguiente = segue.destination as! ProductosViewController
             if row == 0 {
-                siguiente.filtradoTipo = 0;
+                siguiente.filtradoTipo = false;
                 siguiente.opcion = (catalogo[section].producto)!
             }else{
-                siguiente.filtradoTipo = 1;
+                siguiente.filtradoTipo = true;
                 siguiente.opcion = (catalogo[section].categoria?[row])!
             }
             siguiente.categoria = (catalogo[section].producto)!

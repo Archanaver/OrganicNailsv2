@@ -9,12 +9,12 @@ import Foundation
 import Firebase
 
 struct Cliente: Decodable{
-    var id : String
-    var nombre : String
-    var direccion: String
-    var cp : String
-    var telefono : String
-    var rfc : String
+    var id : String?
+    var nombre : String?
+    var direccion: String?
+    var cp : String?
+    var telefono : String?
+    var rfc : String?
     
     enum CodingKeys: String, CodingKey {
         case id,nombre,direccion,cp,telefono,rfc

@@ -7,6 +7,7 @@
 
 import Foundation
 import Firebase
+import FirebaseFirestoreSwift
 
 struct CursoP:Decodable{
     var id_curso: String
@@ -150,8 +151,8 @@ struct Pedido: Decodable{
     var estatus: String
     var fecha: String
     var uid:String
-    var productos:[ProductoP]
-    var cursos:[CursoP]
+    var productos:[ProductoP]?
+    var cursos:[CursoP]?
     
 
     

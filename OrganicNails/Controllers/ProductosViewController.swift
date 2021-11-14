@@ -10,7 +10,7 @@ import Firebase
 
 class ProductosViewController: UIViewController, UISearchResultsUpdating {
     var opcion: String = ""
-    var filtradoTipo:Int = 0
+    var filtradoTipo:Bool = false
     var categoria:String = ""
     
     let db = Firestore.firestore()
@@ -61,7 +61,7 @@ class ProductosViewController: UIViewController, UISearchResultsUpdating {
     func updateGUI(listaProductos: Productos){
         DispatchQueue.main.async {
             //self.productos = listaProductos
-            if self.filtradoTipo == 1{
+            if self.filtradoTipo {
                 self.filtrarPorTipo(listaProductos: listaProductos)
                 
             }else{
@@ -82,9 +82,9 @@ class ProductosViewController: UIViewController, UISearchResultsUpdating {
         
     }
     func filtrarPorTipo(listaProductos: Productos){
-        for p in listaProductos{
-            if p.tipo == self.opcion{
-                self.productos.append(p)
+        for producto in listaProductos{
+            if producto.tipo == self.opcion{
+                self.productos.append(producto)
             }
         }
     }

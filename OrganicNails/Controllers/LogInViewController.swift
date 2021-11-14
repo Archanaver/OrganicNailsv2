@@ -83,10 +83,10 @@ class LogInViewController: UIViewController, UITextFieldDelegate    {
                     
                 }
                 else{
-                    /*let siguienteVista = self.storyboard!.instantiateViewController(withIdentifier: "tabBar") as! UITabBarController
+                    let siguienteVista = self.storyboard!.instantiateViewController(withIdentifier: "tabBar") as! UITabBarController
                     siguienteVista.modalPresentationStyle = .overFullScreen
-                    self.present(siguienteVista, animated: true, completion: nil)*/
-                  self.didTapButton()
+                    self.present(siguienteVista, animated: true, completion: nil)
+                 // self.didTapButton()
                 }
             }
         }

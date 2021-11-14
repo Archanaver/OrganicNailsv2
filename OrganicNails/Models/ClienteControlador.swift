@@ -59,7 +59,7 @@ class ClienteControlador{
     }
     
     func updateClienteFactura(clienteActualizar : Cliente, completion: @escaping (Result <String, Error>)->Void){
-        db.collection("clientes").document(clienteActualizar.id).updateData(["rfc":clienteActualizar.rfc, "codigoPostal":clienteActualizar.cp]) {
+        db.collection("clientes").document(clienteActualizar.id!).updateData(["rfc":clienteActualizar.rfc, "codigoPostal":clienteActualizar.cp]) {
             err in
             if let err = err {
                 completion(.failure(err))
@@ -189,6 +189,38 @@ class ClienteControlador{
             }
           }
     }
+    
+    // obtiene la direccion y el id del documento del cliente
+    func getUserDataForCreatingPedido(uid:String, completion: @escaping (Result<[String: String],Error>)->Void){
+        var emptyDict: [String: String] = [:]
+        db.collection("clientes").whereField("uid", isEqualTo: uid).getDocuments(){(querySnapshot, err) in
+                    if let err = err {
+                        print("Error obteniendo datos del usuario con uid:",uid)
+                        completion(.failure(err))
+            
+                    }else{
+                        emptyDict["id_doc"] = querySnapshot!.documents[0].documentID
+                        let userInfo = Result{
+                            try querySnapshot!.documents[0].data(as: Cliente.self)
+                            
+                        }
+                        switch userInfo {
+                        case .success(let userData):
+                            if let userData = userData {
+                                //print("User: \(userData)")
+                                emptyDict["direccion"] = userData.direccion
+                                //print("diccionario ", emptyDict)
+                                completion(.success(emptyDict))
+                            } else {
+                                print("User's document does not exist")
+                            }
+                        case .failure(let error):
+                            print("Error decoding user: \(error)")
+                        }
+                    }
+        }
+    }
+    
 
    /* func getDireccionUsuario(uid:String, completion: @escaping (Result<String,Error>)->Void){
         db.collection("clientes").whereField("uid", isEqualTo: uid)
