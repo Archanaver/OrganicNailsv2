@@ -27,14 +27,14 @@ class DespliegueCarroViewController: UIViewController {
             CarritoTableView.delegate = self
             CarritoTableView.dataSource = self
             
-            print("CURSOS", pedido?.cursos.count)
-            print("PRODUCTOS", pedido?.productos.count)
+            print("CURSOS", pedido?.cursos!.count)
+            print("PRODUCTOS", pedido?.productos!.count)
             
-            for i in pedido!.productos {
+            for i in pedido!.productos! {
                 productos.append(i)
             }
             
-            for i in pedido!.cursos {
+            for i in pedido!.cursos! {
                 cursos.append(i)
             }
      

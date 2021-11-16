@@ -23,7 +23,7 @@ class DetalleProductoViewController: UIViewController, UIPickerViewDelegate, UIP
     var tempDescuento:Int = 0
     
     let pedidoControlador = PedidoControlador()
-    let usuarioControlador = UsuarioControlador()
+    let usuarioControlador = ClienteControlador()
     
     @IBOutlet weak var descuentoLabel: UILabel!
     
@@ -197,80 +197,59 @@ class DetalleProductoViewController: UIViewController, UIPickerViewDelegate, UIP
             self.present(alerta, animated: true, completion: nil)
             
         }else{
-            let userID = Auth.auth().currentUser!.uid
-            //print("usuario", userID)
-            var direccionUsuario:String = ""
-               usuarioControlador.getDireccionUsuario(uid: userID){
-                      (resultado) in
-                      switch resultado{
-                      case .success(let exito):direccionUsuario=self.getDireccion(exito: exito)
-            var datosUsuario =  direccionUsuario.split(separator: "|")
-                       
-                    print("direccion usuario"+direccionUsuario)
-                        var nuevoProducto = ProductoP(cantidad_producto: self.counter, color: self.tempColor, descripcion_producto: self.descripcion.text!, descuento_producto:self.tempDescuento, id_producto: self.id.text!, nombre_producto: self.nombreProducto.text!, precio_producto: self.tempPrecio, presentacion: self.tempPresentacion, tipo_producto: self.tipo.text!, uso: self.uso.text!)
-                        let now = Date()
-
-                        let formatter = DateFormatter()
-                        formatter.dateStyle = .full
-                        formatter.timeStyle = .full
-
-                        let datetime = formatter.string(from: now)
-                        
-                        var nuevoPedido = Pedido(activo:true, estatus:"Pendiente",productos:[nuevoProducto], direccion: String(datosUsuario[0]), cursos:[], cliente_id:String(datosUsuario[1]), fecha:datetime, uid: userID)
-                        
-                        // checar si hay carrito activo
-                        var pedidoId:String = ""
-                        //print("el id ",pedidoId)
-                        self.pedidoControlador.checarCarrito(){
-                            (resultado) in
-                            switch resultado{
-                            case .success(let exito):pedidoId = self.getIdUsuario(id: exito)
-                                if pedidoId.count != 0 {
-                                    //print("editar pedido")
-                                    self.pedidoControlador.agregarProductoEnPedido(nuevoProducto: nuevoProducto,idPedido: pedidoId){
+            let userUID = Auth.auth().currentUser!.uid
+            print("usuario", userUID)
+            var dataUsuario:[String:String] = [:]
+            usuarioControlador.getUserDataForCreatingPedido(uid: userUID){
+                (resultado) in
+                switch resultado{
+                case .success(let exito):dataUsuario = exito
+                    print(exito)
+                    var nuevoProducto = ProductoP(cantidad_producto: self.counter, color: self.tempColor, descripcion_producto: self.descripcion.text!, descuento_producto:self.tempDescuento, id_producto: self.id.text!, nombre_producto: self.nombreProducto.text!, precio_producto: self.tempPrecio, presentacion: self.tempPresentacion, tipo_producto: self.tipo.text!, uso: self.uso.text!)
+                    let now = Date()
+                    let formatter = DateFormatter()
+                    formatter.dateStyle = .full
+                    formatter.timeStyle = .full
+                    let datetime = formatter.string(from: now)
+                    
+                    var nuevoPedido = Pedido(activo:true, estatus:"Pendiente",productos:[nuevoProducto], direccion: dataUsuario["direccion"]!, cursos:[], cliente_id:dataUsuario["id_doc"]!, fecha:datetime, uid: userUID)
+                    print(nuevoPedido)
+                // checar si hay carrito activo
+                    var pedidoId:String = ""
+                    print("holaaaa")
+                    //print("el id ",pedidoId)
+              self.pedidoControlador.checarCarrito(){
+                        (resultado) in
+                        switch resultado{
+                        case .success(let exito):pedidoId = exito
+                            print("id del pedido activo", pedidoId)
+                            if pedidoId.count != 0 {
+                                //print("editar pedido")
+                                self.pedidoControlador.agregarProductoEnPedido(nuevoProducto: nuevoProducto,idPedido: pedidoId){
+                                    (resultado) in
+                                    switch resultado{
+                                    case .success(let exito):self.displayExito(exito: exito)
+                                    case .failure(let error):self.displayError(e: error)
+                                    }
+                                }
+                            }else{
+                                print("nuevo pedido")
+                                self.pedidoControlador.crearPedidoConProducto(nuevoPedido: nuevoPedido){
                                         (resultado) in
                                         switch resultado{
                                         case .success(let exito):self.displayExito(exito: exito)
                                         case .failure(let error):self.displayError(e: error)
                                         }
                                     }
-                                }else{
-                                    //print("nuevo pedido")
-                                    self.pedidoControlador.crearPedidoConProducto(nuevoPedido: nuevoPedido){
-                                            (resultado) in
-                                            switch resultado{
-                                            case .success(let exito):self.displayExito(exito: exito)
-                                            case .failure(let error):self.displayError(e: error)
-                                            }
-                                        }
-                                }
-                            case .failure(let error):self.displayError(e: error)
                             }
-                        }
-                      case .failure(let error):print("No se pudo encontrar la dirección error; ",error)
-                      }
-                  }
-           
+                        case .failure(let error):self.displayError(e: error)
 
+                        }}
+                case .failure(let error):print("No se pudo encontrar la dirección error: ",error)
+                }
+                
+            }
         }
-
-
-
-        //print(nuevoPedido)
-
-        
-
-        
-    /*    pedidoControlador.updatePedidoProducto(nuevoProducto: nuevoProducto, idPedido: pedidoControlador.checarCarritoActivo()){
-              (resultado) in
-              switch resultado{
-              case .success(let exito):self.displayExito(exito: exito)
-              case .failure(let error):self.displayError(e: error)
-              }
-          }
-        */
-        
-
     }
     
     func displayError(e:Error){
@@ -292,17 +271,6 @@ class DetalleProductoViewController: UIViewController, UIPickerViewDelegate, UIP
         
     }
     
-    func getIdUsuario(id:String)->String{
-        DispatchQueue.main.async {
-        }
-        return id
-    }
-    
-    func getDireccion(exito:String)->String{
-        DispatchQueue.main.async {
-        }
-        return exito
-    }
 
 }
 
