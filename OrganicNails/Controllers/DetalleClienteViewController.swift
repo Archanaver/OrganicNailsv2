@@ -11,7 +11,6 @@ import FirebaseAuth
 class DetalleClienteViewController: UIViewController {
     
     let clienteControlador = ClienteControlador()
-    let usuarioCliente = UsuarioControlador()
     
    
     var cliente:Cliente?

@@ -43,14 +43,14 @@ class DetalleCursoViewController: UIViewController {
                   switch resultado{
                   case .success(let exito):dataUsuario = exito
                       print(exito)
-                    var nuevoCurso = CursoP(id_curso: self.codigo.text!, instructor: self.instructor.text!, nombre_curso: self.nombre.text!, precio_curso: self.precio.text!, fecha_curso: self.fecha.text!, descripcion_curso: self.descripcion.text!)
+                    let nuevoCurso = CursoP(id_curso: self.codigo.text!, instructor: self.instructor.text!, nombre_curso: self.nombre.text!, precio_curso: self.precio.text!, fecha_curso: self.fecha.text!, descripcion_curso: self.descripcion.text!)
                     let now = Date()
                     let formatter = DateFormatter()
                     formatter.dateStyle = .full
                     formatter.timeStyle = .full
                     let datetime = formatter.string(from: now)
                     
-                    var nuevoPedido = Pedido(activo:true, estatus:"Pendiente",productos:[], direccion: dataUsuario["direccion"]!, cursos:[nuevoCurso],cliente_id: dataUsuario["id_doc"]!, fecha: datetime, uid: userUID)
+                    let nuevoPedido = Pedido(activo:true, estatus:"Pendiente",productos:[], direccion: dataUsuario["direccion"]!, cursos:[nuevoCurso],cliente_id: dataUsuario["id_doc"]!, fecha: datetime, uid: userUID)
                     // checar si hay carrito activo
                     var pedidoId:String = ""
                     self.pedidoControlador.checarCarrito(){

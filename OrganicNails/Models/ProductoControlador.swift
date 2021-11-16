@@ -17,7 +17,7 @@ class ProductoControlador{
         var lista_productos = [Producto]()
         db.collection("productos").getDocuments(){ (querySnapshot, err) in
             if let err = err{
-                print("error getting docuemnts: \(err)")
+                print("error getting documents: \(err)")
                 completion(.failure(err))
             }else{
                 for document in querySnapshot!.documents{

@@ -46,7 +46,8 @@ class PedidoControlador{
                         if let err = err{
                             print("Error al añadir producto: \(err)")
                             completion(.failure(err))
-                        }else{
+                        }else {
+                            
                             completion(.success("Pedido ID: \(ref!.documentID)"))
                         }
                     }
@@ -171,7 +172,7 @@ class PedidoControlador{
             }
             
         }
-    
+    //checa cuál carrito está activo y te regresa el id del documento
     func checarCarrito(completion: @escaping (Result<String,Error>)->Void){
         db.collection("pedidos").whereField("activo", isEqualTo: true)
           .getDocuments() { (querySnapshot, err) in
@@ -260,8 +261,44 @@ class PedidoControlador{
         
                         }
      }
-
-    
+//con el id del pedido activo te regresa el arreglo con los productos
+    func fetchCarritoProductos(pedidoActivo: String,completion: @escaping (Result<[ProductoP],Error>)->Void){
+        var lista_productos = [ProductoP]()
+        db.collection("pedidos").document(pedidoActivo).collection("productos").getDocuments(){ (querySnapshot, err) in
+            if let err = err{
+                print("error getting documents: \(err)")
+                completion(.failure(err))
+            }else{
+                for document in querySnapshot!.documents{
+                    let i = ProductoP(d: document)
+                    lista_productos.append(i)
+                }
+                completion(.success(lista_productos))
+            }
+            
+        }
+        
+        
+    }
+    //con el id del pedido activo te regresa el arreglo con los cursos
+    func fetchCarritoCursos(pedidoActivo: String,completion: @escaping (Result<[CursoP],Error>)->Void){
+        var lista_cursos = [CursoP]()
+        db.collection("pedidos").document(pedidoActivo).collection("cursos").getDocuments(){ (querySnapshot, err) in
+            if let err = err{
+                print("error getting documents: \(err)")
+                completion(.failure(err))
+            }else{
+                for document in querySnapshot!.documents{
+                    let i = CursoP(d: document)
+                    lista_cursos.append(i)
+                }
+                completion(.success(lista_cursos))
+            }
+            
+        }
+        
+        
+    }
     //Hacemos una lista de pedidos con el estado que solicita
     func pedidosEstadoSelect(listaPedidos: Pedidos, estado: String) -> Pedidos{
         
