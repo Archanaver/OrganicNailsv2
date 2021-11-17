@@ -20,7 +20,45 @@ class PruebaCarritoViewController: UIViewController {
     @IBOutlet var productosTableView: UITableView!
     
     @IBOutlet var cursosTableView: UITableView!
-
+    override func viewDidAppear(_ animated: Bool) {
+        let userUID = Auth.auth().currentUser!.uid
+        var pedidoId:String = ""
+        //print("el id ",pedidoId)
+        pedidoControlador.checarCarrito(){
+            (resultado) in
+            switch resultado{
+            case .success(let exito):pedidoId = exito
+                //print("id del pedido activo", pedidoId)
+                if pedidoId.count != 0 {
+                    self.pedidoControlador.fetchCarritoProductos(pedidoActivo: pedidoId){ (resultado) in
+                        switch resultado{
+                        case .success(let listaProductos):self.updateGUI(listaProductos: listaProductos)
+                        case .failure(let error):self.displayError(e: error)
+                        }
+                        
+                    }
+                    self.pedidoControlador.fetchCarritoCursos(pedidoActivo: pedidoId){ (resultado) in
+                        switch resultado{
+                        case .success(let listaCursos):self.updateGUICursos(listaCursos: listaCursos)
+                        case .failure(let error):self.displayError(e: error)
+                        }
+                        
+                    }
+                    
+                }else{
+                    self.comprar.isHidden = true
+                    let alerta =  UIAlertController(title: "Carrito vacío", message: "No hay productos/cursos añadidos en el carrito", preferredStyle: .alert)
+                    alerta.addAction(UIAlertAction(title: "Cerrar", style: .default, handler: nil))
+                    self.present(alerta, animated: true, completion: nil)
+                }
+            case .failure(let error):print(error)
+            }
+        }
+        
+        
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         productosTableView.delegate = self
@@ -37,9 +75,9 @@ class PruebaCarritoViewController: UIViewController {
             (resultado) in
             switch resultado{
             case .success(let exito):pedidoId = exito
-                print("id del pedido activo", pedidoId)
+                //print("id del pedido activo", pedidoId)
                 if pedidoId.count != 0 {
-                    self.comprar.isHidden = false
+                    
                     self.pedidoControlador.fetchCarritoProductos(pedidoActivo: pedidoId){ (resultado) in
                         switch resultado{
                         case .success(let listaProductos):self.updateGUI(listaProductos: listaProductos)
@@ -70,6 +108,14 @@ class PruebaCarritoViewController: UIViewController {
     func updateGUI(listaProductos: [ProductoP]){
         DispatchQueue.main.async {
             self.productos = listaProductos
+            if self.productos.isEmpty{
+                self.comprar.isHidden = true
+                let alerta =  UIAlertController(title: "Carrito vacío", message: "No hay productos/cursos añadidos en el carrito", preferredStyle: .alert)
+                alerta.addAction(UIAlertAction(title: "Cerrar", style: .default, handler: nil))
+                self.present(alerta, animated: true, completion: nil)
+            }else{
+                self.comprar.isHidden = false
+            }
             self.productosTableView.reloadData()
             
         }
@@ -200,6 +246,12 @@ extension PruebaCarritoViewController: UITableViewDataSource{
             case .success(let exito):print(exito)
                 self.productos.remove(at: indexPath.row)
                 self.productosTableView.deleteRows(at: [indexPath], with: .left)
+                if self.productos.isEmpty{
+                    self.comprar.isHidden = true
+                    let alerta =  UIAlertController(title: "Carrito vacío", message: "No hay productos/cursos añadidos en el carrito", preferredStyle: .alert)
+                    alerta.addAction(UIAlertAction(title: "Cerrar", style: .default, handler: nil))
+                    self.present(alerta, animated: true, completion: nil)
+                }
             case .failure(let error):print(error)
             
             }}
