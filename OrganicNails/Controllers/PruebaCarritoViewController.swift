@@ -254,7 +254,8 @@ extension PruebaCarritoViewController: UITableViewDataSource{
             case .success(let exito):print(exito)
                 self.cursos.remove(at: indexPath.row)
                 self.cursosTableView.deleteRows(at: [indexPath], with: .left)
-                self.calculaTotal()
+                
+                self.totalLabel.text = "Total: $\( self.calculaTotal())"
                 if self.productos.isEmpty && self.cursos.isEmpty{
                     self.comprar.isHidden = true
                     self.mensajeCarritoVacio()
@@ -279,7 +280,7 @@ extension PruebaCarritoViewController: UITableViewDataSource{
                 self.productos.remove(at: indexPath.row)
                 self.productosTableView.deleteRows(at: [indexPath], with: .left)
                 
-                self.calculaTotal()
+                self.totalLabel.text = "Total: $\( self.calculaTotal())"
                 if self.productos.isEmpty && self.cursos.isEmpty{
                     self.comprar.isHidden = true
                     self.mensajeCarritoVacio()
