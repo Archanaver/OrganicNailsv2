@@ -68,6 +68,7 @@ struct ProductoP:Decodable{
     var tipo_producto: String
     var uso: String
     var idDoc:String
+    var id_pedido:String
     
     enum CodingKeys: String, CodingKey {
             case cantidad_producto
@@ -81,6 +82,7 @@ struct ProductoP:Decodable{
             case tipo_producto
             case uso
             case idDoc
+            case id_pedido
         
         }
     init(cantidad_producto:Int, color:String, descripcion_producto:String, descuento_producto:Int, id_producto:String, nombre_producto:String, precio_producto:Float, presentacion:String, tipo_producto:String, uso:String){
@@ -95,6 +97,7 @@ struct ProductoP:Decodable{
         self.tipo_producto = tipo_producto
         self.uso = uso
         self.idDoc = ""
+        self.id_pedido = ""
         
     }
     init(d:DocumentSnapshot){
@@ -109,6 +112,7 @@ struct ProductoP:Decodable{
         self.tipo_producto = d.get("tipo_producto") as? String ?? ""
         self.uso = d.get("uso") as? String ?? ""
         self.idDoc = d.get("idDoc") as? String ?? ""
+        self.id_pedido = d.get("id_pedido") as? String ?? ""
         
         
     }

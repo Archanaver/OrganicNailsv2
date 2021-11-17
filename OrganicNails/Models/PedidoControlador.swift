@@ -13,7 +13,61 @@ class PedidoControlador{
     
     let db = Firestore.firestore()
     
+   
     
+    func crearPedidoConProductoP(nuevoPedido:Pedido, completion: @escaping (Result<String,Error>)->Void ){
+        var ref: DocumentReference? = nil
+        //let newDocumentID = UUID().uuidString
+        ref = db.collection("pedidos").addDocument(data:[
+            "activo": nuevoPedido.activo,
+            "direccion": nuevoPedido.direccion,
+            "estatus": nuevoPedido.estatus,
+            "fecha": nuevoPedido.fecha,
+            "cliente_id": nuevoPedido.cliente_id,
+            "uid": nuevoPedido.uid
+        ]){ err in
+            if let err = err{
+                print("Error al añadir documento: \(err)")
+                completion(.failure(err))
+            }else{
+                for nuevoProducto in nuevoPedido.productos!{
+                    //print("ref",ref!.documentID)
+                    let testRef = self.db.collection("pedidos").document(ref!.documentID).collection("productos")
+                    let aDoc = testRef.document()
+                    let data = [
+                       "cantidad_producto": nuevoProducto.CantidadProducto(),
+                       "color":nuevoProducto.Color(),
+                       "descripcion_producto": nuevoProducto.DescripcionProducto(),
+                       "descuento_producto": nuevoProducto.DescuentoProducto(),
+                       "id_producto": nuevoProducto.IdProducto(),
+                       "nombre_producto": nuevoProducto.NombreProducto(),
+                       "precio_producto": nuevoProducto.PrecioProducto(),
+                       "presentacion": nuevoProducto.Presentacion(),
+                       "tipo_producto": nuevoProducto.TipoProducto(),
+                       "uso": nuevoProducto.Uso(),
+                        "idDoc": aDoc.documentID,
+                        "id_pedido": ref!.documentID
+                    ] as [String : Any]
+
+                    //print("id del producto", aDoc.documentID)
+                    aDoc.setData(data)
+                    { err in
+                        if let err = err{
+                            print("Error al añadir producto: \(err)")
+                            completion(.failure(err))
+                        }else {
+                            
+                            completion(.success("Pedido ID: \(ref!.documentID)"))
+                        }
+                    }
+                }
+            }
+        }
+}
+    
+    
+    
+/*
     func crearPedidoConProducto(nuevoPedido:Pedido, completion: @escaping (Result<String,Error>)->Void ){
         var ref: DocumentReference? = nil
         //let newDocumentID = UUID().uuidString
@@ -55,7 +109,7 @@ class PedidoControlador{
             }
         }
 }
-    
+   */
     func crearPedidoConCurso(nuevoPedido:Pedido, completion: @escaping (Result<String,Error>)->Void ){
         var ref: DocumentReference? = nil
         //let newDocumentID = UUID().uuidString
@@ -112,18 +166,25 @@ class PedidoControlador{
 
     
     func agregarProductoEnPedido(nuevoProducto:ProductoP,idPedido:String, completion: @escaping (Result<String,Error>)->Void ){
-        db.collection("pedidos").document(idPedido).collection("productos").addDocument(data: [
-           "cantidad_producto": nuevoProducto.CantidadProducto(),
-           "color":nuevoProducto.Color(),
-           "descripcion_producto": nuevoProducto.DescripcionProducto(),
-           "descuento_producto": nuevoProducto.DescuentoProducto(),
-           "id_producto": nuevoProducto.IdProducto(),
-           "nombre_producto": nuevoProducto.NombreProducto(),
-           "precio_producto": nuevoProducto.PrecioProducto(),
-           "presentacion": nuevoProducto.Presentacion(),
-           "tipo_producto": nuevoProducto.TipoProducto(),
-           "uso": nuevoProducto.Uso()
-        ]){ err in
+        
+        let testRef = db.collection("pedidos").document(idPedido).collection("productos")
+        let aDoc = testRef.document()
+        let data = [
+           "cantidad_producto": nuevoProducto.cantidad_producto,
+           "color":nuevoProducto.color,
+           "descripcion_producto": nuevoProducto.descripcion_producto,
+           "descuento_producto": nuevoProducto.descuento_producto,
+           "id_producto": nuevoProducto.id_producto,
+           "nombre_producto": nuevoProducto.nombre_producto,
+           "precio_producto": nuevoProducto.precio_producto,
+           "presentacion": nuevoProducto.presentacion,
+           "tipo_producto": nuevoProducto.tipo_producto,
+           "uso": nuevoProducto.uso,
+            "id_pedido": idPedido,
+            "idDoc": aDoc.documentID
+        ] as [String : Any]
+        aDoc.setData(data)
+        { err in
             if let err = err{
                 print("Error al añadir producto: \(err)")
                 completion(.failure(err))
@@ -260,7 +321,21 @@ class PedidoControlador{
                                   }
         
                         }
+        
      }
+    
+    func deleteProductoP(idDoc:String, idPedido:String,completion: @escaping (Result<String,Error>)->Void ){
+        db.collection("pedidos").document(idPedido).collection("productos").document(idDoc).delete(){err in
+            if let err = err {
+                print("Error al borrar producto\(err)")
+                completion(.failure(err))
+            }else{
+                        completion(.success("Se ha eliminado producto"))
+                    
+                  }
+
+        }
+    }
 //con el id del pedido activo te regresa el arreglo con los productos
     func fetchCarritoProductos(pedidoActivo: String,completion: @escaping (Result<[ProductoP],Error>)->Void){
         var lista_productos = [ProductoP]()

@@ -92,7 +92,7 @@ class PruebaCarritoViewController: UIViewController {
         
     }
 
-    
+
     // MARK: - Navigation
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     /*override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -152,13 +152,15 @@ extension PruebaCarritoViewController: UITableViewDataSource{
             if productos[indexPath.row].descuento_producto != 0{
                 cell.descuentoCell.text = "Descuento: \(String(productos[indexPath.row].descuento_producto)) %"
                 let desc = (productos[indexPath.row].precio_producto * Float(productos[indexPath.row].descuento_producto))/100
-                print("descuento", desc)
+                //print("descuento", desc)
                cell.totalCell.text = "Total: $ \(String( productos[indexPath.row].precio_producto - (Float(productos[indexPath.row].cantidad_producto) * desc)))"
-                
-             
                 
             }else{
                 cell.totalCell.text = "Total: $ \(String(productos[indexPath.row].precio_producto * Float(productos[indexPath.row].cantidad_producto)))"
+            }
+            
+            if let btnDelete = cell.contentView.viewWithTag(101) as? UIButton {
+                btnDelete.addTarget(self, action: #selector(deleteRow(_ :)), for: .touchUpInside)
             }
            
            
@@ -186,6 +188,31 @@ extension PruebaCarritoViewController: UITableViewDataSource{
       
     }
     
+    @objc func deleteRow(_ sender: UIButton){
+        let point = sender.convert(CGPoint.zero, to: productosTableView)
+        guard let indexPath = productosTableView.indexPathForRow(at: point)else{
+            return
+        }
+        productosTableView.beginUpdates()
+        pedidoControlador.deleteProductoP(idDoc: productos[indexPath.row].idDoc, idPedido: productos[indexPath.row].id_pedido){
+            (resultado) in
+            switch resultado{
+            case .success(let exito):print(exito)
+                self.productos.remove(at: indexPath.row)
+                self.productosTableView.deleteRows(at: [indexPath], with: .left)
+            case .failure(let error):print(error)
+            
+            }}
+            
+        
+        
+       
+       
+        
+        productosTableView.endUpdates()
+        
+        
+    }
 
     
     

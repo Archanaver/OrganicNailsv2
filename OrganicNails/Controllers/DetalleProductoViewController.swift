@@ -213,10 +213,9 @@ class DetalleProductoViewController: UIViewController, UIPickerViewDelegate, UIP
                     let datetime = formatter.string(from: now)
                     
                     var nuevoPedido = Pedido(activo:true, estatus:"Pendiente",productos:[nuevoProducto], direccion: dataUsuario["direccion"]!, cursos:[], cliente_id:dataUsuario["id_doc"]!, fecha:datetime, uid: userUID)
-                    print(nuevoPedido)
+                    //print(nuevoPedido)
                 // checar si hay carrito activo
                     var pedidoId:String = ""
-                    print("holaaaa")
                     //print("el id ",pedidoId)
               self.pedidoControlador.checarCarrito(){
                         (resultado) in
@@ -234,7 +233,7 @@ class DetalleProductoViewController: UIViewController, UIPickerViewDelegate, UIP
                                 }
                             }else{
                                 print("nuevo pedido")
-                                self.pedidoControlador.crearPedidoConProducto(nuevoPedido: nuevoPedido){
+                                self.pedidoControlador.crearPedidoConProductoP(nuevoPedido: nuevoPedido){
                                         (resultado) in
                                         switch resultado{
                                         case .success(let exito):self.displayExito(exito: exito)
