@@ -15,6 +15,8 @@ class PruebaCarritoViewController: UIViewController {
     
     var cursos = [CursoP]()
     var cursoControlador = CursoControlador()
+    @IBOutlet weak var totalLabel: UILabel!
+    var total:Float = 0
     
     @IBOutlet weak var comprar: UIButton!
     @IBOutlet var productosTableView: UITableView!
@@ -206,20 +208,26 @@ extension PruebaCarritoViewController: UITableViewDataSource{
             cell.colorCell.text = "Color: \(productos[indexPath.row].color)"
             
             cell.cantidadCell.text = "Cantidad: \(productos[indexPath.row].cantidad_producto)"
-            cell.precioCell.text = "Precio: $ \(String(productos[indexPath.row].precio_producto * Float(productos[indexPath.row].cantidad_producto)))"
+            var tempPrecio = productos[indexPath.row].precio_producto * Float(productos[indexPath.row].cantidad_producto)
+            cell.precioCell.text = "Precio: $ \(String(tempPrecio))"
+            
             if productos[indexPath.row].descuento_producto != 0{
                 cell.descuentoCell.text = "Descuento: \(String(productos[indexPath.row].descuento_producto)) %"
-                let desc = (productos[indexPath.row].precio_producto * Float(productos[indexPath.row].descuento_producto))/100
-                //print("descuento", desc)
-               cell.totalCell.text = "Total: $ \(String( productos[indexPath.row].precio_producto - (Float(productos[indexPath.row].cantidad_producto) * desc)))"
-                
+                let desc = ((productos[indexPath.row].precio_producto * Float(productos[indexPath.row].descuento_producto))/100) * Float(productos[indexPath.row].cantidad_producto)
+             
+               cell.totalCell.text = "Total: $ \(String(tempPrecio - desc ))"
             }else{
                 cell.totalCell.text = "Total: $ \(String(productos[indexPath.row].precio_producto * Float(productos[indexPath.row].cantidad_producto)))"
+
             }
             
             if let btnDeleteProducto = cell.contentView.viewWithTag(101) as? UIButton {
                 btnDeleteProducto.addTarget(self, action: #selector(deleteRowProducto(_ :)), for: .touchUpInside)
             }
+            if let btnEditarProducto = cell.contentView.viewWithTag(103) as? UIButton {
+                btnEditarProducto.addTarget(self, action: #selector(editRowProducto(_ :)), for: .touchUpInside)
+            }
+
             
            
            
@@ -237,7 +245,6 @@ extension PruebaCarritoViewController: UITableViewDataSource{
             cell.titulo.text = cursos[indexPath.row].nombre_curso
             cell.fecha.text = "Fecha: \(cursos[indexPath.row].fecha_curso)"
             cell.total.text = "Total: $ \(cursos[indexPath.row].precio_curso)"
-                
             if let btnDeleteCurso = cell.contentView.viewWithTag(102) as? UIButton{
                 btnDeleteCurso.addTarget(self, action: #selector(deleteRowCurso(_ :)), for: .touchUpInside)
             }
@@ -251,6 +258,9 @@ extension PruebaCarritoViewController: UITableViewDataSource{
       
     }
     
+    @objc func editRowProducto(_ sender: UIButton){
+        print("edit")
+    }
     
     @objc func deleteRowCurso(_ sender: UIButton){
         print("hola")
