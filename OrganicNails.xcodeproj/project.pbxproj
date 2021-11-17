@@ -14,6 +14,7 @@
 		0D16A1412739653200EB895B /* Factura.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D16A1402739653200EB895B /* Factura.swift */; };
 		0D16A1442739677400EB895B /* FacturaControlador.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D16A1432739677400EB895B /* FacturaControlador.swift */; };
 		0D41E04127431D0F009AA7E9 /* ProductoUITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D41E04027431D0F009AA7E9 /* ProductoUITableViewCell.swift */; };
+		0D456E262744C6CC00E6C499 /* CursoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D456E252744C6CC00E6C499 /* CursoTableViewCell.swift */; };
 		0D7D93DB2741C0C400351581 /* PruebaCarritoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7D93DA2741C0C400351581 /* PruebaCarritoViewController.swift */; };
 		0D82AC97273712AB00B24942 /* CarritoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D82AC96273712AB00B24942 /* CarritoViewController.swift */; };
 		0DA134B426FD26FF00A8B809 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA134B326FD26FF00A8B809 /* AppDelegate.swift */; };
@@ -122,6 +123,7 @@
 		0D16A1402739653200EB895B /* Factura.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Factura.swift; sourceTree = "<group>"; };
 		0D16A1432739677400EB895B /* FacturaControlador.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacturaControlador.swift; sourceTree = "<group>"; };
 		0D41E04027431D0F009AA7E9 /* ProductoUITableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductoUITableViewCell.swift; sourceTree = "<group>"; };
+		0D456E252744C6CC00E6C499 /* CursoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CursoTableViewCell.swift; sourceTree = "<group>"; };
 		0D7D93DA2741C0C400351581 /* PruebaCarritoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PruebaCarritoViewController.swift; sourceTree = "<group>"; };
 		0D82AC96273712AB00B24942 /* CarritoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarritoViewController.swift; sourceTree = "<group>"; };
 		0DA134B026FD26FF00A8B809 /* OrganicNails.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OrganicNails.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -321,6 +323,7 @@
 				0D16A1402739653200EB895B /* Factura.swift */,
 				0D16A1432739677400EB895B /* FacturaControlador.swift */,
 				0D41E04027431D0F009AA7E9 /* ProductoUITableViewCell.swift */,
+				0D456E252744C6CC00E6C499 /* CursoTableViewCell.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -639,6 +642,7 @@
 				0D052565273344C300481B5D /* Pedido.swift in Sources */,
 				6DD8A3472735E11100D388C4 /* ClienteControlador.swift in Sources */,
 				0D7D93DB2741C0C400351581 /* PruebaCarritoViewController.swift in Sources */,
+				0D456E262744C6CC00E6C499 /* CursoTableViewCell.swift in Sources */,
 				0DDFE66D27098DE700EC3EA5 /* DetalleProductoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

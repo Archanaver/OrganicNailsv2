@@ -30,20 +30,22 @@ class PruebaCarritoViewController: UIViewController {
             case .success(let exito):pedidoId = exito
                 //print("id del pedido activo", pedidoId)
                 if pedidoId.count != 0 {
+                    
                     self.pedidoControlador.fetchCarritoProductos(pedidoActivo: pedidoId){ (resultado) in
                         switch resultado{
                         case .success(let listaProductos):self.updateGUI(listaProductos: listaProductos)
+                            self.pedidoControlador.fetchCarritoCursos(pedidoActivo: pedidoId){ (resultado) in
+                                switch resultado{
+                                case .success(let listaCursos):self.updateGUICursos(listaCursos: listaCursos)
+                                case .failure(let error):self.displayError(e: error)
+                                }
+                                
+                            }
                         case .failure(let error):self.displayError(e: error)
                         }
                         
                     }
-                    self.pedidoControlador.fetchCarritoCursos(pedidoActivo: pedidoId){ (resultado) in
-                        switch resultado{
-                        case .success(let listaCursos):self.updateGUICursos(listaCursos: listaCursos)
-                        case .failure(let error):self.displayError(e: error)
-                        }
-                        
-                    }
+
                     
                 }else{
                     self.comprar.isHidden = true
@@ -81,17 +83,18 @@ class PruebaCarritoViewController: UIViewController {
                     self.pedidoControlador.fetchCarritoProductos(pedidoActivo: pedidoId){ (resultado) in
                         switch resultado{
                         case .success(let listaProductos):self.updateGUI(listaProductos: listaProductos)
+                            self.pedidoControlador.fetchCarritoCursos(pedidoActivo: pedidoId){ (resultado) in
+                                switch resultado{
+                                case .success(let listaCursos):self.updateGUICursos(listaCursos: listaCursos)
+                                case .failure(let error):self.displayError(e: error)
+                                }
+                                
+                            }
                         case .failure(let error):self.displayError(e: error)
                         }
                         
                     }
-                    self.pedidoControlador.fetchCarritoCursos(pedidoActivo: pedidoId){ (resultado) in
-                        switch resultado{
-                        case .success(let listaCursos):self.updateGUICursos(listaCursos: listaCursos)
-                        case .failure(let error):self.displayError(e: error)
-                        }
-                        
-                    }
+
                     
                 }else{
                     self.comprar.isHidden = true
@@ -108,14 +111,6 @@ class PruebaCarritoViewController: UIViewController {
     func updateGUI(listaProductos: [ProductoP]){
         DispatchQueue.main.async {
             self.productos = listaProductos
-            if self.productos.isEmpty{
-                self.comprar.isHidden = true
-                let alerta =  UIAlertController(title: "Carrito vacío", message: "No hay productos/cursos añadidos en el carrito", preferredStyle: .alert)
-                alerta.addAction(UIAlertAction(title: "Cerrar", style: .default, handler: nil))
-                self.present(alerta, animated: true, completion: nil)
-            }else{
-                self.comprar.isHidden = false
-            }
             self.productosTableView.reloadData()
             
         }
@@ -125,6 +120,15 @@ class PruebaCarritoViewController: UIViewController {
     func updateGUICursos(listaCursos: [CursoP]){
         DispatchQueue.main.async {
             self.cursos = listaCursos
+            if self.productos.isEmpty && self.cursos.isEmpty{
+                self.comprar.isHidden = true
+                let alerta =  UIAlertController(title: "Carrito vacío", message: "No hay productos/cursos añadidos en el carrito", preferredStyle: .alert)
+                alerta.addAction(UIAlertAction(title: "Cerrar", style: .default, handler: nil))
+                self.present(alerta, animated: true, completion: nil)
+            }else{
+                self.comprar.isHidden = false
+            }
+
             self.cursosTableView.reloadData()
         }
         
@@ -183,7 +187,13 @@ extension PruebaCarritoViewController: UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 145.0;//Choose your custom row height
+        if tableView.tag == 0{
+            return 150.0;
+            
+        }else{
+            return 100;
+        }
+        //Choose your custom row height
     }
 
     //construye cada celda, lo que se ve visualmente
@@ -205,9 +215,10 @@ extension PruebaCarritoViewController: UITableViewDataSource{
                 cell.totalCell.text = "Total: $ \(String(productos[indexPath.row].precio_producto * Float(productos[indexPath.row].cantidad_producto)))"
             }
             
-            if let btnDelete = cell.contentView.viewWithTag(101) as? UIButton {
-                btnDelete.addTarget(self, action: #selector(deleteRow(_ :)), for: .touchUpInside)
+            if let btnDeleteProducto = cell.contentView.viewWithTag(101) as? UIButton {
+                btnDeleteProducto.addTarget(self, action: #selector(deleteRowProducto(_ :)), for: .touchUpInside)
             }
+            
            
            
            
@@ -217,13 +228,17 @@ extension PruebaCarritoViewController: UITableViewDataSource{
             return cell
             
         }else{
-            let cell = tableView.dequeueReusableCell(withIdentifier: "zelda2", for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "zelda2", for: indexPath as IndexPath)as! CursoTableViewCell
 
             // Configure the cell...
             
-                cell.textLabel?.text = cursos[indexPath.row].nombre_curso
+            cell.titulo.text = cursos[indexPath.row].nombre_curso
+            cell.fecha.text = "Fecha: \(cursos[indexPath.row].fecha_curso)"
+            cell.total.text = "Total: $ \(cursos[indexPath.row].precio_curso)"
                 
-            
+            if let btnDeleteCurso = cell.contentView.viewWithTag(102) as? UIButton{
+                btnDeleteCurso.addTarget(self, action: #selector(deleteRowCurso(_ :)), for: .touchUpInside)
+            }
           
             
 
@@ -234,7 +249,18 @@ extension PruebaCarritoViewController: UITableViewDataSource{
       
     }
     
-    @objc func deleteRow(_ sender: UIButton){
+    
+    @objc func deleteRowCurso(_ sender: UIButton){
+        print("hola")
+        let point = sender.convert(CGPoint.zero, to: cursosTableView)
+        guard let indexPath = cursosTableView.indexPathForRow(at: point)else{
+            return
+        }
+        
+        
+    }
+    
+    @objc func deleteRowProducto(_ sender: UIButton){
         let point = sender.convert(CGPoint.zero, to: productosTableView)
         guard let indexPath = productosTableView.indexPathForRow(at: point)else{
             return
@@ -246,7 +272,7 @@ extension PruebaCarritoViewController: UITableViewDataSource{
             case .success(let exito):print(exito)
                 self.productos.remove(at: indexPath.row)
                 self.productosTableView.deleteRows(at: [indexPath], with: .left)
-                if self.productos.isEmpty{
+                if self.productos.isEmpty && self.cursos.isEmpty{
                     self.comprar.isHidden = true
                     let alerta =  UIAlertController(title: "Carrito vacío", message: "No hay productos/cursos añadidos en el carrito", preferredStyle: .alert)
                     alerta.addAction(UIAlertAction(title: "Cerrar", style: .default, handler: nil))
