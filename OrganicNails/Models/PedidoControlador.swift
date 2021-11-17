@@ -110,7 +110,51 @@ class PedidoControlador{
         }
 }
    */
-    func crearPedidoConCurso(nuevoPedido:Pedido, completion: @escaping (Result<String,Error>)->Void ){
+    
+    func crearPedidoConCursoP(nuevoPedido:Pedido, completion: @escaping (Result<String,Error>)->Void ){
+        var ref: DocumentReference? = nil
+        //let newDocumentID = UUID().uuidString
+        ref = db.collection("pedidos").addDocument(data:[
+            "activo": nuevoPedido.activo,
+            "direccion": nuevoPedido.direccion,
+            "estatus": nuevoPedido.estatus,
+            "fecha": nuevoPedido.fecha,
+            "cliente_id": nuevoPedido.cliente_id,
+            "uid": nuevoPedido.uid
+        ]){ err in
+            if let err = err{
+                print("Error al añadir documento: \(err)")
+                completion(.failure(err))
+            }else{
+                for nuevoCurso in nuevoPedido.cursos!{
+                    //print("ref",ref!.documentID)
+                    let testRef = self.db.collection("pedidos").document(ref!.documentID).collection("cursos")
+                    let aDoc = testRef.document()
+                    
+                    let data = [
+                        "id_curso": nuevoCurso.IdCurso(),
+                        "instructor":nuevoCurso.Instructor(),
+                        "nombre_curso": nuevoCurso.NombreCurso(),
+                        "precio_curso": nuevoCurso.PrecioCurso(),
+                        "fecha_curso": nuevoCurso.FechaCurso(),
+                        "descripcion_curso": nuevoCurso.DescripcionCurso(),
+                        "idDoc": aDoc.documentID,
+                        "id_pedido":ref!.documentID
+                    ] as [String : Any]
+                    aDoc.setData(data){ err in
+                        if let err = err{
+                            print("Error al añadir curso: \(err)")
+                            completion(.failure(err))
+                        }else{
+                            completion(.success("Pedido ID: \(ref!.documentID)"))
+                        }
+                    }
+                }
+            }
+        }
+}
+    
+ /*   func crearPedidoConCurso(nuevoPedido:Pedido, completion: @escaping (Result<String,Error>)->Void ){
         var ref: DocumentReference? = nil
         //let newDocumentID = UUID().uuidString
         ref = db.collection("pedidos").addDocument(data:[
@@ -145,7 +189,7 @@ class PedidoControlador{
                 }
             }
         }
-}
+}*/
     
     func fetchCarritoActivo(idDocument: String, completion: @escaping (Result <Productos, Error>) -> Void){
             var productos = [Producto]()
@@ -196,14 +240,21 @@ class PedidoControlador{
     }
     
     func agregarCursoEnPedido(nuevoCurso:CursoP,idPedido:String, completion: @escaping (Result<String,Error>)->Void ){
-        db.collection("pedidos").document(idPedido).collection("cursos").addDocument(data: [
+       let ref = db.collection("pedidos").document(idPedido).collection("cursos")
+        let aDoc = ref.document()
+            
+        let data = [
            "id_curso": nuevoCurso.IdCurso(),
            "instructor":nuevoCurso.Instructor(),
            "nombre_curso": nuevoCurso.NombreCurso(),
            "precio_curso": nuevoCurso.PrecioCurso(),
            "fecha_curso": nuevoCurso.FechaCurso(),
-           "descripcion_curso": nuevoCurso.DescripcionCurso()
-        ]){ err in
+           "descripcion_curso": nuevoCurso.DescripcionCurso(),
+            "idDoc":aDoc.documentID,
+            "id_pedido": idPedido
+        ]as [String : Any]
+        aDoc.setData(data)
+        { err in
             if let err = err{
                 print("Error al añadir curso: \(err)")
                 completion(.failure(err))
@@ -323,7 +374,7 @@ class PedidoControlador{
                         }
         
      }
-    
+    //elimina un documento de producto de el pedido
     func deleteProductoP(idDoc:String, idPedido:String,completion: @escaping (Result<String,Error>)->Void ){
         db.collection("pedidos").document(idPedido).collection("productos").document(idDoc).delete(){err in
             if let err = err {
@@ -335,6 +386,20 @@ class PedidoControlador{
                   }
 
         }
+    }
+    // elimina un documento de curso del pedido
+    func deleteCursoP(idDoc:String, idPedido:String,completion: @escaping (Result<String,Error>)->Void ){
+        db.collection("pedidos").document(idPedido).collection("cursos").document(idDoc).delete(){err in
+            if let err = err {
+                print("Error al borrar curso\(err)")
+                completion(.failure(err))
+            }else{
+                        completion(.success("Se ha eliminado curso"))
+                    
+                  }
+
+        }
+        
     }
 //con el id del pedido activo te regresa el arreglo con los productos
     func fetchCarritoProductos(pedidoActivo: String,completion: @escaping (Result<[ProductoP],Error>)->Void){

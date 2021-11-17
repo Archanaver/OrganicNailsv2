@@ -69,7 +69,7 @@ class DetalleCursoViewController: UIViewController {
                                 
                             }else{
                                 print("nuevo curso")
-                                self.pedidoControlador.crearPedidoConCurso(nuevoPedido: nuevoPedido){
+                                self.pedidoControlador.crearPedidoConCursoP(nuevoPedido: nuevoPedido){
                                     (resultado) in
                                     switch resultado{
                                     case .success(let exito):self.displayExito(exito: exito)

@@ -16,6 +16,8 @@ struct CursoP:Decodable{
     var precio_curso:String
     var fecha_curso:String
     var descripcion_curso:String
+    var idDoc:String
+    var id_pedido:String
     
     init(id_curso:String, instructor:String,nombre_curso:String, precio_curso:String, fecha_curso:String, descripcion_curso:String){
             self.id_curso = id_curso
@@ -24,6 +26,9 @@ struct CursoP:Decodable{
             self.precio_curso = precio_curso
             self.fecha_curso = fecha_curso
             self.descripcion_curso = descripcion_curso
+            self.idDoc = ""
+            self.id_pedido = ""
+       
       
             
         }
@@ -35,6 +40,8 @@ struct CursoP:Decodable{
             self.precio_curso = d.get("precio_curso") as? String ?? ""
             self.fecha_curso = d.get("fecha_curso") as? String ?? ""
             self.descripcion_curso = d.get("descripcion_curso") as? String ?? ""
+            self.idDoc = d.get("idDoc") as? String ?? ""
+            self.id_pedido = d.get("id_pedido") as? String ?? ""
         }
     
     func IdCurso()->String {

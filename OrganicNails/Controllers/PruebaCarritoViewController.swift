@@ -49,9 +49,8 @@ class PruebaCarritoViewController: UIViewController {
                     
                 }else{
                     self.comprar.isHidden = true
-                    let alerta =  UIAlertController(title: "Carrito vacío", message: "No hay productos/cursos añadidos en el carrito", preferredStyle: .alert)
-                    alerta.addAction(UIAlertAction(title: "Cerrar", style: .default, handler: nil))
-                    self.present(alerta, animated: true, completion: nil)
+
+                    self.mensajeCarritoVacio()
                 }
             case .failure(let error):print(error)
             }
@@ -98,9 +97,7 @@ class PruebaCarritoViewController: UIViewController {
                     
                 }else{
                     self.comprar.isHidden = true
-                    let alerta =  UIAlertController(title: "Carrito vacío", message: "No hay productos/cursos añadidos en el carrito", preferredStyle: .alert)
-                    alerta.addAction(UIAlertAction(title: "Cerrar", style: .default, handler: nil))
-                    self.present(alerta, animated: true, completion: nil)
+                    self.mensajeCarritoVacio()
                 }
             case .failure(let error):print(error)
             }
@@ -116,15 +113,20 @@ class PruebaCarritoViewController: UIViewController {
         }
         
     }
+    func mensajeCarritoVacio(){
+        let alerta =  UIAlertController(title: "Carrito vacío", message: "No hay productos/cursos añadidos en el carrito", preferredStyle: .alert)
+        alerta.addAction(UIAlertAction(title: "Cerrar", style: .default, handler: nil))
+        self.present(alerta, animated: true, completion: nil)
+        
+    }
     
     func updateGUICursos(listaCursos: [CursoP]){
         DispatchQueue.main.async {
             self.cursos = listaCursos
             if self.productos.isEmpty && self.cursos.isEmpty{
                 self.comprar.isHidden = true
-                let alerta =  UIAlertController(title: "Carrito vacío", message: "No hay productos/cursos añadidos en el carrito", preferredStyle: .alert)
-                alerta.addAction(UIAlertAction(title: "Cerrar", style: .default, handler: nil))
-                self.present(alerta, animated: true, completion: nil)
+                self.mensajeCarritoVacio()
+                
             }else{
                 self.comprar.isHidden = false
             }
@@ -256,8 +258,21 @@ extension PruebaCarritoViewController: UITableViewDataSource{
         guard let indexPath = cursosTableView.indexPathForRow(at: point)else{
             return
         }
-        
-        
+        cursosTableView.beginUpdates()
+        pedidoControlador.deleteCursoP(idDoc: cursos[indexPath.row].idDoc, idPedido: cursos[indexPath.row].id_pedido){
+            (resultado) in
+            switch resultado{
+            case .success(let exito):print(exito)
+                self.cursos.remove(at: indexPath.row)
+                self.cursosTableView.deleteRows(at: [indexPath], with: .left)
+                if self.productos.isEmpty && self.cursos.isEmpty{
+                    self.comprar.isHidden = true
+                    self.mensajeCarritoVacio()
+                }
+            case .failure(let error):print(error)
+            }
+        }
+        cursosTableView.endUpdates()
     }
     
     @objc func deleteRowProducto(_ sender: UIButton){
@@ -274,9 +289,8 @@ extension PruebaCarritoViewController: UITableViewDataSource{
                 self.productosTableView.deleteRows(at: [indexPath], with: .left)
                 if self.productos.isEmpty && self.cursos.isEmpty{
                     self.comprar.isHidden = true
-                    let alerta =  UIAlertController(title: "Carrito vacío", message: "No hay productos/cursos añadidos en el carrito", preferredStyle: .alert)
-                    alerta.addAction(UIAlertAction(title: "Cerrar", style: .default, handler: nil))
-                    self.present(alerta, animated: true, completion: nil)
+                    self.mensajeCarritoVacio()
+        
                 }
             case .failure(let error):print(error)
             
