@@ -46,7 +46,8 @@ class PedidoControlador{
                        "tipo_producto": nuevoProducto.TipoProducto(),
                        "uso": nuevoProducto.Uso(),
                         "idDoc": aDoc.documentID,
-                        "id_pedido": ref!.documentID
+                        "id_pedido": ref!.documentID,
+                        "idDoc_producto": nuevoProducto.idDoc_producto
                     ] as [String : Any]
 
                     //print("id del producto", aDoc.documentID)
@@ -225,7 +226,8 @@ class PedidoControlador{
            "tipo_producto": nuevoProducto.tipo_producto,
            "uso": nuevoProducto.uso,
             "id_pedido": idPedido,
-            "idDoc": aDoc.documentID
+            "idDoc": aDoc.documentID,
+            "idDoc_producto": nuevoProducto.idDoc_producto
         ] as [String : Any]
         aDoc.setData(data)
         { err in
@@ -302,7 +304,7 @@ class PedidoControlador{
         }
     }
     
-    //Función para regresar un arreglo de pedidos de un usuario
+    //Query para regresar un arreglo de pedidos de un usuario
     func fetchPredidosUsuario(usuario: String, completion: @escaping (Result <Pedidos, Error>) -> Void){
         var pedidos = [Pedido]()
         
@@ -331,7 +333,7 @@ class PedidoControlador{
         } else {
             for document in querySnapshot!.documents {
                 var p = ProductoP(d: document)
-                p = ProductoP(cantidad_producto: p.cantidad_producto, color: p.color, descripcion_producto: p.descripcion_producto, descuento_producto: p.descuento_producto, id_producto: p.id_producto, nombre_producto: p.nombre_producto, precio_producto: p.precio_producto, presentacion: p.presentacion, tipo_producto: p.tipo_producto, uso: p.uso)
+                p = ProductoP(cantidad_producto: p.cantidad_producto, color: p.color, descripcion_producto: p.descripcion_producto, descuento_producto: p.descuento_producto, id_producto: p.id_producto, nombre_producto: p.nombre_producto, precio_producto: p.precio_producto, presentacion: p.presentacion, tipo_producto: p.tipo_producto, uso: p.uso, idDoc_producto: p.idDoc)
               
                 productos.append(p)
                
@@ -439,6 +441,38 @@ class PedidoControlador{
         
         
     }
+    //get producto pasándole el id del documento del producto
+    func fetchProducto(idProducto:String,completion: @escaping (Result<Producto,Error>)->Void){
+        print("id producto", idProducto)
+       let cosa = "A8KJ98SuLgLCSZqOAENz"
+        
+        let docRef = db.collection("productos").document(cosa)
+            docRef.getDocument{ (document, error) in
+        let result = Result {
+            try document?.data(as: Producto.self)
+        }
+        switch result {
+        case .success(let product):
+            if let product = product {
+                // A `City` value was successfully initialized from the DocumentSnapshot.
+                //print("producto \(product)")
+                completion(.success(product))
+                
+            } else {
+                // A nil value was successfully initialized from the DocumentSnapshot,
+                // or the DocumentSnapshot was nil.
+                print("Producto no existe")
+            }
+        case .failure(let error):
+            // A `City` value could not be initialized from the DocumentSnapshot.
+            print("Error decoding producto: \(error)")
+            completion(.failure(error))
+        }
+    }
+        
+        
+    }
+    
     //Hacemos una lista de pedidos con el estado que solicita
     func pedidosEstadoSelect(listaPedidos: Pedidos, estado: String) -> Pedidos{
         
@@ -457,5 +491,6 @@ class PedidoControlador{
         return sortedPedidos
     }
     
+
 
 }

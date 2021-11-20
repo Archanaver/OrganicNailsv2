@@ -205,7 +205,7 @@ class DetalleProductoViewController: UIViewController, UIPickerViewDelegate, UIP
                 switch resultado{
                 case .success(let exito):dataUsuario = exito
                     print(exito)
-                    var nuevoProducto = ProductoP(cantidad_producto: self.counter, color: self.tempColor, descripcion_producto: self.descripcion.text!, descuento_producto:self.tempDescuento, id_producto: self.id.text!, nombre_producto: self.nombreProducto.text!, precio_producto: self.tempPrecio, presentacion: self.tempPresentacion, tipo_producto: self.tipo.text!, uso: self.uso.text!)
+                    var nuevoProducto = ProductoP(cantidad_producto: self.counter, color: self.tempColor, descripcion_producto: self.descripcion.text!, descuento_producto:self.tempDescuento, id_producto: self.id.text!, nombre_producto: self.nombreProducto.text!, precio_producto: self.tempPrecio, presentacion: self.tempPresentacion, tipo_producto: self.tipo.text!, uso: self.uso.text!, idDoc_producto: self.producto?.idDoc ?? "")
                     let now = Date()
                     let formatter = DateFormatter()
                     formatter.dateStyle = .full

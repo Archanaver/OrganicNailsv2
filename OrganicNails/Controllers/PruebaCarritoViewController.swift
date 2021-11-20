@@ -58,6 +58,7 @@ class PruebaCarritoViewController: UIViewController {
         
         cursosTableView.delegate = self
         cursosTableView.dataSource = self
+        
 
         var pedidoId:String = ""
         pedidoControlador.checarCarrito(){
@@ -137,7 +138,7 @@ class PruebaCarritoViewController: UIViewController {
     
     func calculaTotal() -> Float{
         total = 0
-        print(productos)
+        
         for p in productos{
             var tempPrecio = p.precio_producto * Float(p.cantidad_producto)
             if p.descuento_producto != 0{
@@ -148,13 +149,14 @@ class PruebaCarritoViewController: UIViewController {
             total += tempPrecio
             
         }
-        print(cursos)
+
         for c in cursos{
             total += Float(c.precio_curso) ?? 0
         }
-        print("total: ", total)
+        //print("total: ", total)
         return total
     }
+
 
 }
 
@@ -191,6 +193,14 @@ extension PruebaCarritoViewController: UITableViewDataSource{
             return 100;
         }
     }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if tableView.tag == 0{
+            return "Productos"
+        }else{
+            return "Cursos"
+        }
+    }
 
     //construye cada celda, lo que se ve visualmente
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -219,9 +229,6 @@ extension PruebaCarritoViewController: UITableViewDataSource{
             if let btnDeleteProducto = cell.contentView.viewWithTag(101) as? UIButton {
                 btnDeleteProducto.addTarget(self, action: #selector(deleteRowProducto(_ :)), for: .touchUpInside)
             }
-            if let btnEditarProducto = cell.contentView.viewWithTag(103) as? UIButton {
-                btnEditarProducto.addTarget(self, action: #selector(editRowProducto(_ :)), for: .touchUpInside)
-            }
             return cell
             
         }else{
@@ -238,20 +245,7 @@ extension PruebaCarritoViewController: UITableViewDataSource{
         }
     }
     
-    @objc func editRowProducto(_ sender: UIButton){
-        print("edit")
-        let point = sender.convert(CGPoint.zero, to: productosTableView)
-        guard let indexPath = productosTableView.indexPathForRow(at: point)else{
-            return
-        }
-        
-        
-        productoP = productos[indexPath.row]
-        let siguiente = self.storyboard?.instantiateViewController(identifier: "ProductoPEditar") as! EditarProductoViewController
-        self.navigationController?.pushViewController(siguiente, animated: true)
-    }
-    
-
+   
     
     @objc func deleteRowCurso(_ sender: UIButton){
         let point = sender.convert(CGPoint.zero, to: cursosTableView)
@@ -302,8 +296,6 @@ extension PruebaCarritoViewController: UITableViewDataSource{
         productosTableView.endUpdates()
     }
 
-    
-    
     
     
     

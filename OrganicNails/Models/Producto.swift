@@ -19,6 +19,7 @@ struct Producto: Decodable{
     var producto: String
     var uso: String
     var descuento:Int
+    var idDoc:String
     
     enum CodingKeys: String, CodingKey {
             case nombre
@@ -31,9 +32,10 @@ struct Producto: Decodable{
             case uso
             case producto
             case presentacion
+            case idDoc
         
         }
-    init(nombre:String, id:String, colores:[String], precio:[Float], descripcion:String, tipo:String, descuento:Int, uso:String, producto:String, presentacion:[String]){
+    init(nombre:String, id:String, colores:[String], precio:[Float], descripcion:String, tipo:String, descuento:Int, uso:String, producto:String, presentacion:[String], idDoc:String){
         self.nombre = nombre
         self.id = id
         self.colores = colores
@@ -44,6 +46,7 @@ struct Producto: Decodable{
         self.uso = uso
         self.producto = producto
         self.presentacion = presentacion
+        self.idDoc = idDoc
     }
     init(d:DocumentSnapshot){
         self.id = d.documentID
@@ -57,6 +60,7 @@ struct Producto: Decodable{
         self.uso = d.get("uso") as? String ?? ""
         self.producto = d.get("producto") as? String ?? ""
         self.presentacion = d.get("presentacion") as? [String] ?? []
+        self.idDoc = d.get("idDoc") as? String ?? ""
         
         
     }
@@ -72,6 +76,7 @@ struct Producto: Decodable{
         self.uso = document.get("uso") as? String ?? ""
         self.producto = document.get("cantidad_producto") as? String ?? ""
         self.presentacion = document.get("presentacion") as? [String] ?? []
+        self.idDoc = document.get("idDoc") as? String ?? ""
         
         
     }
