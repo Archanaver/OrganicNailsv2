@@ -240,7 +240,18 @@ extension PruebaCarritoViewController: UITableViewDataSource{
     
     @objc func editRowProducto(_ sender: UIButton){
         print("edit")
+        let point = sender.convert(CGPoint.zero, to: productosTableView)
+        guard let indexPath = productosTableView.indexPathForRow(at: point)else{
+            return
+        }
+        
+        
+        productoP = productos[indexPath.row]
+        let siguiente = self.storyboard?.instantiateViewController(identifier: "ProductoPEditar") as! EditarProductoViewController
+        self.navigationController?.pushViewController(siguiente, animated: true)
     }
+    
+
     
     @objc func deleteRowCurso(_ sender: UIButton){
         let point = sender.convert(CGPoint.zero, to: cursosTableView)
