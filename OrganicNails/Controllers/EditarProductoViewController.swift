@@ -9,18 +9,9 @@ import UIKit
 import FirebaseAuth
 
 
-class EditarProductoViewController:UIViewController{
-    var pedidoControlador = PedidoControlador()
-    var productoP:ProductoP?
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        print(productoP)
-    }
- 
-}
+class EditarProductoViewController:UIViewController, UIPickerViewDelegate, UIPickerViewDataSource{
     
-    /*UIViewController, UIPickerViewDelegate, UIPickerViewDataSource{
-    var producto = productoP
+    var producto:ProductoP?
     var tempPrecio: Float = 0.0
     var counter = 0
     var datosPresentacion:[String] = []
@@ -30,13 +21,16 @@ class EditarProductoViewController:UIViewController{
     var tempColor:String = ""
     var tempDescuento:Int = 0
     
+    
     let pedidoControlador = PedidoControlador()
     let usuarioControlador = ClienteControlador()
     
     @IBOutlet weak var descuentoLabel: UILabel!
-    
     @IBOutlet weak var ofertaLabel: UILabel!
+    
     @IBOutlet weak var nombreProducto: UILabel!
+   
+   
     @IBOutlet weak var id: UILabel!
     
     @IBOutlet weak var oferta: UILabel!
@@ -85,7 +79,6 @@ class EditarProductoViewController:UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         pickerPresentacion.delegate = self
         pickerPresentacion.dataSource = self
         pickerColores.delegate = self
@@ -96,26 +89,30 @@ class EditarProductoViewController:UIViewController{
         colores.inputView = pickerColores
         colores.textAlignment = .center
         
-        presentacion.placeholder = "Selecciona presentación"
-        colores.placeholder = "Selecciona color"
-        
+        presentacion.attributedPlaceholder = NSAttributedString(string: producto?.presentacion ?? "", attributes:[NSAttributedString.Key.foregroundColor: UIColor.black])
+        colores.attributedPlaceholder = NSAttributedString(string: producto?.color ?? "", attributes:[NSAttributedString.Key.foregroundColor: UIColor.black])
         pickerPresentacion.tag = 1
         pickerColores.tag = 2
-        
-        
-        
-      /*  datosPresentacion = producto?.presentacion ?? []
-        datosPrecio = producto?.precio ?? []
-        datosColores = producto?.colores ?? []
-        
-        nombreProducto.text = producto?.nombre
-        id.text = producto?.id
-        
-        tipo.text = producto?.tipo
-        descripcion.text = producto?.descripcion
+        pedidoControlador.fetchProducto(idProducto: producto?.idDoc_producto ?? ""){
+            (resultado) in
+            switch resultado{
+            case .success(let exito):print(exito)
+                self.datosPresentacion = exito.presentacion
+                self.datosPrecio = exito.precio
+                self.datosColores = exito.colores
+                
+            case .failure(let error):print(error)
+               
+            }
+    }
+        tempPrecio = producto?.precio_producto ?? 0
+        nombreProducto.text = producto?.nombre_producto
+        id.text = producto?.id_producto
+        tipo.text = producto?.tipo_producto
+        descripcion.text = producto?.descripcion_producto
         uso.text = producto?.uso
-        tempDescuento = producto?.descuento ?? 0
-        if producto?.descuento == 0{
+        tempDescuento = producto?.descuento_producto ?? 0
+        if producto?.descuento_producto == 0{
             descuento.isHidden = true
             descuentoLabel.isHidden = true
             ofertaLabel.isHidden = true
@@ -124,23 +121,10 @@ class EditarProductoViewController:UIViewController{
             descuento.text = String(tempDescuento)+" %"
             
         }
-        
-
-
-       */ // Do any additional setup after loading the view.
-
+        contadorCantidad.text = String(producto?.cantidad_producto ?? 0)
+        counter = producto?.cantidad_producto ?? 0
+        precio.text = String(tempPrecio * Float(counter))
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -182,7 +166,7 @@ class EditarProductoViewController:UIViewController{
             tempPrecio = datosPrecio[row]
             precio.text = String(format: "%.2f", tempPrecio * Float(counter))
             contadorCantidad.text = String(counter)
-            let temp_oferta = (tempPrecio - ((Float((producto?.descuento ?? 0))/100) * tempPrecio)) * Float(counter)
+            let temp_oferta = (tempPrecio - ((Float((producto?.descuento_producto ?? 0))/100) * tempPrecio)) * Float(counter)
             
             oferta.text = String(temp_oferta)
             presentacion.resignFirstResponder()
@@ -197,67 +181,7 @@ class EditarProductoViewController:UIViewController{
         
     }
     
-    @IBAction func insertarPedido( sender: UIButton){
-        
-        if (presentacion.text == "" || colores.text == ""){
-            let alerta =  UIAlertController(title: "Campos faltantes", message: "Favor de llenar los campos faltantes", preferredStyle: .alert)
-            alerta.addAction(UIAlertAction(title: "Cerrar", style: .default, handler: nil))
-            self.present(alerta, animated: true, completion: nil)
-            
-        }else{
-            let userUID = Auth.auth().currentUser!.uid
-            print("usuario", userUID)
-            var dataUsuario:[String:String] = [:]
-            usuarioControlador.getUserDataForCreatingPedido(uid: userUID){
-                (resultado) in
-                switch resultado{
-                case .success(let exito):dataUsuario = exito
-                    print(exito)
-                    var nuevoProducto = ProductoP(cantidad_producto: self.counter, color: self.tempColor, descripcion_producto: self.descripcion.text!, descuento_producto:self.tempDescuento, id_producto: self.id.text!, nombre_producto: self.nombreProducto.text!, precio_producto: self.tempPrecio, presentacion: self.tempPresentacion, tipo_producto: self.tipo.text!, uso: self.uso.text!)
-                    let now = Date()
-                    let formatter = DateFormatter()
-                    formatter.dateStyle = .full
-                    formatter.timeStyle = .full
-                    let datetime = formatter.string(from: now)
-                    
-                    var nuevoPedido = Pedido(activo:true, estatus:"Pendiente",productos:[nuevoProducto], direccion: dataUsuario["direccion"]!, cursos:[], cliente_id:dataUsuario["id_doc"]!, fecha:datetime, uid: userUID)
-                    //print(nuevoPedido)
-                // checar si hay carrito activo
-                    var pedidoId:String = ""
-                    //print("el id ",pedidoId)
-              self.pedidoControlador.checarCarrito(){
-                        (resultado) in
-                        switch resultado{
-                        case .success(let exito):pedidoId = exito
-                            print("id del pedido activo", pedidoId)
-                            if pedidoId.count != 0 {
-                                //print("editar pedido")
-                                self.pedidoControlador.agregarProductoEnPedido(nuevoProducto: nuevoProducto,idPedido: pedidoId){
-                                    (resultado) in
-                                    switch resultado{
-                                    case .success(let exito):self.displayExito(exito: exito)
-                                    case .failure(let error):self.displayError(e: error)
-                                    }
-                                }
-                            }else{
-                                print("nuevo pedido")
-                                self.pedidoControlador.crearPedidoConProductoP(nuevoPedido: nuevoPedido){
-                                        (resultado) in
-                                        switch resultado{
-                                        case .success(let exito):self.displayExito(exito: exito)
-                                        case .failure(let error):self.displayError(e: error)
-                                        }
-                                    }
-                            }
-                        case .failure(let error):self.displayError(e: error)
-
-                        }}
-                case .failure(let error):print("No se pudo encontrar la dirección error: ",error)
-                }
-                
-            }
-        }
-    }
+  
     
     func displayError(e:Error){
         DispatchQueue.main.async {
@@ -278,7 +202,8 @@ class EditarProductoViewController:UIViewController{
         
     }
     
-
-}*/
+ 
+}
+    
 
 

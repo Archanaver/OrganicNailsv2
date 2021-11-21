@@ -422,6 +422,10 @@ class PedidoControlador{
         
         
     }
+    
+
+    
+    
     //con el id del pedido activo te regresa el arreglo con los cursos
     func fetchCarritoCursos(pedidoActivo: String,completion: @escaping (Result<[CursoP],Error>)->Void){
         var lista_cursos = [CursoP]()
@@ -443,36 +447,22 @@ class PedidoControlador{
     }
     //get producto pasándole el id del documento del producto
     func fetchProducto(idProducto:String,completion: @escaping (Result<Producto,Error>)->Void){
-        print("id producto", idProducto)
-       let cosa = "A8KJ98SuLgLCSZqOAENz"
-        
-        let docRef = db.collection("productos").document(cosa)
-            docRef.getDocument{ (document, error) in
-        let result = Result {
-            try document?.data(as: Producto.self)
-        }
-        switch result {
-        case .success(let product):
-            if let product = product {
-                // A `City` value was successfully initialized from the DocumentSnapshot.
-                //print("producto \(product)")
-                completion(.success(product))
+            var productos = [Producto]()
+            db.collection("productos").whereField("idDoc", isEqualTo: idProducto).getDocuments(){ (querySnapshot, err) in
+                if let err = err{
+                    print("error getting productos: \(err)")
+                    completion(.failure(err))
+                }else{
+                    for document in querySnapshot!.documents{
+                        let i = Producto(d: document)
+                        productos.append(i)
+                    }
+                    completion(.success(productos[0]))
+                }
                 
-            } else {
-                // A nil value was successfully initialized from the DocumentSnapshot,
-                // or the DocumentSnapshot was nil.
-                print("Producto no existe")
             }
-        case .failure(let error):
-            // A `City` value could not be initialized from the DocumentSnapshot.
-            print("Error decoding producto: \(error)")
-            completion(.failure(error))
+            
         }
-    }
-        
-        
-    }
-    
     //Hacemos una lista de pedidos con el estado que solicita
     func pedidosEstadoSelect(listaPedidos: Pedidos, estado: String) -> Pedidos{
         

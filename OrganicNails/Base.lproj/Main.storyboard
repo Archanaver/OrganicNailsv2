@@ -717,6 +717,7 @@
                                             <outlet property="precioCell" destination="iR3-M9-jHh" id="Xcb-us-Krf"/>
                                             <outlet property="tituloCell" destination="vmW-kK-fxE" id="Oni-bh-uYi"/>
                                             <outlet property="totalCell" destination="ZEg-9r-XUg" id="gha-Z4-J8S"/>
+                                            <segue destination="FrO-P6-JAV" kind="show" id="GCg-dL-mMk"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -3598,12 +3599,18 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <state key="normal" title="+"/>
+                                <connections>
+                                    <action selector="incrementaCantidad:" destination="FrO-P6-JAV" eventType="touchUpInside" id="j0q-DO-HrS"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="REs-Vr-QM9">
                                 <rect key="frame" x="292" y="215" width="30" height="39"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <state key="normal" title="-"/>
+                                <connections>
+                                    <action selector="disminuyeCantidad:" destination="FrO-P6-JAV" eventType="touchUpInside" id="Fp4-3h-Sfw"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="weV-tJ-zyN" userLabel="ComprarAhora">
                                 <rect key="frame" x="103" y="728" width="200" height="43"/>
@@ -3632,6 +3639,21 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" title="Detalle producto" id="VdM-3C-aMa"/>
+                    <connections>
+                        <outlet property="colores" destination="mZs-qD-HLQ" id="ARJ-Xw-4mT"/>
+                        <outlet property="contadorCantidad" destination="g35-fd-wa3" id="RDh-gd-jXG"/>
+                        <outlet property="descripcion" destination="O2Y-H9-dOT" id="QRU-iy-BVL"/>
+                        <outlet property="descuento" destination="d7C-s4-cLI" id="mJo-cY-OsC"/>
+                        <outlet property="descuentoLabel" destination="A2d-Wv-g1V" id="ARd-Jt-tcm"/>
+                        <outlet property="id" destination="XVY-m7-mrB" id="TqL-y8-avY"/>
+                        <outlet property="nombreProducto" destination="uvP-KL-wCQ" id="PfV-Gi-deM"/>
+                        <outlet property="oferta" destination="1hQ-Uf-JY4" id="HVc-7I-dWh"/>
+                        <outlet property="ofertaLabel" destination="xat-fU-ihR" id="XS0-0s-wUT"/>
+                        <outlet property="precio" destination="al5-Mw-JJg" id="Ycb-CY-Efu"/>
+                        <outlet property="presentacion" destination="eeW-Ah-wlb" id="X79-cQ-C13"/>
+                        <outlet property="tipo" destination="ehn-qf-3vP" id="WyV-g3-ABn"/>
+                        <outlet property="uso" destination="tpI-Ce-c7S" id="8Un-MA-YCR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K3A-DU-xz9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -3639,6 +3661,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="kj6-q1-bto"/>
         <segue reference="vye-c0-AHW"/>
         <segue reference="94e-CW-Fcp"/>
         <segue reference="EfF-OB-h45"/>
