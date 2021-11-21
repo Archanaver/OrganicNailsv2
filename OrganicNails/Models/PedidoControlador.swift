@@ -481,6 +481,23 @@ class PedidoControlador{
         return sortedPedidos
     }
     
+    
+    func updateProducto(idPedido:String, idProducto:String,producto: ProductoP,completion: @escaping (Result<String,Error>)->Void){
+        db.collection("pedidos").document(idPedido).collection("productos").document(idProducto).updateData([
+            "cantidad_producto":producto.cantidad_producto,
+            "color": producto.color,
+            "precio_producto": producto.precio_producto,
+            "presentacion": producto.presentacion,
+            
+        
+        ]){ err in
+            if let err = err{
+                completion(.failure(err))
+            }else{
+                completion(.success("Se han modificado y guardado su producto"))
+            }
+        }
+    }
 
 
 }

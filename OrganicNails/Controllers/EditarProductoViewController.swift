@@ -124,8 +124,29 @@ class EditarProductoViewController:UIViewController, UIPickerViewDelegate, UIPic
         contadorCantidad.text = String(producto?.cantidad_producto ?? 0)
         counter = producto?.cantidad_producto ?? 0
         precio.text = String(tempPrecio * Float(counter))
+        let temp_of = (tempPrecio - ((Float((producto?.descuento_producto ?? 0))/100) * tempPrecio)) * Float(counter)
+        oferta.text = String(temp_of)
     }
     
+    @IBAction func guardarEdicion(_ sender: Any) {
+        var idPedidoActivo = ""
+        pedidoControlador.checarCarrito(){
+            (resultado) in
+            switch resultado{
+            case .success(let exito): idPedidoActivo = exito
+                var productoModificado = ProductoP(cantidad_producto: self.counter, color: self.tempColor, descripcion_producto: "", descuento_producto: 0, id_producto: "", nombre_producto: "", precio_producto: self.tempPrecio, presentacion: self.tempPresentacion, tipo_producto: "", uso: "", idDoc_producto: "")
+                self.pedidoControlador.updateProducto(idPedido: idPedidoActivo, idProducto: self.producto?.idDoc ?? "", producto: productoModificado){
+                    (resultado) in
+                    switch resultado{
+                    case .success(let exito): self.displayExito(titulo:"Producto modificado",exito:exito)
+                    case .failure(let error): print(error)
+                    
+                    }}
+            case .failure(let error):print(error)
+            }
+            
+        }
+    }
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -192,9 +213,9 @@ class EditarProductoViewController:UIViewController, UIPickerViewDelegate, UIPic
         
     }
     
-    func displayExito(exito:String){
+    func displayExito(titulo:String, exito:String){
         DispatchQueue.main.async {
-            let alerta =  UIAlertController(title: "Producto añadido", message: exito, preferredStyle: .alert)
+            let alerta =  UIAlertController(title: titulo, message: exito, preferredStyle: .alert)
             alerta.addAction(UIAlertAction(title: "Cerrar", style: .default, handler: nil))
             self.present(alerta, animated: true, completion: nil)
             
