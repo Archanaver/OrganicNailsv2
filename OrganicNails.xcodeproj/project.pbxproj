@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D0395A1274E013A008427AA /* DetallePedidoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0395A0274E013A008427AA /* DetallePedidoViewController.swift */; };
+		0D0395BD274E06C5008427AA /* DireccionEnvioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0395BC274E06C5008427AA /* DireccionEnvioViewController.swift */; };
 		0D052565273344C300481B5D /* Pedido.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D052564273344C300481B5D /* Pedido.swift */; };
 		0D05258B27336A6B00481B5D /* PedidoControlador.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D05258A27336A6B00481B5D /* PedidoControlador.swift */; };
 		0D0F564327387EEB00487021 /* ImagenPerfil in Resources */ = {isa = PBXBuildFile; fileRef = 0D0F564227387EEA00487021 /* ImagenPerfil */; };
@@ -169,6 +171,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0D0395A0274E013A008427AA /* DetallePedidoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetallePedidoViewController.swift; sourceTree = "<group>"; };
+		0D0395BC274E06C5008427AA /* DireccionEnvioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DireccionEnvioViewController.swift; sourceTree = "<group>"; };
 		0D052564273344C300481B5D /* Pedido.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pedido.swift; sourceTree = "<group>"; };
 		0D05258A27336A6B00481B5D /* PedidoControlador.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PedidoControlador.swift; sourceTree = "<group>"; };
 		0D0F564227387EEA00487021 /* ImagenPerfil */ = {isa = PBXFileReference; lastKnownFileType = file; path = ImagenPerfil; sourceTree = "<group>"; };
@@ -385,6 +389,8 @@
 				0D7D93DA2741C0C400351581 /* PruebaCarritoViewController.swift */,
 				0DF073CE274894A100C148FD /* EditarProductoViewController.swift */,
 				0DF074002749E8E900C148FD /* DetalleCursoCarritoViewController.swift */,
+				0D0395A0274E013A008427AA /* DetallePedidoViewController.swift */,
+				0D0395BC274E06C5008427AA /* DireccionEnvioViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -796,7 +802,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D0395BD274E06C5008427AA /* DireccionEnvioViewController.swift in Sources */,
 				0D16A1442739677400EB895B /* FacturaControlador.swift in Sources */,
+				0D0395A1274E013A008427AA /* DetallePedidoViewController.swift in Sources */,
 				0DA97DC6270C98130021EC4C /* CursosViewController.swift in Sources */,
 				4AC6D4F927350FFA0033B5BA /* PromocionesDetalleViewController.swift in Sources */,
 				0DA97DBC270C8F4A0021EC4C /* CursoControlador.swift in Sources */,
