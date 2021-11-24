@@ -12,6 +12,7 @@ class DireccionEnvioViewController: UIViewController {
     var ahorro:Float = 0
     var envio:Float = 0
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -31,5 +32,6 @@ class DireccionEnvioViewController: UIViewController {
         siguiente.total = total
     }
     
+ 
 
 }

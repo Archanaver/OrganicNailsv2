@@ -498,6 +498,17 @@ class PedidoControlador{
             }
         }
     }
+    // pone el campo activo como false
+    func updatePedidoCompraHecha(idPedido:String, completion: @escaping (Result<String,Error>)->Void){
+        db.collection("pedidos").document(idPedido).updateData(["activo": false]){ err in
+            if let err = err{
+                completion(.failure(err))
+            }else{
+                completion(.success("Se ha realizado la compra."))
+            }
+        }
+        
+    }
 
 
 }

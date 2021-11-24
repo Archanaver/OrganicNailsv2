@@ -11,6 +11,8 @@ class DetallePedidoViewController: UIViewController {
     var total:Float = 0
     var ahorro:Float = 0
     var envio:Float = 0
+    
+    let pedidoControllador = PedidoControlador()
 
     @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var envioLabel: UILabel!
@@ -36,6 +38,34 @@ class DetallePedidoViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    @IBAction func comprarButton(_ sender: Any) {
+        pedidoControllador.checarCarrito(){
+                (resultado) in
+                      switch resultado{
+                      case .success(let exito):print(exito)
+                        self.pedidoControllador.updatePedidoCompraHecha(idPedido: exito){
+                            (resultado) in
+                                  switch resultado{
+                                  case .success(let exito):self.displayExito(exito: exito)
+                                  case .failure(let error):print(error)
+                                  }
+                        
+                        }
+                      case .failure(let error): print(error)
+                      }
+        }
+    }
+    
+    
+    func displayExito(exito:String){
+        DispatchQueue.main.async {
+            let alerta =  UIAlertController(title: "Compra realizada", message: exito, preferredStyle: .alert)
+            alerta.addAction(UIAlertAction(title: "Cerrar", style: .default, handler: nil))
+            self.present(alerta, animated: true, completion: nil)
+            
+        }
+        
+    }
 
     /*
     // MARK: - Navigation

@@ -487,6 +487,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
+                                    <action selector="comprarButton:" destination="uwn-2z-33P" eventType="touchUpInside" id="g2O-hK-ykm"/>
                                     <segue destination="0UZ-HI-o4o" kind="show" id="g7n-pL-OUf"/>
                                 </connections>
                             </button>
@@ -3374,7 +3375,7 @@
                                 </prototypes>
                             </tableView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="180x180.png" translatesAutoresizingMaskIntoConstraints="NO" id="Aqm-iH-xns">
-                                <rect key="frame" x="139.5" y="174.5" width="135" height="135"/>
+                                <rect key="frame" x="117" y="152" width="180" height="180"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="27U-aN-cVN"/>
