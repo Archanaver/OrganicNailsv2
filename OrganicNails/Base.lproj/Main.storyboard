@@ -12,7 +12,7 @@
         <!--Inicio-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="pantallainicial" modalTransitionStyle="crossDissolve" id="BYZ-38-t0r" customClass="ViewController" customModule="OrganicNails" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="pantallainicial" wantsFullScreenLayout="YES" modalTransitionStyle="crossDissolve" id="BYZ-38-t0r" customClass="ViewController" customModule="OrganicNails" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -488,7 +488,7 @@
                                 </state>
                                 <connections>
                                     <action selector="comprarButton:" destination="uwn-2z-33P" eventType="touchUpInside" id="g2O-hK-ykm"/>
-                                    <segue destination="0UZ-HI-o4o" kind="show" id="g7n-pL-OUf"/>
+                                    <segue destination="qLE-70-dKn" kind="presentation" id="xJb-wt-bV2"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Costo de productos/cursos:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XGC-74-gnH">
@@ -548,7 +548,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="SHl-l8-KAi">
-                                <rect key="frame" x="10" y="98" width="394" height="705"/>
+                                <rect key="frame" x="10" y="54" width="394" height="798"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icono" translatesAutoresizingMaskIntoConstraints="NO" id="VrE-dQ-JyZ">
                                         <rect key="frame" x="0.0" y="0.0" width="394" height="250"/>
@@ -565,7 +565,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="ay2-iE-u14">
-                                        <rect key="frame" x="0.0" y="284.5" width="394" height="420.5"/>
+                                        <rect key="frame" x="0.0" y="284.5" width="394" height="513.5"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="pedidoCell" id="PHj-RP-IMY">
@@ -607,12 +607,12 @@
         <scene sceneID="R6K-eB-UmV">
             <objects>
                 <viewController wantsFullScreenLayout="YES" modalTransitionStyle="crossDissolve" modalPresentationStyle="fullScreen" id="B52-dZ-1s5" customClass="PedidosDetalleViewController" customModule="OrganicNails" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="aPH-Tf-kAv">
+                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="aPH-Tf-kAv">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="bhV-XY-3Mv">
-                                <rect key="frame" x="10" y="98" width="394" height="705"/>
+                                <rect key="frame" x="10" y="54" width="394" height="705"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="qsV-yq-bg8">
                                         <rect key="frame" x="0.0" y="0.0" width="394" height="705"/>
@@ -1821,7 +1821,7 @@
         <!--Tab Bar View Controller-->
         <scene sceneID="m3Z-Wi-Slr">
             <objects>
-                <tabBarController storyboardIdentifier="tabBar" automaticallyAdjustsScrollViewInsets="NO" id="qLE-70-dKn" customClass="TabBarViewController" customModule="OrganicNails" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="tabBar" wantsFullScreenLayout="YES" automaticallyAdjustsScrollViewInsets="NO" modalTransitionStyle="crossDissolve" modalPresentationStyle="fullScreen" id="qLE-70-dKn" customClass="TabBarViewController" customModule="OrganicNails" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="YmL-Ip-Qc0"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="fIh-71-hFE">
@@ -2998,7 +2998,7 @@
         <!--Promociones-->
         <scene sceneID="cVd-xY-sCp">
             <objects>
-                <viewController id="0Kh-Ng-QBK" sceneMemberID="viewController">
+                <viewController wantsFullScreenLayout="YES" modalTransitionStyle="flipHorizontal" modalPresentationStyle="fullScreen" id="0Kh-Ng-QBK" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3aO-BO-amz">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -3442,7 +3442,7 @@
         <!--Navigation Controller-->
         <scene sceneID="Zst-sY-nbf">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="eFD-3Q-pLs" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalTransitionStyle="crossDissolve" id="eFD-3Q-pLs" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="house" catalog="system" id="Cb3-Oq-cNK"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="dkR-5H-BNh">
@@ -3450,6 +3450,9 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="HHe-HX-Icn">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="aCL-s1-3md"/>
                     </connections>
@@ -3808,6 +3811,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="E5B-xP-zVf"/>
         <segue reference="vye-c0-AHW"/>
         <segue reference="dDz-ri-hay"/>
         <segue reference="EfF-OB-h45"/>
@@ -3826,8 +3830,7 @@
         <segue reference="v4e-DG-8if"/>
         <segue reference="yP4-VP-1Vr"/>
         <segue reference="ZF7-Mw-yz9"/>
-        <segue reference="xSA-R1-guN"/>
-        <segue reference="g7n-pL-OUf"/>
+        <segue reference="Hlg-ug-IL5"/>
         <segue reference="uFP-YQ-gz4"/>
         <segue reference="j5V-Av-PZw"/>
         <segue reference="zlx-5y-85c"/>
