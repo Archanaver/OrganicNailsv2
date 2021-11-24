@@ -64,6 +64,7 @@
 		0DDFE6A2270A5DA200EC3EA5 /* EliminarCuentaImg.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DDFE6A1270A5DA200EC3EA5 /* EliminarCuentaImg.png */; };
 		0DDFE6AD270A866700EC3EA5 /* AcrilicoImg.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DDFE6AC270A866600EC3EA5 /* AcrilicoImg.png */; };
 		0DF073CF274894A100C148FD /* EditarProductoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF073CE274894A100C148FD /* EditarProductoViewController.swift */; };
+		0DF074012749E8E900C148FD /* DetalleCursoCarritoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF074002749E8E900C148FD /* DetalleCursoCarritoViewController.swift */; };
 		4A7B708627482C090005CA67 /* estatusAW WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 4A7B708527482C090005CA67 /* estatusAW WatchKit App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		4A7B708C27482C090005CA67 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A7B708A27482C090005CA67 /* Interface.storyboard */; };
 		4A7B708E27482C090005CA67 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A7B708D27482C090005CA67 /* Assets.xcassets */; };
@@ -227,6 +228,7 @@
 		0DDFE6A1270A5DA200EC3EA5 /* EliminarCuentaImg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EliminarCuentaImg.png; sourceTree = "<group>"; };
 		0DDFE6AC270A866600EC3EA5 /* AcrilicoImg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AcrilicoImg.png; sourceTree = "<group>"; };
 		0DF073CE274894A100C148FD /* EditarProductoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditarProductoViewController.swift; sourceTree = "<group>"; };
+		0DF074002749E8E900C148FD /* DetalleCursoCarritoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetalleCursoCarritoViewController.swift; sourceTree = "<group>"; };
 		4A7B708227482C080005CA67 /* estatusAW.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = estatusAW.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A7B708527482C090005CA67 /* estatusAW WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "estatusAW WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A7B708B27482C090005CA67 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
@@ -382,6 +384,7 @@
 				A5CA2D0C27397ACA006D4BF7 /* DespliegueCarroViewController.swift */,
 				0D7D93DA2741C0C400351581 /* PruebaCarritoViewController.swift */,
 				0DF073CE274894A100C148FD /* EditarProductoViewController.swift */,
+				0DF074002749E8E900C148FD /* DetalleCursoCarritoViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -834,6 +837,7 @@
 				6DD8A3472735E11100D388C4 /* ClienteControlador.swift in Sources */,
 				0D7D93DB2741C0C400351581 /* PruebaCarritoViewController.swift in Sources */,
 				0D456E262744C6CC00E6C499 /* CursoTableViewCell.swift in Sources */,
+				0DF074012749E8E900C148FD /* DetalleCursoCarritoViewController.swift in Sources */,
 				0DDFE66D27098DE700EC3EA5 /* DetalleProductoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

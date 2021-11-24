@@ -131,10 +131,20 @@ class PruebaCarritoViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
-        let siguiente = segue.destination as! EditarProductoViewController
-        let indice = self.productosTableView.indexPathForSelectedRow?.row
-        siguiente.producto = productos[indice!]
+        if segue.identifier == "Producto"{
+            let siguiente = segue.destination as! EditarProductoViewController
+            let indice = self.productosTableView.indexPathForSelectedRow?.row
+            siguiente.producto = productos[indice!]
+        }else{
+            let siguiente = segue.destination as! DetalleCursoCarritoViewController
+            let indice = self.cursosTableView.indexPathForSelectedRow?.row
+            siguiente.curso = cursos[indice!]
+            
+        }
+
     }
+    
+
     
     func calculaTotal() -> Float{
         total = 0
