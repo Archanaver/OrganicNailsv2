@@ -17,10 +17,12 @@ class PruebaCarritoViewController: UIViewController {
     var cursoControlador = CursoControlador()
     @IBOutlet weak var totalLabel: UILabel!
     var total:Float = 0
+    var descuentoTotal:Float = 0
     
     @IBOutlet weak var comprar: UIButton!
     @IBOutlet var productosTableView: UITableView!
     
+    @IBOutlet weak var descuentoLabel: UILabel!
     @IBOutlet var cursosTableView: UITableView!
     override func viewDidAppear(_ animated: Bool) {
         var pedidoId:String = ""
@@ -135,7 +137,7 @@ class PruebaCarritoViewController: UIViewController {
             let siguiente = segue.destination as! EditarProductoViewController
             let indice = self.productosTableView.indexPathForSelectedRow?.row
             siguiente.producto = productos[indice!]
-        }else{
+        }else if segue.identifier == "Curso"{
             let siguiente = segue.destination as! DetalleCursoCarritoViewController
             let indice = self.cursosTableView.indexPathForSelectedRow?.row
             siguiente.curso = cursos[indice!]
@@ -146,13 +148,14 @@ class PruebaCarritoViewController: UIViewController {
     
 
     
-    func calculaTotal() -> Float{
+    func calculaTotal() -> [Float]{
         total = 0
-        
+        descuentoTotal = 0
         for p in productos{
             var tempPrecio = p.precio_producto * Float(p.cantidad_producto)
             if p.descuento_producto != 0{
                 let descuento = (tempPrecio * Float( p.descuento_producto))/100
+                descuentoTotal += descuento
                 let precioConDesc = tempPrecio - descuento
                 tempPrecio = precioConDesc
             }
@@ -163,8 +166,9 @@ class PruebaCarritoViewController: UIViewController {
         for c in cursos{
             total += Float(c.precio_curso) ?? 0
         }
+        let temp = [total, descuentoTotal]
         //print("total: ", total)
-        return total
+        return temp
     }
 
     
@@ -215,7 +219,8 @@ extension PruebaCarritoViewController: UITableViewDataSource{
 
     //construye cada celda, lo que se ve visualmente
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        totalLabel.text = "Total: $\( calculaTotal())"
+        totalLabel.text = "Total: $" + String( format: "%.2f",calculaTotal()[0])
+        descuentoLabel.text = "Descuento: $" + String( format: "%.2f",calculaTotal()[1])
         // Configure the cell...
         if tableView.tag == 0{
             let cell = tableView.dequeueReusableCell(withIdentifier: "zelda", for: indexPath as IndexPath)as! ProductoUITableViewCell
@@ -270,8 +275,9 @@ extension PruebaCarritoViewController: UITableViewDataSource{
             case .success(let exito):print(exito)
                 self.cursos.remove(at: indexPath.row)
                 self.cursosTableView.deleteRows(at: [indexPath], with: .left)
-                
-                self.totalLabel.text = "Total: $\( self.calculaTotal())"
+               
+                self.totalLabel.text = "Total: $" + String( format: "%.2f",self.calculaTotal()[0])
+                self.descuentoLabel.text = "Descuento: $" + String( format: "%.2f",self.calculaTotal()[1])
                 if self.productos.isEmpty && self.cursos.isEmpty{
                     self.comprar.isHidden = true
                     self.mensajeCarritoVacio()
@@ -296,7 +302,8 @@ extension PruebaCarritoViewController: UITableViewDataSource{
                 self.productos.remove(at: indexPath.row)
                 self.productosTableView.deleteRows(at: [indexPath], with: .left)
                 
-                self.totalLabel.text = "Total: $\( self.calculaTotal())"
+                self.totalLabel.text = "Total: $" + String( format: "%.2f",self.calculaTotal()[0])
+                self.descuentoLabel.text = "Descuento: $" + String( format: "%.2f",self.calculaTotal()[1])
                 if self.productos.isEmpty && self.cursos.isEmpty{
                     self.comprar.isHidden = true
                     self.mensajeCarritoVacio()

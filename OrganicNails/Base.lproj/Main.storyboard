@@ -774,20 +774,21 @@
                                             <outlet property="fecha" destination="HIr-KA-8sT" id="fy3-53-mxw"/>
                                             <outlet property="titulo" destination="evm-WC-mb2" id="GYD-0e-etr"/>
                                             <outlet property="total" destination="I9e-y5-Vml" id="gxa-7b-UhY"/>
-                                            <segue destination="wpY-5O-4Xr" kind="show" id="Wuo-oM-p8e"/>
+                                            <segue destination="wpY-5O-4Xr" kind="show" identifier="Curso" id="Wuo-oM-p8e"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Total:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XTZ-A1-5Ea">
-                                <rect key="frame" x="63" y="679" width="289" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Descuento:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t0A-7o-Gkk">
+                                <rect key="frame" x="63" y="669" width="289" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
+                                <color key="tintColor" name="AccentColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" systemColor="systemRedColor"/>
+                                <color key="highlightedColor" name="AccentColor"/>
                             </label>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YGG-a6-RtW">
-                                <rect key="frame" x="97" y="728" width="221" height="43"/>
+                                <rect key="frame" x="97" y="733" width="221" height="43"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.8980392157" green="0.3803921569" blue="0.56078431370000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Comprar">
@@ -797,6 +798,13 @@
                                     <segue destination="JgR-au-bkR" kind="show" id="NFG-PC-S5t"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Total:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XTZ-A1-5Ea">
+                                <rect key="frame" x="63" y="697" width="289" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="RCe-rU-bE7"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -806,6 +814,7 @@
                     <connections>
                         <outlet property="comprar" destination="YGG-a6-RtW" id="HFm-DR-Knd"/>
                         <outlet property="cursosTableView" destination="MiL-VL-afj" id="Cfq-Yl-I3h"/>
+                        <outlet property="descuentoLabel" destination="t0A-7o-Gkk" id="Koi-nC-Evz"/>
                         <outlet property="productosTableView" destination="6ig-Xe-ksk" id="6fe-ZZ-GhC"/>
                         <outlet property="totalLabel" destination="XTZ-A1-5Ea" id="6qF-7q-0Op"/>
                     </connections>
@@ -3837,6 +3846,9 @@
         <image name="ticket" catalog="system" width="128" height="84"/>
         <image name="trash" catalog="system" width="121" height="128"/>
         <image name="usuarios" width="192.5" height="413.5"/>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="bg">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
