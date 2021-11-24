@@ -224,7 +224,14 @@ extension PruebaCarritoViewController: UITableViewDataSource{
     //construye cada celda, lo que se ve visualmente
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         totalLabel.text = "Total: $" + String( format: "%.2f",calculaTotal()[0])
-        descuentoLabel.text = "Ahorro: $" + String( format: "%.2f",calculaTotal()[1])
+        
+        if calculaTotal()[1] != 0 {
+            descuentoLabel.isHidden = false
+            descuentoLabel.text = "Ahorro: $" + String( format: "%.2f",calculaTotal()[1])
+        }else{
+            descuentoLabel.isHidden = true
+        }
+        
         // Configure the cell...
         if tableView.tag == 0{
             let cell = tableView.dequeueReusableCell(withIdentifier: "zelda", for: indexPath as IndexPath)as! ProductoUITableViewCell
@@ -281,7 +288,12 @@ extension PruebaCarritoViewController: UITableViewDataSource{
                 self.cursosTableView.deleteRows(at: [indexPath], with: .left)
                
                 self.totalLabel.text = "Total: $" + String( format: "%.2f",self.calculaTotal()[0])
-                self.descuentoLabel.text = "Ahorro: $" + String( format: "%.2f",self.calculaTotal()[1])
+                if self.calculaTotal()[1] != 0 {
+                    self.descuentoLabel.isHidden = false
+                    self.descuentoLabel.text = "Ahorro: $" + String( format: "%.2f",self.calculaTotal()[1])
+                }else{
+                    self.descuentoLabel.isHidden = true
+                }
                 if self.productos.isEmpty && self.cursos.isEmpty{
                     self.comprar.isHidden = true
                     self.mensajeCarritoVacio()
@@ -307,7 +319,12 @@ extension PruebaCarritoViewController: UITableViewDataSource{
                 self.productosTableView.deleteRows(at: [indexPath], with: .left)
                 
                 self.totalLabel.text = "Total: $" + String( format: "%.2f",self.calculaTotal()[0])
-                self.descuentoLabel.text = "Ahorro: $" + String( format: "%.2f",self.calculaTotal()[1])
+                if self.calculaTotal()[1] != 0 {
+                    self.descuentoLabel.isHidden = false
+                    self.descuentoLabel.text = "Ahorro: $" + String( format: "%.2f",self.calculaTotal()[1])
+                }else{
+                    self.descuentoLabel.isHidden = true
+                }
                 if self.productos.isEmpty && self.cursos.isEmpty{
                     self.comprar.isHidden = true
                     self.mensajeCarritoVacio()
