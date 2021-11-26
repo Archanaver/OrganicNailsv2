@@ -76,5 +76,7 @@
 	</array>
 	<key>NSFaceIDUsageDescription</key>
 	<string>Por favor permite continuar con Face ID</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Por favor permite el acceso a tu ubicación para poder determinar a dónde mandar tus pedidos</string>
 </dict>
 </plist>

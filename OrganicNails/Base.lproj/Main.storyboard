@@ -226,17 +226,32 @@
         <!--Detalle Direccion-->
         <scene sceneID="Cc8-dW-WuK">
             <objects>
-                <viewController wantsFullScreenLayout="YES" modalPresentationStyle="fullScreen" id="Wh6-Mi-XKg" userLabel="Detalle Direccion" sceneMemberID="viewController">
+                <viewController wantsFullScreenLayout="YES" modalPresentationStyle="fullScreen" id="Wh6-Mi-XKg" userLabel="Detalle Direccion" customClass="DireccionEnvioViewController" customModule="OrganicNails" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qs3-Kc-coV">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DetalleDireccion" translatesAutoresizingMaskIntoConstraints="NO" id="Gdv-sV-3VJ">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i6T-Z3-EoU" userLabel="Confirmar">
-                                <rect key="frame" x="91" y="711" width="240" height="67"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="2Hx-zn-dxU">
+                                <rect key="frame" x="24" y="339" width="366" height="356"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </mapView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="180x180.png" translatesAutoresizingMaskIntoConstraints="NO" id="Ypm-lp-wyO">
+                                <rect key="frame" x="87" y="81" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Direccion" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Xf-aD-An1">
+                                <rect key="frame" x="24" y="274" width="336" height="57"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i6T-Z3-EoU" userLabel="Confirmar">
+                                <rect key="frame" x="87" y="714" width="240" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.8980392157" green="0.3803921569" blue="0.56078431370000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="CONFIRMAR"/>
                                 <connections>
                                     <segue destination="ecf-kV-rVI" kind="show" id="VfM-fH-RAs"/>
                                 </connections>
@@ -244,18 +259,16 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="O2g-Qb-1N4"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="O2g-Qb-1N4" firstAttribute="trailing" secondItem="Gdv-sV-3VJ" secondAttribute="trailing" id="FfF-4V-pGf"/>
-                            <constraint firstItem="Gdv-sV-3VJ" firstAttribute="top" secondItem="O2g-Qb-1N4" secondAttribute="top" id="JYX-2a-seq"/>
-                            <constraint firstItem="O2g-Qb-1N4" firstAttribute="bottom" secondItem="Gdv-sV-3VJ" secondAttribute="bottom" id="O3d-ah-scw"/>
-                            <constraint firstItem="Gdv-sV-3VJ" firstAttribute="leading" secondItem="O2g-Qb-1N4" secondAttribute="leading" id="pSD-Ij-Kzz"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Detalle dirección" id="Kdt-dM-yE1"/>
+                    <connections>
+                        <outlet property="dir" destination="2Xf-aD-An1" id="1Lq-CT-ECi"/>
+                        <outlet property="map" destination="2Hx-zn-dxU" id="otc-dD-cXD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T9V-Kz-pEM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-967.28971962616822" y="309.71922246220305"/>
+            <point key="canvasLocation" x="-968.11594202898561" y="309.375"/>
         </scene>
         <!--Editar Perfil-->
         <scene sceneID="ccI-yY-d99">
@@ -3375,7 +3388,7 @@
                                 </prototypes>
                             </tableView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="180x180.png" translatesAutoresizingMaskIntoConstraints="NO" id="Aqm-iH-xns">
-                                <rect key="frame" x="117" y="152" width="180" height="180"/>
+                                <rect key="frame" x="139.5" y="174.5" width="135" height="135"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="27U-aN-cVN"/>
@@ -3811,7 +3824,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="E5B-xP-zVf"/>
         <segue reference="vye-c0-AHW"/>
         <segue reference="dDz-ri-hay"/>
         <segue reference="EfF-OB-h45"/>
@@ -3826,12 +3838,12 @@
         <segue reference="Deq-xw-cVL"/>
         <segue reference="5ep-jN-V5Q"/>
         <segue reference="cj4-ya-a3c"/>
-        <segue reference="vuT-2p-Ib1"/>
+        <segue reference="am6-f0-3a4"/>
         <segue reference="v4e-DG-8if"/>
         <segue reference="yP4-VP-1Vr"/>
         <segue reference="ZF7-Mw-yz9"/>
         <segue reference="Hlg-ug-IL5"/>
-        <segue reference="uFP-YQ-gz4"/>
+        <segue reference="VfM-fH-RAs"/>
         <segue reference="j5V-Av-PZw"/>
         <segue reference="zlx-5y-85c"/>
     </inferredMetricsTieBreakers>
