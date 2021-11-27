@@ -6,11 +6,14 @@
 //
 import CoreLocation
 import Foundation
+import Firebase
 
 class LocationControlador:  NSObject, CLLocationManagerDelegate {
     static let shared = LocationControlador()
     let manager = CLLocationManager()
     var completion: ((CLLocation)-> Void)?
+    
+    let db = Firestore.firestore()
     
     public func getUserLocation(completion: @escaping ((CLLocation)->Void)){
         self.completion = completion
@@ -38,25 +41,42 @@ class LocationControlador:  NSObject, CLLocationManagerDelegate {
                                print(pm.postalCode)
                                print(pm.subThoroughfare)
                                var addressString : String = ""
+                            if pm.thoroughfare != nil {
+                                addressString = addressString + pm.thoroughfare! + " "
+                            }
+                            if pm.subThoroughfare != nil {
+                            addressString = addressString + pm.subThoroughfare! + ", "
+                            }
                                if pm.subLocality != nil {
                                    addressString = addressString + pm.subLocality! + ", "
                                }
-                               if pm.thoroughfare != nil {
-                                   addressString = addressString + pm.thoroughfare! + ", "
-                               }
+                               
                                if pm.locality != nil {
                                    addressString = addressString + pm.locality! + ", "
                                }
                                if pm.country != nil {
                                    addressString = addressString + pm.country! + ", "
+                                
                                }
                                if pm.postalCode != nil {
                                    addressString = addressString + pm.postalCode! + " "
                                }
+
                             print(addressString)
                             completion(addressString)
                            }
                                        }
+    }
+    func updateDireccion(clienteActualizar : Cliente, completion: @escaping (Result <String, Error>)->Void){
+        db.collection("clientes").document(clienteActualizar.id!).updateData(["direccion":clienteActualizar.direccion, "codigoPostal":clienteActualizar.cp]) {
+            err in
+            if let err = err {
+                completion(.failure(err))
+            }else {
+                completion(.success("Direccion actualizada"))
+            }
+        }
+        
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]){
