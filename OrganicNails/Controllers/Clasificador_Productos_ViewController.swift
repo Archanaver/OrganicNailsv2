@@ -1,3 +1,4 @@
+
 //
 //  ViewController.swift
 //  fotosS4
@@ -12,7 +13,7 @@ import Vision
 
 //ML solo funciona a partir de iOS 11
 @available(iOS 11.0, *)
-class Clasificador_Producto_ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class Claisificador_Productos_ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
         
 
     @IBOutlet weak var identificacionImagen: UILabel!
@@ -69,12 +70,12 @@ class Clasificador_Producto_ViewController: UIViewController, UIImagePickerContr
     
     
     @IBAction func camara() {
-        miPicker.sourceType = UIImagePickerControllerSourceType.camera
+        miPicker.sourceType = UIImagePickerController.SourceType.camera
         present(miPicker, animated: true, completion: nil)
     }
     
     @IBAction func album() {
-        miPicker.sourceType = UIImagePickerControllerSourceType.photoLibrary
+        miPicker.sourceType = UIImagePickerController.SourceType.photoLibrary
         present(miPicker, animated: true, completion: nil)
     }
     
@@ -87,5 +88,4 @@ class Clasificador_Producto_ViewController: UIViewController, UIImagePickerContr
         picker.dismiss(animated: true, completion: nil)
     }
 }
-
 
