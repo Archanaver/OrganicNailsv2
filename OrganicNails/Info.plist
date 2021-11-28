@@ -51,8 +51,6 @@
 		<key>UIImageName</key>
 		<string>Imagen12</string>
 	</dict>
-	<key>UILaunchStoryboardName</key>
-	<string>LaunchScreen</string>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
 	<key>UILaunchImageFile</key>
@@ -80,11 +78,5 @@
 	<string>Por favor permite continuar con Face ID</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Por favor permite el acceso a tu ubicación para poder determinar a dónde mandar tus pedidos</string>
-	<key>NSCameraUsageDescription</key>
-	<string>Se rquiere usar la camara</string>
-	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>Se guardaran imagenes en la biblioteca</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Se requiere usar el carrete</string>
 </dict>
 </plist>
