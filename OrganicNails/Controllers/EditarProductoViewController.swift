@@ -127,6 +127,7 @@ class EditarProductoViewController:UIViewController, UIPickerViewDelegate, UIPic
         let temp_of = (tempPrecio - ((Float((producto?.descuento_producto ?? 0))/100) * tempPrecio)) * Float(counter)
         oferta.text = String(temp_of)
     }
+
     
     @IBAction func guardarEdicion(_ sender: Any) {
         var idPedidoActivo = ""
