@@ -97,10 +97,10 @@ class DireccionEnvioViewController: UIViewController,UISearchBarDelegate {
     @IBAction func updateDireccion(_ sender: Any) {
         let userID = Auth.auth().currentUser!.uid
     
-        LocationControlador.shared.updateDireccion(idCliente: userID, dirActualizar: LocationControlador.shared.add){
+        LocationControlador.shared.updateDir(uid: userID, dir: LocationControlador.shared.add, cp: LocationControlador.shared.cp){
             (resultado) in
             switch resultado{
-            case .success(let exito): print("chi")
+            case .success(let exito): print("Direccion actualizada")
 
             case .failure(let error):print(error)
         }

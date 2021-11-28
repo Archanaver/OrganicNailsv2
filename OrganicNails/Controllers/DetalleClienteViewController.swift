@@ -50,7 +50,7 @@ class DetalleClienteViewController: UIViewController {
                 self.nombreLabel.text = exito[0].nombre
                 self.telefonoLabel.text = exito[0].telefono
                 self.cpLabel.text = exito[0].cp
-                self.rfcLabel.text = exito[0].rfc
+
             case .failure(let error):print(error)
             
             }
@@ -69,7 +69,6 @@ class DetalleClienteViewController: UIViewController {
                 self.nombreLabel.text = exito[0].nombre
                 self.telefonoLabel.text = exito[0].telefono
                 self.cpLabel.text = exito[0].cp
-                self.rfcLabel.text = exito[0].rfc
             case .failure(let error):print(error)
             
             }

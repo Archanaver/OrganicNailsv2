@@ -33,7 +33,7 @@ struct Cliente: Decodable{
         self.id = d.get("uid") as? String ?? ""
         self.nombre = d.get("nombre") as? String ?? ""
         self.direccion = d.get("direccion") as? String ?? ""
-        self.cp = d.get("cp") as? String ?? ""
+        self.cp = d.get("codigoPostal") as? String ?? ""
         self.telefono = d.get("telefono") as? String ?? ""
         self.rfc = d.get("rfc") as? String ?? ""
         

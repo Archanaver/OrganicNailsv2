@@ -72,6 +72,38 @@ class LocationControlador:  NSObject, CLLocationManagerDelegate {
                                        }
     }
     
+    
+    func updateDir(uid:String,dir: String, cp: String, completion: @escaping (Result<String,Error>)->Void){
+        db.collection("clientes").whereField("uid", isEqualTo: uid)
+          .getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error obteniendo cliente: \(err)")
+                completion(.failure(err))
+            } else {
+                var documentoID:String = ""
+                for document in querySnapshot!.documents {
+                    //print("\(document.documentID) => \(document.data())")
+                    documentoID = document.documentID
+                    self.db.collection("clientes").document(documentoID).updateData([
+                       
+                        "direccion": dir,
+                        "codigoPostal": cp,
+                    ]){ err in
+                        if let err = err{
+                            completion(.failure(err))
+                        }else{
+                            completion(.success("Se han modificado y guardado sus datos"))
+                        }
+                    }
+                }
+            
+                
+            }
+        }
+        
+        
+    }
+    
     func updateDireccion(idCliente : String, dirActualizar : String, completion: @escaping (Result <String, Error>)->Void){
         
         db.collection("clientes").document(idCliente).updateData(["direccion":dirActualizar, "codigoPostal":self.cp]) {
