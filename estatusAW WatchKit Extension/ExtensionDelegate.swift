@@ -6,11 +6,13 @@
 //
 
 import WatchKit
+import Firebase
 
 class ExtensionDelegate: NSObject, WKExtensionDelegate {
 
     func applicationDidFinishLaunching() {
         // Perform any final initialization of your application.
+        FirebaseApp.configure()
     }
 
     func applicationDidBecomeActive() {

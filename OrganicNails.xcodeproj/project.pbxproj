@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -90,6 +90,11 @@
 		4AC6352727077DF700EA7E84 /* Imagen1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AC6352227077DF700EA7E84 /* Imagen1.png */; };
 		4AC6352827077DF700EA7E84 /* Imagen2.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AC6352327077DF700EA7E84 /* Imagen2.png */; };
 		4AC6D4F927350FFA0033B5BA /* PromocionesDetalleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC6D4F827350FFA0033B5BA /* PromocionesDetalleViewController.swift */; };
+		4AF6209427534F7700386DDA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4AF6209327534F7700386DDA /* GoogleService-Info.plist */; };
+		4AF6209B2753534F00386DDA /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 4AF6209A2753534F00386DDA /* FirebaseDatabase */; };
+		4AF620A1275359F300386DDA /* ControladorRenglon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF620A0275359F300386DDA /* ControladorRenglon.swift */; };
+		4AF620A727535FA300386DDA /* Pedido.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF620A627535FA300386DDA /* Pedido.swift */; };
+		4AF620AD27535FB400386DDA /* PedidoControlador.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF620AC27535FB400386DDA /* PedidoControlador.swift */; };
 		4AFDDE312734F6DC00863689 /* PromocionesInicioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFDDE302734F6DC00863689 /* PromocionesInicioViewController.swift */; };
 		6D184B3D270BAB5800169BD3 /* InicioAdmin.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D184B3C270BAB5800169BD3 /* InicioAdmin.png */; };
 		6D184B40270BABF800169BD3 /* PerfilAdmin.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D184B3F270BABF800169BD3 /* PerfilAdmin.png */; };
@@ -261,6 +266,10 @@
 		4AC6352327077DF700EA7E84 /* Imagen2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Imagen2.png; sourceTree = "<group>"; };
 		4AC6D4F827350FFA0033B5BA /* PromocionesDetalleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromocionesDetalleViewController.swift; sourceTree = "<group>"; };
 		4AD7BFC64ED86201CCCEF9D0 /* Pods-OrganicNails.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OrganicNails.release.xcconfig"; path = "Target Support Files/Pods-OrganicNails/Pods-OrganicNails.release.xcconfig"; sourceTree = "<group>"; };
+		4AF6209327534F7700386DDA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		4AF620A0275359F300386DDA /* ControladorRenglon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControladorRenglon.swift; sourceTree = "<group>"; };
+		4AF620A627535FA300386DDA /* Pedido.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pedido.swift; sourceTree = "<group>"; };
+		4AF620AC27535FB400386DDA /* PedidoControlador.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PedidoControlador.swift; sourceTree = "<group>"; };
 		4AFDDE302734F6DC00863689 /* PromocionesInicioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromocionesInicioViewController.swift; sourceTree = "<group>"; };
 		4D6BFB6360EE0AD39156DF1C /* Pods-OrganicNails.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OrganicNails.debug.xcconfig"; path = "Target Support Files/Pods-OrganicNails/Pods-OrganicNails.debug.xcconfig"; sourceTree = "<group>"; };
 		6D184B3C270BAB5800169BD3 /* InicioAdmin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = InicioAdmin.png; sourceTree = "<group>"; };
@@ -315,6 +324,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4AF6209B2753534F00386DDA /* FirebaseDatabase in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -447,6 +457,7 @@
 		4A7B709827482C090005CA67 /* estatusAW WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
+				4AF6209327534F7700386DDA /* GoogleService-Info.plist */,
 				4A7B709927482C090005CA67 /* InterfaceController.swift */,
 				4A7B709B27482C090005CA67 /* ExtensionDelegate.swift */,
 				4A7B709D27482C090005CA67 /* NotificationController.swift */,
@@ -454,6 +465,9 @@
 				4A7B70A127482C0A0005CA67 /* Assets.xcassets */,
 				4A7B70A327482C0A0005CA67 /* Info.plist */,
 				4A7B70A427482C0A0005CA67 /* PushNotificationPayload.apns */,
+				4AF620A0275359F300386DDA /* ControladorRenglon.swift */,
+				4AF620A627535FA300386DDA /* Pedido.swift */,
+				4AF620AC27535FB400386DDA /* PedidoControlador.swift */,
 			);
 			path = "estatusAW WatchKit Extension";
 			sourceTree = "<group>";
@@ -612,6 +626,9 @@
 			dependencies = (
 			);
 			name = "estatusAW WatchKit Extension";
+			packageProductDependencies = (
+				4AF6209A2753534F00386DDA /* FirebaseDatabase */,
+			);
 			productName = "estatusAW WatchKit Extension";
 			productReference = 4A7B709427482C090005CA67 /* estatusAW WatchKit Extension.appex */;
 			productType = "com.apple.product-type.watchkit2-extension";
@@ -648,6 +665,9 @@
 				Base,
 			);
 			mainGroup = 0DA134A726FD26FF00A8B809;
+			packageReferences = (
+				4AF620992753534F00386DDA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = 0DA134B126FD26FF00A8B809 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -752,6 +772,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4AF6209427534F7700386DDA /* GoogleService-Info.plist in Resources */,
 				4A7B70A227482C0A0005CA67 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -858,10 +879,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4AF620A727535FA300386DDA /* Pedido.swift in Sources */,
 				4A7B709E27482C090005CA67 /* NotificationController.swift in Sources */,
 				4A7B70A027482C0A0005CA67 /* ComplicationController.swift in Sources */,
+				4AF620A1275359F300386DDA /* ControladorRenglon.swift in Sources */,
 				4A7B709C27482C090005CA67 /* ExtensionDelegate.swift in Sources */,
 				4A7B709A27482C090005CA67 /* InterfaceController.swift in Sources */,
+				4AF620AD27535FB400386DDA /* PedidoControlador.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1217,6 +1241,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		4AF620992753534F00386DDA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.9.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		4AF6209A2753534F00386DDA /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4AF620992753534F00386DDA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 0DA134A826FD26FF00A8B809 /* Project object */;
 }
