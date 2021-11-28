@@ -8,12 +8,15 @@
 import UIKit
 import MapKit
 import CoreLocation
+import FirebaseAuth
 
 class DireccionEnvioViewController: UIViewController,UISearchBarDelegate {
     var total:Float = 0
     var ahorro:Float = 0
     var envio:Float = 0
 
+    let clienteControlador = ClienteControlador()
+    
     @IBOutlet weak var dir: UILabel!
     
     @IBOutlet weak var map: MKMapView!
@@ -79,7 +82,6 @@ class DireccionEnvioViewController: UIViewController,UISearchBarDelegate {
                 
                 let loc = CLLocation(latitude: latitude!, longitude: longitude!)
                 LocationControlador.shared.resolveLocationName(with: loc) { [weak self] locationName in
-                    
                     self!.dir.text = locationName
                     
                 }
@@ -92,10 +94,23 @@ class DireccionEnvioViewController: UIViewController,UISearchBarDelegate {
         present(searchController, animated:true, completion: nil)
     }
     
+    @IBAction func updateDireccion(_ sender: Any) {
+        let userID = Auth.auth().currentUser!.uid
+    
+        LocationControlador.shared.updateDireccion(idCliente: userID, dirActualizar: LocationControlador.shared.add){
+            (resultado) in
+            switch resultado{
+            case .success(let exito): print("chi")
+
+            case .failure(let error):print(error)
+        }
+        }
+        
+    }
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    /*override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
         let siguiente = segue.destination as! DetallePedidoViewController
@@ -104,5 +119,5 @@ class DireccionEnvioViewController: UIViewController,UISearchBarDelegate {
     }
     
  
-
+*/
 }

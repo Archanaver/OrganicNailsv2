@@ -9,6 +9,8 @@ import Foundation
 import Firebase
 
 class LocationControlador:  NSObject, CLLocationManagerDelegate {
+    var cp = ""
+    var add = ""
     static let shared = LocationControlador()
     let manager = CLLocationManager()
     var completion: ((CLLocation)-> Void)?
@@ -60,15 +62,19 @@ class LocationControlador:  NSObject, CLLocationManagerDelegate {
                                }
                                if pm.postalCode != nil {
                                    addressString = addressString + pm.postalCode! + " "
+                                self.cp = pm.postalCode!
+                                print(self.cp)
                                }
-
+                            self.add = addressString
                             print(addressString)
                             completion(addressString)
                            }
                                        }
     }
-    func updateDireccion(clienteActualizar : Cliente, completion: @escaping (Result <String, Error>)->Void){
-        db.collection("clientes").document(clienteActualizar.id!).updateData(["direccion":clienteActualizar.direccion, "codigoPostal":clienteActualizar.cp]) {
+    
+    func updateDireccion(idCliente : String, dirActualizar : String, completion: @escaping (Result <String, Error>)->Void){
+        
+        db.collection("clientes").document(idCliente).updateData(["direccion":dirActualizar, "codigoPostal":self.cp]) {
             err in
             if let err = err {
                 completion(.failure(err))
