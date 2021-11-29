@@ -13,8 +13,9 @@ import Vision
 //ML solo funciona a partir de iOS 11
 @available(iOS 11.0, *)
 class MLViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
     var catalogo = Catalogo.listaCatalogo()
-        
+    var bestPrediction = ""
 
     @IBOutlet weak var identificacionImagen: UILabel!
     @IBOutlet weak var IrCatalogo: UIButton!
@@ -54,7 +55,7 @@ class MLViewController: UIViewController, UIImagePickerControllerDelegate, UINav
     func resultadosModelo(request: VNRequest, error: Error?)
     {
         guard let results = request.results as? [VNClassificationObservation] else { fatalError("No hubo respuesta del modelo ML")}
-        var bestPrediction = ""
+        
         var bestConfidence: VNConfidence = 0
         //recorrer todas las respuestas en búsqueda del mejor resultado
         for classification in results{
@@ -90,6 +91,45 @@ class MLViewController: UIViewController, UIImagePickerControllerDelegate, UINav
         }
         
     }*/
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+        let siguiente = segue.destination as! ProductosViewController
+        if bestPrediction == "Acrilicos"{
+        siguiente.opcion = "Acrílicos"
+        siguiente.categoria = "Catálogo general"
+        }
+        if bestPrediction == "Kits"{
+            siguiente.opcion = "Kits"
+            siguiente.categoria = "Catálogo general"
+        }
+        if bestPrediction == "Liquidos"{
+            siguiente.opcion = "Líquidos"
+            siguiente.categoria = "Catálogo general"
+        }
+        if bestPrediction == "Glitters"{
+            siguiente.opcion = "Glitters"
+            siguiente.categoria = "Catálogo general"
+        }
+        if bestPrediction == "Gel"{
+            siguiente.opcion = "TechGel"
+            siguiente.categoria = "Catálogo general"
+        }
+        if bestPrediction == "Color_Gel"{
+            siguiente.opcion = "Color Gel"
+            siguiente.categoria = "Catálogo general"
+        }
+        if bestPrediction == "Arte"{
+            siguiente.opcion = "Arte"
+            siguiente.categoria = "Catálogo general"
+        }
+        
+        
+        //siguiente.opcion = (catalogo[1]).producto!
+        //siguiente.categoria = (catalogo[section].producto)!
+        
+        
+    }
     
     
     @IBAction func camara() {

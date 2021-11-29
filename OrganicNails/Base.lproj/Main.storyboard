@@ -1415,7 +1415,7 @@
             <objects>
                 <tableViewController id="pCn-Gc-Brw" customClass="CatalogoTableViewController" customModule="OrganicNails" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="2GS-sC-KQB">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
@@ -2807,8 +2807,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="IrCatalogo:" destination="B4X-SV-561" eventType="touchUpInside" id="Vhh-BK-Jsr"/>
-                                    <segue destination="9PR-z4-sK6" kind="show" id="9Nj-G3-smc"/>
+                                    <segue destination="9PR-z4-sK6" kind="show" id="aoZ-ns-LdQ"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -2841,7 +2840,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Vk-iT-J2E" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6389.8550724637689" y="-2351.1160714285711"/>
+            <point key="canvasLocation" x="6355" y="-2354"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
@@ -2850,8 +2849,8 @@
         <segue reference="5ep-jN-V5Q"/>
         <segue reference="cj4-ya-a3c"/>
         <segue reference="am6-f0-3a4"/>
-        <segue reference="ZF7-Mw-yz9"/>
-        <segue reference="9Nj-G3-smc"/>
+        <segue reference="YaQ-uL-8fX"/>
+        <segue reference="aoZ-ns-LdQ"/>
         <segue reference="xA2-9h-LeE"/>
         <segue reference="VfM-fH-RAs"/>
         <segue reference="j5V-Av-PZw"/>

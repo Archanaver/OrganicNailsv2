@@ -108,8 +108,10 @@ class CatalogoTableViewController: UITableViewController {
             }else{
                 siguiente.filtradoTipo = true;
                 siguiente.opcion = (catalogo[section].categoria?[row])!
+                print(siguiente.opcion)
             }
             siguiente.categoria = (catalogo[section].producto)!
+            print(siguiente.categoria)
 
         
     }
