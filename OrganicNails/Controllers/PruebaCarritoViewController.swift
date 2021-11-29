@@ -143,7 +143,7 @@ class PruebaCarritoViewController: UIViewController {
             siguiente.curso = cursos[indice!]
             
         }else{
-            let siguiente = segue.destination as! DireccionEnvioViewController
+            let siguiente = segue.destination as! DireccionPedidoViewController
             siguiente.ahorro = calculaTotal()[1]
             siguiente.total = calculaTotal()[0]
         }

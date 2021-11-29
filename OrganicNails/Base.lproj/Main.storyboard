@@ -482,7 +482,7 @@
         <!--Detalle pedido-->
         <scene sceneID="G03-SW-oGs">
             <objects>
-                <viewController id="uwn-2z-33P" customClass="DetallePedidoViewController" customModule="OrganicNails" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="detallePedido" id="uwn-2z-33P" customClass="DetallePedidoViewController" customModule="OrganicNails" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Rcj-m8-qQA">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -842,7 +842,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="JgR-au-bkR" kind="show" id="NFG-PC-S5t"/>
+                                    <segue destination="gSw-By-LSb" kind="show" id="W1w-fT-29o"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Total:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XTZ-A1-5Ea">
@@ -869,6 +869,64 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fUV-ho-lxa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="321.73913043478262" y="-1229.4642857142856"/>
+        </scene>
+        <!--Direccion Pedido View Controller-->
+        <scene sceneID="VHG-gN-77S">
+            <objects>
+                <viewController id="gSw-By-LSb" customClass="DireccionPedidoViewController" customModule="OrganicNails" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="C7n-sD-FqX" customClass="Direccion">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Qy9-6c-OiK">
+                                <rect key="frame" x="20" y="279" width="374" height="396"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </mapView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Dirección" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lZb-SR-Xc4">
+                                <rect key="frame" x="20" y="194" width="306" height="77"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7gr-uS-Uhr">
+                                <rect key="frame" x="368" y="221" width="26" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="magnifyingglass" catalog="system"/>
+                                <connections>
+                                    <action selector="searchButton:" destination="gSw-By-LSb" eventType="touchUpInside" id="NoZ-Xe-7R7"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="¿A dónde quieres que mandemos tu pedido?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wXG-Hb-2Wy">
+                                <rect key="frame" x="29" y="127" width="357" height="74"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mli-j3-hvK">
+                                <rect key="frame" x="144" y="724" width="126" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.8980392157" green="0.3803921569" blue="0.56078431370000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Comprar"/>
+                                <connections>
+                                    <action selector="guardarDir:" destination="gSw-By-LSb" eventType="touchUpInside" id="Z8z-mt-rwy"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="LOh-jd-5S9"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="298-ZB-Mcy"/>
+                    <connections>
+                        <outlet property="dir" destination="lZb-SR-Xc4" id="iup-nd-RV9"/>
+                        <outlet property="map" destination="Qy9-6c-OiK" id="RMu-bn-ceA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cgi-dP-WRY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1153.6231884057972" y="-1229.4642857142856"/>
         </scene>
         <!--View Ayuda-->
         <scene sceneID="IwY-0Z-MsS">
@@ -1944,21 +2002,11 @@
         <!--Detalle Direccion Crear Cuenta-->
         <scene sceneID="d9m-CX-E0s">
             <objects>
-                <viewController wantsFullScreenLayout="YES" modalTransitionStyle="crossDissolve" modalPresentationStyle="fullScreen" id="w0z-E8-Q8J" userLabel="Detalle Direccion Crear Cuenta" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="3Tf-fe-pnL">
+                <viewController wantsFullScreenLayout="YES" modalTransitionStyle="crossDissolve" modalPresentationStyle="fullScreen" id="w0z-E8-Q8J" userLabel="Detalle Direccion Crear Cuenta" customClass="DetalleDireccionCrearCuentaViewController" customModule="OrganicNails" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3Tf-fe-pnL" customClass="deta">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DetalleDireccion" translatesAutoresizingMaskIntoConstraints="NO" id="apu-vW-9hy">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="URh-b5-OC9" userLabel="Confirmar">
-                                <rect key="frame" x="95" y="736" width="224" height="62"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <segue destination="P4Q-Fz-efi" kind="show" id="bsv-5n-iM6"/>
-                                </connections>
-                            </button>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Mo-QD-HlL">
                                 <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
@@ -1972,21 +2020,49 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="QPO-gN-ANj">
+                                <rect key="frame" x="20" y="249" width="374" height="479"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bru-F1-aAI">
+                                <rect key="frame" x="367" y="202" width="27" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="magnifyingglass" catalog="system"/>
+                                <connections>
+                                    <action selector="searchButton:" destination="w0z-E8-Q8J" eventType="touchUpInside" id="cJ1-7e-xGt"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6kh-BO-ckC">
+                                <rect key="frame" x="133" y="780" width="151" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.8980392157" green="0.3803921569" blue="0.56078431370000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Confirmar"/>
+                                <connections>
+                                    <action selector="guardarDir:" destination="w0z-E8-Q8J" eventType="touchUpInside" id="Btf-SJ-A3W"/>
+                                    <segue destination="P4Q-Fz-efi" kind="show" id="OdT-Hr-a5I"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Direccion" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ntm-fb-FEP">
+                                <rect key="frame" x="31" y="194" width="288" height="39"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Yaf-gg-U4a"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="apu-vW-9hy" firstAttribute="top" secondItem="Yaf-gg-U4a" secondAttribute="top" id="7ym-yq-xje"/>
-                            <constraint firstItem="Yaf-gg-U4a" firstAttribute="trailing" secondItem="apu-vW-9hy" secondAttribute="trailing" id="BDP-3A-JVc"/>
-                            <constraint firstItem="apu-vW-9hy" firstAttribute="leading" secondItem="Yaf-gg-U4a" secondAttribute="leading" id="CkT-om-NJ7"/>
-                            <constraint firstItem="Yaf-gg-U4a" firstAttribute="bottom" secondItem="apu-vW-9hy" secondAttribute="bottom" id="o6I-iz-S0P"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Detalle dirección" id="mTk-bB-zNP"/>
+                    <connections>
+                        <outlet property="dir" destination="Ntm-fb-FEP" id="DJA-7G-oms"/>
+                        <outlet property="map" destination="QPO-gN-ANj" id="oBG-C3-AiV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U1S-VK-8YB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-249" y="-3760"/>
+            <point key="canvasLocation" x="-249.27536231884059" y="-3760.0446428571427"/>
         </scene>
         <!--Promociones-->
         <scene sceneID="cVd-xY-sCp">
@@ -2233,7 +2309,7 @@
                                 </prototypes>
                             </tableView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="180x180.png" translatesAutoresizingMaskIntoConstraints="NO" id="Aqm-iH-xns">
-                                <rect key="frame" x="117" y="152" width="180" height="180"/>
+                                <rect key="frame" x="139.5" y="174.5" width="135" height="135"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="27U-aN-cVN"/>
@@ -2748,16 +2824,15 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="HsD-s2-aVj"/>
         <segue reference="vye-c0-AHW"/>
         <segue reference="dDz-ri-hay"/>
         <segue reference="5ep-jN-V5Q"/>
         <segue reference="cj4-ya-a3c"/>
         <segue reference="am6-f0-3a4"/>
         <segue reference="YaQ-uL-8fX"/>
-        <segue reference="F6T-2H-ivG"/>
+        <segue reference="xA2-9h-LeE"/>
         <segue reference="VfM-fH-RAs"/>
-        <segue reference="j5V-Av-PZw"/>
+        <segue reference="XMS-SX-99u"/>
         <segue reference="zlx-5y-85c"/>
     </inferredMetricsTieBreakers>
     <resources>

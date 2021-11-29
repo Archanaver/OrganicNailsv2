@@ -9,19 +9,26 @@ import UIKit
 import FirebaseAuth
 import Firebase
 
-class SignUpViewController: UIViewController, UITextFieldDelegate {
 
+class SignUpViewController: UIViewController, UITextFieldDelegate {
+    
+    static let shared = SignUpViewController()
+    
     @IBOutlet weak var nombreTextField: UITextField!
     @IBOutlet weak var correoTextField: UITextField!
     @IBOutlet weak var telefonoTextField: UITextField!
     @IBOutlet weak var contraTextField: UITextField!
     
+    var nombre : String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.nombreTextField.delegate = self
+        nombre = nombreTextField.text!
+        //self.nombreTextField.delegate = self
         self.correoTextField.delegate = self
         self.telefonoTextField.delegate = self
         self.contraTextField.delegate = self
+        
         // Do any additional setup after loading the view.
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -51,6 +58,9 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     }
 
     @IBAction func direccionAction(_ sender: Any) {
+            //Datos sin white spaces
+        self.nombre = nombreTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        print(nombre)
     }
     
     @IBAction func facturaAction(_ sender: Any) {
@@ -65,12 +75,14 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
              
         }else {
             //Datos sin white spaces
-            let nombre = nombreTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            self.nombre = nombreTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let correo = correoTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let telefono = telefonoTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let contra = contraTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             
-            let direccion = ""
+            let direccion = LocationControlador.shared.add
+            let cp = LocationControlador.shared.cp
+            
             Auth.auth().createUser(withEmail: correo, password: contra) { (result, err) in
                 if err != nil {
                     let alerta =  UIAlertController(title: "Error de conexion", message:"Algo salió mal, verifica que la información sea correcta", preferredStyle: .alert)
@@ -79,7 +91,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                 }else{
                     //Storing
                     let db = Firestore.firestore()
-                    db.collection("clientes").addDocument(data: ["nombre":nombre, "telefono":telefono,"direccion":"Cuernavaca 333", "codigoPostal":"","rfc":"", "uid": result!.user.uid]) { (error) in
+                    db.collection("clientes").addDocument(data: ["nombre":self.nombre, "telefono":telefono,"direccion":direccion, "codigoPostal":cp,"rfc":"", "uid": result!.user.uid]) { (error) in
                         if error != nil{
                             let alerta =  UIAlertController(title: "Error de conexion", message:"Error al crear cuenta", preferredStyle: .alert)
                            alerta.addAction(UIAlertAction(title: "Cerrar", style: .default, handler: nil))
