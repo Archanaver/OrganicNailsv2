@@ -126,6 +126,7 @@
 		6DF432302754356400B14D55 /* DetalleDireccionCrearCuentaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF4322F2754356400B14D55 /* DetalleDireccionCrearCuentaViewController.swift */; };
 		6DF8E81B271E5C6900AAFCF1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6DF8E81A271E5C6900AAFCF1 /* GoogleService-Info.plist */; };
 		A5018B062738C4E40075AE94 /* DespliegueCarritoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5018B052738C4E40075AE94 /* DespliegueCarritoViewController.swift */; };
+		A5558CF62755588500B07217 /* Clasifica_Products.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = A5558CF52755588500B07217 /* Clasifica_Products.mlmodel */; };
 		A563F7CB270A09CD00DC23DD /* EntregaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A563F7CA270A09CD00DC23DD /* EntregaViewController.swift */; };
 		A563F7CE270A0E1300DC23DD /* ConfirmarPedidoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A563F7CD270A0E1300DC23DD /* ConfirmarPedidoViewController.swift */; };
 		A563F7D1270A10BF00DC23DD /* EvaluaServicioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A563F7D0270A10BF00DC23DD /* EvaluaServicioViewController.swift */; };
@@ -302,6 +303,7 @@
 		6DF4322F2754356400B14D55 /* DetalleDireccionCrearCuentaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetalleDireccionCrearCuentaViewController.swift; sourceTree = "<group>"; };
 		6DF8E81A271E5C6900AAFCF1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A5018B052738C4E40075AE94 /* DespliegueCarritoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DespliegueCarritoViewController.swift; sourceTree = "<group>"; };
+		A5558CF52755588500B07217 /* Clasifica_Products.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Clasifica_Products.mlmodel; sourceTree = "<group>"; };
 		A563F7CA270A09CD00DC23DD /* EntregaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntregaViewController.swift; sourceTree = "<group>"; };
 		A563F7CD270A0E1300DC23DD /* ConfirmarPedidoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmarPedidoViewController.swift; sourceTree = "<group>"; };
 		A563F7D0270A10BF00DC23DD /* EvaluaServicioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluaServicioViewController.swift; sourceTree = "<group>"; };
@@ -375,6 +377,7 @@
 		0DDFE6602709446800EC3EA5 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				A5558CF52755588500B07217 /* Clasifica_Products.mlmodel */,
 				0DA97DC5270C98130021EC4C /* CursosViewController.swift */,
 				0DDFE668270977F100EC3EA5 /* ProductosViewController.swift */,
 				0DA97DBF270C90B40021EC4C /* DetalleCursoViewController.swift */,
@@ -836,6 +839,7 @@
 				6DDFD7492727797900D82EF3 /* Cliente.swift in Sources */,
 				0DB10C3A272FB84900AD6C74 /* CatalogoTableViewController.swift in Sources */,
 				4AFDDE312734F6DC00863689 /* PromocionesInicioViewController.swift in Sources */,
+				A5558CF62755588500B07217 /* Clasifica_Products.mlmodel in Sources */,
 				6DEB8235273553EE0037F0EA /* SignUpViewController.swift in Sources */,
 				0DDFE669270977F100EC3EA5 /* ProductosViewController.swift in Sources */,
 				0DA97DBE270C8F550021EC4C /* Curso.swift in Sources */,

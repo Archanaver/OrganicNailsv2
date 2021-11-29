@@ -13,7 +13,7 @@ import Vision
 //ML solo funciona a partir de iOS 11
 @available(iOS 11.0, *)
 class MLViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-        /*
+        
 
     @IBOutlet weak var identificacionImagen: UILabel!
     
@@ -81,14 +81,16 @@ class MLViewController: UIViewController, UIImagePickerControllerDelegate, UINav
         miPicker.sourceType = UIImagePickerController.SourceType.photoLibrary
         present(miPicker, animated: true, completion: nil)
     }
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        fotoVista.image = info[UIImagePickerController.InfoKey.originalImage.rawValue] as? UIImage
-        picker.dismiss(animated: true, completion: nil)
-    }
+    public func imagePickerController(_ picker: UIImagePickerController,
+        didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any])
+
+    {
+            fotoVista.image = info[.originalImage] as? UIImage
+            picker.dismiss(animated: true, completion: nil)
+            }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
-    }*/
+    }
 }
 
