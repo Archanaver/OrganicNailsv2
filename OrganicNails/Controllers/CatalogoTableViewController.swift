@@ -110,12 +110,6 @@ class CatalogoTableViewController: UITableViewController {
                 siguiente.opcion = (catalogo[section].categoria?[row])!
             }
             siguiente.categoria = (catalogo[section].producto)!
-            
-        
-        
-
-        
-      
 
         
     }

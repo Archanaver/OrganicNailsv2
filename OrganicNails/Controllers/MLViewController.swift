@@ -13,10 +13,11 @@ import Vision
 //ML solo funciona a partir de iOS 11
 @available(iOS 11.0, *)
 class MLViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    var catalogo = Catalogo.listaCatalogo()
         
 
     @IBOutlet weak var identificacionImagen: UILabel!
-    
+    @IBOutlet weak var IrCatalogo: UIButton!
     @IBOutlet weak var camaraBoton: UIButton!
     @IBOutlet weak var fotoVista: UIImageView!
     private let miPicker = UIImagePickerController()
@@ -69,7 +70,26 @@ class MLViewController: UIViewController, UIImagePickerControllerDelegate, UINav
         let resultado = "Su imagen pertenece a la categoria: "+bestPrediction+" con un  "+String(formato)+"% de confianza"
         print(resultado)
         identificacionImagen.text = resultado
+        IrCatalogo.setTitle("Comprar productos de la categoria: "+bestPrediction+"", for: .normal)
+        
+        IrCatalogo.backgroundColor = UIColor.purple
+        IrCatalogo.layer.cornerRadius = 10
+        IrCatalogo.layer.shadowColor = UIColor(named: "buttonShadow")?.cgColor
+        IrCatalogo.layer.shadowOpacity = 0.8
+        IrCatalogo.layer.shadowOffset = CGSize(width: 1, height: 1)
+        IrCatalogo.layer.borderWidth = 2
+        IrCatalogo.layer.borderColor = UIColor(named: "buttonBorder")?.cgColor
     }
+    
+    
+    /*
+    @IBAction func IrCatalogo(for segue: UIStoryboardSegue, sender: Any?) {
+        let siguiente = segue.destination as! ProductosViewController
+        if bestPrediction == "Kits" {
+            siguiente.opcion = (catalogo[bestPrediction].producto)!
+        }
+        
+    }*/
     
     
     @IBAction func camara() {
@@ -93,4 +113,7 @@ class MLViewController: UIViewController, UIImagePickerControllerDelegate, UINav
         picker.dismiss(animated: true, completion: nil)
     }
 }
+
+
+
 

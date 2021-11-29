@@ -1415,7 +1415,7 @@
             <objects>
                 <tableViewController id="pCn-Gc-Brw" customClass="CatalogoTableViewController" customModule="OrganicNails" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="2GS-sC-KQB">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
@@ -2753,14 +2753,18 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nGC-Lb-fbW">
                                 <rect key="frame" x="48" y="433" width="53" height="30"/>
-                                <state key="normal" title="Cámara"/>
+                                <state key="normal" title="Cámara">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="camara" destination="B4X-SV-561" eventType="touchUpInside" id="mDd-1u-PWh"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7k4-rH-Jzl">
                                 <rect key="frame" x="49" y="481" width="44" height="30"/>
-                                <state key="normal" title="Álbum"/>
+                                <state key="normal" title="Álbum">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="album" destination="B4X-SV-561" eventType="touchUpInside" id="wob-1q-fwk"/>
                                 </connections>
@@ -2770,14 +2774,18 @@
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oac-fb-9xq">
                                 <rect key="frame" x="143" y="709" width="128" height="30"/>
-                                <state key="normal" title="¿Qué es esta foto?"/>
+                                <state key="normal" title="¿Qué es esta foto?">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="ejecutarML" destination="B4X-SV-561" eventType="touchUpInside" id="m5a-xc-ldx"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xB8-ZK-lTy">
                                 <rect key="frame" x="276" y="433" width="56" height="30"/>
-                                <state key="normal" title="Guardar"/>
+                                <state key="normal" title="Guardar">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="guardarImagen:" destination="B4X-SV-561" eventType="touchUpInside" id="00N-EE-NEg"/>
                                 </connections>
@@ -2788,9 +2796,21 @@
                                     <constraint firstAttribute="height" constant="133" id="WdB-co-QTQ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" systemColor="systemBlueColor"/>
-                                <nil key="highlightedColor"/>
+                                <color key="textColor" systemColor="systemPurpleColor"/>
+                                <color key="highlightedColor" systemColor="systemPurpleColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kE0-gI-tne">
+                                <rect key="frame" x="20" y="769" width="374" height="62"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" systemColor="labelColor"/>
+                                <state key="normal" title="  ">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="IrCatalogo:" destination="B4X-SV-561" eventType="touchUpInside" id="Vhh-BK-Jsr"/>
+                                    <segue destination="9PR-z4-sK6" kind="show" id="9Nj-G3-smc"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="cqb-KQ-GZ3"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2813,6 +2833,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="IrCatalogo" destination="kE0-gI-tne" id="94O-dX-RBI"/>
                         <outlet property="camaraBoton" destination="nGC-Lb-fbW" id="uFc-ao-n0A"/>
                         <outlet property="fotoVista" destination="dSN-tq-hwB" id="ysd-eE-Wgs"/>
                         <outlet property="identificacionImagen" destination="Yqv-Sv-iPs" id="cej-ps-nBM"/>
@@ -2820,7 +2841,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Vk-iT-J2E" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3272" y="1027"/>
+            <point key="canvasLocation" x="6389.8550724637689" y="-2351.1160714285711"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
@@ -2829,7 +2850,8 @@
         <segue reference="5ep-jN-V5Q"/>
         <segue reference="cj4-ya-a3c"/>
         <segue reference="am6-f0-3a4"/>
-        <segue reference="YaQ-uL-8fX"/>
+        <segue reference="ZF7-Mw-yz9"/>
+        <segue reference="9Nj-G3-smc"/>
         <segue reference="xA2-9h-LeE"/>
         <segue reference="VfM-fH-RAs"/>
         <segue reference="j5V-Av-PZw"/>
@@ -2871,11 +2893,11 @@
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
-        <systemColor name="systemBlueColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
         <systemColor name="systemGray2Color">
             <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemPurpleColor">
+            <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
