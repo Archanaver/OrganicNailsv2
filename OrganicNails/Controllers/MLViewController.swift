@@ -33,6 +33,9 @@ class MLViewController: UIViewController, UIImagePickerControllerDelegate, UINav
         
     }
 
+   
+    
+    
     @IBAction func guardarImagen(_ sender: UIButton) {
     
         
@@ -40,7 +43,7 @@ class MLViewController: UIViewController, UIImagePickerControllerDelegate, UINav
     }
     @IBAction func ejecutarML() {
         //instanciar el modelo de la red neuronal
-        let modelFile = Clasifica_Products()
+        let modelFile = OrganicML()
         let model = try! VNCoreMLModel(for: modelFile.model)
         //Convertir la imagen obtenida a CIImage
         let imagenCI = CIImage(image: fotoVista.image!)
@@ -83,48 +86,51 @@ class MLViewController: UIViewController, UIImagePickerControllerDelegate, UINav
     }
     
     
-    /*
-    @IBAction func IrCatalogo(for segue: UIStoryboardSegue, sender: Any?) {
-        let siguiente = segue.destination as! ProductosViewController
-        if bestPrediction == "Kits" {
-            siguiente.opcion = (catalogo[bestPrediction].producto)!
-        }
-        
-    }*/
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        
         let siguiente = segue.destination as! ProductosViewController
         if bestPrediction == "Acrilicos"{
+        siguiente.filtradoTipo = true;
         siguiente.opcion = "Acrílicos"
-        siguiente.categoria = "Catálogo general"
+        
         }
         if bestPrediction == "Kits"{
-            siguiente.opcion = "Kits"
-            siguiente.categoria = "Catálogo general"
+            //siguiente.opcion = "Kits"
+            siguiente.filtradoTipo = true;
+            siguiente.opcion = (catalogo[0].categoria?[2])!
+            print("Opción:" ,siguiente.opcion)
+            //siguiente.categoria = "Catálogo general"
         }
         if bestPrediction == "Liquidos"{
+            siguiente.filtradoTipo = true;
             siguiente.opcion = "Líquidos"
-            siguiente.categoria = "Catálogo general"
+            
         }
         if bestPrediction == "Glitters"{
+            siguiente.filtradoTipo = true;
             siguiente.opcion = "Glitters"
-            siguiente.categoria = "Catálogo general"
+            
         }
         if bestPrediction == "Gel"{
+            siguiente.filtradoTipo = true;
             siguiente.opcion = "TechGel"
-            siguiente.categoria = "Catálogo general"
+            
         }
         if bestPrediction == "Color_Gel"{
+            siguiente.filtradoTipo = true;
             siguiente.opcion = "Color Gel"
-            siguiente.categoria = "Catálogo general"
+            
         }
         if bestPrediction == "Arte"{
+            siguiente.filtradoTipo = true;
             siguiente.opcion = "Arte"
-            siguiente.categoria = "Catálogo general"
+            
         }
         
-        
+        siguiente.categoria = "Catálogo general"
         //siguiente.opcion = (catalogo[1]).producto!
         //siguiente.categoria = (catalogo[section].producto)!
         
