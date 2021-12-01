@@ -13,6 +13,21 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
     func applicationDidFinishLaunching() {
         // Perform any final initialization of your application.
         FirebaseApp.configure()
+        let ref = Database.database().reference()
+               ref.observeSingleEvent(of: .value, with: { (snapshot) in
+                   if let data = snapshot.value as? [String:
+                       Dictionary<String,String>] {
+                    print(data)
+                       let dic = data["Pedidos"]!
+                       for (k,v) in dic {
+                           print(k,v)
+                       }
+                   }
+               }){
+                   (error) in
+                   print(error.localizedDescription)
+               }
+        
     }
 
     func applicationDidBecomeActive() {
