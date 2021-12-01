@@ -11,6 +11,7 @@ import Firebase
 class LocationControlador:  NSObject, CLLocationManagerDelegate {
     var cp = ""
     var add = ""
+    
     static let shared = LocationControlador()
     let manager = CLLocationManager()
     var completion: ((CLLocation)-> Void)?
@@ -103,17 +104,33 @@ class LocationControlador:  NSObject, CLLocationManagerDelegate {
         
         
     }
+    func getClienteData(uid:String, completion: @escaping (Result<String,Error>)->Void){
     
-    func updateDireccion(idCliente : String, dirActualizar : String, completion: @escaping (Result <String, Error>)->Void){
-        
-        db.collection("clientes").document(idCliente).updateData(["direccion":dirActualizar, "codigoPostal":self.cp]) {
-            err in
+        db.collection("clientes").whereField("uid", isEqualTo: uid)
+          .getDocuments() { (querySnapshot, err) in
             if let err = err {
+                print("Error obteniendo id usuario: \(err)")
                 completion(.failure(err))
-            }else {
-                completion(.success("Direccion actualizada"))
+            } else {
+                var documentoID:String = ""
+                for document in querySnapshot!.documents {
+                    //print("\(document.documentID) => \(document.data())")
+                    documentoID = document.documentID
+                    
+                }
+                let docRef = self.db.collection("clientes").document(documentoID)
+           
+                docRef.getDocument(source: .cache) { (document, error) in
+                    if let document = document {
+                        let property = document.get("codigoPostal")
+                        completion(.success((property as! String)))
+                    }
+                }
+                
+                
             }
         }
+        
         
     }
     

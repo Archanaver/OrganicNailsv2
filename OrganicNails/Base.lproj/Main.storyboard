@@ -175,7 +175,7 @@
                                         <state key="normal" title="Dirección"/>
                                         <connections>
                                             <action selector="direccionAction:" destination="P4Q-Fz-efi" eventType="touchUpInside" id="KYg-bd-sdu"/>
-                                            <segue destination="w0z-E8-Q8J" kind="show" id="ea4-jn-ghr"/>
+                                            <segue destination="w0z-E8-Q8J" kind="show" identifier="Direccion" id="ea4-jn-ghr"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -496,7 +496,7 @@
                                 </state>
                                 <connections>
                                     <action selector="comprarButton:" destination="uwn-2z-33P" eventType="touchUpInside" id="g2O-hK-ykm"/>
-                                    <segue destination="qLE-70-dKn" kind="presentation" id="xJb-wt-bV2"/>
+                                    <segue destination="qLE-70-dKn" kind="presentation" id="sYE-NH-s0U"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Costo de productos/cursos:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XGC-74-gnH">
@@ -912,6 +912,7 @@
                                 <state key="normal" title="Comprar"/>
                                 <connections>
                                     <action selector="guardarDir:" destination="gSw-By-LSb" eventType="touchUpInside" id="Z8z-mt-rwy"/>
+                                    <segue destination="uwn-2z-33P" kind="show" id="RAF-AC-VRg"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -2879,7 +2880,8 @@
         <segue reference="YaQ-uL-8fX"/>
         <segue reference="aoZ-ns-LdQ"/>
         <segue reference="xA2-9h-LeE"/>
-        <segue reference="VfM-fH-RAs"/>
+        <segue reference="RAF-AC-VRg"/>
+        <segue reference="3rr-iM-Pvk"/>
         <segue reference="j5V-Av-PZw"/>
         <segue reference="zlx-5y-85c"/>
     </inferredMetricsTieBreakers>

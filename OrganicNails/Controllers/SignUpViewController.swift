@@ -19,15 +19,16 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var telefonoTextField: UITextField!
     @IBOutlet weak var contraTextField: UITextField!
     
-    var nombre : String?
+    var nombre : String = "hola"
+    var cosa: String = "adios"
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        nombre = nombreTextField.text!
-        //self.nombreTextField.delegate = self
+        self.nombreTextField.delegate = self
         self.correoTextField.delegate = self
         self.telefonoTextField.delegate = self
         self.contraTextField.delegate = self
+        
         
         // Do any additional setup after loading the view.
     }
@@ -60,7 +61,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     @IBAction func direccionAction(_ sender: Any) {
             //Datos sin white spaces
         self.nombre = nombreTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-        print(nombre)
     }
     
     @IBAction func facturaAction(_ sender: Any) {
@@ -106,15 +106,28 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                 }
             }
     }
-    /*
+    
     // MARK: - Navigation
-
+        func viewDidAppear(_ animated: Bool) {
+            
+            self.nombreTextField.delegate = self
+            self.correoTextField.delegate = self
+            self.telefonoTextField.delegate = self
+            self.contraTextField.delegate = self
+        }
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+            print("estoy en prepare ", nombre)
+            if segue.identifier == "Direccion"{
+            let siguiente = segue.destination as! DetalleDireccionCrearCuentaViewController
+            siguiente.nombre = cosa
+            
+            }
+           
     }
-    */
+    
 
 }
 }
