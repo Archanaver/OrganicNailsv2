@@ -1,14 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="14256" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="17701" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+    <device id="watch38"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14243"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="14219"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="17500"/>
     </dependencies>
     <scenes>
         <!--Interface Controller-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModuleProvider="target"/>
+                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="estatusAW_WatchKit_App" customModuleProvider="target">
+                    <items>
+                        <label alignment="left" text="Pedidos activos" id="fd0-rx-gAL"/>
+                        <separator alignment="left" id="QJK-dM-mkI"/>
+                        <label alignment="left" text="Fecha        Productos" id="fOE-s8-g51"/>
+                        <table alignment="left" id="79T-Ct-r8I">
+                            <items>
+                                <tableRow identifier="renglones" id="l6b-Qq-4Yi" customClass="ControladorRenglon" customModule="estatusAW_WatchKit_Extension">
+                                    <group key="rootItem" width="1" alignment="left" id="aIJ-0j-Icw">
+                                        <items>
+                                            <label alignment="left" text="Fecha" id="GTb-vg-BDg"/>
+                                            <label alignment="left" text="Productos" id="HKh-wp-Vzz"/>
+                                        </items>
+                                    </group>
+                                    <connections>
+                                        <outlet property="fecha" destination="GTb-vg-BDg" id="crY-IT-zGi"/>
+                                        <outlet property="productos" destination="HKh-wp-Vzz" id="3mm-eM-Gcd"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
+                    </items>
+                    <connections>
+                        <outlet property="laTabla" destination="79T-Ct-r8I" id="9Af-r4-4J8"/>
+                    </connections>
+                </controller>
             </objects>
             <point key="canvasLocation" x="220" y="345"/>
         </scene>
@@ -32,14 +58,14 @@
         <!--Notification Controller-->
         <scene sceneID="ZPc-GJ-vnh">
             <objects>
-                <controller id="4sK-HA-Art" customClass="NotificationController" customModuleProvider="target"/>
+                <controller id="4sK-HA-Art" customClass="NotificationController" customModule="estatusAW_WatchKit_App" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="468" y="643"/>
         </scene>
         <!--Notification Controller-->
         <scene sceneID="Niz-AI-uX2">
             <objects>
-                <controller id="eXb-UN-Cd0" customClass="NotificationController" customModuleProvider="target"/>
+                <controller id="eXb-UN-Cd0" customClass="NotificationController" customModule="estatusAW_WatchKit_App" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="468" y="345"/>
         </scene>
