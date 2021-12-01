@@ -25,6 +25,7 @@ class MLViewController: UIViewController, UIImagePickerControllerDelegate, UINav
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        IrCatalogo.isHidden = true
         // Do any additional setup after loading the view, typically from a nib.
         if !UIImagePickerController.isSourceTypeAvailable(.camera){
             camaraBoton.isHidden = true
@@ -74,6 +75,7 @@ class MLViewController: UIViewController, UIImagePickerControllerDelegate, UINav
         let resultado = "Su imagen pertenece a la categoria: "+bestPrediction+" con un  "+String(formato)+"% de confianza"
         print(resultado)
         identificacionImagen.text = resultado
+        IrCatalogo.isHidden = false
         IrCatalogo.setTitle("Comprar productos de la categoria: "+bestPrediction+"", for: .normal)
         
         IrCatalogo.backgroundColor = UIColor.purple

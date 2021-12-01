@@ -34,7 +34,7 @@ class ProductosViewController: UIViewController, UISearchResultsUpdating {
         }
         self.productosTableView.reloadData()
     }
-    override func viewDidAppear(_ animated: Bool) {
+    /*override func viewDidAppear(_ animated: Bool) {
         //super.viewDidAppear(true)
         productosTableView.delegate = self
         productosTableView.dataSource = self
@@ -53,7 +53,7 @@ class ProductosViewController: UIViewController, UISearchResultsUpdating {
         navigationItem.hidesSearchBarWhenScrolling = false
         
         navigationItem.searchController = searchController
-    }
+    }*/
     
     
     override func viewDidLoad() {
