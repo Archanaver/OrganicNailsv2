@@ -8,32 +8,62 @@ import UIKit
 import MapKit
 import CoreLocation
 import FirebaseAuth
+import Firebase
 
 class DireccionPedidoViewController:  UIViewController,UISearchBarDelegate  {
     var total:Float = 0
     var ahorro:Float = 0
     var envio:Float = 0
-    
+    var add: String = ""
+    let db = Firestore.firestore()
     @IBOutlet weak var map: MKMapView!
     let clienteControlador = ClienteControlador()
+    let fascinoLoc: CLLocation = CLLocation(latitude: 19.3686049, longitude: -99.1808505)
     
     @IBOutlet weak var dir: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(map)
-        LocationControlador.shared.getUserLocation { [weak self] location in
-            DispatchQueue.main.async {
-                guard let strongSelf = self else {
-                    return
-                }
-                strongSelf.addMapPin(with: location)
+        let userID = Auth.auth().currentUser!.uid
+        clienteControlador.fetchCliente(uid: userID){
+            (resultado) in
+            switch resultado{
+            case .success(let exito):
+                self.add = exito[0].direccion!
+            case .failure(let error):print(error)
             }
-            print(self!.total)
-            print(self!.ahorro)
-            print(self!.envio)
-        // Do any additional setup after loading the view.
-        }
         
+        let geoCoder = CLGeocoder()
+            geoCoder.geocodeAddressString(self.add){ [self](placemarks, error) in
+           
+            let placemarks = placemarks?.first
+            let location = placemarks?.location?.coordinate
+                    let lat = placemarks?.location?.coordinate.latitude
+                let long = placemarks?.location?.coordinate.longitude
+            let newLoc: CLLocation = CLLocation(latitude: lat!, longitude: long!)
+            self.addMapPin(with: newLoc)
+                let meters = newLoc.distance(from: fascinoLoc)
+                print("distancia en m ", meters)
+                if meters > 5000.0 && meters < 10000{
+                    print("mayor a ")
+                    self.envio = 50.0
+                }else if meters > 10000{
+                    self.envio = 100.0
+                }else{
+                    self.envio = 10.0
+                }
+            
+                print(self.envio)
+        }
+       
+        
+            print(self.total)
+            print(self.ahorro)
+            print(self.envio)
+        // Do any additional setup after loading the view.
+        
+        
+    }
     }
         func addMapPin(with location: CLLocation){
             let pin = MKPointAnnotation()
@@ -47,6 +77,9 @@ class DireccionPedidoViewController:  UIViewController,UISearchBarDelegate  {
             }
         }
     
+   
+        
+      
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
@@ -90,6 +123,7 @@ class DireccionPedidoViewController:  UIViewController,UISearchBarDelegate  {
             }
         }
     }
+    
 
     @IBAction func searchButton(_ sender: Any) {
         let searchController = UISearchController(searchResultsController: nil)
@@ -104,6 +138,7 @@ class DireccionPedidoViewController:  UIViewController,UISearchBarDelegate  {
             (resultado) in
             switch resultado{
             case .success(let exito): print("Direccion actualizada")
+                
             case .failure(let error):print(error)
         }
             
@@ -119,6 +154,7 @@ class DireccionPedidoViewController:  UIViewController,UISearchBarDelegate  {
         let siguiente = segue.destination as! DetallePedidoViewController
         siguiente.ahorro = ahorro
         siguiente.total = total
+        siguiente.envio = envio
     }
 
 }

@@ -34,28 +34,7 @@ class ProductosViewController: UIViewController, UISearchResultsUpdating {
         }
         self.productosTableView.reloadData()
     }
-    override func viewDidAppear(_ animated: Bool) {
-        //super.viewDidAppear(true)
-        productosTableView.delegate = self
-        productosTableView.dataSource = self
-        labelOpcion.text = self.opcion
-        // Do any additional setup after loading the view.
-        productoControlador.fetchProductos{ (resultado) in
-            switch resultado{
-            case .success(let listaProductos):self.updateGUI(listaProductos: listaProductos)
-            case .failure(let error):self.displayError(e: error)
-            }
-            
-        }
-        searchController.searchResultsUpdater = self
-        searchController.dimsBackgroundDuringPresentation = false
-        searchController.hidesNavigationBarDuringPresentation = false
-        navigationItem.hidesSearchBarWhenScrolling = false
-        
-        navigationItem.searchController = searchController
-    }
-    
-    
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         productosTableView.delegate = self
