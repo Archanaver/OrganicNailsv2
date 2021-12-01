@@ -28,7 +28,9 @@ class DireccionPedidoViewController:  UIViewController,UISearchBarDelegate  {
                 }
                 strongSelf.addMapPin(with: location)
             }
-
+            print(self!.total)
+            print(self!.ahorro)
+            print(self!.envio)
         // Do any additional setup after loading the view.
         }
         
@@ -102,9 +104,6 @@ class DireccionPedidoViewController:  UIViewController,UISearchBarDelegate  {
             (resultado) in
             switch resultado{
             case .success(let exito): print("Direccion actualizada")
-                let siguienteVista = self.storyboard!.instantiateViewController(withIdentifier: "detallePedido") as! UIViewController
-                siguienteVista.modalPresentationStyle = .fullScreen
-                self.present(siguienteVista, animated: true, completion: nil)
             case .failure(let error):print(error)
         }
             
