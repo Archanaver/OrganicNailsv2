@@ -9,48 +9,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Inicio-->
-        <scene sceneID="tne-QT-ifu">
-            <objects>
-                <viewController storyboardIdentifier="pantallainicial" wantsFullScreenLayout="YES" modalTransitionStyle="crossDissolve" id="BYZ-38-t0r" customClass="ViewController" customModule="OrganicNails" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="InicioPromociones" translatesAutoresizingMaskIntoConstraints="NO" id="gM1-HQ-k0h">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8zz-9k-2hD" userLabel="Promocion">
-                                <rect key="frame" x="110" y="384" width="208" height="230"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <segue destination="a7B-bv-0cK" kind="show" id="nAq-5R-Z0l"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1TR-QC-n8O" userLabel="Comprar">
-                                <rect key="frame" x="124" y="684" width="180" height="53"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <segue destination="tzQ-Bv-PiW" kind="show" id="0N1-LF-qH5"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="gM1-HQ-k0h" secondAttribute="trailing" id="2rv-kP-kIG"/>
-                            <constraint firstItem="gM1-HQ-k0h" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="9Qe-0H-WGD"/>
-                            <constraint firstItem="gM1-HQ-k0h" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Wkd-ny-KM4"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="gM1-HQ-k0h" secondAttribute="bottom" id="fC0-Cg-pqH"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="Inicio" id="dSi-3E-SE0"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-2800" y="-1229.4642857142856"/>
-        </scene>
         <!--inicioSesion-->
         <scene sceneID="9Wu-iz-h3U">
             <objects>
@@ -868,7 +826,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fUV-ho-lxa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="321.73913043478262" y="-1229.4642857142856"/>
+            <point key="canvasLocation" x="1231.8840579710145" y="-1229.4642857142856"/>
         </scene>
         <!--Direccion Pedido View Controller-->
         <scene sceneID="VHG-gN-77S">
@@ -927,7 +885,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cgi-dP-WRY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1153.6231884057972" y="-1229.4642857142856"/>
+            <point key="canvasLocation" x="2063.768115942029" y="-1229.4642857142856"/>
         </scene>
         <!--View Ayuda-->
         <scene sceneID="IwY-0Z-MsS">
@@ -1019,7 +977,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Fg-BP-Cbc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6355.072463768116" y="-1617.1875"/>
+            <point key="canvasLocation" x="7265.217391304348" y="-1617.1875"/>
         </scene>
         <!--Detalle Producto-->
         <scene sceneID="0bR-4j-4Yj">
@@ -1236,7 +1194,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3FS-2r-aYb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7408.6956521739139" y="-1617.1875"/>
+            <point key="canvasLocation" x="8318.8405797101459" y="-1617.1875"/>
         </scene>
         <!--Detalle Curso Scene-->
         <scene sceneID="Ojm-zC-FGr">
@@ -1365,7 +1323,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g8g-Ib-go3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6286.9565217391309" y="-842.41071428571422"/>
+            <point key="canvasLocation" x="7197.1014492753629" y="-842.41071428571422"/>
         </scene>
         <!--Prueba Carrito View Controller-->
         <scene sceneID="1Iv-ua-aUg">
@@ -1451,7 +1409,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RE8-54-dHy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5279.7101449275369" y="-1617.1875"/>
+            <point key="canvasLocation" x="6189.8550724637689" y="-1617.1875"/>
         </scene>
         <!--Confirmar Pedido View Controller-->
         <scene sceneID="dWP-Dm-gpA">
@@ -1557,7 +1515,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="eFD-3Q-pLs" kind="relationship" relationship="viewControllers" id="kzC-sw-VWh"/>
+                        <segue destination="SB4-U6-wHT" kind="relationship" relationship="viewControllers" id="GDh-0x-Edt"/>
                         <segue destination="hpI-6D-G0B" kind="relationship" relationship="viewControllers" id="vye-c0-AHW"/>
                         <segue destination="QkZ-tZ-dsh" kind="relationship" relationship="viewControllers" id="QG1-5D-06r"/>
                         <segue destination="yC9-Gx-TrJ" kind="relationship" relationship="viewControllers" id="gG5-Jb-Lz5"/>
@@ -2155,7 +2113,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lhp-Ac-Z2E" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2049.275362318841" y="-1229.4642857142856"/>
+            <point key="canvasLocation" x="-1140.5797101449277" y="-1229.4642857142856"/>
         </scene>
         <!--Promociones Detalle View Controller-->
         <scene sceneID="bXo-Dz-pnX">
@@ -2271,7 +2229,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ca4-fH-h0f" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1391.304347826087" y="-1229.4642857142856"/>
+            <point key="canvasLocation" x="-481.15942028985512" y="-1229.4642857142856"/>
         </scene>
         <!--Catálogo General-->
         <scene sceneID="bXm-az-6se">
@@ -2333,7 +2291,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b4A-Fe-TE0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5279.7101449275369" y="-842.41071428571422"/>
+            <point key="canvasLocation" x="6189.8550724637689" y="-842.41071428571422"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="gEe-Uf-qFu">
@@ -2353,7 +2311,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Al-d5-sv7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4368.115942028986" y="-1617.1875"/>
+            <point key="canvasLocation" x="5278.2608695652179" y="-1617.1875"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="vG9-DU-zgJ">
@@ -2373,11 +2331,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4P1-nZ-xB1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4368.115942028986" y="-842.41071428571422"/>
+            <point key="canvasLocation" x="5278.2608695652179" y="-842.41071428571422"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Zst-sY-nbf">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9ce-HV-wRN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" modalTransitionStyle="crossDissolve" id="eFD-3Q-pLs" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="house" catalog="system" id="Cb3-Oq-cNK"/>
                     <toolbarItems/>
@@ -2389,11 +2348,7 @@
                     <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="HHe-HX-Icn">
                         <autoresizingMask key="autoresizingMask"/>
                     </toolbar>
-                    <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="aCL-s1-3md"/>
-                    </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="9ce-HV-wRN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-3710.144927536232" y="-1229.4642857142856"/>
         </scene>
@@ -2435,7 +2390,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gFD-af-NjI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-583" y="-1215"/>
+            <point key="canvasLocation" x="326.08695652173918" y="-1215.4017857142856"/>
         </scene>
         <!--Detalle Producto-->
         <scene sceneID="l7X-dI-o9z">
@@ -2870,6 +2825,26 @@
             </objects>
             <point key="canvasLocation" x="6353.6231884057979" y="-2354.4642857142858"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="RLP-K4-MZI">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="SB4-U6-wHT" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="house" catalog="system" id="dvU-vp-bOq"/>
+                    <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Efg-f4-Xse">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="a7B-bv-0cK" kind="relationship" relationship="rootViewController" id="JCt-MD-LW8"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="z2y-O5-NNu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2050.7246376811595" y="-1229.4642857142856"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="vye-c0-AHW"/>
@@ -2893,7 +2868,6 @@
         <image name="DetalleDireccion" width="212" height="457"/>
         <image name="DetallePromociones" width="209" height="451"/>
         <image name="ImagenPerfil" width="159" height="144"/>
-        <image name="InicioPromociones" width="209" height="453"/>
         <image name="NuevaContrasenia" width="223" height="484"/>
         <image name="PedidosDesplegado" width="218" height="479"/>
         <image name="bag" catalog="system" width="128" height="128"/>
