@@ -46,7 +46,11 @@ class DetallePedidoViewController: UIViewController {
                         self.pedidoControllador.updatePedidoCompraHecha(idPedido: exito){
                             (resultado) in
                                   switch resultado{
-                                  case .success(let exito):self.displayExito(exito: exito)
+                                  case .success(let exito):print("exito")
+                                    let alerta =  UIAlertController(title: "Compra realizada", message: exito, preferredStyle: .alert)
+                                    alerta.addAction(UIAlertAction(title: "Cerrar", style: .default, handler: nil))
+                                    self.present(alerta, animated: true, completion: nil)
+                                    
                                   case .failure(let error):print(error)
                                   }
                         
