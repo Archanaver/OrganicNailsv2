@@ -6,17 +6,23 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class PromocionesDetalleViewController: UIViewController {
     
+    
     //Variables para los selects
     var presentacion = ["N/a"]
+    var rowPrecio = 0
     
     //Variable que va a traer del otro lugar
     var producto:Producto?
     
     //Llamamos el controlador
     var productosControlador = ProductoControlador()
+    var pedidoControlador = PedidoControlador()
+    var usuarioControlador = ClienteControlador()
+    
     
     //Variable a actualizar
     @IBOutlet weak var nombre: UILabel!
@@ -28,7 +34,77 @@ class PromocionesDetalleViewController: UIViewController {
     //Creamos el pickerview
     var presentacionPickerView = UIPickerView()
     
+    @IBAction func insertarPromocion(_ sender: UIButton) {
+        let userUID = Auth.auth().currentUser!.uid
+        print("usuario", userUID)
+        var dataUsuario:[String:String] = [:]
+        usuarioControlador.getUserDataForCreatingPedido(uid: userUID){
+            (resultado) in
+            switch resultado{
+            case .success(let exito):dataUsuario = exito
+                print(exito)
+                var nuevoProducto = ProductoP(cantidad_producto: 1, color: self.producto!.colores[0], descripcion_producto: self.producto!.descripcion, descuento_producto: self.producto!.descuento, id_producto: self.producto!.id, nombre_producto: self.producto!.nombre, precio_producto: self.producto!.precio[self.rowPrecio], presentacion: self.presentacionProd.text!, tipo_producto: self.producto!.tipo, uso: self.producto!.uso, idDoc_producto: self.producto!.idDoc ?? "")
+                let now = Date()
+                let formatter = DateFormatter()
+                formatter.dateStyle = .full
+                formatter.timeStyle = .full
+                let datetime = formatter.string(from: now)
+                     
+                var nuevoPedido = Pedido(activo:true, estatus:"Pendiente",productos:[nuevoProducto], direccion: dataUsuario["direccion"]!, cursos:[], cliente_id:dataUsuario["id_doc"]!, fecha:datetime, uid: userUID)
+                //print(nuevoPedido)
+                // checar si hay carrito activo
+                var pedidoId:String = ""
+                //print("el id ",pedidoId)
+                self.pedidoControlador.checarCarrito(){
+                    (resultado) in
+                    switch resultado{
+                    case .success(let exito):pedidoId = exito
+                    print("id del pedido activo", pedidoId)
+                    if pedidoId.count != 0 {
+                        //print("editar pedido")
+                        self.pedidoControlador.agregarProductoEnPedido(nuevoProducto: nuevoProducto,idPedido: pedidoId){
+                            (resultado) in
+                            switch resultado{
+                            case .success(let exito):self.displayExito(exito: exito)
+                            case .failure(let error):self.displayError(e: error)
+                            }
+                        }
+                    }else{
+                        print("nuevo pedido")
+                        self.pedidoControlador.crearPedidoConProductoP(nuevoPedido: nuevoPedido){
+                            (resultado) in
+                            switch resultado{
+                            case .success(let exito):self.displayExito(exito: exito)
+                            case .failure(let error):self.displayError(e: error)
+                            }
+                        }
+                    }
+                    case .failure(let error):self.displayError(e: error)
+                    }}
+            case .failure(let error):print("No se pudo encontrar la dirección error: ",error)
+            }
+         }
+     }
     
+    func displayError(e:Error){
+        DispatchQueue.main.async {
+            let alerta =  UIAlertController(title: "Error al añadir producto.", message: e.localizedDescription, preferredStyle: .alert)
+            alerta.addAction(UIAlertAction(title: "Cerrar", style: .default, handler: nil))
+            self.present(alerta, animated: true, completion: nil)
+        }
+        
+    }
+    
+    func displayExito(exito:String){
+        DispatchQueue.main.async {
+            let alerta =  UIAlertController(title: "Producto añadido", message: exito, preferredStyle: .alert)
+            alerta.addAction(UIAlertAction(title: "Cerrar", style: .default, handler: nil))
+            self.present(alerta, animated: true, completion: nil)
+            
+        }
+        
+    }
+   
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -88,6 +164,7 @@ extension PromocionesDetalleViewController: UIPickerViewDataSource, UIPickerView
         
         switch pickerView.tag {
         case 1:
+            rowPrecio = row
             presentacionProd.text = presentacion[row]
             presentacionProd.resignFirstResponder()
         
