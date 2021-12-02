@@ -113,6 +113,7 @@
 		6D184B6E270BC01A00169BD3 /* AgregarCurso.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D184B6D270BC01900169BD3 /* AgregarCurso.png */; };
 		6D184B71270BC56500169BD3 /* EditarCursoEsp.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D184B70270BC56500169BD3 /* EditarCursoEsp.png */; };
 		6D184B74270BC5EF00169BD3 /* EliminarCurso.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D184B73270BC5EF00169BD3 /* EliminarCurso.png */; };
+		6D26E86527595BE6005432DF /* LaunchScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D26E86427595BE5005432DF /* LaunchScreen.png */; };
 		6D34E5EC2750612600A12010 /* LocationControlador.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D34E5EB2750612600A12010 /* LocationControlador.swift */; };
 		6D937D9A273504A500D47302 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D937D99273504A500D47302 /* LogInViewController.swift */; };
 		6DB5768927546063008DF3C6 /* DireccionPedidoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB5768827546063008DF3C6 /* DireccionPedidoViewController.swift */; };
@@ -293,6 +294,7 @@
 		6D184B6D270BC01900169BD3 /* AgregarCurso.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AgregarCurso.png; sourceTree = "<group>"; };
 		6D184B70270BC56500169BD3 /* EditarCursoEsp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EditarCursoEsp.png; sourceTree = "<group>"; };
 		6D184B73270BC5EF00169BD3 /* EliminarCurso.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EliminarCurso.png; sourceTree = "<group>"; };
+		6D26E86427595BE5005432DF /* LaunchScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LaunchScreen.png; sourceTree = "<group>"; };
 		6D34E5EB2750612600A12010 /* LocationControlador.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationControlador.swift; sourceTree = "<group>"; };
 		6D937D99273504A500D47302 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		6DB5768827546063008DF3C6 /* DireccionPedidoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DireccionPedidoViewController.swift; sourceTree = "<group>"; };
@@ -502,6 +504,7 @@
 				0DDFE6AC270A866600EC3EA5 /* AcrilicoImg.png */,
 				0DDFE6A1270A5DA200EC3EA5 /* EliminarCuentaImg.png */,
 				0DDFE69B270A58D100EC3EA5 /* ContraseniaOlvidadaImg.png */,
+				6D26E86427595BE5005432DF /* LaunchScreen.png */,
 				0DDFE68A270A562A00EC3EA5 /* Logo */,
 				0DDFE688270A556800EC3EA5 /* FascinoLogo.png */,
 				0DDFE686270A3F4500EC3EA5 /* DatosFacturacionImg.png */,
@@ -703,6 +706,7 @@
 				6D184B71270BC56500169BD3 /* EditarCursoEsp.png in Resources */,
 				4AAE68B6270D22E100991D44 /* agregarEmpleado.png in Resources */,
 				6D184B55270BB94A00169BD3 /* AgregarProd1.png in Resources */,
+				6D26E86527595BE6005432DF /* LaunchScreen.png in Resources */,
 				6DE2DAE127080C05000D0609 /* 1.png in Resources */,
 				0DDFE659270906C900EC3EA5 /* PerfilEditarImg.png in Resources */,
 				0DDFE696270A569D00EC3EA5 /* 120x120.png in Resources */,

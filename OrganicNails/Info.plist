@@ -49,7 +49,7 @@
 		<key>UIColorName</key>
 		<string>bg</string>
 		<key>UIImageName</key>
-		<string>Imagen12</string>
+		<string>LaunchScreen</string>
 	</dict>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
