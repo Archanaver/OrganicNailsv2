@@ -39,20 +39,31 @@ class MLViewController: UIViewController, UIImagePickerControllerDelegate, UINav
     
     @IBAction func guardarImagen(_ sender: UIButton) {
     
-        
+        if fotoVista.image == nil {
+                let alerta =  UIAlertController(title: "Error de guardado", message:"Elije una imagen", preferredStyle: .alert)
+               alerta.addAction(UIAlertAction(title: "Cerrar", style: .default, handler: nil))
+               self.present(alerta, animated: true, completion: nil)
+        }else{
         UIImageWriteToSavedPhotosAlbum(fotoVista.image!, nil, nil, nil)
+        }
     }
+    
     @IBAction func ejecutarML() {
         //instanciar el modelo de la red neuronal
         let modelFile = OrganicML()
         let model = try! VNCoreMLModel(for: modelFile.model)
         //Convertir la imagen obtenida a CIImage
+        if fotoVista.image == nil {
+                let alerta =  UIAlertController(title: "Error ", message:"Elije una imagen", preferredStyle: .alert)
+               alerta.addAction(UIAlertAction(title: "Cerrar", style: .default, handler: nil))
+               self.present(alerta, animated: true, completion: nil)
+        }else{
         let imagenCI = CIImage(image: fotoVista.image!)
         //Crear un controlador para el manejo de la imagen, este es un requerimiento para ejecutar la solicitud del modelo
         let handler = VNImageRequestHandler(ciImage: imagenCI!)
         //Crear una solicitud al modelo para el análisis de la imagen
         let request = VNCoreMLRequest(model: model, completionHandler: resultadosModelo)
-        try! handler.perform([request])
+            try! handler.perform([request])}
         
     }
     
@@ -78,13 +89,9 @@ class MLViewController: UIViewController, UIImagePickerControllerDelegate, UINav
         IrCatalogo.isHidden = false
         IrCatalogo.setTitle("Comprar productos de la categoria: "+bestPrediction+"", for: .normal)
         
-        IrCatalogo.backgroundColor = UIColor.purple
+        IrCatalogo.backgroundColor = #colorLiteral(red: 0.8980392157, green: 0.3803921569, blue: 0.5607843137, alpha: 1)
         IrCatalogo.layer.cornerRadius = 10
-        IrCatalogo.layer.shadowColor = UIColor(named: "buttonShadow")?.cgColor
-        IrCatalogo.layer.shadowOpacity = 0.8
-        IrCatalogo.layer.shadowOffset = CGSize(width: 1, height: 1)
-        IrCatalogo.layer.borderWidth = 2
-        IrCatalogo.layer.borderColor = UIColor(named: "buttonBorder")?.cgColor
+        
     }
     
     
