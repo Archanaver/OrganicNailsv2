@@ -442,7 +442,7 @@
             <objects>
                 <viewController storyboardIdentifier="detallePedido" id="uwn-2z-33P" customClass="DetallePedidoViewController" customModule="OrganicNails" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Rcj-m8-qQA">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yUc-sc-G3Y">
@@ -514,7 +514,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="SHl-l8-KAi">
-                                <rect key="frame" x="10" y="54" width="394" height="798"/>
+                                <rect key="frame" x="10" y="98" width="394" height="705"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icono" translatesAutoresizingMaskIntoConstraints="NO" id="VrE-dQ-JyZ">
                                         <rect key="frame" x="0.0" y="0.0" width="394" height="250"/>
@@ -531,7 +531,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="ay2-iE-u14">
-                                        <rect key="frame" x="0.0" y="284.5" width="394" height="513.5"/>
+                                        <rect key="frame" x="0.0" y="284.5" width="394" height="420.5"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="pedidoCell" id="PHj-RP-IMY">
@@ -573,12 +573,12 @@
         <scene sceneID="R6K-eB-UmV">
             <objects>
                 <viewController wantsFullScreenLayout="YES" modalTransitionStyle="crossDissolve" modalPresentationStyle="fullScreen" id="B52-dZ-1s5" customClass="PedidosDetalleViewController" customModule="OrganicNails" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="aPH-Tf-kAv">
+                    <view key="view" contentMode="scaleToFill" id="aPH-Tf-kAv">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="bhV-XY-3Mv">
-                                <rect key="frame" x="10" y="54" width="394" height="705"/>
+                                <rect key="frame" x="10" y="98" width="394" height="705"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="qsV-yq-bg8">
                                         <rect key="frame" x="0.0" y="0.0" width="394" height="705"/>
@@ -650,7 +650,7 @@
             <objects>
                 <viewController id="tzQ-Bv-PiW" customClass="PruebaCarritoViewController" customModule="OrganicNails" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ojx-cG-E23">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6ig-Xe-ksk">
@@ -833,7 +833,7 @@
             <objects>
                 <viewController id="gSw-By-LSb" customClass="DireccionPedidoViewController" customModule="OrganicNails" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="C7n-sD-FqX" customClass="Direccion">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Qy9-6c-OiK">
@@ -2265,7 +2265,7 @@
                                 </prototypes>
                             </tableView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="180x180.png" translatesAutoresizingMaskIntoConstraints="NO" id="Aqm-iH-xns">
-                                <rect key="frame" x="139.5" y="174.5" width="135" height="135"/>
+                                <rect key="frame" x="117" y="152" width="180" height="180"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="27U-aN-cVN"/>
@@ -2329,11 +2329,11 @@
             </objects>
             <point key="canvasLocation" x="5278.2608695652179" y="-842.41071428571422"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Perfil-->
         <scene sceneID="jTd-G6-eol">
             <objects>
                 <navigationController wantsFullScreenLayout="YES" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="hpI-6D-G0B" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="person" catalog="system" id="MVt-jh-bWm"/>
+                    <tabBarItem key="tabBarItem" title="Perfil" image="person" catalog="system" id="MVt-jh-bWm"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="gNb-cY-ewI"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="3uI-qE-XPE">
@@ -2374,7 +2374,7 @@
             <objects>
                 <viewController storyboardIdentifier="ProductoPEditar" id="FrO-P6-JAV" userLabel="Detalle Producto" customClass="EditarProductoViewController" customModule="OrganicNails" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1vW-oD-vMH">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="id" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XVY-m7-mrB">
@@ -2592,7 +2592,7 @@
             <objects>
                 <viewController id="wpY-5O-4Xr" userLabel="Detalle Curso Scene" customClass="DetalleCursoCarritoViewController" customModule="OrganicNails" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vy5-qp-Zck">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="nombre" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yfd-sF-Mm1">
@@ -2783,11 +2783,11 @@
             </objects>
             <point key="canvasLocation" x="7263.7681159420299" y="-2355.1339285714284"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Buscar producto-->
         <scene sceneID="0o7-JK-NNe">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Qkk-7X-pCE" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="magnifyingglass" catalog="system" id="kI3-jf-Pei"/>
+                    <tabBarItem key="tabBarItem" title="Buscar producto" image="magnifyingglass" catalog="system" id="kI3-jf-Pei"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="pa7-rW-jOQ">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -2824,10 +2824,11 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="GDh-0x-Edt"/>
         <segue reference="vye-c0-AHW"/>
         <segue reference="dDz-ri-hay"/>
         <segue reference="5ep-jN-V5Q"/>
-        <segue reference="cj4-ya-a3c"/>
+        <segue reference="bO5-Ff-NGN"/>
         <segue reference="am6-f0-3a4"/>
         <segue reference="YaQ-uL-8fX"/>
         <segue reference="aoZ-ns-LdQ"/>
