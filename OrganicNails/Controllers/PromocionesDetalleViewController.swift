@@ -112,7 +112,8 @@ extension PromocionesDetalleViewController: UIPickerViewDataSource, UIPickerView
              */
             
             precio.text? = precioActual
-            ahorras.text? = String((producto?.descuento)!)
+            ahorras.text? = String((producto?.descuento)!)+"%"
+            
             
         default:
             return

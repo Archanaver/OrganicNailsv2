@@ -1516,10 +1516,10 @@
                     </tabBar>
                     <connections>
                         <segue destination="SB4-U6-wHT" kind="relationship" relationship="viewControllers" id="GDh-0x-Edt"/>
-                        <segue destination="hpI-6D-G0B" kind="relationship" relationship="viewControllers" id="vye-c0-AHW"/>
+                        <segue destination="urm-hx-wFf" kind="relationship" relationship="viewControllers" id="E5B-xP-zVf"/>
                         <segue destination="QkZ-tZ-dsh" kind="relationship" relationship="viewControllers" id="QG1-5D-06r"/>
                         <segue destination="yC9-Gx-TrJ" kind="relationship" relationship="viewControllers" id="gG5-Jb-Lz5"/>
-                        <segue destination="urm-hx-wFf" kind="relationship" relationship="viewControllers" id="E5B-xP-zVf"/>
+                        <segue destination="hpI-6D-G0B" kind="relationship" relationship="viewControllers" id="vye-c0-AHW"/>
                         <segue destination="Qkk-7X-pCE" kind="relationship" relationship="viewControllers" id="LqM-DU-ULa"/>
                     </connections>
                 </tabBarController>
@@ -2269,7 +2269,7 @@
                                 </prototypes>
                             </tableView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="180x180.png" translatesAutoresizingMaskIntoConstraints="NO" id="Aqm-iH-xns">
-                                <rect key="frame" x="117" y="152" width="180" height="180"/>
+                                <rect key="frame" x="139.5" y="174.5" width="135" height="135"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="27U-aN-cVN"/>
@@ -2787,11 +2787,11 @@
             </objects>
             <point key="canvasLocation" x="7263.7681159420299" y="-2355.1339285714284"/>
         </scene>
-        <!--Item-->
+        <!--Navigation Controller-->
         <scene sceneID="0o7-JK-NNe">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Qkk-7X-pCE" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" image="magnifyingglass" catalog="system" id="kI3-jf-Pei"/>
+                    <tabBarItem key="tabBarItem" title="" image="magnifyingglass" catalog="system" id="kI3-jf-Pei"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="pa7-rW-jOQ">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -2835,7 +2835,7 @@
         <segue reference="am6-f0-3a4"/>
         <segue reference="YaQ-uL-8fX"/>
         <segue reference="aoZ-ns-LdQ"/>
-        <segue reference="xA2-9h-LeE"/>
+        <segue reference="GR3-fa-lmH"/>
         <segue reference="RAF-AC-VRg"/>
         <segue reference="3rr-iM-Pvk"/>
         <segue reference="j5V-Av-PZw"/>
