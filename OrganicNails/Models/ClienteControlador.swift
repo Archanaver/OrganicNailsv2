@@ -166,6 +166,9 @@ class ClienteControlador{
                 for document in querySnapshot!.documents {
                     //print("\(document.documentID) => \(document.data())")
                     documentoID = document.documentID
+                    let user = Auth.auth().currentUser
+                   
+                    
                     self.db.collection("clientes").document(documentoID).delete(){err in
                         if let err = err {
                             print("Error al remover cliente:\(err)")
@@ -183,6 +186,12 @@ class ClienteControlador{
                               }
                             
                         }
+                    }
+                    user?.delete {
+                        error in
+                        if let error = error {
+                            print("error al eliminar cuenta")
+                        }else{print("cuenta eliminada")}
                     }
                 }
                 

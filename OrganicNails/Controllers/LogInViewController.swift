@@ -77,16 +77,14 @@ class LogInViewController: UIViewController, UITextFieldDelegate    {
             let contra = contraTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             Auth.auth().signIn(withEmail: email, password: contra) { (result, error) in
                 if error != nil {
-                    let alerta =  UIAlertController(title: "Error ", message: "Credenciales incorrectar", preferredStyle: .alert)
+                    let alerta =  UIAlertController(title: "Error ", message: "Credenciales incorrectas", preferredStyle: .alert)
                    alerta.addAction(UIAlertAction(title: "Cerrar", style: .default, handler: nil))
                    self.present(alerta, animated: true, completion: nil)
                     
                 }
                 else{
-                    let siguienteVista = self.storyboard!.instantiateViewController(withIdentifier: "tabBar") as! UITabBarController
-                    siguienteVista.modalPresentationStyle = .overFullScreen
-                    self.present(siguienteVista, animated: true, completion: nil)
-                 // self.didTapButton()
+                    
+                  self.didTapButton()
                 }
             }
         }
@@ -108,9 +106,9 @@ class LogInViewController: UIViewController, UITextFieldDelegate    {
                 }
                 DispatchQueue.main.async {
                 //Mostar otra pagina en caso de exito
-                let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                let vc: ViewController = storyboard.instantiateViewController(withIdentifier: "pantallainicial") as! ViewController
-                self!.present(vc, animated: true, completion: nil)
+                    let siguienteVista = self?.storyboard!.instantiateViewController(withIdentifier: "tabBar") as! UITabBarController
+                    siguienteVista.modalPresentationStyle = .overFullScreen
+                    self!.present(siguienteVista, animated: true, completion: nil)
             }
             }
         }
