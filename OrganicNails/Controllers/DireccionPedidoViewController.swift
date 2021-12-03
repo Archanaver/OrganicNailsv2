@@ -32,7 +32,7 @@ class DireccionPedidoViewController:  UIViewController,UISearchBarDelegate  {
                 self.add = exito[0].direccion!
             case .failure(let error):print(error)
             }
-        
+         
         let geoCoder = CLGeocoder()
             geoCoder.geocodeAddressString(self.add){ [self](placemarks, error) in
            
@@ -40,8 +40,33 @@ class DireccionPedidoViewController:  UIViewController,UISearchBarDelegate  {
             let location = placemarks?.location?.coordinate
                     let lat = placemarks?.location?.coordinate.latitude
                 let long = placemarks?.location?.coordinate.longitude
+                if lat == nil || long == nil{
+                    LocationControlador.shared.getUserLocation { [weak self] location in
+                        DispatchQueue.main.async {
+                            guard let strongSelf = self else {
+                                return
+                            }
+                    }
+                        self!.addMapPin(with: location)
+                        let meters = location.distance(from: self!.fascinoLoc)
+                        if meters > 5000.0 && meters < 10000{
+                            print("mayor a ")
+                            self!.envio = 50.0
+                        }else if meters > 10000{
+                            self!.envio = 100.0
+                        }else{
+                            self!.envio = 10.0
+                        }
+                    
+                        print(self!.envio)
+                    
+                        print(self!.total)
+                        print(self!.ahorro)
+                        print(self!.envio)
+                    }} else {
+                        
             let newLoc: CLLocation = CLLocation(latitude: lat!, longitude: long!)
-            self.addMapPin(with: newLoc)
+                self.addMapPin(with: newLoc)
                 let meters = newLoc.distance(from: fascinoLoc)
                 print("distancia en m ", meters)
                 if meters > 5000.0 && meters < 10000{
@@ -54,7 +79,7 @@ class DireccionPedidoViewController:  UIViewController,UISearchBarDelegate  {
                 }
             
                 print(self.envio)
-        }
+            }
        
         
             print(self.total)
@@ -62,7 +87,7 @@ class DireccionPedidoViewController:  UIViewController,UISearchBarDelegate  {
             print(self.envio)
         // Do any additional setup after loading the view.
         
-        
+            }
     }
     }
         func addMapPin(with location: CLLocation){
