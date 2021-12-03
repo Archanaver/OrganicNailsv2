@@ -138,6 +138,11 @@ class MLViewController: UIViewController, UIImagePickerControllerDelegate, UINav
             siguiente.opcion = "Arte"
             
         }
+        if bestPrediction == "Accesorios"{
+            siguiente.filtradoTipo = true;
+            siguiente.opcion = "Accesorios"
+            
+        }
         
         siguiente.categoria = "Catálogo general"
         //siguiente.opcion = (catalogo[1]).producto!
